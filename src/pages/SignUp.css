@@ -1,0 +1,88 @@
+.SignUp{
+    background-color: #A7727D;
+}
+
+.frame-signUp{
+    background-color: #A7727D;
+    display: grid;
+    grid-template-columns: auto auto;
+    z-index: -1;
+}
+
+.lbRegis{
+    font-size: 54px;
+}
+
+.backGroundImage{
+    margin: auto;
+}
+
+.regisFormContainer{
+    padding-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 100px;
+    padding-right: 100px;
+    background: #FBF8EE;
+    color: #A7727D;
+}
+
+.largeForm{
+    display: grid;
+    gap: 25px;
+}
+
+
+.inputRegisName,
+.inputRegisSurName
+{
+    background-color: #F8EAD8;
+    height: 40px;
+    width: 200px;
+    border-radius: 10px;
+    border-style: none;
+    box-shadow: inset 0px 0px 8px rgba(0, 0, 0, 0.2);
+}
+
+.inputRegisEmail,
+.inputBirthDay,
+.inputRegisPhone,
+.inputRegisUsername,
+.inputRegisPassword,
+.inputRegisConfirmPassword{
+    background-color: #F8EAD8;
+    height: 40px;
+    width: 400px;
+    border-radius: 10px;
+    border-style: none;
+    box-shadow: inset 0px 0px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+.inputRegisEmail,
+.inputBirthDay,
+.inputRegisPhone,
+.inputRegisUsername,
+.inputRegisPassword,
+.inputRegisConfirmPassword::placeholder{
+    padding-left: 10px;
+    color: #A7727D;
+}
+
+.regisApprove{
+    display: flex;
+    /* text-align: start; */
+}
+
+
+.lbRegisApprove{
+    padding-left: 20px;
+    margin-top: 12px;
+    font-size: 12px;
+}
+
+.regisSubmit{
+    display: flex;
+    align-items: center;
+}

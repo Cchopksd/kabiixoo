@@ -1,0 +1,63 @@
+.home-page{
+    background-image: url(../images/bgDog.png);
+}
+
+.text-find{
+    text-align: center;
+    padding-top: 50px;
+    color: #A7727D;
+    font-size: 56px;
+    font-family: 'IBM Plex Sans Thai', sans-serif;
+}
+
+.box-search{
+    display: flex;
+    align-items: center;
+    margin: auto;
+    background-color: (#FCFCFC,0.5);
+    height: 120px;
+    width: 740px;
+    border-radius: 10px;
+    margin-top: 105px;
+    box-shadow: inset 0px 0px 8px rgba(0, 0, 0, 0.2);
+}
+
+.frameEntry{
+    display: flex;
+}
+
+.frameEt_fill{
+    margin-left: 25px;
+}
+
+.entry-fill{
+    height: 80px;
+    width: 600px;
+    border-radius: 10px 0px 0px 10px;
+    background-color: #F2F2F2;
+    border: #fff;
+    font-size: 24px;
+}
+
+.entry-fill::placeholder{
+    margin-left: 20px;
+}
+
+.entry-fill:hover{
+    border: none;
+}
+
+.bt-search{
+    height: 80px;
+    width: 90px;
+    border-radius: 0px 10px 10px 0px;
+    background-color: #A7727D;
+    right: 0px;
+}
+
+
+.bt-search:hover,
+.bt-search:focus {
+    background-color: #A7727D;
+    box-shadow: inset 0 0 0 2em var(--hover);
+}

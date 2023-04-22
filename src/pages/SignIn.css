@@ -1,0 +1,132 @@
+.signin-page{
+    /* background-color: #A7727D; */
+    background-image: url(../images/imagePd.png);
+}
+
+
+
+.loginFormContainer{
+    height: 500px;
+    width: 490px;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #F9F5E7;
+    border-radius: 25px;
+}
+
+.loginForm{
+    color: #A7727D;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.lBUser{
+    margin-top: 80px;
+    margin-right: 5px;
+}
+
+
+.linkSignUp{
+    font-size: 10px;
+    text-align: end;
+    padding-left: 150px;
+}
+
+.frameLinkSignUp{
+    margin-left: auto;
+}
+
+.lBPwd{
+    margin-right: 270px;
+}
+
+.inputTextUsername,
+.inputTextPass{
+    background-color: #F8EAD8;
+    width: 350px;
+    height: 40px;
+    border-radius: 25px;
+    border-style: none;
+    box-shadow: inset 0px 0px 8px rgba(0, 0, 0, 0.2);
+}
+
+.inputTextUsername::placeholder{
+    padding-left: 10px;
+    color: #A7727D;
+}
+
+.inputTextPass::placeholder{
+    padding-left: 10px;
+    color: #A7727D;
+}
+
+.inputPass{
+    margin-bottom: 30px;
+}
+
+
+.btSignIn{
+    width: 250px;
+    height: 35px;
+    border-radius: 25px;
+    border-style: none;
+    background-color: #A7727D;
+    color: #fff;
+    font-family: 'IBM Plex Sans Thai', sans-serif;
+    font-size: 16px;
+}
+
+.xt_1_hr {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.line {
+    border: none;
+    height: 1px;
+    width: 150px;
+    background-color: #616161;
+    flex: 1;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.label1 {
+    margin: 0 10px;
+    color: #616161;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.iconGoogle{
+    font-size: 20px;
+    padding-right: 20px;
+}
+
+.bt_lwg{
+    display: flex;
+    width: 250px;
+    height: 35px;
+    font-size: 14px;
+    align-items: center;
+    justify-content: center;
+    background-color: #EDDBC7;
+    color: #A7727D;
+    border-radius: 25px;
+    border-style: none;
+}
+
+
+.plc_pvr{
+    color: #A0A0A0;
+    width: 80%;
+    font-size: 12px;
+    text-align: center;
+}
