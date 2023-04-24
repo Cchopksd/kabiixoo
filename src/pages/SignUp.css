@@ -1,12 +1,9 @@
-.SignUp{
-    background-color: #A7727D;
-}
-
 .frame-signUp{
     background-color: #A7727D;
     display: grid;
     grid-template-columns: auto auto;
-    z-index: -1;
+    height: 100%;
+
 }
 
 .lbRegis{
@@ -26,6 +23,7 @@
     padding-right: 100px;
     background: #FBF8EE;
     color: #A7727D;
+    padding-bottom: 50px;
 }
 
 .largeForm{
@@ -83,6 +81,15 @@
 }
 
 .regisSubmit{
-    display: flex;
-    align-items: center;
+    margin: auto;
+    margin-top: 20px;
+}
+
+.inputRegisSubmit{
+    height: 40px;
+    width: 200px;
+    color: #FBF8EE;
+    background-color: #A7727D;
+    border-radius: 20px;
+    border-style: none;
 }

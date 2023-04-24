@@ -3,4 +3,6 @@ body{
     margin-left: 0;
     margin-right: 0;
     font-family: 'IBM Plex Sans Thai', sans-serif;
+    margin: 0px;
+    height: 100%;
 }

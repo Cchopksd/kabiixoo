@@ -13,6 +13,7 @@
 .menu{
     margin-right: 20px;
     margin-left: auto;
+
 }
 
 .nav-link{
@@ -33,9 +34,10 @@
 }
 
 .btn-login{
+    font-family: 'IBM Plex Sans Thai', sans-serif;
     border-radius: 15px;
     background: #F9F5E7;
-    padding: 10px 25px;
+    padding: 5px 25px;
     color: #A7727D;
     border: none;
     font-size: 18px;

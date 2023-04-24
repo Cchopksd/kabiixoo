@@ -87,7 +87,7 @@ const SignUp = () => {
                                 <label className="lbRegisApprove">ฉันยืนยันว่าได้อ่านและยอมรับ ข้อกำหนดในการให้บริการของ <a href=''>KabiiXoo</a><br /> และ <a href=''>นโยบายความเป็นส่วนตัว</a></label>
                             </div>
                             <div className='regisSubmit'>
-                                <input className="inputRegisSubmit" type='submit' value='สมัครสมาชิก'/>
+                                <button className="inputRegisSubmit" type='submit'>สมัครสมาชิก</button>
                             </div>
                         </div>
                     </form>
