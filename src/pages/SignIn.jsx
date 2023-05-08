@@ -8,9 +8,11 @@ export default function SignIn()  {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
         const jsonData = {
-            username: data.get('username'),
-            password: data.get('password'),
+            mem_email: data.get('username'),
+            mem_password: data.get('password'),
         }
+
+        console.log(jsonData)
 
         // fetch("http://localhost:3333/login", {
         //     method: "POST",
@@ -39,7 +41,7 @@ export default function SignIn()  {
             const data = await response.json();
             if (data.status == "ok") {
                 localStorage.setItem('token',data.token)
-                window.location = '/src/pages/Home.jsx'
+                window.location = '/'
                 alert("login successful")
             } else {
                 alert("login failed")
