@@ -27,13 +27,4 @@ function App() {
   );
 }
 
-// function NavbarWithCondition() {
-//   const location = useLocation();
-//   if (location.pathname === '/signin') {
-//     return null;
-//   }
-
-//   return <Navbar />;
-// }
-
 export default App;

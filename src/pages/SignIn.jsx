@@ -1,10 +1,33 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Outlet,Link } from 'react-router-dom';
 import '../pages/SignIn.css';
 import { FcGoogle } from "react-icons/fc";
 
+export default function SignIn()  {
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        const data = new FormData(event.currentTarget);
+        const jsonData = {
+            username: data.get('email'),
+            password: data.get('password'),
+        }
 
-const SignIn = () => {
+        fetch("http://localhost:3333/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(jsonData),
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log("Success:", data);
+        })
+        .catch ((error) => {
+            console.error("Error:", error);
+        });
+    };
+
     useEffect(() => {
         document.body.classList.add('signin-page');
         return () => {
@@ -14,33 +37,47 @@ const SignIn = () => {
 
     return (
         <div className="loginFormContainer">
-            <form className="login_form">
+            <form className="login_form" onSubmit={handleSubmit}>
                 <div className='loginForm'>
                     <div className='lBUser'>
                         <label className="labelUsername">ชื่อผู้ใช้งาน</label>
                         <label className="linkSignUp">ยังไม่มีบัญชี <Link to='/SignUp'>สมัครสมาชิก</Link></label>
                     </div>
                     <div className='inputUsername'>
-                        <input className="inputTextUsername" id="username" type="text" placeholder="กรอกชื่อผู้ใช้งาน"/>
+                        <input className="inputTextUsername"
+                        id="username"
+                        type="text"
+                        placeholder="กรอกชื่อผู้ใช้งาน"
+                        // value={username}
+                        // onChange={(e) => setUsername(e.target.value)}
+                        />
                     </div>
                     <br />
                     <div className='lBPwd'>
                         <label className="labelPassword">รหัสผ่าน</label>
                     </div>
                     <div className='inputPass'>
-                        <input className="inputTextPass" id="password" type="password" placeholder="กรอกรหัสผ่าน"/>
+                        <input className="inputTextPass"
+                        id="password"
+                        type="password"
+                        placeholder="กรอกรหัสผ่าน"
+                        // value={password}
+                        // onChange={(e) => setPassword(e.target.value)}
+                        />
                     </div>
                     <div className='frameBtSignIn'>
-                        <button className="btSignIn" type="button">เข้าสู่ระบบ</button>
+                        <button className="btSignIn" type="button"
+                        // onClick={handleSignIn}
+                        >เข้าสู่ระบบ</button>
                     </div>
                     <div className='xt_1_hr'>
                         <hr className='line'></hr>
-                        <div className="label1">เข้าใช้งานผ่าน</div>
+                            <div className="label1">เข้าใช้งานผ่าน</div>
                         <hr className='line'></hr>
                     </div>
-                <div className='lg_google'>
-                    <button className='bt_lwg' type="button"><FcGoogle className="iconGoogle"/>เข้าสู่ระบบผ่าน google</button>
-                </div>
+                    <div className='lg_google'>
+                        <button className='bt_lwg' type="button"><FcGoogle className="iconGoogle"/>เข้าสู่ระบบผ่าน google</button>
+                    </div>
                 <p className='plc_pvr'>การดำเนินการต่อแสดงว่าคุณยอมรับข้อกำหนดในการให้บริการของ <Link to="https://chat.openai.com/" target="_blank" >Kabixoo</Link> และ <Link to=" ">นโยบายความเป็นส่วนตัว</Link></p>
                 </div>
             </form>
@@ -48,4 +85,3 @@ const SignIn = () => {
     );
 }
 
-export default SignIn;
