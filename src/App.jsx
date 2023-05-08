@@ -12,7 +12,6 @@ function App() {
   return (
     <div>
       <BrowserRouter>
-      {/* <NavbarWithCondition /> */}
         <Routes>
           <Route path="/" element={<Navbar/>}>
             <Route index  element={<Home />}/>
@@ -21,8 +20,8 @@ function App() {
             <Route path="signin" element={<SignIn />}/>
             <Route path="signup" element={<SignUp />}/>
           </Route>
-      </Routes>
-    </BrowserRouter>
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }

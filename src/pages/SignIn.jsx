@@ -8,24 +8,47 @@ export default function SignIn()  {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
         const jsonData = {
-            username: data.get('email'),
+            username: data.get('username'),
             password: data.get('password'),
         }
 
-        fetch("http://localhost:3333/login", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(jsonData),
-        })
-        .then(response => response.json())
-        .then(data => {
-            console.log("Success:", data);
-        })
-        .catch ((error) => {
-            console.error("Error:", error);
-        });
+        // fetch("http://localhost:3333/login", {
+        //     method: "POST",
+        //     headers: {
+        //         "Content-Type": "application/json",
+        //     },
+        //     body: JSON.stringify(jsonData),
+        // })
+        // .then(response => response.json())
+        // .then(data => {
+        //     console.log("Success:", data);
+        // })
+        // .catch ((error) => {
+        //     console.error("Error:", error);
+        // });
+        async function postJSON(data) {
+            try {
+                const response = await fetch("http://localhost:3333/login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(jsonData),
+            });
+
+            const data = await response.json();
+            if (data.status == "ok") {
+                localStorage.setItem('token',data.token)
+                window.location = '/src/pages/Home.jsx'
+                alert("login successful")
+            } else {
+                alert("login failed")
+            }
+            } catch (error) {
+                console.error("Error:", error);
+            }
+        }
+        postJSON(data);
     };
 
     useEffect(() => {
@@ -45,7 +68,7 @@ export default function SignIn()  {
                     </div>
                     <div className='inputUsername'>
                         <input className="inputTextUsername"
-                        id="username"
+                        name="username"
                         type="text"
                         placeholder="กรอกชื่อผู้ใช้งาน"
                         // value={username}
@@ -58,7 +81,7 @@ export default function SignIn()  {
                     </div>
                     <div className='inputPass'>
                         <input className="inputTextPass"
-                        id="password"
+                        name="password"
                         type="password"
                         placeholder="กรอกรหัสผ่าน"
                         // value={password}
@@ -66,8 +89,9 @@ export default function SignIn()  {
                         />
                     </div>
                     <div className='frameBtSignIn'>
-                        <button className="btSignIn" type="button"
-                        // onClick={handleSignIn}
+                        <button className="btSignIn" 
+                        type="submit"
+                        variant="contained"
                         >เข้าสู่ระบบ</button>
                     </div>
                     <div className='xt_1_hr'>
