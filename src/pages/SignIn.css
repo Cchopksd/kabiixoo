@@ -3,10 +3,27 @@
     background-image: url(../images/imagePd.png);
 }
 
+.logoContainer{
+    background : #F8EAD8 ;
+    border-radius : 50%;
+    width : 180px;
+    height : 180px;
+    display : flex ;
+    align-items: flex-start;
+    margin: auto;
+    top: -90px;
+    position: relative;
+    box-shadow:0px 5px 15px 0 rgba(0,0,0,0.16);
+}
 
+.logoSize{
+    width: 100%;
+    height: auto;
+    margin-top: 5px;
+}
 
 .loginFormContainer{
-    height: 500px;
+    height: 600px;
     width: 490px;
     margin: auto;
     position: absolute;
@@ -16,6 +33,7 @@
     right: 0;
     background-color: #F9F5E7;
     border-radius: 25px;
+    box-shadow:0px 5px 15px 0 rgba(0,0,0,0.16);
 }
 
 .loginForm{
