@@ -3,6 +3,27 @@
     background-image: url(../images/imagePd.png);
 }
 
+.logoSize{
+    width: 100%;
+    height: auto;
+    margin-top: 5px;
+}
+
+.loginFormContainer{
+    height: 570px;
+    width: 490px;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin-bottom: 130px;
+    background-color: #F9F5E7;
+    border-radius: 25px;
+    box-shadow:0px 5px 15px 0 rgba(0,0,0,0.16);
+}
+
 .logoContainer{
     background : #F8EAD8 ;
     border-radius : 50%;
@@ -16,36 +37,16 @@
     box-shadow:0px 5px 15px 0 rgba(0,0,0,0.16);
 }
 
-.logoSize{
-    width: 100%;
-    height: auto;
-    margin-top: 5px;
-}
-
-.loginFormContainer{
-    height: 600px;
-    width: 490px;
-    margin: auto;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-color: #F9F5E7;
-    border-radius: 25px;
-    box-shadow:0px 5px 15px 0 rgba(0,0,0,0.16);
-}
-
 .loginForm{
     color: #A7727D;
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: -60px;
 }
 
 
 .lBUser{
-    margin-top: 80px;
     margin-right: 5px;
 }
 
