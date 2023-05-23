@@ -20,7 +20,7 @@ const Navbar = () => {
                             <li className="mobile-spacing" onClick={closeMobileMenu}>
                                 <Link to="/article">บทความ</Link>
                             </li>
-                            <li className="mobile-spacing" onClick={closeMobileMenu}>
+                            <li className="mobile-spacing aboutMe" onClick={closeMobileMenu}>
                                 <Link to="/about">เกี่ยวกับเรา</Link>
                             </li>
                             <li className="mobile-spacing" onClick={closeMobileMenu}>
@@ -28,7 +28,6 @@ const Navbar = () => {
                             </li>
                         </ul>
                     </div>
-                {/* <button className="btn-login" ><Link to="/signin">เข้าสู่ระบบ</Link></button> */}
                 <div className="mobile-menu" onClick={handleClick}>
                     {click ? (
                         <FiX/>
