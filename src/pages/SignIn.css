@@ -5,7 +5,9 @@
 
 .page{
     display: flex;
-
+    position: relative;
+    height: 100%;
+    width: 100%;
 }
 
 .logoSize{
@@ -18,10 +20,9 @@
     height: 570px;
     width: 490px;
     position: relative;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    margin: auto;
+    top: 100px;
+    margin-top: 50px;
     background-color: #F9F5E7;
     border-radius: 25px;
     box-shadow:0px 5px 15px 0 rgba(0,0,0,0.16);
@@ -32,7 +33,6 @@
     border-radius : 50%;
     width : 180px;
     height : 180px;
-    display : flex ;
     align-items: flex-start;
     margin: auto;
     top: -90px;
@@ -45,13 +45,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: -45px;
 }
-
 
 .lBUser{
     margin-right: 5px;
 }
-
 
 .linkSignUp{
     font-size: 10px;
@@ -75,9 +74,7 @@
     border-radius: 25px;
     border-style: none;
     box-shadow: inset 0px 0px 8px rgba(0, 0, 0, 0.2);
-    
     padding-left: 20px;
-
 }
 
 .inputTextUsername::placeholder{
@@ -144,7 +141,6 @@
     border-radius: 25px;
     border-style: none;
 }
-
 
 .plc_pvr{
     color: #A0A0A0;

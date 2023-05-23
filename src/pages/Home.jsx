@@ -14,33 +14,6 @@ const Home = () => {
         };
     }, []);
 
-    const optionsServices = [
-        { value: 'grooming', label: 'อาบน้ำ-แต่งขน' },
-        { value: 'walking', label: 'เดินเล่น' },
-        { value: 'care', label: 'เลี้ยงดูสัตว์เลี้ยง' },
-    ]
-    const optionsTypes = [
-        { value: 'dog', label: 'สุนัข'},
-        { value: 'cat', label: 'แมว'},
-    ]
-
-    const optionsStore = [
-        { value: 'storeFront', label: 'ทั้งหมด'},
-        { value: 'total', label: 'มีหน้าร้าน'}
-    ]
-
-    const optionsRate = [
-        { value: 'low', label: 'ต่ำไปสูง'},
-        { value: 'high', label: 'สูงไปต่ำ'}
-    ]
-
-    const optionsPrice = [
-        { value: '1', label: '0-500'},
-        { value: '2', label: '501-1000'},
-        { value: '3', label: '1001-1500'},
-        { value: '4', label: '1501-2000'},
-    ]
-
     const [provinces,setProvinces] = useState([]);
 
     useEffect(() => {
@@ -55,6 +28,7 @@ const Home = () => {
         })
         .catch(error => console.log(error));
     }, []);
+
     return (
         <div className='home'>
             <div className='xtf'>
