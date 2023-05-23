@@ -3,11 +3,6 @@
     background-image: url(../images/imagePd.png);
 }
 
-.page{
-    display: flex;
-
-}
-
 .logoSize{
     width: 100%;
     height: auto;
@@ -17,11 +12,13 @@
 .loginFormContainer{
     height: 570px;
     width: 490px;
-    position: relative;
+    margin: auto;
+    position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
+    margin-bottom: 130px;
     background-color: #F9F5E7;
     border-radius: 25px;
     box-shadow:0px 5px 15px 0 rgba(0,0,0,0.16);
@@ -45,6 +42,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: -60px;
 }
 
 
@@ -75,16 +73,15 @@
     border-radius: 25px;
     border-style: none;
     box-shadow: inset 0px 0px 8px rgba(0, 0, 0, 0.2);
-    
-    padding-left: 20px;
-
 }
 
 .inputTextUsername::placeholder{
+    padding-left: 10px;
     color: #A7727D;
 }
 
 .inputTextPass::placeholder{
+    padding-left: 10px;
     color: #A7727D;
 }
 

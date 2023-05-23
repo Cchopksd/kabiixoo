@@ -1,7 +1,5 @@
-*{
-    font-family: 'IBM Plex Sans Thai', sans-serif;
-}
-
 body{
+    font-family: 'IBM Plex Sans Thai', sans-serif;
     margin: 0px;
+    /* height: 100%; */
 }

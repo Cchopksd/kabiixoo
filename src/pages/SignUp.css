@@ -6,10 +6,6 @@
 
 }
 
-/* .page{
-
-} */
-
 .lbRegis{
     font-size: 54px;
 }
@@ -45,7 +41,6 @@
     border-radius: 10px;
     border-style: none;
     box-shadow: inset 0px 0px 8px rgba(0, 0, 0, 0.2);
-    padding-left: 20px;
 }
 
 .inputRegisEmail,
@@ -60,7 +55,6 @@
     border-radius: 10px;
     border-style: none;
     box-shadow: inset 0px 0px 8px rgba(0, 0, 0, 0.2);
-    padding-left: 20px;
 }
 
 
