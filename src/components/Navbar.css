@@ -7,13 +7,12 @@
 
 .img-logo {
     height: 60px;
-    margin-left : 20px;
+    margin-left : 40px;
 }
 
 .menu{
-    margin-right: 20px;
+    margin-right: 50px;
     margin-left: auto;
-
 }
 
 .nav-link{
@@ -41,8 +40,8 @@
     color: #A7727D;
     border: none;
     font-size: 18px;
-    margin-left: 40px;
-    margin-right: 50px;
+    /* margin-left: 40px;
+    margin-right: 50px; */
     transition: all 0.3s ease;
 }
 
@@ -55,4 +54,110 @@
     background: #ffffff;
     color: #000000;
     cursor: pointer;
+}
+
+.mobile-menu {
+    display: none;
+}
+
+/* จอ Mobile */
+@media screen and (min-width: 0px) and (max-width: 766px){
+    .mobile-menu {
+        display : block;
+        color: #ffffff;
+        font-size: 2rem;
+        margin-right: 20px;
+        margin-left: auto;
+        margin-top: 10px;   
+    }
+
+    .nav-link{
+        width: 100%;
+        height: auto;
+        display: flex;
+        position: absolute;
+        flex-direction: column;
+        list-style: none;
+        font-size:17px;
+        top: 50px;
+        right: 100%;
+        /* left: 100%; */
+        opacity: 0;
+        transition: 0.5s ease;
+        background-color: #F9F5E7;
+        gap: 0;
+    }
+    .menu{
+        margin-right: 0px;
+        margin-left: 0px;
+    }
+    .nav-link.active {
+        background-color: #F9F5E7;
+        right: 0;
+        opacity: 1;
+        z-index: 1;
+        align-content: center;
+        transition: 0.5s ease;;
+    }
+    .img-logo {
+        height: 40px;
+        margin-left : 20px;
+    }
+    .nav-link a {
+        color: #A7727D;
+        text-decoration: none;
+    }
+    .btn-login {
+        font-family: 'IBM Plex Sans Thai', sans-serif;
+        color: #A7727D;
+        font-size: 17px;
+    }
+    .btn-login:hover , .btn-login a:hover {
+        background: #F9F5E7;
+        color: #000000;
+        cursor: pointer;
+    }
+    .navbar{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        background-color: #A7727D;
+        box-shadow:0px 5px 15px 0 rgba(0,0,0,0.16);
+    }
+    .mobile-spacing {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 7vw;
+        padding: 10px 0;
+    }
+
+}
+
+/* จอ Tablet */
+@media screen and (min-width: 766px) and (max-width: 970px){
+    .img-logo {
+        height: 40px;
+        margin-left : 40px;
+    }
+    .btn-login{
+        font-family: 'IBM Plex Sans Thai', sans-serif;
+        border-radius: 15px;
+        background: #F9F5E7;
+        padding: 5px 25px;
+        color: #A7727D;
+        border: none;
+        font-size: 15px;
+        /* margin-left: 40px;
+        margin-right: 50px; */
+        transition: all 0.3s ease;
+    }
+    .nav-link{
+        display: flex;
+        align-items: center;
+        list-style: none;
+        font-size:15px;
+        gap: 4em;
+    }
+
 }

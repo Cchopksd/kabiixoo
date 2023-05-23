@@ -45,7 +45,7 @@ export default function SignIn()  {
     }, []);
 
     return (
-        <div>
+        <div className='page'>
             <div className="loginFormContainer">
                 <div className='logoContainer'>
                     <img src={require('../images/login_logo.png')} className='logoSize'></img>
