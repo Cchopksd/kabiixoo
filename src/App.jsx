@@ -7,6 +7,7 @@ import ArticlePage from './pages/ArticlePage';
 import About from './pages/About';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
+import Review from './pages/Review';
 
 function App() {
   return (
@@ -14,11 +15,12 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Navbar/>}>
-            <Route index  element={<Home />}/>
+            <Route index  element={<Review />}/>
             <Route path="article" element={<ArticlePage />}/>
             <Route path="about" element={<About />}/>
             <Route path="signin" element={<SignIn />}/>
             <Route path="signup" element={<SignUp />}/>
+            <Route path="review" element={<Review />}/>
           </Route>
         </Routes>
       </BrowserRouter>

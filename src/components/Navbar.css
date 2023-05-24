@@ -65,7 +65,7 @@
 }
 
 /* จอ Mobile */
-@media screen and (min-width: 0px) and (max-width: 766px){
+@media screen and (min-width: 0px) and (max-width: 780px){
     .mobile-menu {
         display : block;
         color: #ffffff;
@@ -145,7 +145,7 @@
 }
 
 /* จอ Tablet */
-@media screen and (min-width: 766px) and (max-width: 970px){
+@media screen and (min-width: 780px) and (max-width: 990px){
     .img-logo {
         height: 40px;
         margin-left : 40px;
