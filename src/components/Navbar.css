@@ -30,6 +30,7 @@
 
 .nav-link a:hover {
     color: #000000;
+    transition: 0.5s ease;
 }
 
 .btn-login{
@@ -54,6 +55,7 @@
     background: #ffffff;
     color: #000000;
     cursor: pointer;
+    transition: 0.5s ease;
 }
 
 .mobile-menu {
@@ -132,8 +134,7 @@
     }
     .nav-link.active li.aboutMe:not(:last-child) {
         border-bottom: 1px solid #dddddd;
-        padding: 20px 150px;
-        /* width: 100px; */
+        padding: 20px 120px;
     }
     .mobile-spacing {
         display: flex;
