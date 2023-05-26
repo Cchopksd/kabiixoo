@@ -1,6 +1,6 @@
 import React, {useState } from 'react';
 import { FaStar } from "react-icons/fa";
-import "./Review.css";
+import "../pages/Review.css";
 
 const Review = () => {
     const [businessName, setBusinessName] = useState("สมศักดิ์");

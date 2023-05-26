@@ -48,7 +48,7 @@ const SignUp = () => {
                                 <div>
                                     <label className="lbRegisEmail">อีเมลล์</label>
                                 </div>
-                                <input className="inputRegisEmail" id="email" type="email" placeholder="กรอกอีเมลล์" required />
+                                <input className="inputRegisEmail" id="email" type="email" placeholder="กรอกอีเมล" required />
                             </div>
 
                             <div className='regisBirthDay'>
