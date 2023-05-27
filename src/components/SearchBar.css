@@ -2,13 +2,19 @@
     display: flex;
     align-items: center;
     margin: auto;
-    background-color: (#FCFCFC,0.5);
+    background-color: #FCFCFC;
     height: 120px;
     width: 740px;
     border-radius: 15px;
     margin-top: 105px;
     /* box-shadow: inset 0px 0px 8px rgba(0, 0, 0, 0.25); */
     box-shadow: 0px 24px 48px 0 rgba(0, 0, 0, 0.35);
+    /* transition: border-radius 0.1s ease; */
+}
+.visible {
+    border: none;
+    /* box-shadow: 0px 0px 24px 0px rgba(0, 0, 0, 0.35); */
+    border-radius: 15px 15px 0px 0px; /* Set your desired border-radius value */
 }
 
 .frameEntry{
@@ -27,7 +33,7 @@
     font-size: 20px;
     font-weight: bold;
 }::placeholder{
-    color: #A7727D  ;
+    color: #A7727D;
 }:focus{
     outline: none;
 }

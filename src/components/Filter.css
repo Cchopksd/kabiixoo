@@ -1,10 +1,109 @@
 .container-filter{
-
     margin: auto;
     width: 740px;
-    background-color: (#FCFCFC,0.5);
-    height: 300px;
-    box-shadow: 0px 1px 40px 0px rgba(0, 0, 0, 0.35);
-    border-radius: 15px;
+    background-color:#FCFCFC;
+    height: 330px;
+    border-radius: 0px 0px 15px 15px ;
+    overflow: auto;
+    /* box-shadow: inset 0px 0px 8px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 24px 48px 0 rgba(0, 0, 0, 0.35); */
+}.active{
+    transition: 1s ease;;
+}
 
+.line-filter{
+    border: none;
+    height: 1px;
+    width: 90%;
+    background-color: #DCDCDC;
+    flex: 1;
+    margin: auto;
+}
+
+.items-filter {
+    text-decoration: none;
+    list-style: none;
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+.item-type{
+    display: flex;
+    border: 1px solid #000;
+    border-radius: 5px;
+    width: 300px;
+    height: 35px;
+    margin-bottom: 15px;
+    align-items: center;
+}
+
+.filter-province{
+    text-decoration: none;
+    list-style: none;
+    display: table-column;
+    grid-template-columns: auto auto;
+}
+
+.select-province {
+    width: 300px;
+    height: 35px;
+
+}
+
+.label-filter{
+    display: flex;
+    margin-left: 40px;
+}
+
+.checkbox{
+    padding-left: 20px;
+}
+
+.price-filter{
+    text-decoration: none;
+    list-style: none;
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+
+.item-price{
+    display: flex;
+    border: 1px solid #000;
+    border-radius: 5px;
+    width: 180px;
+    height: 35px;
+    margin-bottom: 15px;
+    align-items: center;
+}
+
+.btn-searchFilter{
+    width: 300px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    background-color: #A7727D;
+    border: none;
+    border-radius: 5px;
+}
+
+.btn-resetFilter{
+    width: 300px;
+    height: 40px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #D4D4D4;
+    border-radius: 5px;
+    color: #555555;
+}
+
+.summary-filter{
+    text-decoration: none;
+    list-style: none;
+    display: flex;
+    justify-content: space-evenly;
+    margin: 30px 0px 30px -40px;
 }
