@@ -9,6 +9,7 @@ import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
 import Review from './pages/Review';
 import Article from './pages/Article';
+import EditProfile from './pages/EditProfile';
 
 function App() {
   return (
@@ -16,7 +17,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Navbar/>}>
-            <Route index  element={<Footer />}/>
+            <Route index  element={<EditProfile/>}/>
             <Route path="article" element={<Article />}/>
             <Route path="about" element={<About />}/>
             <Route path="signin" element={<SignIn />}/>
