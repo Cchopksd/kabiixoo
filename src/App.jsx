@@ -11,6 +11,7 @@ import Review from './pages/Review';
 import Article from './pages/Article';
 import EditProfile from './pages/EditProfile';
 import TermOfService from './pages/TermOfService';
+import ReportProvider from './pages/ReportProvider';
 
 function App() {
   return (
@@ -18,7 +19,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Navbar/>}>
-            <Route index  element={<TermOfService/>}/>
+            <Route index  element={<ReportProvider/>}/>
             <Route path="article" element={<Article />}/>
             <Route path="about" element={<About />}/>
             <Route path="signin" element={<SignIn />}/>
