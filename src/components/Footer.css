@@ -1,0 +1,104 @@
+.footer-container {
+    margin: 0px;
+    width: auto;
+    margin: 0 auto;
+    background-color: #F8EAD8;
+}
+.copyright-label {
+    color: #A7727D;
+}
+.term-of-service {
+    color: #A7727D;
+}
+.footer-line {
+    border: none;
+    height: 1px;
+    width: 600px;
+    background-color: #A7727D;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+.contact-item {
+    padding-top: 40px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.footer-logo-container, .copyright-label {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+.term-of-service {
+    /* width: 200px; */
+    padding-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.information-legal, .privacy-cookie {
+    margin: 0 35px;
+}
+.l-text{
+    font-size: 30px;
+}
+
+/* จอ desktop ลดขนาด */
+@media screen and (min-width: 1200px) and (max-width: 1600px){
+    .footer-line {
+        border: none;
+        height: 1px;
+        width: 400px;
+        background-color: #A7727D;
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+}
+
+/* จอ tablet */
+@media screen and (min-width: 780px) and (max-width: 1200px){
+    .footer-line {
+        border: none;
+        height: 1px;
+        width: 250px;
+        background-color: #A7727D;
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+    .footer-contact-img {
+        width: 80%;
+    }
+    .footer-logo-img {
+        height: 40px;
+    }
+    .copyright-label, .information-legal, .privacy-cookie {
+        font-size: 13px;
+    }
+    .l-text{
+        font-size: 25px;
+    }
+}
+
+/* จอ mobile */
+@media screen and (min-width: 0px) and (max-width: 780px){
+    .footer-line {
+        border: none;
+        height: 1px;
+        width: 120px;
+        background-color: #A7727D;
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+    .footer-contact-img {
+        width: 70%;
+    }
+    .footer-logo-img {
+        height: 30px;
+    }
+    .copyright-label, .information-legal, .privacy-cookie {
+        font-size: 11px;
+    }
+    .l-text{
+        font-size: 23px;
+    }
+}
