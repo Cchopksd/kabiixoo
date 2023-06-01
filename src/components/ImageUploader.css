@@ -1,0 +1,154 @@
+.img-upl-card {
+    overflow: hidden;
+}
+.img-upl-card .img-upl-title {
+    text-align: center;
+}
+.img-upl-card p {
+    font-weight: bold;
+    color: #A7727D;
+}
+.img-upl-card .drag-area {
+    height: 150px;
+    border-radius: 10px;
+    border: 2px dashed lightgray;
+    color: #A7727D;
+    background: #F9F5E7;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    user-select: none;
+    -webkit-user-select: none;
+    margin-top: 10px;
+}
+.img-upl-card .drag-area .visible{
+    font-size: 18px;
+}
+.img-upl-card .select {
+    color: #5256ad;
+    margin-left: 5px;
+    cursor: pointer;
+    transition: 0.4s;
+}
+.img-upl-card .select:hover {
+    opacity: 0.6;
+}
+.img-upl-card .img-upl-container {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-height: 200px;
+  margin-top: 20px;
+}
+.img-upl-card .img-upl-container .upl-image {
+    width: 185px;
+    margin-left: 10px;
+    margin-right: 10px;
+    height: 185px;
+    position: relative;
+    margin-bottom: 20px;
+    box-shadow:0px 2px 5px 0 rgba(0,0,0,0.16);
+    border-radius: 20px;
+}
+.img-upl-card .img-upl-container .upl-image img {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+}
+.img-upl-card .img-upl-container .upl-image span {
+    position: absolute;
+    top: -2px;
+    right: 9px;
+    font-size: 20px;
+    cursor: pointer;
+}
+.img-upl-card input,
+.img-upl-card .drag-area .on-drop,
+.img-upl-card .drag-area.dragover .visible {
+    display: none;
+}
+.upl-delete{
+    z-index: 999;
+    color: #A7727D;
+}
+.drag-area-disable {
+    display: none;
+}
+.file-desc {
+    font-size: 12px;
+    color: #BFBFBF;
+}
+/* .inside-drag-area {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+} */
+.drag-text {
+    margin-left: 55px;
+}
+
+/* จอ tablet */
+@media screen and (min-width : 700px) and (max-width : 990px){
+    .img-upl-card .drag-area {
+        height: 120px;
+        border-radius: 10px;
+        border: 2px dashed lightgray;
+        color: #A7727D;
+        background: #F9F5E7;
+        display: flex;
+        justify-content: center; 
+        align-items: center;
+        user-select: none;
+        -webkit-user-select: none;
+        margin-top: 10px;
+    }
+    .file-desc {
+        font-size: 10px;
+        color: #BFBFBF;
+    }
+    .drag-text {
+        font-size: 15px;
+        margin-left: 33px;
+    }
+    .img-upl-card .select {
+        font-size: 15px;
+    }
+    .img-upl-card .img-upl-container .upl-image {
+        width: 147px;
+        height: 147px;
+    }
+}
+
+/* จอ Mobile */
+@media screen and (min-width : 0px) and (max-width : 700px){
+    .img-upl-card .drag-area {
+        height: 100px;
+        border-radius: 10px;
+        border: 2px dashed lightgray;
+        color: #A7727D;
+        background: #F9F5E7;
+        display: flex;
+        justify-content: center; 
+        align-items: center;
+        user-select: none;
+        -webkit-user-select: none;
+        margin-top: 10px;
+    }
+    .file-desc {
+        font-size: 8px;
+        color: #BFBFBF;
+    }
+    .drag-text {
+        font-size: 13px;
+        margin-left: 21px;
+    }
+    .img-upl-card .select {
+        font-size: 13px;
+    }
+    .img-upl-card .img-upl-container .upl-image {
+        width: 105px;
+        height: 105px;
+    }
+}
