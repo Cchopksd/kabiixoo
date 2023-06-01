@@ -3,6 +3,7 @@ import { BrowserRouter , Route, Routes, useLocation  } from 'react-router-dom';
 import './App.css'
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import ImageUploader from './components/ImageUploader';
 import Home from './pages/Home';
 import About from './pages/About';
 import SignIn from './pages/SignIn';
@@ -19,7 +20,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Navbar/>}>
-            <Route index  element={<ReportProvider/>}/>
+            <Route index  element={<ReportProvider />}/>
             <Route path="article" element={<Article />}/>
             <Route path="about" element={<About />}/>
             <Route path="signin" element={<SignIn />}/>

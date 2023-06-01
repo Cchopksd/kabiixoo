@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import "./ReportProvider.css"
+import ImageUploader from "../components/ImageUploader";
 
 const ReportProvider = () => {
 
@@ -24,6 +25,7 @@ const ReportProvider = () => {
             </div>
             <div className="report-img-box">
                 <label className="report-info-header">รูปภาพประกอบ (ถ้ามี)</label>
+                <ImageUploader/>
             </div>
             <button className="comfirm-report-btn">ส่งรายงาน</button>
         </div>
