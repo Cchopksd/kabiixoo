@@ -149,10 +149,10 @@ const Filter = () => {
                 <h3 className="label-filter">ราคาเริ่มต้น</h3>
                 <ul className='price-filter'>
                     <li>
-                        <button className="item-price">
+                        <div className="item-price">
                             <input id="price-1-checkbox" type="checkbox" value="price-1" />
                             <label className="lb-checkbox" htmlFor="price-1-checkbox" onChange={handleCheckboxChange}> &lt; 500 บาท</label>
-                        </button>
+                        </div>
                     </li>
                     <li>
                         <div className="item-price">

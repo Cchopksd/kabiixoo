@@ -21,12 +21,14 @@ function App() {
       {/* หากต้องการไม่ให้ Navbar แสดงในหน้าไหนให้นำ tag Route ใส่ไว้ข้างนอก tag Route ใหญ่ */}
         <Routes>
           <Route path="/" element={<Navbar/>}>
-            <Route index  element={<ReportProvider />}/>
+            <Route index  element={<Home />}/>
             <Route path="article" element={<Article />}/>
             <Route path="about" element={<About />}/>
             <Route path="signin" element={<SignIn />}/>
             <Route path="signup" element={<SignUp />}/>
             <Route path="review" element={<Review />}/>
+            <Route path="report-provider" element={<ReportProvider />}/>
+            <Route path="term-of-service" element={<TermOfService />}/>
           </Route>
         </Routes>
       </BrowserRouter>
