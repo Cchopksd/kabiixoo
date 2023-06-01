@@ -18,6 +18,7 @@ function App() {
   return (
     <div>
       <BrowserRouter>
+      {/* หากต้องการไม่ให้ Navbar แสดงในหน้าไหนให้นำ tag Route ใส่ไว้ข้างนอก tag Route ใหญ่ */}
         <Routes>
           <Route path="/" element={<Navbar/>}>
             <Route index  element={<ReportProvider />}/>
