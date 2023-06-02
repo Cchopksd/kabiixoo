@@ -13,6 +13,7 @@ import Article from './pages/Article';
 import EditProfile from './pages/EditProfile';
 import TermOfService from './pages/TermOfService';
 import ReportProvider from './pages/ReportProvider';
+import ConfirmBusiness from './pages/ConfirmBusiness';
 
 function App() {
   return (
@@ -21,7 +22,7 @@ function App() {
       {/* หากต้องการไม่ให้ Navbar แสดงในหน้าไหนให้นำ tag Route ใส่ไว้ข้างนอก tag Route ใหญ่ */}
         <Routes>
           <Route path="/" element={<Navbar/>}>
-            <Route index  element={<Home />}/>
+            <Route index  element={<ConfirmBusiness />}/>
             <Route path="article" element={<Article />}/>
             <Route path="about" element={<About />}/>
             <Route path="signin" element={<SignIn />}/>
