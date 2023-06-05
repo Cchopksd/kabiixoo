@@ -1,0 +1,91 @@
+.providerHome-container {
+    display: flex;
+    justify-content: center;
+    margin: 200px auto;
+    width: 1100px;
+}
+.editService-link-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    height: 400px;
+    background-color: #F9F5E7;
+    border-radius: 30px;
+    margin: 0 70px;
+    box-shadow:0px 5px 35px 10px rgba(0,0,0,0.16);
+}
+.confirmBusiness-link-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    height: 400px;
+    background-color: #F9F5E7;
+    border-radius: 30px;
+    margin: 0 70px;
+    box-shadow:0px 5px 35px 10px rgba(0,0,0,0.16);
+}
+.providerHome-btn-img {
+    width: 180px;
+}
+.providerHome-btn-desc {
+    margin-top: 30px;
+    font-size: 25px;
+    color: #A7727D;
+}
+.margin-confirm{
+    margin-top: 15px;
+}
+.editService-link-box:hover, .confirmBusiness-link-box:hover {
+    background: #F8EAD8;
+    color: #000000;
+    cursor: pointer;
+    transition: 0.5s ease;
+}
+
+/* จอ tablet */
+@media screen and (min-width: 780px) and (max-width: 1100px){
+    .providerHome-container {
+        width: 780px;
+        margin: 120px auto;
+    }
+    .editService-link-box, .confirmBusiness-link-box {
+        width: 320px;
+        height: 320px;
+        background-color: #F9F5E7;
+        border-radius: 30px;
+        margin: 0 40px;
+    }
+    .providerHome-btn-img {
+        width: 120px;
+    }
+    .providerHome-btn-desc {
+        font-size: 20px;
+    }
+}
+
+/* จอ mobile */
+@media screen and (min-width: 0px) and (max-width: 780px){
+    .providerHome-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin: 60px auto;
+        width: 360px;
+    }
+    .editService-link-box, .confirmBusiness-link-box {
+        width: 300px;
+        height: 300px;
+        border-radius: 30px;
+        margin: 40px auto;
+    }
+    .providerHome-btn-img {
+        width: 100px;
+    }
+    .providerHome-btn-desc {
+        font-size: 18px;
+    }
+}
