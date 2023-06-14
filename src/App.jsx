@@ -16,6 +16,8 @@ import ReportProvider from './pages/ReportProvider';
 import ConfirmBusiness from './pages/ConfirmBusiness';
 import ProviderHome from './pages/ProviderHome';
 import CreateService from './pages/CreateService';
+import EditService from './pages/EditService';
+import ProviderServiceProfile from './pages/ProviderServiceProfile';
 
 function App() {
   return (
@@ -24,7 +26,7 @@ function App() {
       {/* หากต้องการไม่ให้ Navbar แสดงในหน้าไหนให้นำ tag Route ใส่ไว้ข้างนอก tag Route ใหญ่ */}
         <Routes>
           <Route path="/" element={<Navbar/>}>
-            <Route index  element={<CreateService/>}/>
+            <Route index  element={<ProviderServiceProfile/>}/>
             <Route path="article" element={<Article />}/>
             <Route path="about" element={<About />}/>
             <Route path="signin" element={<SignIn />}/>
@@ -33,6 +35,7 @@ function App() {
             <Route path="report-provider" element={<ReportProvider />}/>
             <Route path="term-of-service" element={<TermOfService />}/>
             <Route path='confirm-business' element={<ConfirmBusiness/>}/>
+            <Route path='create-service' element={<CreateService/>}/>
           </Route>
         </Routes>
       </BrowserRouter>

@@ -1,0 +1,669 @@
+.ps-profile-container {
+    display: flex;
+    flex-direction: column;
+    width: 1000px;
+    margin: 40px auto;
+}
+.ps-profile-img-slider-box {
+    width: 1000px;
+}
+.ps-profile-card {
+    height: 300px;
+}
+.ps-profile-card > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.arrow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0.3;
+    font-size: 30px;
+    border-radius: 40px;
+    background-color: #A7727D;
+    display: flex;
+    width: 50px;
+    height: 50px;
+    color: aliceblue;
+    position: absolute;
+    top: 120px;
+    z-index: 100;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+.arrow:hover {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+    font-size: 30px;
+    border-radius: 40px;
+    background-color: #A7727D;
+    display: flex;
+    width: 50px;
+    height: 50px;
+    color: aliceblue;
+    position: absolute;
+    top: 120px;
+    z-index: 100;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+.arrow-right {
+    right: 50px;
+}
+.arrow-left {
+    left: 50px;
+}
+.ps-profile-header-box {
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.ps-profile-name-box {
+    display: flex;
+    align-items: center;
+}
+.ps-profile-business-name {
+    font-size: 28px;
+    font-weight: bold;
+    color: #A7727D;
+    margin-right: 30px;
+}
+.ps-profile-confirm-business-sign-none {
+    display: none;
+}
+.ps-profile-confirm-business-sign {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90px;
+    height: 30px;
+    background-color: #FFFFFF;
+    border-radius: 20px;
+    border: 1px solid #A7727D;
+}
+.ps-profile-confirm-business-sign label {
+    font-size: 13px;
+    color: #A7727D;
+}
+.ps-profile-confirm-business-sign img {
+    height: 21px;
+    margin-right: 3px;
+    margin-bottom: 3px;
+}
+.ps-profile-province-box {
+    display: flex;
+    align-items: center;
+}
+.ps-profile-province-box label{
+    font-size: 24px;
+    color: #A7727D;
+}
+.ps-profile-province-box img{
+    height: 30px;
+    color: #A7727D;
+    margin-right: 15px;
+}
+.ps-profile-part-1 {
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+    background-color: #F9F5E7;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow:0px 5px 15px 8px rgba(0,0,0,0.16);
+}
+.ps-profile-title {
+    font-size: 20px;
+    color: #A7727D;
+    font-weight: bold;
+}
+.ps-profile-serviceAddress-box p {
+    margin-bottom: 0px;
+}
+.ps-profile-part-2 {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+}
+.ps-profile-moreService-item {
+    display: flex;
+    flex-wrap: wrap;
+}
+.ps-profile-moreService-display {
+    margin-top: 20px;
+    margin-right: 15px;
+    padding: 6px 15px;
+    background-color: #FDE9DE;
+    border: 1px solid #A7727D;
+    border-radius: 10px;
+}
+.ps-profile-moreService-display-none {
+    display: none;
+}
+.ps-profile-petType-item {
+    display: flex;
+    flex-wrap: wrap;
+}
+.ps-profile-petType-display {
+    width: 160px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    margin-right: 15px;
+    padding: 6px 15px;
+    background-color: #FDE9DE;
+    border: 1px solid #A7727D;
+    border-radius: 10px;
+}
+.ps-profile-petType-display-none {
+    display: none;
+}
+.ps-profile-petType-display img{
+    height: 27px;
+    margin-right: 8px;
+}
+.ps-profile-petType-display label{
+    margin-left: 8px;
+}
+.ps-profile-moreService-box,.ps-profile-petType-box, .ps-profile-contact-box, .ps-profile-provider-box {
+    width: 430px;
+    background-color: #F9F5E7;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow:0px 5px 15px 8px rgba(0,0,0,0.16);
+}
+.ps-profile-part-3 {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+}
+.ps-profile-contact-display {
+    display: flex;
+    align-items: center;
+    height: 50px;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    box-shadow:0px 2px 10px 1px rgba(0,0,0,0.16);
+    margin-top: 15px;
+}
+.ps-profile-contact-display-none {
+    display: none;
+}
+.ps-profile-contact-display img{
+    height: 30px;
+    margin-left: 30px;
+    margin-right: 50px;
+}
+.ps-profile-contact-display label{
+    margin-right: 50px;
+}
+.ps-profile-provider-display {
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.ps-profile-provider-display img {
+    width: 110px;
+    margin-right: 30px;
+}
+.ps-profile-provider-display label {
+    font-size: 24px;
+    color: #A7727D;
+}
+.ps-profile-provider-btn-box {
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.ps-profile-provider-chat-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #FFFFFF;
+    width: 170px;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow:0px 5px 15px 1px rgba(0,0,0,0.16);
+}
+.ps-profile-provider-report-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #A7727D;
+    width: 170px;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow:0px 5px 15px 1px rgba(0,0,0,0.16);
+}
+.ps-profile-provider-chat-btn:hover {
+    cursor: pointer;
+    transition: 0.3s ease;
+    opacity: 0.6;
+}
+.ps-profile-provider-report-btn:hover {
+    cursor: pointer;
+    transition: 0.3s ease;
+    opacity: 0.6;
+}
+
+.ps-profile-provider-chat-btn img, .ps-profile-provider-report-btn img{
+    margin-right: 10px;
+}
+.ps-profile-provider-chat-btn label{
+    color: #A7727D;
+}
+.ps-profile-provider-report-btn label{
+    color: #FFFFFF;
+}
+.ps-profile-part-4 {
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+    background-color: #F9F5E7;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow:0px 5px 15px 8px rgba(0,0,0,0.16);
+}
+.ps-profile-review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 30px;
+    /* border-bottom: 1px solid #A7727D; */
+}
+.ps-profile-provider-review-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow:0px 5px 15px 1px rgba(0,0,0,0.16);
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    width: 150px;
+    height: 50px;
+}
+.ps-profile-provider-review-btn img {
+    height: 25px;
+    margin-right: 10px;
+}
+.ps-profile-provider-review-btn label {
+    color: #A7727D;
+}
+.ps-profile-provider-review-btn:hover{
+    background-color: #EDDBC7;
+    transition: 0.3s ease;
+    cursor: pointer;
+}
+.ps-profile-review-content {
+    margin: auto;
+    width: 940px;
+}
+.ps-profile-review-content-display {
+    /* margin: 0 90px; */
+    padding: 30px 100px;
+    border-top: 1px solid #A7727D;
+}
+.ps-profile-review-content-display div{
+    display: flex;
+}
+.ps-profile-review-content-display img {
+    height: 80px;
+    margin-right: 20px;
+}
+.ps-profile-review-content-display p {
+    margin-bottom: 0px;
+}
+.ps-profile-review-content-display label {
+    color: #A7727D;
+    font-size: 20px;
+}
+.ps-profile-review-content-name-display {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.ps-profile-review-content-name-display img{
+    height: 25px;
+    margin-right: 5px;
+}
+
+@media screen and (min-width : 780px) and (max-width : 1100px){
+    .ps-profile-container {
+        width: 750px;
+    }
+    .ps-profile-img-slider-box {
+        width: 750px;
+    }
+    .ps-profile-card {
+        height: 220px;
+    }
+    .arrow {
+        top: 90px;
+        z-index: 100;
+    }
+    .arrow:hover {
+        top: 90px;
+        z-index: 100;
+    }
+    .ps-profile-business-name {
+        font-size: 22px;
+        margin-right: 25px;
+    }
+    .ps-profile-province-box label{
+        font-size: 17px;
+    }
+    .ps-profile-province-box img{
+        height: 22px;
+        margin-right: 10px;
+    }
+    .ps-profile-title {
+        font-size: 18px;
+    }
+    .ps-profile-part-1 {
+        font-size: 15px;
+    }
+    .ps-profile-moreService-box,.ps-profile-petType-box, .ps-profile-contact-box, .ps-profile-provider-box {
+        width: 300px;
+    }
+    .ps-profile-moreService-display {
+        margin-right: 10px;
+        padding: 6px 7px;
+        font-size: 13px;
+    }
+    .ps-profile-petType-display {
+        width: 108px;
+        margin-right: 10px;
+        padding: 5px 15px;
+    }
+    .ps-profile-petType-display img{
+        height: 24px;
+        margin-right: 5px;
+    }
+    .ps-profile-petType-display label{
+        margin-left: 5px;
+        font-size: 13px;
+    }
+    .ps-profile-contact-display {
+        height: 45px;
+        margin-top: 15px;
+    }
+    .ps-profile-contact-display img{
+        height: 25px;
+        margin-left: 25px;
+        margin-right: 25px;
+    }
+    .ps-profile-contact-display label{
+        margin-right: 25px;
+        font-size: 15px;
+    }
+    .ps-profile-provider-display {
+        margin-top: 40px;
+    }
+    .ps-profile-provider-display img {
+        width: 80px;
+        margin-right: 20px;
+    }
+    .ps-profile-provider-display label {
+        font-size: 18px;
+    }
+    .ps-profile-provider-btn-box {
+        margin-top: 35px;
+    }
+    .ps-profile-provider-chat-btn {
+        flex-direction: column;
+        font-size: 13px;
+        width: 110px;
+        padding: 15px;
+        border-radius: 10px;
+        box-shadow:0px 5px 15px 1px rgba(0,0,0,0.16);
+    }
+    .ps-profile-provider-report-btn {
+        flex-direction: column;
+        font-size: 13px;
+        width: 110px;
+        padding: 15px;
+        border-radius: 10px;
+        box-shadow:0px 5px 15px 1px rgba(0,0,0,0.16);
+    }
+    .ps-profile-provider-chat-btn img, .ps-profile-provider-report-btn img{
+        margin-right: 0px;
+        width: 20px;
+    }
+    .ps-profile-provider-chat-btn label, .ps-profile-provider-report-btn label{
+        margin-top: 10px;
+    }
+    .ps-profile-provider-review-btn {
+        width: 130px;
+        height: 45px;
+    }
+    .ps-profile-provider-review-btn img {
+        height: 20px;
+    }
+    .ps-profile-provider-review-btn label {
+        font-size: 14px;
+    }
+    .ps-profile-review-content {
+        margin: auto;
+        width: 690px;
+    }
+    .ps-profile-review-content-display {
+        /* margin: 0 90px; */
+        padding: 30px 30px;
+        border-top: 1px solid #A7727D;
+    }
+    .ps-profile-review-content-display img {
+        height: 60px;
+        margin-right: 20px;
+    }
+    .ps-profile-review-content-display label {
+        font-size: 17px;
+    }
+    .ps-profile-review-content-display p {
+        font-size: 15px;
+    }
+    .ps-profile-review-content-name-display img{
+        height: 20px;
+        margin-right: 5px;
+    }
+}
+
+@media screen and (min-width : 0px) and (max-width : 780px){
+    .ps-profile-container {
+        width: 375px;
+    }
+    .ps-profile-img-slider-box {
+        width: 375px;
+    }
+    .ps-profile-card {
+        height: 210px;
+    }
+    .arrow {
+        top: 90px;
+        z-index: 100;
+        width: 30px;
+        height: 30px;
+        font-size: 20px;
+    }
+    .arrow:hover {
+        top: 90px;
+        z-index: 100;
+        width: 30px;
+        height: 30px;
+        font-size: 20px;
+    }
+    .arrow-right {
+        right: 30px;
+    }
+    .arrow-left {
+        left: 30px;
+    }
+    .ps-profile-header-box {
+        margin-top: 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+    }
+    .ps-profile-name-box {
+        flex-wrap: wrap;
+    }
+    .ps-profile-business-name {
+        font-size: 19px;
+        margin-right: 20px;
+    }
+    .ps-profile-confirm-business-sign {
+        width: 60px;
+        height: 20px;
+    }
+    .ps-profile-confirm-business-sign label {
+        font-size: 9px;
+    }
+    .ps-profile-confirm-business-sign img {
+        height: 15px;
+        margin-right: 3px;
+        margin-bottom: 3px;
+    }
+    .ps-profile-province-box {
+        margin-top: 10px;
+    }
+    .ps-profile-province-box label{
+        font-size: 16px;
+    }
+    .ps-profile-province-box img{
+        height: 18px;
+        margin-right: 10px;
+    }
+    .ps-profile-part-1 {
+        margin-top: 20px;
+        padding: 20px;
+        font-size: 13px;
+    }
+    .ps-profile-title {
+        font-size: 16px;
+    }
+    .ps-profile-part-2 {
+        margin-top: 0px;
+        flex-direction: column;
+    }
+    .ps-profile-moreService-box,.ps-profile-petType-box, .ps-profile-contact-box, .ps-profile-provider-box {
+        width: 335px;
+        padding: 20px;
+        margin-top: 20px;
+    }
+    .ps-profile-moreService-display {
+        margin-top: 15px;
+        margin-right: 10px;
+        padding: 6px 7px;
+        font-size: 13px;
+    }
+    .ps-profile-petType-display {
+        width: 108px;
+        margin-top: 15px;
+        margin-right: 10px;
+        padding: 4px 21px;
+        border-radius: 10px;
+    }
+    .ps-profile-petType-display img{
+        height: 24px;
+        margin-right: 0px;
+    }
+    .ps-profile-petType-display label{
+        margin-left: 0px;
+        font-size: 13px;
+    }
+    .ps-profile-part-3 {
+        margin-top: 0px;
+        flex-direction: column;
+    }
+    .ps-profile-contact-display {
+        height: 45px;
+        margin-top: 15px;
+    }
+    .ps-profile-contact-display img{
+        height: 25px;
+        margin-left: 25px;
+        margin-right: 25px;
+    }
+    .ps-profile-contact-display label{
+        margin-right: 25px;
+        font-size: 13px;
+    }
+    .ps-profile-provider-display {
+        margin-top: 20px;
+    }
+    .ps-profile-provider-display img {
+        width: 70px;
+        margin-right: 20px;
+    }
+    .ps-profile-provider-display label {
+        font-size: 16px;
+    }
+    .ps-profile-provider-btn-box {
+        margin-top: 25px;
+        justify-content: space-around;
+    }
+    .ps-profile-provider-chat-btn {
+        font-size: 13px;
+        width: 130px;
+        padding: 13px;
+        border-radius: 10px;
+        box-shadow:0px 5px 15px 1px rgba(0,0,0,0.16);
+    }
+    .ps-profile-provider-report-btn {
+        font-size: 13px;
+        width: 130px;
+        padding: 13px;
+        border-radius: 10px;
+        box-shadow:0px 5px 15px 1px rgba(0,0,0,0.16);
+    }
+    .ps-profile-provider-chat-btn img, .ps-profile-provider-report-btn img{
+        margin-right: 10px;
+        width: 20px;
+    }
+    .ps-profile-provider-chat-btn label, .ps-profile-provider-report-btn label{
+        margin-top: 0px;
+    }
+    .ps-profile-part-4 {
+        margin-top: 20px;
+        padding: 20px;
+    }
+    .ps-profile-provider-review-btn {
+        width: 110px;
+        height: 40px;
+    }
+    .ps-profile-provider-review-btn img {
+        height: 20px;
+    }
+    .ps-profile-provider-review-btn label {
+        font-size: 14px;
+    }
+    .ps-profile-review-content {
+        margin: auto;
+        width: 335px;
+    }
+    .ps-profile-review-content-display {
+        padding: 20px 10px;
+    }
+    .ps-profile-review-content-display img {
+        height: 50px;
+        margin-right: 20px;
+    }
+    .ps-profile-review-content-display label {
+        font-size: 15px;
+    }
+    .ps-profile-review-content-display p {
+        font-size: 13px;
+    }
+    .ps-profile-review-content-name-display img{
+        height: 17px;
+        margin-right: 5px;
+    }
+}
