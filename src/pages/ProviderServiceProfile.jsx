@@ -26,10 +26,12 @@ const ProviderServiceProfile = () => {
     const settings = {
         dots: true,
         infinite: true,
-        speed: 500,
+        speed: 1000,
         slidesToShow: 2,
         slidesToScroll: 1,
-        initialSlide: 0,
+        autoplay: true,
+        autoplaySpeed: 3000,
+        cssEase: "linear",
         nextArrow: <SampleNextArrow />,
         prevArrow: <SamplePrevArrow />,
         responsive: [
@@ -83,20 +85,20 @@ const ProviderServiceProfile = () => {
     const reviewArray = [
         {
             customerName : "สมหมาย ภักดี",
-            reviewPoint : 5,
-            reviewDesc : "คุณแอลลี่ บริการดีเป็นกันเองมากครับ คุยง่าย น้องแมวของผมไม่เหงาเลยในตอนที่ผมต้องไปต่างจังหวัด แล้วฝากน้องไว้กับคุณแอลลี่ น้องอยู่สบายไม่ลำบาก น้องสบายตัวด้วยได้อาบน้ำตอนอากาศร้อนๆแบบนี้ เอาไปเลย 5 ดาวครับ",
-            profileImg : "../images/dummy_profileImage.png"
-        },
-        {
-            customerName : "สมหมาย ภักดี",
-            reviewPoint : 4,
-            reviewDesc : "คุณแอลลี่ บริการดีเป็นกันเองมากครับ คุยง่าย น้องแมวของผมไม่เหงาเลยในตอนที่ผมต้องไปต่างจังหวัด แล้วฝากน้องไว้กับคุณแอลลี่ น้องอยู่สบายไม่ลำบาก น้องสบายตัวด้วยได้อาบน้ำตอนอากาศร้อนๆแบบนี้ เอาไปเลย 5 ดาวครับ",
-            profileImg : "../images/dummy_profileImage.png"
-        },
-        {
-            customerName : "สมหมาย ภักดี",
             reviewPoint : 1,
             reviewDesc : "คุณแอลลี่ บริการดีเป็นกันเองมากครับ คุยง่าย น้องแมวของผมไม่เหงาเลยในตอนที่ผมต้องไปต่างจังหวัด แล้วฝากน้องไว้กับคุณแอลลี่ น้องอยู่สบายไม่ลำบาก น้องสบายตัวด้วยได้อาบน้ำตอนอากาศร้อนๆแบบนี้ เอาไปเลย 5 ดาวครับ",
+            profileImg : "../images/dummy_profileImage.png"
+        },
+        {
+            customerName : "สมหมาย ภักดี",
+            reviewPoint : 2,
+            reviewDesc : "คุณแอลลี่ บริการดีเป็นกันเองมากครับ คุยง่าย น้องแมวของผมไม่เหงาเลยในตอนที่ผมต้องไปต่างจังหวัด แล้วฝากน้องไว้กับคุณแอลลี่ น้องอยู่สบายไม่ลำบาก น้องสบายตัวด้วยได้อาบน้ำตอนอากาศร้อนๆแบบนี้ เอาไปเลย 5 ดาวครับ",
+            profileImg : "../images/dummy_profileImage.png"
+        },
+        {
+            customerName : "ยุรนันท์ เจิดรุจิกุล",
+            reviewPoint : 1,
+            reviewDesc : "ควย",
             profileImg : "../images/dummy_profileImage.png"
         }
     ];

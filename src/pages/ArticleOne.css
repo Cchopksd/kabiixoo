@@ -1,0 +1,121 @@
+.article-1-container {
+    width: 1000px;
+    margin: 70px auto;
+    display: flex;
+    flex-direction: column;
+}
+.article-1-header-label {
+    color: #A7727D;
+    font-size: 45px;
+    font-weight: bold;
+    margin: auto auto 10px auto;
+}
+.article-1-container p {
+    font-size: 20px;
+    margin-top: 40px;
+}
+.article-1-container div {
+    margin-top: 20px;
+    font-size: 20px;
+}
+.article-1-title {
+    margin-top: 40px;
+    font-size: 32px;
+    color: #A7727D;
+    font-weight: bold;
+}
+.article-1-container img {
+    margin-top: 40px;
+}
+.article-1-info-box {
+    display: flex;
+    flex-direction: column;
+}
+.article-1-info-box p {
+    margin-top: 10px;
+    margin-left: 30px;
+}
+.article-1-info-box img {
+    width: 700px;
+    margin: 30px auto;
+}
+.article-1-info-box .article-1-title {
+    margin-top: 0px;
+}
+.article-1-ref-box {
+    display: flex;
+    flex-direction: column;
+}
+.article-1-ref-box .article-1-title {
+    padding: 50px 0 20px 0;
+    border-top: 1px solid #A7727D;
+}
+.article-1-link{
+    margin: 15px 10px;
+}
+
+@media screen and (min-width : 780px) and (max-width : 1100px){
+    .article-1-container {
+        width: 750px;
+    }
+    .article-1-header-label {
+        font-size: 35px;
+    }
+    .article-1-container p {
+        font-size: 16px;
+    }
+    .article-1-container div {
+        font-size: 16px;
+    }
+    .article-1-title {
+        font-size: 27px;
+        color: #A7727D;
+        font-weight: bold;
+    }
+    .article-1-container img {
+        margin-top: 30px;
+    }
+    .article-1-info-box img {
+        width: 500px;
+        margin: 20px auto;
+    }
+    .article-1-ref-box .article-1-title {
+        padding: 40px 0 10px 0;
+    }
+    .article-1-link{
+        margin: 10px 10px;
+    }
+}
+@media screen and (min-width : 0px) and (max-width : 780px){
+    .article-1-container {
+        margin: 50px auto;
+        width: 375px;
+    }
+    .article-1-header-label {
+        font-size: 25px;
+        margin: auto auto 0px auto;
+    }
+    .article-1-container p {
+        font-size: 14px;
+        margin-top: 20px;
+    }
+    .article-1-container div {
+        font-size: 14px;
+    }
+    .article-1-title {
+        font-size: 20px;
+    }
+    .article-1-container img {
+        margin-top: 20px;
+    }
+    .article-1-info-box img {
+        width: 300px;
+        margin: 10px auto;
+    }
+    .article-1-ref-box .article-1-title {
+        padding: 30px 0 10px 0;
+    }
+    .article-1-link{
+        margin: 10px 10px;
+    }
+}

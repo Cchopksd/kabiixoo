@@ -18,6 +18,9 @@ import ProviderHome from './pages/ProviderHome';
 import CreateService from './pages/CreateService';
 import EditService from './pages/EditService';
 import ProviderServiceProfile from './pages/ProviderServiceProfile';
+import ArticleOne from './pages/ArticleOne';
+import ArticleTwo from './pages/ArticleTwo';
+import ArticleThree from './pages/ArticleThree';
 
 function App() {
   return (
@@ -26,7 +29,7 @@ function App() {
       {/* หากต้องการไม่ให้ Navbar แสดงในหน้าไหนให้นำ tag Route ใส่ไว้ข้างนอก tag Route ใหญ่ */}
         <Routes>
           <Route path="/" element={<Navbar/>}>
-            <Route index  element={<ProviderServiceProfile/>}/>
+            <Route index  element={<ArticleOne/>}/>
             <Route path="article" element={<Article />}/>
             <Route path="about" element={<About />}/>
             <Route path="signin" element={<SignIn />}/>
