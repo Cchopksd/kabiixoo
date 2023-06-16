@@ -31,6 +31,9 @@ function App() {
           <Route path="/" element={<Navbar/>}>
             <Route index  element={<ArticleOne/>}/>
             <Route path="article" element={<Article />}/>
+            <Route path="article-1" element={<ArticleOne />}/>
+            <Route path="article-2" element={<ArticleTwo />}/>
+            <Route path="article-3" element={<ArticleThree />}/>
             <Route path="about" element={<About />}/>
             <Route path="signin" element={<SignIn />}/>
             <Route path="signup" element={<SignUp />}/>
