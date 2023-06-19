@@ -29,7 +29,7 @@ function App() {
       {/* หากต้องการไม่ให้ Navbar แสดงในหน้าไหนให้นำ tag Route ใส่ไว้ข้างนอก tag Route ใหญ่ */}
         <Routes>
           <Route path="/" element={<Navbar/>}>
-            <Route index  element={<ArticleOne/>}/>
+            <Route index  element={<ArticleThree/>}/>
             <Route path="article" element={<Article />}/>
             <Route path="article-1" element={<ArticleOne />}/>
             <Route path="article-2" element={<ArticleTwo />}/>
