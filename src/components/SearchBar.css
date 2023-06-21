@@ -1,3 +1,6 @@
+.search-bar{
+    height: 450px;
+}
 .box-search{
     display: flex;
     align-items: center;
@@ -59,4 +62,20 @@
     display: flex;
     align-items: center;
     justify-content:center;
+}
+.filter-active {
+    animation: fadeIn 0.7s;
+}
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+.filter-active-none {
+    display: none;
+}
+
+@media screen and (min-width: 0px) and (max-width: 780px){
+    .box-search{
+        margin-top: 135px;
+    }
 }

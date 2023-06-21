@@ -29,7 +29,7 @@ function App() {
       {/* หากต้องการไม่ให้ Navbar แสดงในหน้าไหนให้นำ tag Route ใส่ไว้ข้างนอก tag Route ใหญ่ */}
         <Routes>
           <Route path="/" element={<Navbar/>}>
-            <Route index  element={<ArticleThree/>}/>
+            <Route index  element={<Home/>}/>
             <Route path="article" element={<Article />}/>
             <Route path="article-1" element={<ArticleOne />}/>
             <Route path="article-2" element={<ArticleTwo />}/>
@@ -42,6 +42,10 @@ function App() {
             <Route path="term-of-service" element={<TermOfService />}/>
             <Route path='confirm-business' element={<ConfirmBusiness/>}/>
             <Route path='create-service' element={<CreateService/>}/>
+            <Route path='edit-profile' element={<EditProfile/>}/>
+            <Route path='edit-service' element={<EditService/>}/>
+            <Route path='provider-home' element={<ProviderHome/>}/>
+            <Route path='provider-service-profile' element={<ProviderServiceProfile/>}/>
           </Route>
         </Routes>
       </BrowserRouter>

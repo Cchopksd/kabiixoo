@@ -7,6 +7,18 @@
     overflow: auto;
     /* box-shadow: inset 0px 0px 8px rgba(0, 0, 0, 0.25);
     box-shadow: 0px 24px 48px 0 rgba(0, 0, 0, 0.35); */
+    /* position: absolute;
+    overflow: hidden;
+    left: 0;
+    right: 0;
+    top: 420px;
+    bottom: 0; */
+    /* position: absolute; */
+    /* gap: 0; */
+    /* top: 46px; */
+    /* right: 100%; */
+    position: relative;
+
 }.active{
     transition: 1s ease;;
 }

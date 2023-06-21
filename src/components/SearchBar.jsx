@@ -14,7 +14,7 @@ const SearchBar = () => {
         setIsVisible(!isVisible);
     };
     return (
-        <div>
+        <div className='search-bar'>
             <div className={`box-search ${isVisible ? 'visible' : ''}`}>
                 <div className='frameEntry'>
                     <div className='frameEt_fill'>
@@ -28,9 +28,12 @@ const SearchBar = () => {
                     </div>
                 </div>
             </div>
-            {isVisible && (
+            <div className={isVisible ? "filter-active" : "filter-active-none"}>
                 <Filter/>
-            )}
+                {/* {isVisible && (
+                    <Filter/>
+                )} */}
+            </div>
         </div>
     );
 }
