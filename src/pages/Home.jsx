@@ -104,7 +104,7 @@ const Home = () => {
                     <h1 className='text-find'>ค้นหาผู้ให้บริการ<br/>ที่ตรงตามความต้องการของคุณได้เลย</h1>
                 </div>
                 <SearchBar/>
-                <div className='home-provider-list-box'>
+                <div className={providerArray.length > 0 ? 'home-provider-list-box' : "home-provider-list-box-none"}>
                     <label className='home-title'>รายการผู้ให้บริการจากการค้นหา</label>
                     <div className='home-provider-list'>
                         {providerArray.map((item) => (

@@ -5,21 +5,8 @@
     height: 330px;
     border-radius: 0px 0px 15px 15px ;
     overflow: auto;
-    /* box-shadow: inset 0px 0px 8px rgba(0, 0, 0, 0.25);
-    box-shadow: 0px 24px 48px 0 rgba(0, 0, 0, 0.35); */
-    /* position: absolute;
-    overflow: hidden;
-    left: 0;
-    right: 0;
-    top: 420px;
-    bottom: 0; */
-    /* position: absolute; */
-    /* gap: 0; */
-    /* top: 46px; */
-    /* right: 100%; */
-    position: relative;
-
-}.active{
+}
+.active{
     transition: 1s ease;;
 }
 
@@ -41,12 +28,38 @@
 
 .item-type{
     display: flex;
-    border: 1px solid #000;
+    border: 1px solid #cacaca;
     border-radius: 5px;
     width: 300px;
-    height: 35px;
+    height: 40px;
     margin-bottom: 15px;
     align-items: center;
+    transition: 0.3s ease;
+}
+.item-price{
+    display: flex;
+    border: 1px solid #cacaca;
+    border-radius: 5px;
+    width: 180px;
+    height: 40px;
+    margin-bottom: 15px;
+    align-items: center;
+}
+.item-type-checked {
+    background-color: #FDE9DE;
+    border: 1px solid #A7727D;
+    transition: 0.3s ease;
+}
+.item-type input[type="radio"]{
+    display: inline;
+}
+.item-price input[type="radio"]{
+    display: inline;
+}
+
+#pet-checkbox, #service-checkbox, #store-checkbox, #price-checkbox, #point-checkbox, #price-checkbox {
+    margin: 0 15px 0 15px;
+    accent-color: #A7727D;
 }
 
 .filter-province{
@@ -58,7 +71,7 @@
 
 .select-province {
     width: 300px;
-    height: 35px;
+    height: 40px;
 }
 
 .label-filter{
@@ -76,20 +89,10 @@
     display: grid;
     grid-template-columns: auto auto auto;
 }
-
-.item-price{
-    display: flex;
-    border: 1px solid #000;
-    border-radius: 5px;
-    width: 180px;
-    height: 35px;
-    margin-bottom: 15px;
-    align-items: center;
-}
-
 .btn-searchFilter{
+    cursor: pointer;
     width: 300px;
-    height: 40px;
+    height: 45px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -98,10 +101,15 @@
     border: none;
     border-radius: 5px;
 }
+.btn-searchFilter:hover{
+    opacity: 0.5;
+    transition: 0.3s ease;
+}
 
 .btn-resetFilter{
+    cursor: pointer;
     width: 300px;
-    height: 40px;
+    height: 45px;
     background-color: #fff;
     display: flex;
     align-items: center;
@@ -110,6 +118,10 @@
     border-radius: 5px;
     color: #555555;
 }
+.btn-resetFilter:hover{
+    border: 1px solid #A7727D;
+    transition: 0.3s ease;
+}
 
 .summary-filter{
     text-decoration: none;
@@ -117,4 +129,103 @@
     display: flex;
     justify-content: space-evenly;
     margin: 30px 0px 30px -40px;
+}
+@media screen and (min-width: 780px) and (max-width: 990px) {
+    .container-filter{
+        width: 560px;
+        height: 330px;
+    }
+    .item-type{
+        width: 220px;
+        height: 40px;
+    }
+    .item-price{
+        width: 140px;
+        height: 40px;
+    }
+    .select-province {
+        width: 220px;
+        height: 40px;
+    }
+    .label-filter{
+        font-size: 16px;
+        margin-left: 40px;
+    }
+    .lb-checkbox {
+        font-size: 12px;
+    }
+    #pet-checkbox, #service-checkbox, #store-checkbox, #price-checkbox, #point-checkbox, #price-checkbox {
+        margin: 0 10px 0 10px;
+    }
+    .btn-searchFilter{
+        width: 230px;
+        height: 45px;
+    }
+    .btn-resetFilter{
+        width: 230px;
+        height: 45px;
+    }
+}
+@media screen and (min-width: 0px) and (max-width: 780px) {
+    .container-filter{
+        width: 360px;
+        height: 330px;
+    }
+    .item-type{
+        width: 120px;
+        height: 35px;
+    }
+    .lb-checkbox {
+        font-size: 12px;
+    }
+    .items-filter {
+        width: 300px;
+    }
+    .services-checkbox .items-filter {
+        grid-template-columns: auto;
+    }
+    .services-checkbox .item-type {
+        width: 270px;
+    }
+    .label-filter{
+        font-size: 16px;
+        margin-left: 40px;
+    }
+    .select-province {
+        width: 270px;
+        height: 35px;
+        margin-bottom: 15px;
+    }
+    .province-checkbox .items-filter {
+        grid-template-columns: auto;
+    }
+    .province-checkbox .item-type {
+        width: 270px;
+    }
+    .score-checkbox .items-filter {
+        grid-template-columns: auto;
+    }
+    .score-checkbox .item-type {
+        width: 270px;
+    }
+    #pet-checkbox, #service-checkbox, #store-checkbox, #price-checkbox, #point-checkbox, #price-checkbox {
+        margin: 0 12px 0 12px;
+    }
+    .price-filter {
+        grid-template-columns: auto auto;
+    }
+    .item-price {
+        width: 120px;
+    }
+    .item-price .lb-checkbox{
+        font-size: 10px;
+    }
+    .btn-searchFilter{
+        width: 120px;
+        height: 35px;
+    }
+    .btn-resetFilter{
+        width: 120px;
+        height: 35px;
+    }
 }

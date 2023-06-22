@@ -23,6 +23,9 @@
     width: 1200px;
     /* background-color: #F8EAD8; */
 }
+.home-provider-list-box-none {
+    display: none;
+}
 .home-provider-list-box label{
     text-align: center;
 }

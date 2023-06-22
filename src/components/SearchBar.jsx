@@ -21,10 +21,10 @@ const SearchBar = () => {
                         <input className="entry-fill" type='search' placeholder="ค้นหาชื่อร้าน เขต"/>
                     </div>
                     <div className='fbt-filter'>
-                        <button className='bt-filter' onClick={handleToggle}><FiFilter/></button>
+                        <button className='bt-filter' onClick={handleToggle}><FiFilter className='bt-filter-size'/></button>
                     </div>
                     <div className='fbt-search'>
-                        <button className="bt-search" type="submit"> <FaSearch size={45} color="#fff"/></button>
+                        <button className="bt-search" type="submit"> <FaSearch className='bt-search-size' size={45} color="#fff"/></button>
                     </div>
                 </div>
             </div>
