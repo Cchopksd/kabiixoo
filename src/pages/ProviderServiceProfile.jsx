@@ -4,6 +4,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import {IoIosArrowForward,IoIosArrowBack} from "react-icons/io"
+import Footer from "../components/Footer";
 
 const SampleNextArrow = ({onClick}) => {
     return (
@@ -135,169 +136,171 @@ const ProviderServiceProfile = () => {
 
 
     return (
-        <div className="ps-profile-container">
-            <div className="ps-profile-img-slider-box">
-                <Slider {...settings}>
-                    {imgArray.map((item) => (
-                        <div className="ps-profile-card">
-                            <img src={item.imgPath}/>
-                        </div>
-                    ))}
-                </Slider>
-                <div className="ps-profile-header-box">
-                    <div className="ps-profile-name-box">
-                        <label className="ps-profile-business-name">{serviceName}</label>
-                        <div className={confirmBusiness ? "ps-profile-confirm-business-sign" : "ps-profile-confirm-business-sign-none"}>
-                            <img src={require("../images/providerHomePage/confirmIcon.png")}/>
-                            <label>มีหน้าร้าน</label>
-                        </div>
-                    </div>
-                    <div className="ps-profile-province-box">
-                        <img src={require("../images/providerServiceProfilePage/locationIcon.png")}/>
-                        <label>{serviceProvince}</label>
-                    </div>
-                </div>
-                <div className="ps-profile-part-1">
-                    <div className="ps-profile-introduce-box">
-                        <label className="ps-profile-title">คำแนะนำตัว</label>
-                        <p>{introduceDesc}</p>
-                    </div>
-                    <div className="ps-profile-serviceDesc-box">
-                        <label className="ps-profile-title">รายละเอียดการให้บริการ</label>
-                        <p>{serviceDesc}</p>
-                    </div>
-                    <div className="ps-profile-serviceAddress-box">
-                        <label className="ps-profile-title">ที่ตั้งของผู้ให้บริการ</label>
-                        <p>{serviceAddress}</p>
-                    </div>
-                </div>
-                <div className="ps-profile-part-2">
-                    <div className="ps-profile-moreService-box">
-                        <label className="ps-profile-title">บริการเพิ่มเติม</label>
-                        <div className="ps-profile-moreService-item">
-                            <div className={serviceGrooming ? "ps-profile-moreService-display" : "ps-profile-moreService-display-none"}>
-                                <label>บริการกรูมมิ่ง (อาบน้ำตัดขน)</label>
-                            </div>
-                            <div className={servicePetWalk ? "ps-profile-moreService-display" : "ps-profile-moreService-display-none"}>
-                                <label>พาสัตว์เลี้ยงเดินเล่น</label>
-                            </div>
-                            <div className={servicePool ? "ps-profile-moreService-display" : "ps-profile-moreService-display-none"}>
-                                <label>สระว่ายน้ำสัตว์เลี้ยง</label>
-                            </div>
-                            <div className={servicePetCar ? "ps-profile-moreService-display" : "ps-profile-moreService-display-none"}>
-                                <label>รถรับส่งสัตว์เลี้ยง</label>
-                            </div>
-                            <div className={servicePetStuff ? "ps-profile-moreService-display" : "ps-profile-moreService-display-none"}>
-                                <label>อาหารและของใช้สัตว์เลี้ยง</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="ps-profile-petType-box">
-                        <label className="ps-profile-title">ประเภทสัตว์เลี้ยงที่รับฝาก</label>
-                        <div className="ps-profile-petType-item">
-                            <div className={serviceDog ? "ps-profile-petType-display" : "ps-profile-petType-display-none"}>
-                                <label>สุนัข</label>
-                                <img src={require("../images/createServicePage/dogIcon.png")}/>
-                            </div>
-                            <div className={serviceCat ? "ps-profile-petType-display" : "ps-profile-petType-display-none"}>
-                                <label>แมว</label>
-                                <img src={require("../images/createServicePage/catIcon.png")}/>
-                            </div>
-                            <div className={serviceRabbit ? "ps-profile-petType-display" : "ps-profile-petType-display-none"}>
-                                <label>กระต่าย</label>
-                                <img src={require("../images/createServicePage/catIcon.png")}/>
-                            </div>
-                            <div className={serviceBird ? "ps-profile-petType-display" : "ps-profile-petType-display-none"}>
-                                <label>นก</label>
-                                <img src={require("../images/createServicePage/birdIcon.png")}/>
-                            </div>
-                            <div className={serviceRoden ? "ps-profile-petType-display" : "ps-profile-petType-display-none"}>
-                                <label>สัตว์ฟันแทะ</label>
-                                <img src={require("../images/createServicePage/rodenIcon.png")}/>
-                            </div>
-                            <div className={serviceReptile ? "ps-profile-petType-display" : "ps-profile-petType-display-none"}>
-                                <label>สัตว์เลื้อยคลาน</label>
-                                <img src={require("../images/createServicePage/reptileIcon.png")}/>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="ps-profile-part-3">
-                    <div className="ps-profile-contact-box">
-                        <label className="ps-profile-title">ช่องทางการติดต่อ</label>
-                        <div className={servicePhone ? "ps-profile-contact-display" : "ps-profile-contact-display-none"}>
-                            <img src={require("../images/providerServiceProfilePage/phoneIcon.png")}/>
-                            <label>:</label>
-                            <label>{servicePhone}</label>
-                        </div>
-                        <div className={serviceFacebook ? "ps-profile-contact-display" : "ps-profile-contact-display-none"}>
-                            <img src={require("../images/createServicePage/facebookIcon.png")}/>
-                            <label>:</label>
-                            <label>{serviceFacebook}</label>
-                        </div>
-                        <div className={serviceInstagram ? "ps-profile-contact-display" : "ps-profile-contact-display-none"}>
-                            <img src={require("../images/createServicePage/instagramIcon.png")}/>
-                            <label>:</label>
-                            <label>{serviceInstagram}</label>
-                        </div>
-                        <div className={serviceLine ? "ps-profile-contact-display" : "ps-profile-contact-display-none"}>
-                            <img src={require("../images/createServicePage/lineIcon.png")}/>
-                            <label>:</label>
-                            <label>{serviceLine}</label>
-                        </div>
-                    </div>
-                    <div className="ps-profile-provider-box">
-                        <label className="ps-profile-title">บัญชีผู้ให้บริการ</label>
-                        <div className="ps-profile-provider-display">
-                            <img src={require("../images/dummy_profileImage.png")}/>
-                            <label>{providerName}</label>
-                        </div>
-                        <div className="ps-profile-provider-btn-box">
-                            <div className="ps-profile-provider-chat-btn" role="button">
-                                <img src={require("../images/providerServiceProfilePage/chatIcon.png")}/>
-                                <label>แชทกับผู้ให้บริการ</label>
-                            </div>
-                            <div className="ps-profile-provider-report-btn" role="button">
-                                <img src={require("../images/providerServiceProfilePage/fileIcon.png")}/>
-                                <label>รายงานผู้ให้บริการ</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="ps-profile-part-4">
-                    <div className="ps-profile-review-header">
-                        <div>
-                            <label className="ps-profile-title">{serviceReview.length}</label>
-                            <label className="ps-profile-title">&emsp;การรีวิวและให้คะแนน</label>
-                        </div>
-                        <div className="ps-profile-provider-review-btn" role="button">
-                            <img src={require("../images/providerServiceProfilePage/starIcon.png")}/>
-                            <label>เขียนรีวิว</label>
-                        </div>
-                    </div>
-                    <div className="ps-profile-review-content">
-                        {reviewArray.map((item) => (
-                            <div className="ps-profile-review-content-display">
-                                <div>
-                                    <img src={require("../images/dummy_profileImage.png")}/>
-                                    <div className="ps-profile-review-content-name-display">
-                                        <label>{item.customerName}</label>
-                                        <div>
-                                            {Array.from({length: item.reviewPoint}, (_,index) =>{
-                                                return <img className="ps-profile-review-content-star" src={require("../images/providerServiceProfilePage/starIcon.png")}/>;
-                                            })}
-                                        </div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <p>{item.reviewDesc}</p>
-                                </div>
+        <div>
+            <div className="ps-profile-container">
+                <div className="ps-profile-img-slider-box">
+                    <Slider {...settings}>
+                        {imgArray.map((item) => (
+                            <div className="ps-profile-card">
+                                <img src={item.imgPath}/>
                             </div>
                         ))}
+                    </Slider>
+                    <div className="ps-profile-header-box">
+                        <div className="ps-profile-name-box">
+                            <label className="ps-profile-business-name">{serviceName}</label>
+                            <div className={confirmBusiness ? "ps-profile-confirm-business-sign" : "ps-profile-confirm-business-sign-none"}>
+                                <img src={require("../images/providerHomePage/confirmIcon.png")}/>
+                                <label>มีหน้าร้าน</label>
+                            </div>
+                        </div>
+                        <div className="ps-profile-province-box">
+                            <img src={require("../images/providerServiceProfilePage/locationIcon.png")}/>
+                            <label>{serviceProvince}</label>
+                        </div>
+                    </div>
+                    <div className="ps-profile-part-1">
+                        <div className="ps-profile-introduce-box">
+                            <label className="ps-profile-title">คำแนะนำตัว</label>
+                            <p>{introduceDesc}</p>
+                        </div>
+                        <div className="ps-profile-serviceDesc-box">
+                            <label className="ps-profile-title">รายละเอียดการให้บริการ</label>
+                            <p>{serviceDesc}</p>
+                        </div>
+                        <div className="ps-profile-serviceAddress-box">
+                            <label className="ps-profile-title">ที่ตั้งของผู้ให้บริการ</label>
+                            <p>{serviceAddress}</p>
+                        </div>
+                    </div>
+                    <div className="ps-profile-part-2">
+                        <div className="ps-profile-moreService-box">
+                            <label className="ps-profile-title">บริการเพิ่มเติม</label>
+                            <div className="ps-profile-moreService-item">
+                                <div className={serviceGrooming ? "ps-profile-moreService-display" : "ps-profile-moreService-display-none"}>
+                                    <label>บริการกรูมมิ่ง (อาบน้ำตัดขน)</label>
+                                </div>
+                                <div className={servicePetWalk ? "ps-profile-moreService-display" : "ps-profile-moreService-display-none"}>
+                                    <label>พาสัตว์เลี้ยงเดินเล่น</label>
+                                </div>
+                                <div className={servicePool ? "ps-profile-moreService-display" : "ps-profile-moreService-display-none"}>
+                                    <label>สระว่ายน้ำสัตว์เลี้ยง</label>
+                                </div>
+                                <div className={servicePetCar ? "ps-profile-moreService-display" : "ps-profile-moreService-display-none"}>
+                                    <label>รถรับส่งสัตว์เลี้ยง</label>
+                                </div>
+                                <div className={servicePetStuff ? "ps-profile-moreService-display" : "ps-profile-moreService-display-none"}>
+                                    <label>อาหารและของใช้สัตว์เลี้ยง</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="ps-profile-petType-box">
+                            <label className="ps-profile-title">ประเภทสัตว์เลี้ยงที่รับฝาก</label>
+                            <div className="ps-profile-petType-item">
+                                <div className={serviceDog ? "ps-profile-petType-display" : "ps-profile-petType-display-none"}>
+                                    <label>สุนัข</label>
+                                    <img src={require("../images/createServicePage/dogIcon.png")}/>
+                                </div>
+                                <div className={serviceCat ? "ps-profile-petType-display" : "ps-profile-petType-display-none"}>
+                                    <label>แมว</label>
+                                    <img src={require("../images/createServicePage/catIcon.png")}/>
+                                </div>
+                                <div className={serviceRabbit ? "ps-profile-petType-display" : "ps-profile-petType-display-none"}>
+                                    <label>กระต่าย</label>
+                                    <img src={require("../images/createServicePage/catIcon.png")}/>
+                                </div>
+                                <div className={serviceBird ? "ps-profile-petType-display" : "ps-profile-petType-display-none"}>
+                                    <label>นก</label>
+                                    <img src={require("../images/createServicePage/birdIcon.png")}/>
+                                </div>
+                                <div className={serviceRoden ? "ps-profile-petType-display" : "ps-profile-petType-display-none"}>
+                                    <label>สัตว์ฟันแทะ</label>
+                                    <img src={require("../images/createServicePage/rodenIcon.png")}/>
+                                </div>
+                                <div className={serviceReptile ? "ps-profile-petType-display" : "ps-profile-petType-display-none"}>
+                                    <label>สัตว์เลื้อยคลาน</label>
+                                    <img src={require("../images/createServicePage/reptileIcon.png")}/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="ps-profile-part-3">
+                        <div className="ps-profile-contact-box">
+                            <label className="ps-profile-title">ช่องทางการติดต่อ</label>
+                            <div className={servicePhone ? "ps-profile-contact-display" : "ps-profile-contact-display-none"}>
+                                <img src={require("../images/providerServiceProfilePage/phoneIcon.png")}/>
+                                <label>:</label>
+                                <label>{servicePhone}</label>
+                            </div>
+                            <div className={serviceFacebook ? "ps-profile-contact-display" : "ps-profile-contact-display-none"}>
+                                <img src={require("../images/createServicePage/facebookIcon.png")}/>
+                                <label>:</label>
+                                <label>{serviceFacebook}</label>
+                            </div>
+                            <div className={serviceInstagram ? "ps-profile-contact-display" : "ps-profile-contact-display-none"}>
+                                <img src={require("../images/createServicePage/instagramIcon.png")}/>
+                                <label>:</label>
+                                <label>{serviceInstagram}</label>
+                            </div>
+                            <div className={serviceLine ? "ps-profile-contact-display" : "ps-profile-contact-display-none"}>
+                                <img src={require("../images/createServicePage/lineIcon.png")}/>
+                                <label>:</label>
+                                <label>{serviceLine}</label>
+                            </div>
+                        </div>
+                        <div className="ps-profile-provider-box">
+                            <label className="ps-profile-title">บัญชีผู้ให้บริการ</label>
+                            <div className="ps-profile-provider-display">
+                                <img src={require("../images/dummy_profileImage.png")}/>
+                                <label>{providerName}</label>
+                            </div>
+                            <div className="ps-profile-provider-btn-box">
+                                <div className="ps-profile-provider-chat-btn" role="button">
+                                    <img src={require("../images/providerServiceProfilePage/chatIcon.png")}/>
+                                    <label>แชทกับผู้ให้บริการ</label>
+                                </div>
+                                <div className="ps-profile-provider-report-btn" role="button">
+                                    <img src={require("../images/providerServiceProfilePage/fileIcon.png")}/>
+                                    <label>รายงานผู้ให้บริการ</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="ps-profile-part-4">
+                        <div className="ps-profile-review-header">
+                            <div>
+                                <label className="ps-profile-title">{serviceReview.length}</label>
+                                <label className="ps-profile-title">&emsp;การรีวิวและให้คะแนน</label>
+                            </div>
+                            <div className="ps-profile-provider-review-btn" role="button">
+                                <img src={require("../images/providerServiceProfilePage/starIcon.png")}/>
+                                <label>เขียนรีวิว</label>
+                            </div>
+                        </div>
+                        <div className="ps-profile-review-content">
+                            {reviewArray.map((item) => (
+                                <div className="ps-profile-review-content-display">
+                                    <div>
+                                        <img src={require("../images/dummy_profileImage.png")}/>
+                                        <div className="ps-profile-review-content-name-display">
+                                            <label>{item.customerName}</label>
+                                            <div>
+                                                {Array.from({length: item.reviewPoint}, (_,index) =>{
+                                                    return <img className="ps-profile-review-content-star" src={require("../images/providerServiceProfilePage/starIcon.png")}/>;
+                                                })}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <p>{item.reviewDesc}</p>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
                     </div>
                 </div>
             </div>
-
+            <Footer/>
         </div>
     );
 }

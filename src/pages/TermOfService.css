@@ -3,7 +3,7 @@
     flex-direction: column;
     align-items: center;
     width: 1400px;
-    margin: 70px auto;
+    margin: 70px auto 150px auto;
 }
 .term-header {
     color: #A7727D;
@@ -61,7 +61,7 @@
         flex-direction: column;
         align-items: center;
         width: 900px;
-        margin: 70px auto;
+        margin: 70px auto 120px auto;
     }
     .term-box {
         width: 800px;
@@ -76,7 +76,7 @@
         flex-direction: column;
         align-items: center;
         width: 600px;
-        margin: 70px auto;
+        margin: 70px auto 90px auto;
     }
     .term-box {
         width: 500px;

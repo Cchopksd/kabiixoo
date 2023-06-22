@@ -1,6 +1,7 @@
 .edit-container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+    margin-bottom: 250px;
     /* background-color: red; */
 }
 .edit-frame {
@@ -160,6 +161,7 @@
     .edit-container {
         display: flex;
         flex-direction: column;
+        margin-bottom: 200px;
     }
     .edit-frame {
         display: grid;
@@ -222,6 +224,7 @@
     .edit-container {
         display: flex;
         flex-direction: column;
+        margin-bottom: 200px;
     }
     .edit-frame {
         display: grid;
@@ -292,6 +295,7 @@
     .edit-container {
         display: flex;
         flex-direction: column;
+        margin-bottom: 150px;
     }
     .edit-frame {
         display: grid;

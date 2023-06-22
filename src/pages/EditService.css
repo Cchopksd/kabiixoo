@@ -409,6 +409,7 @@
 @media screen and (min-width : 780px) and (max-width : 1100px) {
     .createService-container {
         width: 750px;
+        margin: 70px auto 20px auto;
     }
     .createService-header {
         font-size: 35px;
@@ -645,7 +646,7 @@
 @media screen and (min-width : 0px) and (max-width : 780px) {
     .createService-container {
         width: 375px;
-        margin: 70px auto;
+        margin: 70px auto 0px auto;
     }
     .createService-header {
         font-size: 25px;
