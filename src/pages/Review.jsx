@@ -12,15 +12,15 @@ const Review = () => {
 
     return(
         <div>
-            <div className='container'>
-                <div className='title'>
+            <div className='review-container'>
+                <div className='review-title'>
                     <label>ส่งรีวิวหรือคำแนะนำให้กับ</label>
-                    <label className='business-name'>{businessName}</label>
+                    <label className='review-business-name'>{businessName}</label>
                 </div>
-                <div className='img-center'>
-                    <img className="provider-image" src={require('../images/dummy_profileImage.png')}></img>
+                <div className='review-img-center'>
+                    <img className="review-provider-image" src={require('../images/dummy_profileImage.png')}></img>
                 </div>
-                <div className='star-center'>
+                <div className='review-star-center'>
                     {[...Array(5)].map((star, i) => {
                         const ratingValue = i + 1;
                         return (<label>
@@ -30,7 +30,7 @@ const Review = () => {
                                         value={ratingValue} 
                                         onClick={() => setRating(ratingValue)}
                                     />
-                                    <FaStar className="star" 
+                                    <FaStar className="review-star" 
                                             color={ratingValue <= (hover || rating) ? "#ffc107" : "#e4e5e9"} 
                                             size={35}
                                             onMouseEnter={() => setHover(ratingValue)}
@@ -40,11 +40,11 @@ const Review = () => {
                             );
                     })}
                 </div>
-                <div className='writeReview-label'>
+                <div className='review-writeReview-label'>
                     <label>เขียนรีวิว</label>
                 </div>
-                <div className='comment-center'>
-                    <textarea className='comment-box' rows={5} cols={40}/>
+                <div className='review-comment-center'>
+                    <textarea className='review-comment-box' rows={5} cols={40}/>
                 </div>
                 <div className='review-center'>
                     <button className='review-button'>ส่งรีวิวและคะแนน</button>

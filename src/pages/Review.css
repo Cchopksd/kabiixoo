@@ -1,12 +1,11 @@
-.container {
-    margin-top: 50px;
+.review-container {
+    display: flex;
+    flex-direction: column;
     width: 1000px;
-    height: 300px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 70px auto 290px auto;
     
 }
-.title {
+.review-title {
     font-size: 35px;
     font-weight: bold;
     color: #A7727D;
@@ -14,12 +13,12 @@
     justify-content: center;
     margin-bottom: 15px;
 }
-.provider-image {
+.review-provider-image {
     width: 10%;
     height: auto;
     margin-bottom: 20px;
 }
-.writeReview-label {
+.review-writeReview-label {
     /* width: 100px; */
     font-size: 20px;
     color: #A7727D;
@@ -27,11 +26,11 @@
     justify-content: center;
     margin-right: 430px;
 }
-.business-name {
+.review-business-name {
     margin-left: 30px;
     text-decoration: underline;
 }
-.comment-box {
+.review-comment-box {
     width: 500px;
     background-color: #F9F5E7;
     border: none;
@@ -41,7 +40,7 @@
     font-size: 16px;
     margin-bottom: 40px;
 }
-.comment-center, .img-center, .review-center, .star-center {
+.review-comment-center, .review-img-center, .review-center, .review-star-center {
     display: flex;
     justify-content: center;
 }
@@ -54,10 +53,10 @@
     border-radius: 20px;
     font-size: 20px;
 }
-input[type="radio"]{
+.review-star-center input[type="radio"]{
     display: none;
 }
-.star {
+.review-star {
     cursor: pointer;
     transition: color 200ms;
     margin-bottom: 20px;
@@ -65,15 +64,12 @@ input[type="radio"]{
 
 /* จอ tablet */
 @media screen and (min-width: 780px) and (max-width: 990px){
-    .container {
-        margin-top: 50px;
+    .review-container {
         width: 800px;
-        height: 300px;
-        margin-left: auto;
-        margin-right: auto;
+        margin: 50px auto 260px auto;
         
     }
-    .title {
+    .review-title {
         font-size: 28px;
         font-weight: bold;
         color: #A7727D;
@@ -81,12 +77,12 @@ input[type="radio"]{
         justify-content: center;
         margin-bottom: 15px;
     }
-    .provider-image {
+    .review-provider-image {
         width: 10%;
         height: auto;
         margin-bottom: 20px;
     }
-    .writeReview-label {
+    .review-writeReview-label {
         /* width: 100px; */
         font-size: 15px;
         color: #A7727D;
@@ -94,11 +90,11 @@ input[type="radio"]{
         justify-content: center;
         margin-right: 430px;
     }
-    .business-name {
+    .review-business-name {
         margin-left: 30px;
         text-decoration: underline;
     }
-    .comment-box {
+    .review-comment-box {
         width: 500px;
         background-color: #F9F5E7;
         border: none;
@@ -108,7 +104,7 @@ input[type="radio"]{
         font-size: 16px;
         margin-bottom: 40px;
     }
-    .comment-center, .img-center, .review-center, .star-center {
+    .review-comment-center, .review-img-center, .review-center, .review-star-center {
         display: flex;
         justify-content: center;
     }
@@ -124,7 +120,7 @@ input[type="radio"]{
     input[type="radio"]{
         display: none;
     }
-    .star {
+    .review-star {
         cursor: pointer;
         transition: color 200ms;
         margin-bottom: 20px;
@@ -133,15 +129,12 @@ input[type="radio"]{
 
 /* จอ Mobile */
 @media screen and (min-width: 0px) and (max-width: 780px){
-    .container {
-        margin-top: 50px;
-        width: 450px;
-        height: 300px;
-        margin-left: auto;
-        margin-right: auto;
+    .review-container {
+        width: 375px;
+        margin: 50px auto 230px auto;
         
     }
-    .title {
+    .review-title {
         font-size: 20px;
         font-weight: bold;
         color: #A7727D;
@@ -149,12 +142,12 @@ input[type="radio"]{
         justify-content: center;
         margin-bottom: 15px;
     }
-    .provider-image {
+    .review-provider-image {
         width: 14%;
         height: auto;
         margin-bottom: 20px;
     }
-    .writeReview-label {
+    .review-writeReview-label {
         /* width: 100px; */
         font-size: 13px;
         color: #A7727D;
@@ -162,11 +155,11 @@ input[type="radio"]{
         justify-content: center;
         margin-right: 300px;
     }
-    .business-name {
+    .review-business-name {
         margin-left: 30px;
         text-decoration: underline;
     }
-    .comment-box {
+    .review-comment-box {
         width: 350px;
         background-color: #F9F5E7;
         border: none;
@@ -176,7 +169,7 @@ input[type="radio"]{
         font-size: 13px;
         margin-bottom: 40px;
     }
-    .comment-center, .img-center, .review-center, .star-center {
+    .review-comment-center, .review-img-center, .review-center, .review-star-center {
         display: flex;
         justify-content: center;
     }
@@ -192,7 +185,7 @@ input[type="radio"]{
     input[type="radio"]{
         display: none;
     }
-    .star {
+    .review-star {
         height: 25px;
         width: auto;
         cursor: pointer;
