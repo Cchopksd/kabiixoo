@@ -46,7 +46,7 @@ const ProviderServiceProfile = () => {
             }
             },
             {
-            breakpoint: 780,
+            breakpoint: 850,
             settings: {
                 slidesToShow: 1,
                 slidesToScroll: 1,

@@ -63,7 +63,7 @@
 }
 
 /* จอ tablet */
-@media screen and (min-width: 780px) and (max-width: 990px){
+@media screen and (min-width: 850px) and (max-width: 1080px){
     .review-container {
         width: 800px;
         margin: 50px auto 260px auto;
@@ -128,7 +128,7 @@
 }
 
 /* จอ Mobile */
-@media screen and (min-width: 0px) and (max-width: 780px){
+@media screen and (min-width: 0px) and (max-width: 850px){
     .review-container {
         width: 375px;
         margin: 50px auto 230px auto;

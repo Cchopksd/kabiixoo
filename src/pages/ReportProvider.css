@@ -84,7 +84,7 @@
 }
 
 /* จอ tablet */
-@media screen and (min-width : 700px) and (max-width : 990px){
+@media screen and (min-width : 850px) and (max-width : 1080px){
     .report-container {
         width: 500px;
         margin: 70px auto 120px auto;
@@ -116,7 +116,7 @@
 }
 
 /* จอ Mobile */
-@media screen and (min-width : 0px) and (max-width : 700px){
+@media screen and (min-width : 0px) and (max-width : 850px){
     .report-container {
         width: 375px;
         margin: 70px auto 90px auto;

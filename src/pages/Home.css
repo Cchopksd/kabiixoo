@@ -151,7 +151,7 @@
     display: none;
 }
 
-@media screen and (min-width: 780px) and (max-width: 1280px){
+@media screen and (min-width: 850px) and (max-width: 1280px){
     .home-provider-list-box {
         display: flex;
         flex-direction: column;
@@ -214,7 +214,7 @@
         margin-bottom: 50px;
     }
 } */
-@media screen and (min-width: 780px) and (max-width: 990px){
+@media screen and (min-width: 850px) and (max-width: 1080px){
     .text-find{
         padding-top: 110px;
         font-size: 36px;
@@ -224,7 +224,7 @@
         margin-bottom: 40px;
     }
 }
-@media screen and (min-width: 0px) and (max-width: 780px){
+@media screen and (min-width: 0px) and (max-width: 850px){
     .home-page{
         background-size: 1780px auto;
     }

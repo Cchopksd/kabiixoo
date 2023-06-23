@@ -79,7 +79,7 @@
     display: none;
 }
 
-@media screen and (min-width: 780px) and (max-width: 990px){
+@media screen and (min-width: 850px) and (max-width: 1080px){
     /* .box-search{
         margin-top: 135px;
     } */
@@ -108,7 +108,7 @@
         width: 25px;
     }
 }
-@media screen and (min-width: 0px) and (max-width: 780px){
+@media screen and (min-width: 0px) and (max-width: 850px){
     .box-search{
         height: 80px;
         width: 360px;

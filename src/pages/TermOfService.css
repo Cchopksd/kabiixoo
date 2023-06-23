@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 1400px;
+    width: 1000px;
     margin: 70px auto 150px auto;
 }
 .term-header {
@@ -16,8 +16,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 1250px;
-    height: 1460px;
+    width: 1000px;
+    height: 1660px;
     background-color: #F9F5E7;
     padding: 35px 30px;
     border-radius: 20px;
@@ -55,7 +55,7 @@
 }
 
 /* จอ desktop */
-@media screen and (min-width: 990px) and (max-width: 1400px){
+/* @media screen and (min-width: 990px) and (max-width: 1400px){
     .term-container {
         display: flex;
         flex-direction: column;
@@ -67,10 +67,10 @@
         width: 800px;
         height: 1870px;
     }
-}
+} */
 
 /* จอ Tablet */
-@media screen and (min-width: 670px) and (max-width: 990px){
+@media screen and (min-width: 850px) and (max-width: 1080px){
     .term-container {
         display: flex;
         flex-direction: column;
@@ -98,7 +98,7 @@
 }
 
 /* จอ Mobile */
-@media screen and (min-width: 0px) and (max-width: 670px){
+@media screen and (min-width: 0px) and (max-width: 850px){
     .term-container {
         display: flex;
         flex-direction: column;

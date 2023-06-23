@@ -100,7 +100,7 @@
     left: 50px;
 }
 
-@media screen and (min-width : 780px) and (max-width : 1100px){
+@media screen and (min-width : 850px) and (max-width : 1100px){
     .article-3-container {
         width: 750px;
     }
@@ -141,7 +141,7 @@
     }
 }
 
-@media screen and (min-width : 0px) and (max-width : 780px){
+@media screen and (min-width : 0px) and (max-width : 850px){
     .article-3-container {
         margin: 50px auto;
         width: 375px;

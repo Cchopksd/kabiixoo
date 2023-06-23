@@ -91,7 +91,7 @@
 }
 
 /* จอ tablet */
-@media screen and (min-width : 780px) and (max-width : 1100px){
+@media screen and (min-width : 850px) and (max-width : 1080px){
     .img-upl-card .drag-area {
         height: 120px;
         border-radius: 10px;
@@ -123,7 +123,7 @@
 }
 
 /* จอ Mobile */
-@media screen and (min-width : 0px) and (max-width : 780px){
+@media screen and (min-width : 0px) and (max-width : 850px){
     .img-upl-card .drag-area {
         height: 100px;
         border-radius: 10px;

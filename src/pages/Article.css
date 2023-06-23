@@ -67,7 +67,7 @@
 }
 
 /* จอ Tablet 1*/
-@media screen and (min-width: 990px) and (max-width: 1180px){
+@media screen and (min-width: 1080px) and (max-width: 1180px){
     .container {
         width: 704px;
         margin: 70px auto 200px auto;
@@ -96,7 +96,7 @@
 }
 
 /* จอ Tablet 2*/
-@media screen and (min-width: 780px) and (max-width: 990px){
+@media screen and (min-width: 850px) and (max-width: 1080px){
     .container {
         width: 704px;
         margin: 70px auto 90px auto;
@@ -146,7 +146,7 @@
 }
 
 /* จอ Mobile 1 */
-@media screen and (min-width: 0px) and (max-width: 780px){
+@media screen and (min-width: 0px) and (max-width: 850px){
     .container {
         width: 375px;
         margin: 50px auto 90px auto;

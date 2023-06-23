@@ -120,7 +120,7 @@
     }
 }
 /* จอ desktop 3 */
-@media screen and (min-width: 990px) and (max-width: 1225px){
+@media screen and (min-width: 1080px) and (max-width: 1225px){
     .edit-container {
         display: flex;
         flex-direction: column;
@@ -157,7 +157,7 @@
     }
 }
 /* จอ Tablet 1*/
-@media screen and (min-width: 780px) and (max-width: 990px){
+@media screen and (min-width: 850px) and (max-width: 1080px){
     .edit-container {
         display: flex;
         flex-direction: column;
@@ -220,7 +220,7 @@
 }
 
 /* จอ tablet 2 */
-@media screen and (min-width: 585px) and (max-width: 780px){
+@media screen and (min-width: 585px) and (max-width: 850px){
     .edit-container {
         display: flex;
         flex-direction: column;
