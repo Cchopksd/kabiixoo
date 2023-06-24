@@ -64,29 +64,29 @@ const ImageUploaderCreateService = () => {
     }
 
     return (
-        <div className="img-upl-card">
-            <div className={images.length == 4 ? "drag-area-disable" : "drag-area"} onDragOver={onDragOver} onDragLeave={onDragLeave} onDrop={onDrop}>
+        <div className="create-img-upl-card">
+            <div className={images.length == 4 ? "create-drag-area-disable" : "create-drag-area"} onDragOver={onDragOver} onDragLeave={onDragLeave} onDrop={onDrop}>
                 {isDragging ? (
-                    <span className="select">ปล่อยรูปตรงนี้</span>
+                    <span className="create-select">ปล่อยรูปตรงนี้</span>
                 ) : (
                     <>
-                        <div className="inside-drag-area">
-                            <label className="drag-text">ลากและปล่อยตรงนี้ หรือ</label>
-                            <span className="select" role="button" onClick={selectFiles}>
+                        <div className="create-inside-drag-area">
+                            <label className="create-drag-text">ลากและปล่อยตรงนี้ หรือ</label>
+                            <span className="create-select" role="button" onClick={selectFiles}>
                                 เลือกรูป
                             </span>
-                            <div className="file-desc">
+                            <div className="create-file-desc">
                                 ขนาดไฟล์ : สูงสุด 5 MB ไม่เกิน 3 ไฟล์ / ไฟล์ที่รองรับ : .JPEG, .PNG
                             </div>
                         </div>
                     </>
                 )}
-                <input name="file" type="file" className="file" multiple ref={fileInputRef} onChange={onFileSelect}></input>
+                <input name="file" type="file" className="create-file" multiple ref={fileInputRef} onChange={onFileSelect}></input>
             </div>
-            <div className="img-upl-container">
+            <div className="create-img-upl-container">
                 {images.map((images,index) => (
-                    <div className="upl-image" key={index}>
-                        <span className="upl-delete" onClick={() => deleteImage(index)}>&times;</span>
+                    <div className="create-upl-image" key={index}>
+                        <span className="create-upl-delete" onClick={() => deleteImage(index)}>&times;</span>
                         <img src={images.url} alt={images.name} />
                     </div>
                 ))}

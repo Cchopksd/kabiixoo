@@ -140,6 +140,12 @@
     0% { opacity: 0; }
     100% { opacity: 1; }
 }
+.login-dropdown-desktop-none {
+    display: none;
+}
+.mobile-dropdown-display-none {
+    display: none;
+}
 
 /* จอ Mobile */
 @media screen and (min-width: 0px) and (max-width: 850px){
@@ -150,6 +156,22 @@
         margin-right: 20px;
         margin-left: auto;
         margin-top: 10px;
+    }
+    .mobile-dropdown-display-none {
+        width: 100%;
+        height: auto;
+        display: flex;
+        position: absolute;
+        flex-direction: column;
+        list-style: none;
+        font-size:17px;
+        top: 46px;
+        right: 100%;
+        /* left: 100%; */
+        opacity: 0;
+        transition: 0.5s ease;
+        background-color: #F9F5E7;
+        gap: 0;
     }
     .nav-link{
         width: 100%;
@@ -217,6 +239,9 @@
         height: 7vw;
         padding: 10px 0;
     }
+    .mobile-spacing-login {
+        margin-top: 10px;
+    }
 }
 
 /* จอ Tablet */
@@ -269,6 +294,10 @@
     .login-dropdown-bottom {
         display: flex;
         padding: 5px 0 10px 0;
+    }
+    .login-dropdown-display img{
+        height: 35px;
+        margin-right: 15px;
     }
 
 }
