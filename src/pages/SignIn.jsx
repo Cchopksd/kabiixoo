@@ -69,11 +69,11 @@ export default function SignIn()  {
                         </div>
                         <div className='inputPass'>
                             <input className="inputTextPass"
-                            name="password"
-                            type="password"
-                            placeholder="กรอกรหัสผ่าน"
-                            // value={password}
-                            // onChange={(e) => setPassword(e.target.value)}
+                                    name="password"
+                                    type="password"
+                                    placeholder="กรอกรหัสผ่าน"
+                                    // value={password}
+                                    // onChange={(e) => setPassword(e.target.value)}
                             />
                         </div>
                         <div className='frameBtSignIn'>
