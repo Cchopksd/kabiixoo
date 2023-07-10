@@ -13,6 +13,10 @@ import Article from './pages/Article';
 import EditProfile from './pages/EditProfile';
 import TermOfService from './pages/TermOfService';
 import ReportProvider from './pages/ReportProvider';
+import AdministratorHomepage from './pages/admin/AdministratorHomepage';
+import ManageAccount from './components/AdminComponents/MangeAccount';
+import VerifyStore from './components/AdminComponents/VerifyStore';
+import ReportingService from './components/AdminComponents/ReportingService';
 
 function App() {
   return (
@@ -22,13 +26,17 @@ function App() {
         <Routes>
           <Route path="/" element={<Navbar/>}>
             <Route index  element={<Home />}/>
-            <Route path="article" element={<Article />}/>
-            <Route path="about" element={<About />}/>
-            <Route path="signin" element={<SignIn />}/>
-            <Route path="signup" element={<SignUp />}/>
-            <Route path="review" element={<Review />}/>
-            <Route path="report-provider" element={<ReportProvider />}/>
-            <Route path="term-of-service" element={<TermOfService />}/>
+            <Route path="/article" element={<Article />}/>
+            <Route path="/about" element={<About />}/>
+            <Route path="/signin" element={<SignIn />}/>
+            <Route path="/signup" element={<SignUp />}/>
+            <Route path="/review" element={<Review />}/>
+            <Route path="/report-provider" element={<ReportProvider />}/>
+            <Route path="/term-of-service" element={<TermOfService />}/>
+            <Route path="/administrator-homepage" element={<AdministratorHomepage />}/>
+            <Route path="/administrator-homepage/account" element={<ManageAccount/>} />
+            <Route path="/store" element={<VerifyStore/>} />
+            <Route path="/reporting" element={<ReportingService/>} />
           </Route>
         </Routes>
       </BrowserRouter>
