@@ -22,7 +22,6 @@ const SignUp = () => {
                     </div>
                     <form className="signUpFormHorizontal">
                         <div className='largeForm'>
-
                             <div className='regisName'>
                                 <div>
                                     <label className="lbRegisName">ชื่อ</label>
