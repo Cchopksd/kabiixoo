@@ -1,0 +1,303 @@
+.navbar{
+    display: flex;
+    align-items: center;
+    background-color: #A7727D;
+    box-shadow:0px 5px 15px 0 rgba(0,0,0,0.16);
+}
+.img-logo {
+    height: 60px;
+    margin-left : 40px;
+}
+.menu{
+    margin-right: 50px;
+    margin-left: auto;
+}
+.nav-link{
+    display: flex;
+    align-items: center;
+    list-style: none;
+    font-size:20px;
+    gap: 4em;
+}
+.nav-link a {
+    color: #ffffff;
+    text-decoration: none;
+}
+.nav-link a:hover {
+    color: #000000;
+    transition: 0.5s ease;
+}
+.btn-login{
+    font-family: 'IBM Plex Sans Thai', sans-serif;
+    border-radius: 15px;
+    background: #F9F5E7;
+    padding: 5px 25px;
+    color: #A7727D;
+    border: none;
+    font-size: 18px;
+    /* margin-left: 40px;
+    margin-right: 50px; */
+    transition: all 0.3s ease;
+}
+.btn-login a {
+    color: #A7727D;
+    text-decoration: none;
+}
+.btn-login:hover , .btn-login a:hover {
+    background: #ffffff;
+    color: #000000;
+    cursor: pointer;
+    transition: 0.5s ease;
+}
+.mobile-menu {
+    display: none;
+}
+.hr-mobile {
+    display: none;
+}
+.login-dropdown-display {
+    display: flex;
+    align-items: center;
+}
+.login-dropdown-display img{
+    height: 40px;
+    margin-right: 15px;
+}
+.login-dropdown-display label{
+    color: #ffffff;
+    margin-right: 15px;
+}
+.login-dropdown-display label:hover{
+    color: #000000;
+    transition: 0.5s ease;
+}
+.login-dropdown {
+    /* padding-right: 15px; */
+    position: absolute;
+    top: 90px;
+    right: 35px;
+    display: flex;
+    flex-direction: column;
+    width: 245px;
+    background-color: #A7727D;
+    border-radius: 15px;
+    animation: fadeIn 0.7s;
+}
+.login-dropdown a:hover{
+    color: #ffffff;
+}
+.login-dropdown-top {
+    padding: 15px 0 10px 0;
+}
+.login-dropdown-top label {
+    color: #ffffff;
+    font-size: 15px;
+    margin: 0 25px 0 25px;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.login-dropdown-middle {
+    padding: 7px 0;
+    background-color: #A7727D;
+}
+.login-dropdown-middle a {
+    padding-left: 25px;
+    color: #ffffff;
+    font-size: 17px;
+}
+.login-dropdown-bottom {
+    display: flex;
+    padding: 10px 0 15px 0;
+}
+.login-dropdown-bottom label {
+    margin: auto;
+    color: #ffffff;
+    font-size: 17px;
+}
+.login-dropdown-middle:hover {
+    background-color: #cacaca;
+    transition: 0.5s ease;
+}
+.login-dropdown-bottom:hover {
+    background-color: #cacaca;
+    transition: 0.5s ease;
+    border-radius: 0 0 15px 15px;
+}
+.login-dropdown-bottom label {
+    margin: auto;
+    color: #ffffff;
+    font-size: 17px;
+}
+.login-dropdown-none {
+    display: none;
+}
+.login-dropdown-menu-border {
+    border-bottom: 1px solid #ffffff;
+}
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+.login-dropdown-desktop-none {
+    display: none;
+}
+.mobile-dropdown-display-none {
+    display: none;
+}
+
+/* จอ Mobile */
+@media screen and (min-width: 0px) and (max-width: 850px){
+    .mobile-menu {
+        display : block;
+        color: #ffffff;
+        font-size: 2rem;
+        margin-right: 20px;
+        margin-left: auto;
+        margin-top: 10px;
+    }
+    .mobile-dropdown-display-none {
+        width: 100%;
+        height: auto;
+        display: flex;
+        position: absolute;
+        flex-direction: column;
+        list-style: none;
+        font-size:17px;
+        top: 46px;
+        right: 100%;
+        /* left: 100%; */
+        opacity: 0;
+        transition: 0.5s ease;
+        background-color: #F9F5E7;
+        gap: 0;
+    }
+    .nav-link{
+        width: 100%;
+        height: auto;
+        display: flex;
+        position: absolute;
+        flex-direction: column;
+        list-style: none;
+        font-size:17px;
+        top: 46px;
+        right: 100%;
+        /* left: 100%; */
+        opacity: 0;
+        transition: 0.5s ease;
+        background-color: #F9F5E7;
+        gap: 0;
+    }
+    .menu{
+        margin-right: 0px;
+        margin-left: 0px;
+    }
+    .nav-link.active {
+        background-color: #F9F5E7;
+        right: 0;
+        opacity: 1;
+        z-index: 1;
+        align-content: center;
+        transition: 0.5s ease;
+        box-shadow:0px 5px 15px 0 rgba(0,0,0,0.16);
+    }
+    .img-logo {
+        height: 40px;
+        margin-left : 20px;
+    }
+    .nav-link a {
+        color: #A7727D;
+        text-decoration: none;
+    }
+    .btn-login {
+        font-family: 'IBM Plex Sans Thai', sans-serif;
+        color: #A7727D;
+        font-size: 17px;
+        /* border-top: 1px solid #dddddd; */
+    }
+    .btn-login:hover , .btn-login a:hover {
+        background: #F9F5E7;
+        color: #000000;
+        cursor: pointer;
+    }
+    .navbar{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        background-color: #A7727D;
+        box-shadow:0px 5px 15px 0 rgba(0,0,0,0.16);
+    }
+    .nav-link.active li.aboutMe:not(:last-child) {
+        border-bottom: 1px solid #dddddd;
+        padding: 20px 120px;
+    }
+    .mobile-spacing {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 7vw;
+        padding: 10px 0;
+    }
+    .mobile-spacing-login {
+        margin-top: 10px;
+    }
+}
+
+/* จอ Tablet */
+@media screen and (min-width: 850px) and (max-width: 1080px){
+    .img-logo {
+        height: 40px;
+        margin-left : 40px;
+    }
+    .btn-login{
+        font-family: 'IBM Plex Sans Thai', sans-serif;
+        border-radius: 15px;
+        background: #F9F5E7;
+        padding: 5px 25px;
+        color: #A7727D;
+        border: none;
+        font-size: 15px;
+        /* margin-left: 40px;
+        margin-right: 50px; */
+        transition: all 0.3s ease;
+    }
+    .nav-link{
+        display: flex;
+        align-items: center;
+        list-style: none;
+        font-size:15px;
+        gap: 4em;
+    }
+    .login-dropdown {
+        top: 80px;
+        right: 35px;
+        width: 215px;
+    }
+    .login-dropdown-top label {
+        font-size: 13px;
+        margin: 0 25px 0 25px;
+    }
+    .login-dropdown-middle a {
+        padding-left: 25px;
+        font-size: 14px;
+    }
+    .login-dropdown-bottom label {
+        font-size: 15px;
+    }
+    .login-dropdown-top {
+        padding: 10px 0 5px 0;
+    }
+    .login-dropdown-middle {
+        padding: 7px 0;
+    }
+    .login-dropdown-bottom {
+        display: flex;
+        padding: 5px 0 10px 0;
+    }
+    .login-dropdown-display img{
+        height: 35px;
+        margin-right: 15px;
+    }
+
+}

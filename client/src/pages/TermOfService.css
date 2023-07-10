@@ -1,0 +1,126 @@
+.term-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 1000px;
+    margin: 70px auto 150px auto;
+}
+.term-header {
+    color: #A7727D;
+    font-size: 45px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 60px;
+}
+.term-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 1000px;
+    height: 1660px;
+    background-color: #F9F5E7;
+    padding: 35px 30px;
+    border-radius: 20px;
+    box-shadow:0px 5px 35px 10px rgba(0,0,0,0.16);
+}
+.term-title {
+    text-align: start;
+    color: #A7727D;
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+.term-title-desc {
+    color: #A7727D;
+    font-size: 20px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #A7727D;
+}
+.term {
+    margin-top: 30px;
+    color: #A7727D;
+    font-size: 20px;
+}
+.endLine {
+    padding-bottom: 30px;
+    border-bottom: 1px solid #A7727D;
+}
+.term-conclusion {
+    margin-top: 10px;
+    color: #A7727D;
+    font-size: 20px;
+}
+.term-logo {
+    margin-top: 20px;
+    width: 200px;
+}
+
+/* จอ desktop */
+/* @media screen and (min-width: 990px) and (max-width: 1400px){
+    .term-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 900px;
+        margin: 70px auto 120px auto;
+    }
+    .term-box {
+        width: 800px;
+        height: 1870px;
+    }
+} */
+
+/* จอ Tablet */
+@media screen and (min-width: 850px) and (max-width: 1080px){
+    .term-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 600px;
+        margin: 70px auto 90px auto;
+    }
+    .term-box {
+        width: 500px;
+        height: 1190px;
+    }
+    .term-header {
+        font-size: 32px;
+    }
+    .term-title {
+        font-size: 19px;
+    }
+    .term-title-desc, .term, .term-conclusion {
+        font-size: 12px;
+    }
+    .term-logo {
+        margin-top: 20px;
+        width: 140px;
+    }
+}
+
+/* จอ Mobile */
+@media screen and (min-width: 0px) and (max-width: 850px){
+    .term-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 375px;
+        margin: 70px auto;
+    }
+    .term-box {
+        width: 300px;
+        height: 1550px;
+    }
+    .term-header {
+        font-size: 23px;
+    }
+    .term-title {
+        font-size: 15px;
+    }
+    .term-title-desc, .term, .term-conclusion {
+        font-size: 11.5px;
+    }
+    .term-logo {
+        margin-top: 20px;
+        width: 140px;
+    }
+}

@@ -1,0 +1,136 @@
+.search-bar{
+    height: 450px;
+}
+.box-search{
+    display: flex;
+    align-items: center;
+    margin: auto;
+    background-color: #FCFCFC;
+    height: 120px;
+    width: 740px;
+    border-radius: 15px;
+    margin-top: 105px;
+    box-shadow: 0px 24px 48px 0 rgba(0, 0, 0, 0.35);
+}
+.visible {
+    border: none;
+    border-radius: 15px 15px 0px 0px; /* Set your desired border-radius value */
+}
+.frameEntry{
+    display: flex;
+    margin: auto;
+}
+.entry-fill{
+    height: 60px;
+    width: 540px;
+    border-radius: 15px 0 0 15px;
+    border-style: none;
+    color: #A7727D;
+    background-color: #E6E6E6; /*main color: F2F2F2 */
+    padding-left: 20px;
+    font-size: 20px;
+    font-weight: bold;
+}::placeholder{
+    color: #A7727D;
+}:focus{
+    outline: none;
+}
+.bt-search{
+    cursor: pointer;
+    height: 100%;
+    width: 70px;
+    background-color: #A7727D;
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    border-radius: 0px 15px 15px 0;
+    border: none;
+}
+.bt-search:hover{
+    opacity: 0.5;
+    transition: 0.3s ease;
+}
+.bt-search-size {
+    width: 30px;
+}
+.bt-filter-size {
+    width: 30px;
+}
+.bt-filter{
+    cursor: pointer;
+    height: 100%;
+    width: 50px;
+    border: #E6E6E6;
+    background-color: #E6E6E6;
+    font-size: 20px;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content:center;
+}
+.filter-active {
+    animation: fadeIn 0.7s;
+}
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+.filter-active-none {
+    display: none;
+}
+
+@media screen and (min-width: 850px) and (max-width: 1080px){
+    /* .box-search{
+        margin-top: 135px;
+    } */
+    .box-search{
+        height: 90px;
+        width: 560px;
+        margin-top: 125px;
+    }
+    .visible {
+        border: none;
+        border-radius: 15px 15px 0px 0px; /* Set your desired border-radius value */
+    }
+    .entry-fill{
+        height: 50px;
+        width: 410px;
+        padding-left: 20px;
+        font-size: 18px;
+    }
+    .bt-search{
+        width: 60px;
+    }
+    .bt-search-size {
+        width: 25px;
+    }
+    .bt-filter-size {
+        width: 25px;
+    }
+}
+@media screen and (min-width: 0px) and (max-width: 850px){
+    .box-search{
+        height: 80px;
+        width: 360px;
+        margin-top: 125px;
+    }
+    .visible {
+        border: none;
+        border-radius: 15px 15px 0px 0px; /* Set your desired border-radius value */
+    }
+    .entry-fill{
+        height: 50px;
+        width: 220px;
+        padding-left: 20px;
+        font-size: 15px;
+    }
+    .bt-search{
+        width: 50px;
+    }
+    .bt-search-size {
+        width: 20px;
+    }
+    .bt-filter-size {
+        width: 15px;
+    }
+}

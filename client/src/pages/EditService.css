@@ -1,0 +1,908 @@
+.createService-container {
+    display: flex;
+    flex-direction: column;
+    width: 1000px;
+    margin: 70px auto;
+}
+.createService-header {
+    text-align: center;
+    font-size: 45px;
+    color: #A7727D;
+    font-weight: bold;
+}
+.createService-title-1 {
+    font-size: 23px;
+    color: #A7727D;
+}
+.createService-title-2 {
+    font-size: 16px;
+    color: #A7727D;
+}
+.create-part-1 {
+    display: flex;
+    margin-top: 50px;
+    width: 1000px;
+    height: auto;
+}
+.createServiceImg-display {
+    margin-top: 30px;
+    margin-right: 30px;
+}
+.createServiceImg {
+    width: 370px;
+}
+.create-info-1-box {
+    background-color: #F9F5E7;
+    padding: 25px;
+    width: 552px;
+    height: auto;
+    border-radius: 20px;
+    box-shadow:0px 5px 15px 8px rgba(0,0,0,0.16);
+}
+.createService-name-box {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+.input-createService-name {
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    padding: 5px 20px;
+    box-shadow: inset 0 2px 8px rgba(0,0,0,0.16);
+    font-size: 18px;
+}
+.createService-address {
+    display: flex;
+    flex-direction: column;
+}
+.createService-item {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+.createService-item-box {
+    display: flex;
+    flex-direction: column;
+}
+.input-createService-address-1 {
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    width: 133px;
+    padding: 5px 20px;
+    font-size: 18px;
+    box-shadow: inset 0 2px 8px rgba(0,0,0,0.16);
+    margin-right: 15px;
+}
+.input-createService-address-2 {
+    width: 173px;
+    font-size: 18px;
+    margin-right: 15px;
+}
+.input-createService-end {
+    margin-right: 0px;
+    margin-bottom: 15px;
+}
+.create-part-2 {
+    display: flex;
+    margin-top: 50px;
+    background-color: #F9F5E7;
+    box-shadow:0px 5px 15px 8px rgba(0,0,0,0.16);
+    width: 950px;
+    height: auto;
+    border-radius: 20px;
+    padding: 25px;
+}
+.create-info-2-box {
+    display: flex;
+    flex-direction: column;
+    padding-right: 25px;
+}
+.input-createService-introduce {
+    font-size: 18px;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    padding: 20px;
+    width: 333px;
+    height: 247px;
+    box-shadow: inset 0 2px 8px rgba(0,0,0,0.16);
+}
+.input-createService-service {
+    font-size: 18px;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    padding: 20px;
+    width: 513px;
+    height: 247px;
+    box-shadow: inset 0 2px 8px rgba(0,0,0,0.16);
+}
+.create-part-3 {
+    display: flex;
+    margin-top: 50px;
+    width: 1000px;
+    height: auto;
+}
+.create-info-4-box {
+    background-color: #F9F5E7;
+    padding: 25px;
+    width: 440px;
+    height: auto;
+    border-radius: 20px;
+    box-shadow:0px 5px 15px 8px rgba(0,0,0,0.16);
+    margin-right: 20px;
+}
+.createService-pet-box {
+    display: flex;
+    flex-direction: column;
+}
+.createService-pet-checkbox-item {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.createService-pet-checkbox-box-1 {
+    display: flex;
+    align-items: center;
+    width: 210px;
+    height: 45px;
+    background-color: #FFFFFF;
+    border: 1px solid #D4D4D4;
+    margin-right: 20px;
+    border-radius: 10px;
+    transition: 0.3s ease;
+}
+.createService-pet-checkbox-box-2 {
+    display: flex;
+    align-items: center;
+    width: 205px;
+    height: 45px;
+    background-color: #FFFFFF;
+    border: 1px solid #D4D4D4;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    transition: 0.3s ease;
+}
+.createService-pet-checkbox-box-1-checked {
+    display: flex;
+    align-items: center;
+    width: 210px;
+    height: 45px;
+    background-color: #FDE9DE;
+    border: 1px solid #A7727D;
+    margin-right: 20px;
+    border-radius: 10px;
+    transition: 0.3s ease;
+}
+.createService-pet-checkbox-box-2-checked {
+    display: flex;
+    align-items: center;
+    width: 205px;
+    height: 45px;
+    background-color: #FDE9DE;
+    border: 1px solid #A7727D;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    transition: 0.3s ease;
+}
+.createService-checkbox-small-fontSize {
+    font-size: 13px;
+}
+.createService-checkbox-endline {
+    margin-bottom: 0px;
+}
+.createService-checkbox-style {
+    accent-color: #A7727D;
+}
+.createService-pet-type-icon-1 {
+    width: 30px;
+    margin-left: 85px;
+}
+.createService-pet-type-icon-2 {
+    width: 30px;
+    margin-left: 85px;
+}
+.createService-pet-type-icon-3 {
+    width: 30px;
+    margin-left: 65px;
+}
+.createService-pet-type-icon-4 {
+    width: 30px;
+    margin-left: 90px;
+}
+.createService-pet-type-icon-5 {
+    width: 30px;
+    margin-left: 40px;
+}
+.createService-pet-type-icon-6 {
+    width: 30px;
+    margin-left: 15px;
+}
+.createService-checkbox-style {
+    margin-left: 15px;
+}
+.create-info-5-box {
+    background-color: #F9F5E7;
+    padding: 25px;
+    width: 440px;
+    height: auto;
+    border-radius: 20px;
+    box-shadow:0px 5px 15px 8px rgba(0,0,0,0.16);
+}
+.createService-moreService-box {
+    display: flex;
+    flex-direction: column;
+}
+.create-part-4 {
+    display: flex;
+    margin-top: 50px;
+    width: 1000px;
+    height: auto;
+}
+.create-info-6-box {
+    background-color: #F9F5E7;
+    padding: 25px;
+    width: 440px;
+    height: auto;
+    border-radius: 20px;
+    box-shadow:0px 5px 15px 8px rgba(0,0,0,0.16);
+    margin-right: 20px;
+}
+.createService-contact-input {
+    border: none;
+    outline: none;
+    box-shadow: inset 0 2px 8px rgba(0,0,0,0.16);
+    border-radius: 5px;
+    padding: 0 10px;
+    font-size: 18px;
+    width: 160px;
+}
+.createService-contact-checkbox-box-1 {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    width: 210px;
+    height: 95px;
+    background-color: #FFFFFF;
+    border: 1px solid #D4D4D4;
+    margin-right: 20px;
+    border-radius: 10px;
+    transition: 0.3s ease;
+}
+.createService-contact-checkbox-box-1-checked {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    width: 210px;
+    height: 95px;
+    background-color: #FDE9DE;
+    border: 1px solid #A7727D;
+    margin-right: 20px;
+    border-radius: 10px;
+    transition: 0.3s ease;
+}
+.createService-contact-checkbox-box-2 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    width: 205px;
+    height: 95px;
+    background-color: #FFFFFF;
+    border: 1px solid #D4D4D4;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    transition: 0.3s ease;
+}
+.createService-contact-checkbox-box-2-checked {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    width: 205px;
+    height: 95px;
+    background-color: #FDE9DE;
+    border: 1px solid #A7727D;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    transition: 0.3s ease;
+}
+.createService-contact-endline {
+    margin-bottom: 0px;
+}
+.create-info-7-box {
+    background-color: #F9F5E7;
+    padding: 25px;
+    width: 440px;
+    height: auto;
+    border-radius: 20px;
+    box-shadow:0px 5px 15px 8px rgba(0,0,0,0.16);
+}
+.createService-startPrice-box {
+    display: flex;
+    flex-direction: column;
+}
+.createService-startPrice-display-box {
+    display: flex;
+    align-items: center;
+    margin-top: 50px;
+}
+.thai-baht-icon {
+    width: 70px;
+    margin-left: 60px;
+}
+.createService-start-price-label-box {
+    width: 130px;
+    margin-left: 60px;
+}
+.createService-start-price-label {
+    font-size: 30px;
+    color: #A7727D ;
+    font-weight: bold;
+}
+.createService-range-slider-box {
+    margin-top: 30px;
+}
+.createService-range-slider {
+    width: 100%;
+    height: 30px;
+    background: #eee;
+    opacity: 0.8;
+    outline: none;
+    transition: 0.3s;
+}
+.createService-range-slider:hover {
+    opacity: 1;
+}
+.create-part-5 {
+    display: flex;
+    margin-top: 50px;
+    background-color: #F9F5E7;
+    box-shadow:0px 5px 15px 8px rgba(0,0,0,0.16);
+    width: 950px;
+    height: auto;
+    border-radius: 20px;
+    padding: 25px;
+}
+.create-info-8-box {
+    width: 950px;
+    height: auto;
+}
+.editService-btn-box {
+    margin-top: 70px;
+    display: flex;
+    justify-content: center;
+}
+.editService-btn {
+    outline: none;
+    border: none;
+    background-color: #E4B920;
+    color: aliceblue;
+    font-size: 25px;
+    margin: auto;
+    width: 400px;
+    height: 80px;
+    border-radius: 20px;
+}
+.deleteService-btn {
+    outline: none;
+    border: none;
+    background-color: #B73953;
+    color: aliceblue;
+    font-size: 25px;
+    margin: auto;
+    width: 400px;
+    height: 80px;
+    border-radius: 20px;
+}
+.editService-btn:hover , .deleteService-btn:hover {
+    background: #F8EAD8;
+    color: #000000;
+    cursor: pointer;
+    transition: 0.5s ease;
+}
+
+@media screen and (min-width : 850px) and (max-width : 1080px) {
+    .createService-container {
+        width: 750px;
+        margin: 70px auto 20px auto;
+    }
+    .createService-header {
+        font-size: 35px;
+    }
+    .createService-title-1 {
+        font-size: 18px;
+    }
+    .createService-title-2 {
+        font-size: 11px;
+    }
+    .create-part-1 {
+        width: 750px;
+        height: auto;
+    }
+    .createServiceImg-display {
+        margin-top: 30px;
+        margin-right: 20px;
+    }
+    .createServiceImg {
+        width: 290px;
+    }
+    .create-info-1-box {
+        padding: 25px;
+        width: 390px;
+    }
+    .input-createService-name {
+        font-size: 13px;
+    }
+    .input-createService-address-1 {
+        width: 80px;
+        padding: 5px 20px;
+        font-size: 13px;
+        box-shadow: inset 0 2px 8px rgba(0,0,0,0.16);
+        margin-right: 15px;
+    }
+    .input-createService-address-2 {
+        width: 120px;
+        font-size: 13px;
+        margin-right: 15px;
+    }
+    .input-createService-end {
+        margin-right: 0px;
+        margin-bottom: 10px;
+    }
+    .create-part-2 {
+        width: 700px;
+    }
+    .create-info-2-box {
+        padding-right: 20px;
+    }
+    .input-createService-introduce {
+        font-size: 13px;
+        border-radius: 10px;
+        outline: none;
+        border: none;
+        padding: 20px;
+        width: 253px;
+        height: 197px;
+        box-shadow: inset 0 2px 8px rgba(0,0,0,0.16);
+    }
+    .input-createService-service {
+        font-size: 13px;
+        border-radius: 10px;
+        outline: none;
+        border: none;
+        padding: 20px;
+        width: 348px;
+        height: 197px;
+        box-shadow: inset 0 2px 8px rgba(0,0,0,0.16);
+    }
+    .create-part-3 {
+        width: 750px;
+    }
+    .create-info-4-box {
+        width: 315px;
+        margin-right: 20px;
+    }
+    .createService-pet-checkbox-box-1 {
+        width: 145px;
+        height: 35px;
+        margin-right: 20px;
+        font-size: 12px;
+    }
+    .createService-pet-checkbox-box-2 {
+        width: 145px;
+        height: 35px;
+        margin-bottom: 20px;
+        font-size: 12px;
+    }
+    .createService-pet-checkbox-box-1-checked {
+        width: 145px;
+        height: 35px;
+        margin-right: 20px;
+        font-size: 12px;
+    }
+    .createService-pet-checkbox-box-2-checked {
+        width: 145px;
+        height: 35px;
+        margin-bottom: 20px;
+        font-size: 12px;
+    }
+    .createService-checkbox-small-fontSize {
+        font-size: 9px;
+    }
+    .createService-checkbox-endline {
+        margin-bottom: 0px;
+    }
+    .createService-checkbox-style {
+        accent-color: #A7727D;
+        margin-left: 7px;
+    }
+    .createService-pet-type-icon-1 {
+        width: 25px;
+        margin-left: 55px;
+    }
+    .createService-pet-type-icon-2 {
+        width: 25px;
+        margin-left: 55px;
+    }
+    .createService-pet-type-icon-3 {
+        width: 25px;
+        margin-left: 35px;
+    }
+    .createService-pet-type-icon-4 {
+        width: 25px;
+        margin-left: 60px;
+    }
+    .createService-pet-type-icon-5 {
+        width: 25px;
+        margin-left: 10px;
+    }
+    .createService-pet-type-icon-6 {
+        width: 25px;
+        margin-left: 5px;
+    }
+    .create-info-5-box {
+        width: 315px;
+    }
+    .createService-contact-input {
+        padding: 0 10px;
+        font-size: 14px;
+        width: 100px;
+    }
+    .createService-contact-checkbox-box-1 {
+        width: 145px;
+        height: 75px;
+        margin-right: 20px;
+        font-size: 12px;
+    }
+    .createService-contact-checkbox-box-1-checked {
+        width: 145px;
+        height: 75px;
+        margin-right: 20px;
+        font-size: 12px;
+    }
+    .createService-contact-checkbox-box-2 {
+        width: 145px;
+        height: 75px;
+        margin-bottom: 20px;
+        font-size: 12px;
+    }
+    .createService-contact-checkbox-box-2-checked {
+        width: 145px;
+        height: 75px;
+        margin-bottom: 20px;
+        font-size: 12px;
+    }
+    .createService-contact-type-icon {
+        width: 20px;
+    }
+    .createService-contact-endline {
+        margin-bottom: 0px;
+    }
+    .create-part-4 {
+        width: 750px;
+        height: auto;
+    }
+    .create-info-6-box {
+        width: 315px;
+        height: auto;
+        margin-right: 20px;
+    }
+    .create-info-7-box {
+        width: 315px;
+        height: auto;
+    }
+    .createService-startPrice-display-box {
+        display: flex;
+        align-items: center;
+        margin-top: 40px;
+    }
+    .thai-baht-icon {
+        width: 50px;
+        margin-left: 30px;
+    }
+    .createService-start-price-label-box {
+        width: 100px;
+        margin-left: 50px;
+    }
+    .createService-start-price-label {
+        font-size: 25px;
+        color: #A7727D ;
+        font-weight: bold;
+    }
+    .createService-range-slider-box {
+        margin-top: 30px;
+    }
+    .createService-range-slider {
+        width: 100%;
+        height: 30px;
+        background: #eee;
+        opacity: 0.8;
+        outline: none;
+        transition: 0.3s;
+    }
+    .createService-range-slider:hover {
+        opacity: 1;
+    }
+    .create-part-5 {
+        width: 700px;
+        height: auto;
+    }
+    .editService-btn {
+        font-size: 20px;
+        width: 300px;
+        height: 70px;
+    }
+    .deleteService-btn {
+        font-size: 20px;
+        width: 300px;
+        height: 70px;
+    }
+}
+@media screen and (min-width : 0px) and (max-width : 850px) {
+    .createService-container {
+        width: 375px;
+        margin: 70px auto 0px auto;
+    }
+    .createService-header {
+        font-size: 25px;
+    }
+    .createService-title-1 {
+        font-size: 20px;
+        color: #A7727D;
+    }
+    .createService-title-2 {
+        font-size: 13px;
+        color: #A7727D;
+    }
+    .create-part-1 {
+        flex-direction: column;
+        margin-top: 20px;
+        width: 375px;
+    }
+    .createServiceImg-display {
+        margin: 20px auto;
+    }
+    .createServiceImg {
+        width: 250px;
+    }
+    .create-info-1-box {
+        padding: 25px;
+        width: 325px;
+    }
+    .input-createService-name {
+        width: 270px;
+        padding: 5px 20px;
+        font-size: 15px;
+    }
+    .input-createService-address-1 {
+        width: 107px;
+        padding: 5px 20px;
+        font-size: 15px;
+        margin-right: 15px;
+        margin-bottom: 5px;
+    }
+    .input-createService-address-2 {
+        width: 147px;
+        font-size: 18px;
+        margin-right: 15px;
+        margin-bottom: 5px;
+    }
+    .input-createService-end {
+        margin-right: 15px;
+        margin-bottom: 0px;
+    }
+    .create-part-2 {
+        margin-top: 30px;
+        flex-direction: column;
+        width: 325px;
+        height: auto;
+    }
+    .create-info-2-box {
+        display: flex;
+        flex-direction: column;
+    }
+    .input-createService-introduce {
+        font-size: 15px;
+        width: 283px;
+        height: 197px;
+        margin-bottom: 20px;
+    }
+    .input-createService-service {
+        font-size: 15px;
+        width: 283px;
+        height: 197px;
+    }
+    .create-part-3 {
+        flex-direction: column;
+        margin-top: 30px;
+        width: 325px;
+        height: auto;
+    }
+    .create-info-4-box {
+        padding: 25px;
+        width: 325px;
+        height: auto;
+        margin-right: 0px;
+        margin-bottom: 30px;
+    }
+    .createService-pet-checkbox-box-1 {
+        width: 155px;
+        height: 35px;
+        margin-right: 10px;
+        font-size: 12px;
+    }
+    .createService-pet-checkbox-box-2 {
+        width: 155px;
+        height: 35px;
+        margin-bottom: 10px;
+        font-size: 12px;
+    }
+    .createService-pet-checkbox-box-1-checked {
+        width: 155px;
+        height: 35px;
+        margin-right: 10px;
+        font-size: 12px;
+    }
+    .createService-pet-checkbox-box-2-checked {
+        width: 155px;
+        height: 35px;
+        margin-bottom: 10px;
+        font-size: 12px;
+    }
+    .createService-checkbox-small-fontSize {
+        font-size: 9px;
+    }
+    .createService-checkbox-endline {
+        margin-bottom: 0px;
+    }
+    .createService-checkbox-style {
+        accent-color: #A7727D;
+    }
+    .createService-pet-type-icon-1 {
+        width: 22px;
+        margin-left: 60px;
+    }
+    .createService-pet-type-icon-2 {
+        width: 22px;
+        margin-left: 60px;
+    }
+    .createService-pet-type-icon-3 {
+        width: 22px;
+        margin-left: 40px;
+    }
+    .createService-pet-type-icon-4 {
+        width: 22px;
+        margin-left: 65px;
+    }
+    .createService-pet-type-icon-5 {
+        width: 22px;
+        margin-left: 25px;
+    }
+    .createService-pet-type-icon-6 {
+        width: 22px;
+        margin-left: 10px;
+    }
+    .createService-checkbox-style {
+        margin-left: 10px;
+    }
+    .create-info-5-box {
+        width: 325px;
+        height: auto;
+    }
+    .create-part-4 {
+        display: flex;
+        flex-direction: column;
+        margin-top: 30px;
+        width: 375px;
+        height: auto;
+    }
+    .create-info-6-box {
+        padding: 25px;
+        width: 325px;
+        height: auto;
+        margin-right: 0px;
+    }
+    .createService-contact-input {
+        font-size: 15px;
+        width: 120px;
+    }
+    .createService-contact-checkbox-box-1 {
+        font-size: 12px;
+        width: 155px;
+        height: 85px;
+        margin-right: 10px;
+    }
+    .createService-contact-checkbox-box-1-checked {
+        font-size: 12px;
+        width: 155px;
+        height: 85px;
+        margin-right: 10px;
+    }
+    .createService-contact-checkbox-box-2 {
+        font-size: 12px;
+        width: 155px;
+        height: 85px;
+        margin-bottom: 10px;
+    }
+    .createService-contact-checkbox-box-2-checked {
+        font-size: 12px;
+        width: 155px;
+        height: 85px;
+        margin-bottom: 10px;
+    }
+    .createService-contact-endline {
+        margin-bottom: 0px;
+    }
+    .create-info-7-box {
+        margin-top: 30px;
+        background-color: #F9F5E7;
+        padding: 25px;
+        width: 325px;
+        height: auto;
+        border-radius: 20px;
+        box-shadow:0px 5px 15px 8px rgba(0,0,0,0.16);
+    }
+    .createService-startPrice-box {
+        display: flex;
+        flex-direction: column;
+    }
+    .createService-startPrice-display-box {
+        display: flex;
+        align-items: center;
+        margin-top: 50px;
+    }
+    .thai-baht-icon {
+        width: 50px;
+        margin-left: 40px;
+    }
+    .createService-start-price-label-box {
+        width: 100px;
+        margin-left: 50px;
+    }
+    .createService-start-price-label {
+        font-size: 25px;
+        color: #A7727D ;
+        font-weight: bold;
+    }
+    .createService-range-slider-box {
+        margin-top: 30px;
+    }
+    .createService-range-slider {
+        width: 100%;
+        height: 30px;
+        background: #eee;
+        opacity: 0.8;
+        outline: none;
+        transition: 0.3s;
+    }
+    .createService-range-slider:hover {
+        opacity: 1;
+    }
+    .create-part-5 {
+        width: 325px;
+        height: auto;
+        margin-top: 30px;
+    }
+    .editService-btn-box {
+        margin-top: 40px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .editService-btn {
+        font-size: 17px;
+        width: 250px;
+        height: 60px;
+        margin-bottom: 20px;
+    }
+    .deleteService-btn {
+        font-size: 17px;
+        width: 250px;
+        height: 60px;
+    }
+}

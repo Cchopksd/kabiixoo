@@ -1,0 +1,194 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 70px auto 270px auto;
+    width: 1100px;
+    transition: 0.5s ease;
+}
+.title {
+    text-align: center;
+}
+.title-style {
+    font-size: 45px;
+    font-weight: bold;
+    color: #A7727D;
+}
+.article-container {
+    margin-top: 70px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 4rem;
+    justify-content: center;
+}
+.article-card {
+    width: 320px;
+    height: 400px;
+    background-color: #F8EAD8;
+    border-radius: 10px;
+    box-shadow:0px 5px 35px 10px rgba(0,0,0,0.16);
+    text-align: center;
+}
+.topic-title {
+    color: #A7727D;
+    font-weight: 500;
+    font-size: 20px;
+}
+.read-button {
+    font-size: 18px;
+    width: 190px;
+    height: 40px;
+    color: aliceblue;
+    background-color: #A7727D;
+    border: none;
+    border-radius: 10px;
+}
+.read-button:hover {
+    background: #ffffff;
+    color: #000000;
+    cursor: pointer;
+    transition: 0.5s ease;
+}
+.img-style {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.desciption {
+    margin: 10px 10px 25px 10px;
+    font-size: 12px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+.img-style {
+    width: 320px;
+}
+
+/* จอ Tablet 1*/
+@media screen and (min-width: 1080px) and (max-width: 1180px){
+    .container {
+        width: 704px;
+        margin: 70px auto 200px auto;
+    }
+    .article-card {
+        /* margin-left: 50px; */
+        width: 320px;
+        height: 400px;
+        background-color: #F8EAD8;
+        border-radius: 10px;
+        box-shadow:0px 5px 35px 10px rgba(0,0,0,0.16);
+        text-align: center;
+    }
+    .img-style {
+        width: 100%;
+    }
+    .article-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        justify-content: center;
+    }
+    .card-3 {
+        grid-column: 1 / span 2;
+        margin-left: 205px;
+    }
+}
+
+/* จอ Tablet 2*/
+@media screen and (min-width: 850px) and (max-width: 1080px){
+    .container {
+        width: 704px;
+        margin: 70px auto 90px auto;
+    }
+    .article-card {
+        width: 270px;
+        height: 360px;
+        background-color: #F8EAD8;
+        border-radius: 10px;
+        box-shadow:0px 5px 35px 10px rgba(0,0,0,0.16);
+        text-align: center;
+    }
+    .img-style {
+        width: 100%;
+    }
+    .article-container {
+        margin-left: 110px;
+        margin-right: 110px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        justify-content: center;
+    }
+    .card-3 {
+        margin-bottom: 50px;
+        grid-column: 1 / span 2;
+        width: 44.5%;
+        margin-left: 160px;
+    }
+
+    .topic-title {
+        color: #A7727D;
+        font-weight: 500;
+        font-size: 17px;
+    }
+    .read-button {
+        font-size: 15px;
+        width: 170px;
+        height: 35px;
+        color: aliceblue;
+        background-color: #A7727D;
+        border: none;
+        border-radius: 10px;
+    }
+    .title-style {
+        font-size: 35px;
+    }
+}
+
+/* จอ Mobile 1 */
+@media screen and (min-width: 0px) and (max-width: 850px){
+    .container {
+        width: 375px;
+        margin: 50px auto 90px auto;
+    }
+    .article-card {
+        width: 270px;
+        height: 360px;
+        background-color: #F8EAD8;
+        border-radius: 10px;
+        box-shadow:0px 5px 35px 10px rgba(0,0,0,0.16);
+        text-align: center;
+    }
+    .img-style {
+        width: 100%;
+    }
+    .article-container {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        justify-content: center;
+        margin-top: 50px;
+    }
+    .card-3 {
+        margin-bottom: 50px;
+        /* grid-column: 1 / span 2;
+        width: 44.5%;
+        margin-left: 500px; */
+    }
+    .topic-title {
+        color: #A7727D;
+        font-weight: 500;
+        font-size: 17px;
+    }
+    .read-button {
+        font-size: 15px;
+        width: 170px;
+        height: 35px;
+        color: aliceblue;
+        background-color: #A7727D;
+        border: none;
+        border-radius: 10px;
+    }
+    .title-style {
+        font-size: 30px;
+    }
+}
