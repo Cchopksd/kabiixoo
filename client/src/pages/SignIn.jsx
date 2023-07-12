@@ -2,40 +2,45 @@ import React, { useEffect, useState } from 'react';
 import { Outlet,Link } from 'react-router-dom';
 import '../pages/SignIn.css';
 import { FcGoogle } from "react-icons/fc";
+import { useNavigate } from 'react-router-dom'
+import Swal from "sweetalert2";
+import axios from "axios";
+import { authenticate } from "../services/authorize";
 
 export default function SignIn()  {
-    const handleSubmit = (event) => {
+
+    const navigate = useNavigate();
+
+    const [state,setState] = useState({
+        username: "",
+        password: ""
+    })
+
+    const {username, password} = state
+
+    const inputValue = name => event => {
+        setState({...state,[name]:event.target.value});
+    }
+
+    const submitLogin = async (event) => {
         event.preventDefault();
-        const data = new FormData(event.currentTarget);
-        const jsonData = {
-            mem_email: data.get('username'),
-            mem_password: data.get('password'),
-        }
-
-        async function postJSON(data) {
-            try {
-                const response = await fetch("http://localhost:3333/login", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(jsonData),
-            });
-
-            const data = await response.json();
-            if (data.status == "ok") {
-                localStorage.setItem('token',data.token)
-                window.location = '/'
-                alert("login successful")
-            } else {
-                alert("login failed")
-            }
-            } catch (error) {
-                console.error("Error:", error);
-            }
-        }
-        postJSON(data);
-    };
+        await axios.post(`${process.env.REACT_APP_API}/signin`, {username,password})
+        .then(async (res) => {
+            await Swal.fire(
+                'แจ้งเตือน',
+                'เข้าสู่ระบบสำเร็จ',
+                'success'
+              )
+              setState({...state,username:"",password:""})
+              authenticate(res,()=>navigate('/'))
+        }).catch((err) => {
+            Swal.fire(
+                'แจ้งเตือน',
+                err.response.data.error,
+                'error'
+            )
+        })
+    }
 
     useEffect(() => {
         document.body.classList.add('signin-page');
@@ -50,7 +55,7 @@ export default function SignIn()  {
                 <div className='logoContainer'>
                     <img src={require('../images/login_logo.png')} className='logoSize'></img>
                 </div>
-                <form className="login_form" onSubmit={handleSubmit}>
+                <form className="login_form" onSubmit={submitLogin}>
                     <div className='loginForm'>
                         <div className='lBUser'>
                             <label className="labelUsername">ชื่อผู้ใช้งาน</label>
@@ -61,6 +66,8 @@ export default function SignIn()  {
                             name="username"
                             type="text"
                             placeholder="กรอกชื่อผู้ใช้งาน"
+                            value={username}
+                            onChange={inputValue("username")}
                             />
                         </div>
                         <br />
@@ -72,8 +79,8 @@ export default function SignIn()  {
                                     name="password"
                                     type="password"
                                     placeholder="กรอกรหัสผ่าน"
-                                    // value={password}
-                                    // onChange={(e) => setPassword(e.target.value)}
+                                    value={password}
+                                    onChange={inputValue("password")}
                             />
                         </div>
                         <div className='frameBtSignIn'>

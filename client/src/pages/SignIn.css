@@ -87,6 +87,10 @@
     font-family: 'IBM Plex Sans Thai', sans-serif;
     font-size: 16px;
 }
+.btSignIn:hover{
+    transition: 0.3s ease;
+    opacity: 0.7;
+}
 .xt_1_hr {
     display: flex;
     align-items: center;
