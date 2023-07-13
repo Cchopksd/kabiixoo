@@ -59,7 +59,7 @@ export default function SignIn()  {
                     <div className='loginForm'>
                         <div className='lBUser'>
                             <label className="labelUsername">ชื่อผู้ใช้งาน</label>
-                            <label className="linkSignUp">ยังไม่มีบัญชี <Link to='/SignUp'>สมัครสมาชิก</Link></label>
+                            <label className="linkSignUp">ยังไม่มีบัญชี <Link to='/signup'>สมัครสมาชิก</Link></label>
                         </div>
                         <div className='inputUsername'>
                             <input className="inputTextUsername"

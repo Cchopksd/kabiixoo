@@ -2,12 +2,15 @@ const Member = require('../models/memberModel')
 const generateToken = require('../configs/generateToken')
 
 exports.signin = async (req,res) => {
+    // destructuring req
     const {username, password} = req.body
 
+    // เช็คกรอกข้อมูลครบไหม
     if(!username || !password){
         return res.status(400).json({error: "กรุณากรอกข้อมูลให้ครบ"})
     }
 
+    // ดึงข้อมูลผู้ใช้งานคนนั้น
     const user = await Member.findOne({mem_username: username});
 
     if(user && (user.mem_password === password)){
@@ -31,31 +34,61 @@ exports.signin = async (req,res) => {
 }
 
 exports.signup = async (req,res) => {
-    const { mem_username,mem_password,mem_name,mem_surname,mem_email,mem_birthDate,mem_phoneNumber,mem_profileImage } = req.body
+    // destructuring req
+    const { name,surname,email,phone,birthDate,username,password,confirmPassword,image } = req.body
 
-    if (!mem_username || !mem_password || !mem_name || !mem_surname || !mem_email  || !mem_phoneNumber ) {
+    // เช็คกรอกข้อมูลครบไหม
+    if (!name || !surname || !email || !phone || !birthDate  || !username || !password || !confirmPassword) {
         return res.status(400).json({error: "กรุณากรอกข้อมูลให้ครบ"})
     }
 
-    const userExists = await Member.findOne({ mem_username })
-    const emailExists = await Member.findOne({ mem_email })
+    //
+    const userExists = await Member.findOne({ mem_username : username})
+    const emailExists = await Member.findOne({ mem_email : email})
 
+
+    // เช็คว่ามีผู้ใช้งานซ้ำยัง
     if (userExists || emailExists) {
         return res.status(400).json({error: "มีผู้ใช้งานนี้อยู่แล้ว"})
     }
 
-    await Member.create({
-        mem_username,
-        mem_password,
-        mem_name,
-        mem_surname,
-        mem_email,
-        mem_birthDate,
-        mem_phoneNumber,
-        mem_profileImage})
-        .then((user) => {
-        res.json(user)
-    }).catch((err) => {
-        res.status(400).json({error: err})
-    })
+    // เช็คว่ารหัสผ่านที่กรอกตรงมั้ย
+    if (password != confirmPassword){
+        return res.status(400).json({error: "ยืนยันรหัสผ่านไม่สำเร็จ"})
+    }
+
+
+    // เช็คถ้ารูปโปรไฟล์ไม่ได้แนบมา
+    if (image === "") {
+        await Member.create({
+            mem_username: username,
+            mem_password: password,
+            mem_name: name,
+            mem_surname: surname,
+            mem_email: email,
+            mem_birthDate: birthDate,
+            mem_phoneNumber: phone})
+            .then((user) => {
+                res.json({token: generateToken(user.id), mem_username: user.mem_username})
+        }).catch((err) => {
+            res.status(400).json({error: err})
+        })
+    }
+    // เช็คถ้ารูปโปรไฟล์แนบมา
+    else{
+        await Member.create({
+            mem_username: username,
+            mem_password: password,
+            mem_name: name,
+            mem_surname: surname,
+            mem_email: email,
+            mem_birthDate: birthDate,
+            mem_phoneNumber: phone,
+            mem_profileImage: image})
+            .then((user) => {
+                res.json({token: generateToken(user.id), mem_username: user.mem_username})
+        }).catch((err) => {
+            res.status(400).json({error: err})
+        })
+    }
 }

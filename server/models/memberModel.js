@@ -23,8 +23,8 @@ const memberSchema = mongoose.Schema({
     },
     mem_birthDate : {
         type: Date,
-        // required: true,
-        default: new Date()
+        required: true,
+        // default: new Date()
     },
     mem_phoneNumber : {
         type: String,

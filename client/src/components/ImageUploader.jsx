@@ -88,6 +88,7 @@ const ImageUploader = () => {
                     <div className="confirm-upl-image" key={index}>
                         <span className="confirm-upl-delete" onClick={() => deleteImage(index)}>&times;</span>
                         <img src={images.url} alt={images.name} />
+                        {console.log(images.url)}
                     </div>
                 ))}
             </div>
