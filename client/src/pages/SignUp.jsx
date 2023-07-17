@@ -9,6 +9,7 @@ import { authenticate } from "../services/authorize";
 
 const SignUp = () => {
 
+    // redirect page
     const navigate = useNavigate()
 
     // รวม state
@@ -23,11 +24,11 @@ const SignUp = () => {
         confirmPassword: ""
     })
 
-    //state ขงอไฟล์
+    //state ของไฟล์
     const [imageFile, setImageFile] = useState()
     const [image, setImage] = useState("")
 
-    // destructoring
+    // destructuring
     const { name,surname,email,phone,birthDate,username,password,confirmPassword } = state
 
     const dateInputRef = useRef(null);
@@ -41,12 +42,11 @@ const SignUp = () => {
     }
 
 
-    //ส่งข้อมูล
+    //ส่งยืนยันข้อมูล
     const submitSignUp = async (event) => {
         event.preventDefault();
 
-        //console.log(imageFile)
-
+        // ตรวจสอบว่าอ่าน term หรือยัง
         if (!confirmRead){
             Swal.fire(
                 'แจ้งเตือน',
@@ -63,7 +63,8 @@ const SignUp = () => {
                 data.append("upload_preset", "kabiixoo")
                 data.append("cloud_name", "dmz2wct31")
 
-                axios.post("https://api.cloudinary.com/v1_1/dmz2wct31/image/upload/", data)
+                // api upload รูป ไปยัง Cloudinary
+                await axios.post("https://api.cloudinary.com/v1_1/dmz2wct31/image/upload/", data)
                 .then((response) => {
                     setImage(response.data.url.toString())
                 }).catch((error) => {
@@ -101,10 +102,6 @@ const SignUp = () => {
             )
             console.log(err.response.data.error)
         })
-
-
-
-        // เช็คยืนยันการอ่าน term of service
     }
 
     return (

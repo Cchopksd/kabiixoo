@@ -13,7 +13,11 @@ exports.signin = async (req,res) => {
     // ดึงข้อมูลผู้ใช้งานคนนั้น
     const user = await Member.findOne({mem_username: username});
 
-    if(user && (user.mem_password === password)){
+    if(user 
+        // && (user.mem_password === password)
+        && (await user.matchPassword(password))
+        )
+        {
         return(res.json({
             _id: user.id,
             mem_username: user.mem_username,
@@ -36,7 +40,7 @@ exports.signin = async (req,res) => {
 exports.signup = async (req,res) => {
     // destructuring req
     const { name,surname,email,phone,birthDate,username,password,confirmPassword,image } = req.body
-
+    console.log("image :",image)
     // เช็คกรอกข้อมูลครบไหม
     if (!name || !surname || !email || !phone || !birthDate  || !username || !password || !confirmPassword) {
         return res.status(400).json({error: "กรุณากรอกข้อมูลให้ครบ"})
@@ -91,4 +95,14 @@ exports.signup = async (req,res) => {
             res.status(400).json({error: err})
         })
     }
+}
+
+exports.getUserLogin = async (req,res) => {
+    console.log(req.body)
+    const { username } = req.body
+    await Member.findOne({mem_username : username}).then((userInfo) => {
+        res.status(200).json(userInfo)
+    }).catch((err) => {
+        res.status(400).json({error: err})
+    })
 }

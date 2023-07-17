@@ -9,15 +9,19 @@ import { authenticate } from "../services/authorize";
 
 export default function SignIn()  {
 
+    // ใช้ redirect page
     const navigate = useNavigate();
 
+    // state ต่างๆ
     const [state,setState] = useState({
         username: "",
         password: ""
     })
 
+    // Destructuring
     const {username, password} = state
 
+    // เปลี่ยนค่าตามการพิมพ์
     const inputValue = name => event => {
         setState({...state,[name]:event.target.value});
     }
@@ -33,6 +37,7 @@ export default function SignIn()  {
               )
               setState({...state,username:"",password:""})
               authenticate(res,()=>navigate('/'))
+            //   location.reload();
         }).catch((err) => {
             Swal.fire(
                 'แจ้งเตือน',

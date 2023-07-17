@@ -6,6 +6,7 @@ import SearchBar from '../components/SearchBar';
 import '../pages/Home.css'
 import Filter from '../components/Filter';
 import Footer from '../components/Footer';
+import Navbar from '../components/Navbar';
 
 const Home = () => {
 
@@ -99,6 +100,7 @@ const Home = () => {
 
     return (
         <div>
+            {/* <Navbar/> */}
             <div className='home'>
                 <div className='xtf'>
                     <h1 className='text-find'>ค้นหาผู้ให้บริการ<br/>ที่ตรงตามความต้องการของคุณได้เลย</h1>

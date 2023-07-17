@@ -24,10 +24,10 @@ import ConfirmBusiness from './pages/ConfirmBusiness'
 function App() {
   return (
     <div>
-      <BrowserRouter>
       {/* หากต้องการไม่ให้ Navbar แสดงในหน้าไหนให้นำ tag Route ใส่ไว้ข้างนอก tag Route ใหญ่ */}
+        <Navbar/>
         <Routes>
-          <Route path="/" element={<Navbar/>}>
+          {/* <Route path="/" element={<Navbar/>}> */}
             <Route index  element={<Home />}/>
             <Route path="/article" element={<Article />}/>
             <Route path="/article-1" element={<ArticleOne />}/>
@@ -44,9 +44,8 @@ function App() {
             <Route path="/store" element={<VerifyStore/>} />
             <Route path="/reporting" element={<ReportingService/>} />
             <Route path="/confirm-business" element={<ConfirmBusiness/>} />
-          </Route>
+          {/* </Route> */}
         </Routes>
-      </BrowserRouter>
     </div>
   );
 }

@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const bcrypt = require('bcryptjs')
 
 const memberSchema = mongoose.Schema({
     mem_username : {
@@ -42,5 +43,21 @@ const memberSchema = mongoose.Schema({
         default: "member"
     },
 }, {timestamps: true})
+
+// เช็ค hash กับ ฐานข้อมูล
+memberSchema.methods.matchPassword = async function (enteredPassword) {
+    return await bcrypt.compare(enteredPassword, this.mem_password)
+}
+
+// แปลง password เป็น hash
+memberSchema.pre('save', async function (next) {
+    if(!this.isModified){
+        next()
+    }
+
+    // hash รหัสผ่าน
+    const salt = await bcrypt.genSalt(10);
+    this.mem_password = await bcrypt.hash(this.mem_password, salt)
+})
 
 module.exports = mongoose.model("Members",memberSchema)
