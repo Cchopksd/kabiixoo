@@ -40,7 +40,8 @@ exports.signin = async (req,res) => {
 exports.signup = async (req,res) => {
     // destructuring req
     const { name,surname,email,phone,birthDate,username,password,confirmPassword,image } = req.body
-    console.log("image :",image)
+    console.log(JSON.stringify(req.body))
+    // console.log("image :",image)
     // เช็คกรอกข้อมูลครบไหม
     if (!name || !surname || !email || !phone || !birthDate  || !username || !password || !confirmPassword) {
         return res.status(400).json({error: "กรุณากรอกข้อมูลให้ครบ"})

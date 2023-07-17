@@ -1,6 +1,6 @@
 import React from 'react';
 import '../pages/SignUp.css'
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import Footer from "../components/Footer"
 import Swal from "sweetalert2"
 import axios from 'axios';
@@ -40,6 +40,31 @@ const SignUp = () => {
     const inputValue = name => event => {
         setState({...state,[name]:event.target.value});
     }
+
+    useEffect(() => {
+        // หลังจากมีการเปลี่ยนค่า ใน image ให้ส่งข้อมูลไป server
+        if (image){
+            axios.post(`${process.env.REACT_APP_API}/signup`, {name,surname,email,phone,birthDate,username,password,confirmPassword,image})
+            .then(async (res) => {
+                await Swal.fire(
+                    'แจ้งเตือน',
+                    'สมัครสมาชิกสำเร็จ',
+                    'success'
+                )
+                setState({...state,name: "",surname: "",email: "",phone: "",birthDate: "",username: "",password: "",confirmPassword: ""})
+                setImage("")
+                setImageFile("")
+                authenticate(res,()=>navigate('/'))
+            }).catch((err) => {
+                Swal.fire(
+                    'แจ้งเตือน',
+                    err.response.data.error,
+                    'error'
+                )
+                console.log(err.response.data.error)
+            })
+        }
+    },[image])
 
 
     //ส่งยืนยันข้อมูล
@@ -81,27 +106,27 @@ const SignUp = () => {
                     'error'
                 )
             }
+        }else {
+            await axios.post(`${process.env.REACT_APP_API}/signup`, {name,surname,email,phone,birthDate,username,password,confirmPassword,image})
+            .then(async (res) => {
+                await Swal.fire(
+                    'แจ้งเตือน',
+                    'สมัครสมาชิกสำเร็จ',
+                    'success'
+                )
+                setState({...state,name: "",surname: "",email: "",phone: "",birthDate: "",username: "",password: "",confirmPassword: ""})
+                setImage("")
+                setImageFile("")
+                authenticate(res,()=>navigate('/'))
+            }).catch((err) => {
+                Swal.fire(
+                    'แจ้งเตือน',
+                    err.response.data.error,
+                    'error'
+                )
+                console.log(err.response.data.error)
+            })
         }
-        
-        await axios.post(`${process.env.REACT_APP_API}/signup`, {name,surname,email,phone,birthDate,username,password,confirmPassword,image})
-        .then(async (res) => {
-            await Swal.fire(
-                'แจ้งเตือน',
-                'สมัครสมาชิกสำเร็จ',
-                'success'
-            )
-            setState({...state,name: "",surname: "",email: "",phone: "",birthDate: "",username: "",password: "",confirmPassword: ""})
-            setImage("")
-            setImageFile("")
-            authenticate(res,()=>navigate('/'))
-        }).catch((err) => {
-            Swal.fire(
-                'แจ้งเตือน',
-                err.response.data.error,
-                'error'
-            )
-            console.log(err.response.data.error)
-        })
     }
 
     return (
