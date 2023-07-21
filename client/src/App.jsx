@@ -20,14 +20,15 @@ import AdministratorHomepage from './pages/admin/AdministratorHomepage';
 import ManageAccount from './components/AdminComponents/MangeAccount';
 import VerifyStore from './components/AdminComponents/VerifyStore';
 import ReportingService from './components/AdminComponents/ReportingService';
-import ConfirmBusiness from './pages/ConfirmBusiness'
+import ConfirmBusiness from './pages/ConfirmBusiness';
+import CreateService from './pages/CreateService';
 
 function App() {
   return (
     <div>
         <Navbar/>
         <Routes>
-          {/* <Route path="/" element={<Navbar/>}> */}
+          {/* MemberRoute คือ component ที่ใช้ตรวจสอบและ redirect หน้า เมื่อไม่ได้เข้าสู่ระบบ */}
             <Route index  element={<Home />}/>
             {/* บทความ */}
             <Route path="/article" element={<Article />}/>
@@ -42,19 +43,19 @@ function App() {
             {/* ผู้ใช้งานระบบ */}
             <Route path="/signin" element={<SignIn />}/>
             <Route path="/signup" element={<SignUp />}/>
-            <Route path='/edit-profile/:slug' element={<MemberRoute Component={EditProfile}/>}/>
+            <Route path='/edit-profile/:slug' element={<MemberRoute Component={EditProfile}/>}/> 
 
             {/* ผู้ใช้งานที่เป็นสมาชิก */}
             <Route path="/review" element={<Review />}/>
             <Route path="/report-provider" element={<ReportProvider />}/>
             <Route path="/confirm-business" element={<ConfirmBusiness/>} />
+            <Route path='/create-service' element={<MemberRoute Component={CreateService}/>}/>
 
             {/* ผู้ดูแลระบบ */}
             <Route path="/administrator-homepage" element={<AdministratorHomepage />}/>
             <Route path="/administrator-homepage/account" element={<ManageAccount/>} />
             <Route path="/store" element={<VerifyStore/>} />
             <Route path="/reporting" element={<ReportingService/>} />
-          {/* </Route> */}
         </Routes>
     </div>
   );

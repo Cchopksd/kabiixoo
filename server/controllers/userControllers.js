@@ -2,7 +2,6 @@ const Member = require('../models/memberModel')
 const generateToken = require('../configs/generateToken')
 const slugify = require("slugify")
 const { v4: uuidv4 } = require('uuid');
-const { expressjwt: expressJWT } = require("express-jwt")
 require('dotenv').config()
 
 // เข้าสู่ระบบ
@@ -152,9 +151,9 @@ exports.updateProfile = async (req,res) => {
     const { mem_name,mem_surname,mem_phoneNumber,mem_birthDate } = req.body
     const mem_profileImage = req.body.newImage
     console.log(req.body)
-
+    
     // เช็คกรอกข้อมูลให้ครบ
-    if (!mem_name || !mem_surname || !mem_phoneNumber || !mem_birthDate){
+    if (mem_name === "" || mem_surname === "" || mem_phoneNumber === "" || mem_birthDate === ""){
         return res.status(400).json({error: "กรุณากรอกข้อมูลให้ครบ"})
     }
 
@@ -162,6 +161,7 @@ exports.updateProfile = async (req,res) => {
     if (!phoneRegex.test(mem_phoneNumber) && mem_phoneNumber !== ""){
         return res.status(400).json({error: "รูปแบบของเบอร์โทรศัพท์ไม่ถูกต้อง"})
     }
+
 
     await Member.findOneAndUpdate({mem_slug: slug}, { mem_name,mem_surname,mem_phoneNumber,mem_birthDate,mem_profileImage }, {new:true})
     .then((userInfo) => {
@@ -172,8 +172,8 @@ exports.updateProfile = async (req,res) => {
 }
 
 // ตรวจสอบ Token
-exports.requireLogin = expressJWT({
-    secret:process.env.JWT_SECRET,
-    algorithms:["HS256"],
-    userProperty:"auth"
-})
+// exports.requireLogin = expressJWT({
+//     secret:process.env.JWT_SECRET,
+//     algorithms:["HS256"],
+//     userProperty:"auth"
+// })

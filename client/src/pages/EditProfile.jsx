@@ -5,6 +5,7 @@ import Footer from "../components/Footer";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { getToken } from "../services/authorize";
 
 const EditProfile = () => {
 
@@ -23,7 +24,7 @@ const EditProfile = () => {
         mem_profileImage: ""
     })
 
-    const [imageFile, setImageFile] = useState()
+    const [imageFile, setImageFile] = useState(null)
     const [newImage, setNewImage] = useState()
 
     // เปลี่ยนค่าตามการพิมพ์
@@ -36,7 +37,13 @@ const EditProfile = () => {
 
     // เมื่อเข้าสู่หน้า
     useEffect(() => {
-        axios.get(`${process.env.REACT_APP_API}/edit-profile/${params.slug}`).then((res) => {
+        axios.get(`${process.env.REACT_APP_API}/edit-profile/${params.slug}`,
+        {
+            headers: {
+                authorization: `Bearer ${getToken()}`
+            }
+        }
+        ).then((res) => {
             const {mem_username, mem_name, mem_surname, mem_phoneNumber, mem_birthDate, mem_profileImage} = res.data
             setUserState({...userState,mem_username, mem_name, mem_surname, mem_phoneNumber, mem_birthDate, mem_profileImage})
         }).catch((err) => {
@@ -53,26 +60,32 @@ const EditProfile = () => {
         if(newImage){
             setUserState({...userState,mem_profileImage:newImage});
             axios.put(`${process.env.REACT_APP_API}/edit-profile/${params.slug}`,{mem_username, mem_name, mem_surname, 
-                mem_phoneNumber, mem_birthDate, newImage}).then(async (res) => {
-                await Swal.fire(
-                    'แจ้งเตือน',
-                    res.data.message,
-                    'success'
-                )
+                mem_phoneNumber, mem_birthDate, newImage},
+                {
+                    headers: {
+                        authorization: `Bearer ${getToken()}`
+                    }
+                }
+                ).then(async (res) => {
+                    await Swal.fire(
+                        'แจ้งเตือน',
+                        res.data.message,
+                        'success'
+                    )
                 window.location.reload(true)
             }).catch((err) => {
                 Swal.fire(
                     'แจ้งเตือน',
-                    err.data.error,
+                    err.response.data.error,
                     'error'
                 )
+                window.location.reload(true)
             })
         }
     },[newImage])
 
 
     const submitUpdate = async (event) => {
-        console.log("kuy")
         event.preventDefault();
         if(imageFile){
             if (imageFile.type === "image/jpeg" || imageFile.type === "image/png"){
@@ -101,12 +114,18 @@ const EditProfile = () => {
                 )
             }
         }
-        else{
+        else {
             await axios.put(`${process.env.REACT_APP_API}/edit-profile/${params.slug}`,{mem_username, mem_name, mem_surname, 
-                mem_phoneNumber, mem_birthDate}).then(async (res) => {
+                mem_phoneNumber, mem_birthDate},
+                    {
+                        headers: {
+                            authorization: `Bearer ${getToken()}`
+                        }
+                    }
+                ).then(async (res) => {
                 await Swal.fire(
                     'แจ้งเตือน',
-                    res.response.data.message,
+                    res.data.message,
                     'success'
                 )
                 window.location.reload(true)
@@ -116,6 +135,7 @@ const EditProfile = () => {
                     err.response.data.error,
                     'error'
                 )
+                window.location.reload(true)
             })
         }
     }

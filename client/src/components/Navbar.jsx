@@ -61,7 +61,9 @@ const Navbar = () => {
     return (
         <>
             <nav className="navbar">
-                    <img className='img-logo' src={require("../images/logo.png")}/>
+                    <Link to="/">
+                        <img className='img-logo' src={require("../images/logo.png")}/>
+                    </Link>
                     <div className="menu">
                         <ul className={click ? "nav-link active" : "nav-link"}>
                             <li className="mobile-spacing" onClick={closeMobileMenu}>
@@ -86,16 +88,17 @@ const Navbar = () => {
                                                 <label>{email}</label>
                                             </div>
                                             <div className="login-dropdown-middle">
-                                                <Link to={`/edit-profile/${slug}`}>แก้ไขข้อมูลส่วนตัว</Link>
+                                                <Link to={`/edit-profile/${slug}`} onClick={() => setDropdownClicked(!dropdownClicked)}>แก้ไขข้อมูลส่วนตัว</Link>
                                             </div>
                                             <div className="login-dropdown-middle">
-                                                <Link>ให้บริการรับฝากสัตว์เลี้ยง</Link>
+                                                <Link to={'/create-service'} onClick={() => setDropdownClicked(!dropdownClicked)}>ให้บริการรับฝากสัตว์เลี้ยง</Link>
                                             </div>
                                             <div className="login-dropdown-menu-border login-dropdown-middle">
-                                                <Link>ประวัติการแชท</Link>
+                                                <Link onClick={() => setDropdownClicked(!dropdownClicked)}>ประวัติการแชท</Link>
                                             </div>
                                             <div className="login-dropdown-bottom" role="button" onClick={() => logout(() => {
                                                 navigate("/")
+                                                setDropdownClicked(!dropdownClicked)
                                                 // reload หน้าเว็บ
                                                 window.location.reload(true)
                                             })}>
@@ -103,16 +106,16 @@ const Navbar = () => {
                                             </div>
                                         </div>
                                     </li>
-                                    <li className={click ? size <= 850 ? "mobile-spacing" :"mobile-dropdown-display-none" : size <= 850 ? "mobile-spacing" :"mobile-dropdown-display-none"}>
-                                        <Link>แก้ไขข้อมูลส่วนตัว</Link>
+                                    <li className={click ? size <= 850 ? "mobile-spacing" :"mobile-dropdown-display-none" : size <= 850 ? "mobile-spacing" :"mobile-dropdown-display-none"} onClick={closeMobileMenu}>
+                                        <Link to={`/edit-profile/${slug}`}>แก้ไขข้อมูลส่วนตัว</Link>
                                     </li>
-                                    <li className={click ? size <= 850 ? "mobile-spacing" :"mobile-dropdown-display-none" : size <= 850 ? "mobile-spacing" :"mobile-dropdown-display-none"}>
+                                    <li className={click ? size <= 850 ? "mobile-spacing" :"mobile-dropdown-display-none" : size <= 850 ? "mobile-spacing" :"mobile-dropdown-display-none"} onClick={closeMobileMenu}>
                                         <Link>ให้บริการรับฝากสัตว์เลี้ยง</Link>
                                     </li >
-                                    <li className={click ? size <= 850 ? "mobile-spacing" :"mobile-dropdown-display-none" : size <= 850 ? "mobile-spacing" :"mobile-dropdown-display-none"}>
+                                    <li className={click ? size <= 850 ? "mobile-spacing" :"mobile-dropdown-display-none" : size <= 850 ? "mobile-spacing" :"mobile-dropdown-display-none"} onClick={closeMobileMenu}>
                                         <Link>ประวัติการแชท</Link>
                                     </li>
-                                    <li className={click ? size <= 850 ? "mobile-spacing" :"mobile-dropdown-display-none" : size <= 850 ? "mobile-spacing" :"mobile-dropdown-display-none"}>
+                                    <li className={click ? size <= 850 ? "mobile-spacing" :"mobile-dropdown-display-none" : size <= 850 ? "mobile-spacing" :"mobile-dropdown-display-none"} onClick={closeMobileMenu}>
                                         <Link onClick={() => logout(() => {
                                             navigate("/")
                                             // reload หน้าเว็บ
