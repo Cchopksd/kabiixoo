@@ -23,7 +23,7 @@ const memberSchema = mongoose.Schema({
         required: true
     },
     mem_birthDate : {
-        type: Date,
+        type: String,
         required: true,
         // default: new Date()
     },
@@ -42,6 +42,11 @@ const memberSchema = mongoose.Schema({
         type: String,
         default: "member"
     },
+    mem_slug: {
+        type: String,
+        lowercase: true,
+        unique: true
+    }
 }, {timestamps: true})
 
 // เช็ค hash กับ ฐานข้อมูล

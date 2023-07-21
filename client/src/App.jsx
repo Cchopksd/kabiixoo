@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter , Route, Routes, useLocation  } from 'react-router-dom';
+import MemberRoute from './MemberRoute';
 import './App.css'
 import Navbar from './components/Navbar';
 import ImageUploader from './components/ImageUploader';
@@ -24,26 +25,35 @@ import ConfirmBusiness from './pages/ConfirmBusiness'
 function App() {
   return (
     <div>
-      {/* หากต้องการไม่ให้ Navbar แสดงในหน้าไหนให้นำ tag Route ใส่ไว้ข้างนอก tag Route ใหญ่ */}
         <Navbar/>
         <Routes>
           {/* <Route path="/" element={<Navbar/>}> */}
             <Route index  element={<Home />}/>
+            {/* บทความ */}
             <Route path="/article" element={<Article />}/>
             <Route path="/article-1" element={<ArticleOne />}/>
             <Route path="/article-2" element={<ArticleTwo />}/>
             <Route path="/article-3" element={<ArticleThree />}/>
+
+            {/* ทั่วไป */}
             <Route path="/about" element={<About />}/>
+            <Route path="/term-of-service" element={<TermOfService />}/>
+
+            {/* ผู้ใช้งานระบบ */}
             <Route path="/signin" element={<SignIn />}/>
             <Route path="/signup" element={<SignUp />}/>
+            <Route path='/edit-profile/:slug' element={<MemberRoute Component={EditProfile}/>}/>
+
+            {/* ผู้ใช้งานที่เป็นสมาชิก */}
             <Route path="/review" element={<Review />}/>
             <Route path="/report-provider" element={<ReportProvider />}/>
-            <Route path="/term-of-service" element={<TermOfService />}/>
+            <Route path="/confirm-business" element={<ConfirmBusiness/>} />
+
+            {/* ผู้ดูแลระบบ */}
             <Route path="/administrator-homepage" element={<AdministratorHomepage />}/>
             <Route path="/administrator-homepage/account" element={<ManageAccount/>} />
             <Route path="/store" element={<VerifyStore/>} />
             <Route path="/reporting" element={<ReportingService/>} />
-            <Route path="/confirm-business" element={<ConfirmBusiness/>} />
           {/* </Route> */}
         </Routes>
     </div>

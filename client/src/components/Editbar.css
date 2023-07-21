@@ -17,6 +17,9 @@
 }
 .image-edit-display {
     height: 60px;
+    width: 60px;
+    object-fit: cover;
+    border-radius: 30px;
     margin-right: 30px;
 }
 .username-edit-display {

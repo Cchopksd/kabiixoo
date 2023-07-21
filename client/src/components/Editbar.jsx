@@ -1,15 +1,13 @@
 import React , {useState}from "react";
 import "./Editbar.css";
 
-const Editbar = () => {
-
-    const [userName, setUserName]=  useState("Sommai123");
+const Editbar = ({username, profileImage}) => {
 
     return(
         <div className="editbar-container">
             <div className="member-display">
-                <img className="image-edit-display" src={require("../images/dummy_profileImage.png")}/>
-                <label className="username-edit-display">{userName}</label>
+                <img className="image-edit-display" src={profileImage}/>
+                <label className="username-edit-display">{username}</label>
             </div>
             <div className="edit-menu">
                 <ul className="menu-style">

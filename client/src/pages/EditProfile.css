@@ -78,6 +78,9 @@
 }
 .edit-profileImage {
     height: 90px;
+    width: 90px;
+    object-fit: cover;
+    border-radius: 45px;
     margin-left: 35px;
 }
 .edit-name-box, .edit-surname-box, .edit-phoneNumber-box, .edit-birthDate-box  {
@@ -90,6 +93,27 @@
     color: #000000;
     cursor: pointer;
     transition: 0.5s ease;
+}
+
+/* .choosePhoto-input {
+    padding: 10px 20px;
+    color: black;
+    display: flex;
+    background-color: #F8EAD8;
+    width: 400px;
+    height: 25px;
+    border-radius: 10px;
+    border-style: none;
+    box-shadow: inset 0px 0px 8px rgba(0, 0, 0, 0.2);
+    font-size: 16px;
+} */
+.choosePhoto-input::file-selector-button{
+    background-color: #A7727D;
+    color: #E9E9E9;
+    border: none;
+    border-radius: 7px;
+    height: 25px;
+    box-shadow: inset 0px 0px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* จอ desktop 1 */

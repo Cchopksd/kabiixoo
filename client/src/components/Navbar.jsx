@@ -21,6 +21,7 @@ const Navbar = () => {
     const [userFullName, setUserFullName] = useState("");
     const [email, setEmail] = useState("");
     const [userImage, setUserImage]=  useState("")
+    const [slug,setSlug] = useState("")
 
     const [click, setClick] = useState(false);
     const handleClick = () => setClick(!click);
@@ -41,16 +42,15 @@ const Navbar = () => {
     // นำข้อมูลมาใช้ใน navbar
     const getUserInfo = async () => {
         await axios.post(`${process.env.REACT_APP_API}/get-user-login`,{username}).then(res => {
-            console.log(res.data)
             setEmail(res.data.mem_email)
             setUserImage(res.data.mem_profileImage)
+            setSlug(res.data.mem_slug)
         }).catch((error) => {
             console.log(error)
         })
     }
 
     useEffect(() => {
-        console.log(username)
         getUserInfo()
         if (username) {
             setIsLogin(true)
@@ -86,7 +86,7 @@ const Navbar = () => {
                                                 <label>{email}</label>
                                             </div>
                                             <div className="login-dropdown-middle">
-                                                <Link>แก้ไขข้อมูลส่วนตัว</Link>
+                                                <Link to={`/edit-profile/${slug}`}>แก้ไขข้อมูลส่วนตัว</Link>
                                             </div>
                                             <div className="login-dropdown-middle">
                                                 <Link>ให้บริการรับฝากสัตว์เลี้ยง</Link>
