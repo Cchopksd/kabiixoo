@@ -88,11 +88,11 @@ const servicePostSchema = mongoose.Schema({
     },
     svp_instagram: {
         type: String,
-        default: false
+        default: ""
     },
     svp_line: {
         type: String,
-        default: false
+        default: ""
     },
     svp_img1: {
         type: String,

@@ -22,6 +22,7 @@ import VerifyStore from './components/AdminComponents/VerifyStore';
 import ReportingService from './components/AdminComponents/ReportingService';
 import ConfirmBusiness from './pages/ConfirmBusiness';
 import CreateService from './pages/CreateService';
+import ProviderHome from './pages/ProviderHome'
 
 function App() {
   return (
@@ -50,6 +51,9 @@ function App() {
             <Route path="/report-provider" element={<ReportProvider />}/>
             <Route path="/confirm-business" element={<ConfirmBusiness/>} />
             <Route path='/create-service' element={<MemberRoute Component={CreateService}/>}/>
+
+            {/* ผู้ให้บริการ */}
+            <Route path='/provider-home' element={<ProviderHome/>}/>
 
             {/* ผู้ดูแลระบบ */}
             <Route path="/administrator-homepage" element={<AdministratorHomepage />}/>

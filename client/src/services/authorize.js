@@ -1,5 +1,7 @@
-// เก็บข้อมูลหรือเก็บ token / username => session storage
+import axios from "axios"
 
+
+// เก็บข้อมูลหรือเก็บ token / username => session storage
 export const authenticate = (response,next) => {
     if(window !== "undefined"){
         //เก็บข้อมูลลง session storage
@@ -41,4 +43,21 @@ export const logout = (next) => {
         sessionStorage.removeItem("user")
     }
     next()
+}
+
+export const getUserId = async () => {
+    if(window !== "undefined"){
+        if(sessionStorage.getItem("user")){
+            const username = JSON.parse(sessionStorage.getItem("user"))
+            try {
+                const id = await axios.post(`${process.env.REACT_APP_API}/get-userId`,{username})
+                return id
+            }catch (error) {
+                throw error;
+            }
+        }
+        else {
+            return false
+        }
+    }
 }

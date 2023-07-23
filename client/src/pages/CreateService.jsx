@@ -1,19 +1,83 @@
-import React ,{useState} from "react";
+import React ,{useState, useEffect} from "react";
 import "./CreateService.css"
 import Select from 'react-select'
 import ImageUploaderCreateService from "../components/ImageUploaderCreateService";
 import Footer from "../components/Footer"
+import axios from "axios";
+import { getUserId } from "../services/authorize";
+import Swal from "sweetalert2"
+import { useNavigate } from "react-router-dom";
 
 const CreateService = () => {
+
+    // redirect หน้า
+    const navigate = useNavigate()
+
+    // state ของ ผู้ที่จะทำการสร้างประกาศ
+    const [serviceOwner, setServiceOwner] = useState("")
+
+    // state ของ dropdown ที่อยู่
+    const [provinceList, setProvinceList] = useState([])
+    const [districtList, setDistrictList] = useState([])
+    const [subDistrictList, setSubDistrictList] = useState([])
+
+    // เรียกให้ load ข้อมูล dropdown
+    useEffect(() => {
+        loadData()
+    },[])
+
+    // โหลด จังหวัดจาก api
+    const loadData = async () => {
+        // ดึงข้อมูล id ของผู้ใช้งาน
+        try{
+            const id = await getUserId()
+            setServiceOwner(id.data)
+        }catch (error) {
+            console.error(error);
+        }
+        await axios.get(`https://ckartisan.com/api/provinces`)
+        .then((res) => {
+            setProvinceList(res.data)
+        }).catch(err => {
+            console.log(err)
+        })
+    }
+
+    // เมื่อเลือกจังหวัด
+    const onChangeProvince = async (event) => {
+        setProvinceName(event.target.value)
+        await axios.get(`https://ckartisan.com/api/amphoes?province=${event.target.value}`)
+        .then((res) => {
+            setDistrictList(res.data)
+        }).catch(err => {
+            console.log(err)
+        })
+    }
+
+    // เมื่อเลือกเขต
+    const onChangeDistrict = async (event) => {
+        setStateName(event.target.value)
+        await axios.get(`https://ckartisan.com/api/tambons?province=${provinceName}&amphoe=${event.target.value}`)
+        .then((res) => {
+            setSubDistrictList(res.data)
+        }).catch(err => {
+            console.log(err)
+        })
+    }
+
+    // เมื่อเลือกแขวง
+    const onChangeSubDistrict = async (event) => {
+        setDistrictName(event.target.value)
+    }
 
     // ส่วนข้อมูลที่อยู่และชื่อ
     const [serviceName, setServiceName] = useState("");
     const [addressNumber, setAddressNumber] = useState("");
     const [alleyName, setAlleyName] = useState("");
     const [roadName, setRoadName] = useState("");
-    const [provinceName, setProvinceName] = useState({});
-    const [stateName, setStateName] = useState({});
-    const [districtName, setDistrictName] = useState({});
+    const [provinceName, setProvinceName] = useState("");
+    const [stateName, setStateName] = useState("");
+    const [districtName, setDistrictName] = useState("");
     const [postalCode, setPostalCode] = useState("");
 
     //ส่วนคำแนะนำตัวและรายละเอียด
@@ -50,6 +114,199 @@ const CreateService = () => {
     //ราคาเริ่มต้นจาก range slider
     const [startPrice, setStartPrice] = useState(100);
 
+    // รูปที่จะส่งไปยัง server
+    const [image1, setImage1] = useState("")
+    const [image2, setImage2] = useState("")
+    const [image3, setImage3] = useState("")
+    const [image4, setImage4] = useState("")
+
+    // เช็คว่าแนบรูปไหม
+    const [uploadImg, setUploadImg] = useState(false)
+
+
+    const submitCreate = async (event) => {
+        event.preventDefault();
+        if (images.length > 0){
+            for (let i = 0; i < images.length; i++) {
+                const img = images[i];
+                const data = new FormData()
+                    data.append("file", img.file)
+                    data.append("upload_preset", "kabiixoo")
+                    data.append("cloud_name", "dmz2wct31")
+                    try {
+                        const response = await axios.post("https://api.cloudinary.com/v1_1/dmz2wct31/image/upload/", data);
+                        const imageUrl = response.data.url.toString();
+                        if (i === 0 && image1 === "") {
+                            setImage1(imageUrl);
+                        } else if (i === 1 && image2 === "") {
+                            setImage2(imageUrl);
+                        } else if (i === 2 && image3 === "") {
+                            setImage3(imageUrl);
+                        } else if (i === 3 && image4 === "") {
+                            setImage4(imageUrl);
+                        }
+                    } catch (error) {
+                        Swal.fire('แจ้งเตือน', error.message, 'error');
+                    }
+            }
+            setUploadImg(true)
+        } else {
+            // เช็คกรอกข้อมูลครบไหม
+            if (!serviceName || !addressNumber || !alleyName || !roadName || !provinceName || !stateName ||
+                !districtName || !postalCode || !introduceDesc || !serviceDesc) {
+                    Swal.fire(
+                        'แจ้งเตือน',
+                        'กรุณากรอกข้อมูลให้ครบ',
+                        'error'
+                    )
+                    return
+            }
+
+            // สร้าง Address แบบเต็ม
+            const serviceAddress = `${addressNumber} ${alleyName} ${roadName} ${districtName} ${stateName} ${provinceName} ${postalCode}`
+            if (serviceAddress) {
+                await axios.post(`${process.env.REACT_APP_API}/create-service`,{ serviceOwner, serviceName, serviceAddress, provinceName, districtName, introduceDesc, 
+                    serviceDesc, startPrice, haveGrooming, havePetStuff, havePetCar, havePool, havePetWalk,
+                    haveDog, haveCat, haveBird, haveRabbit, haveRoden, haveReptile, phone, facebook,
+                    instagram, line, image1, image2, image3, image4}).then((res) => {
+                        Swal.fire(
+                            'แจ้งเตือน',
+                            res.data.message,
+                            'success'
+                        )
+                        setServiceOwner("")
+                        setServiceName("")
+                        setProvinceName("")
+                        setDistrictName("")
+                        setAddressNumber("")
+                        setAlleyName("")
+                        setRoadName("")
+                        setStateName("")
+                        setPostalCode("")
+                        setIntroduceDesc("")
+                        setServiceDesc("")
+                        setStartPrice(100)
+                        setHaveGrooming(false)
+                        setHavePetStuff(false)
+                        setHavePetCar(false)
+                        setHavePool(false)
+                        setHavePetWalk(false)
+                        setHaveDog(false)
+                        setHaveCat(false)
+                        setHaveBird(false)
+                        setHaveRabbit(false)
+                        setHaveRoden(false)
+                        setHaveReptile(false)
+                        setHavePhone(false)
+                        setHaveFacebook(false)
+                        setHaveInstagram(false)
+                        setHaveLine(false)
+                        setPhone("")
+                        setFacebook("")
+                        setInstagram("")
+                        setLine("")
+                        setImages([])
+                        setImage1("")
+                        setImage2("")
+                        setImage3("")
+                        setImage4("")
+                        navigate('/provider-home')
+                    }).catch((err) => {
+                        Swal.fire(
+                            'แจ้งเตือน',
+                            err.response.data.error,
+                            'error'
+                        )
+                    })
+            }
+        }
+    }
+
+    // ทำงานเมื่อกด submit และมีรูปแนบด้วย
+    useEffect(() => {
+        if(uploadImg) {
+            // เช็คกรอกข้อมูลครบไหม
+            if (!serviceName || !addressNumber || !alleyName || !roadName || !provinceName || !stateName ||
+                !districtName || !postalCode || !introduceDesc || !serviceDesc) {
+                    Swal.fire(
+                        'แจ้งเตือน',
+                        'กรุณากรอกข้อมูลให้ครบ',
+                        'error'
+                    )
+                    return
+            }
+            // สร้าง Address แบบเต็ม
+            const serviceAddress = `${addressNumber} ${alleyName} ${roadName} ${districtName} ${stateName} ${provinceName} ${postalCode}`
+            if (serviceAddress) {
+                axios.post(`${process.env.REACT_APP_API}/create-service`,{ serviceOwner, serviceName, serviceAddress, provinceName, districtName, introduceDesc, 
+                    serviceDesc, startPrice, haveGrooming, havePetStuff, havePetCar, havePool, havePetWalk,
+                    haveDog, haveCat, haveBird, haveRabbit, haveRoden, haveReptile, phone, facebook,
+                    instagram, line, image1, image2, image3, image4}).then((res) => {
+                        Swal.fire(
+                            'แจ้งเตือน',
+                            res.data.message,
+                            'success'
+                        )
+                        setServiceOwner("")
+                        setServiceName("")
+                        setProvinceName("")
+                        setDistrictName("")
+                        setAddressNumber("")
+                        setAlleyName("")
+                        setRoadName("")
+                        setStateName("")
+                        setPostalCode("")
+                        setIntroduceDesc("")
+                        setServiceDesc("")
+                        setStartPrice(100)
+                        setHaveGrooming(false)
+                        setHavePetStuff(false)
+                        setHavePetCar(false)
+                        setHavePool(false)
+                        setHavePetWalk(false)
+                        setHaveDog(false)
+                        setHaveCat(false)
+                        setHaveBird(false)
+                        setHaveRabbit(false)
+                        setHaveRoden(false)
+                        setHaveReptile(false)
+                        setHavePhone(false)
+                        setHaveFacebook(false)
+                        setHaveInstagram(false)
+                        setHaveLine(false)
+                        setPhone("")
+                        setFacebook("")
+                        setInstagram("")
+                        setLine("")
+                        setImages([])
+                        setImage1("")
+                        setImage2("")
+                        setImage3("")
+                        setImage4("")
+                        navigate('/provider-home')
+                    }).catch((err) => {
+                        Swal.fire(
+                            'แจ้งเตือน',
+                            err.response.data.error,
+                            'error'
+                        )
+                    })
+            }
+        }
+    },[uploadImg])
+
+    //  state เก็บชุดรูปที่มาจาก child
+    const [images, setImages] = useState([])
+
+    const handleDataFromChild = (data) => {
+        setImages(data)
+    }
+
+    // เช็ค state จาก child component
+    useEffect(() => {
+        console.log(images); 
+    }, [images]);
+
     return (
         <div>
             <div className="createService-container">
@@ -80,15 +337,29 @@ const CreateService = () => {
                                 </div>
                                 <div className="createService-item-box">
                                     <label className="createService-title-2">จังหวัด</label>
-                                    <Select className="input-createService-address-2" options={provinceName}></Select>
+                                    <div>
+                                        <select className="input-createService-address-2" onChange={onChangeProvince}>
+                                            <option value="" disabled selected>เลือกจังหวัด</option>
+                                            { provinceList.map((item, index) =>
+                                                <option key={index} value={item.province}>{item.province}</option>)}
+                                        </select>
+                                    </div>
                                 </div>
                                 <div className="createService-item-box">
                                     <label className="createService-title-2">เขต/อำเภอ</label>
-                                    <Select className="input-createService-address-2" options={stateName}></Select>
+                                    <select className="input-createService-address-2" onChange={onChangeDistrict}>
+                                        <option value="" disabled selected>เลือกอำเภอ</option>
+                                        { districtList.map((item, index) =>
+                                            <option key={index} value={item.amphoe}>{item.amphoe}</option>)}
+                                    </select>
                                 </div>
                                 <div className="createService-item-box">
                                     <label className="createService-title-2">แขวง/ตำบล</label>
-                                    <Select className="input-createService-address-2 input-createService-end" options={districtName}></Select>
+                                    <select className="input-createService-address-2 input-createService-end" onChange={onChangeSubDistrict}>
+                                        <option value="" disabled selected>เลือกตำบล</option>
+                                        { subDistrictList.map((item, index) =>
+                                            <option key={index} value={item.tambon}>{item.tambon}</option>)}
+                                    </select>
                                 </div>
                                 <div className="createService-item-box">
                                     <label className="createService-title-2">รหัสไปรษณีย์</label>
@@ -169,22 +440,26 @@ const CreateService = () => {
                             <label className="createService-title-1">ช่องทางการติดต่อ</label>
                             <div className="createService-pet-checkbox-item">
                                 <div className={!havePhone ? "createService-contact-checkbox-box-1" : "createService-contact-checkbox-box-1-checked"}>
-                                    <input type="checkbox" checked={havePhone} onChange={()=> setHavePhone(!havePhone)}/>เบอร์โทรศัพท์
+                                    <input type="checkbox" checked={havePhone} onChange={()=> {setHavePhone(!havePhone)
+                                    setPhone("")}}/>เบอร์โทรศัพท์
                                     <img className="createService-contact-type-icon" src={require("../images/createServicePage/phoneIcon.png")}/>
                                     <input disabled={!havePhone} className="createService-contact-input" type="text" value={phone} onChange={(event) => setPhone(event.target.value)}/>
                                 </div>
                                 <div className={!haveFacebook ? "createService-contact-checkbox-box-2" : "createService-contact-checkbox-box-2-checked"}>
-                                    <input type="checkbox" checked={haveFacebook} onChange={()=> setHaveFacebook(!haveFacebook)}/>Facebook
+                                    <input type="checkbox" checked={haveFacebook} onChange={()=> {setHaveFacebook(!haveFacebook)
+                                    setFacebook("")}}/>Facebook
                                     <img className="createService-contact-type-icon" src={require("../images/createServicePage/facebookIcon.png")}/>
                                     <input disabled={!haveFacebook} className="createService-contact-input" type="text" value={facebook} onChange={(event) => setFacebook(event.target.value)}/>
                                 </div>
                                 <div className={!haveInstagram ? "createService-contact-checkbox-box-1 createService-contact-endline" : "createService-contact-checkbox-box-1-checked createService-contact-endline"}>
-                                    <input type="checkbox" checked={haveInstagram} onChange={()=> setHaveInstagram(!haveInstagram)}/>Instagram
+                                    <input type="checkbox" checked={haveInstagram} onChange={()=> {setHaveInstagram(!haveInstagram)
+                                    setInstagram("")}}/>Instagram
                                     <img className="createService-contact-type-icon" src={require("../images/createServicePage/instagramIcon.png")}/>
                                     <input disabled={!haveInstagram} className="createService-contact-input" type="text" value={instagram} onChange={(event) => setInstagram(event.target.value)}/>
                                 </div>
                                 <div className={!haveLine ? "createService-contact-checkbox-box-2 createService-contact-endline" : "createService-contact-checkbox-box-2-checked createService-contact-endline"}>
-                                    <input type="checkbox" checked={haveLine} onChange={()=> setHaveLine(!haveLine)}/>Line
+                                    <input type="checkbox" checked={haveLine} onChange={()=> {setHaveLine(!haveLine)
+                                    setLine("")}}/>Line
                                     <img className="createService-contact-type-icon" src={require("../images/createServicePage/lineIcon.png")}/>
                                     <input disabled={!haveLine} className="createService-contact-input" type="text" value={line} onChange={(event) => setLine(event.target.value)}/>
                                 </div>
@@ -210,10 +485,10 @@ const CreateService = () => {
                 <div className="create-part-5">
                     <div className="create-info-8-box">
                         <label className="createService-title-1">รูปภาพผู้ให้บริการและกิจการ</label>
-                        <ImageUploaderCreateService/>
+                        <ImageUploaderCreateService onDataSend={handleDataFromChild}/>
                     </div>
                 </div>
-                <button className="createService-btn">สร้างประกาศการให้บริการ</button>
+                <button className="createService-btn" onClick={submitCreate}>สร้างประกาศการให้บริการ</button>
             </div>
             <Footer/>
         </div>

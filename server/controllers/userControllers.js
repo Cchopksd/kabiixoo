@@ -45,7 +45,7 @@ exports.signin = async (req,res) => {
 exports.signup = async (req,res) => {
     // destructuring req
     const { name,surname,email,phone,birthDate,username,password,confirmPassword,image } = req.body
-    console.log(JSON.stringify(req.body))
+    // console.log(JSON.stringify(req.body))
 
     // สร้าง slug
     let slug = slugify(username)
@@ -171,9 +171,11 @@ exports.updateProfile = async (req,res) => {
     })
 }
 
-// ตรวจสอบ Token
-// exports.requireLogin = expressJWT({
-//     secret:process.env.JWT_SECRET,
-//     algorithms:["HS256"],
-//     userProperty:"auth"
-// })
+exports.getUserId = async (req,res) => {
+    const { username } = req.body
+    await Member.findOne({mem_username: username}).then((userInfo) => {
+        res.status(200).json(userInfo._id)
+    }).catch((err) => {
+        res.status(400).json({error: err})
+    })
+}

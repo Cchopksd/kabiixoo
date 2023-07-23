@@ -1,17 +1,22 @@
-import React, {useState, useRef} from "react"
+import React, {useState, useRef, useEffect} from "react"
 import "./ImageUploaderCreateService.css"
 
-const ImageUploaderCreateService = () => {
+const ImageUploaderCreateService = ({ onDataSend }) => {
+
 
     const [images, setImages] = useState([]);
     const [isDragging, setIsDragging] = useState(false);
     const fileInputRef = useRef(null);
 
+    useEffect(() => {
+        onDataSend(images)
+    },[images])
+
     const selectFiles = () => {
         fileInputRef.current.click();
     }
 
-    const onFileSelect = (event) => {
+    const onFileSelect = async (event) => {
         const files = event.target.files;
         if (files.length === 0) return;
         for (let i = 0; i < files.length; i++){
@@ -22,13 +27,14 @@ const ImageUploaderCreateService = () => {
                     {
                         name: files[i].name,
                         url: URL.createObjectURL(files[i]),
+                        file: event.target.files[0]
                     },
                 ])
             }
         }
     }
 
-    const deleteImage = (index) => {
+    const deleteImage = async (index) => {
         setImages((prevImages) => 
             prevImages.filter((_, i) => i != index)
         );
@@ -45,7 +51,7 @@ const ImageUploaderCreateService = () => {
         setIsDragging(false);
     }
 
-    const onDrop = (event) => {
+    const onDrop = async (event) => {
         event.preventDefault();
         setIsDragging(false);
         const files = event.dataTransfer.files;
@@ -57,6 +63,7 @@ const ImageUploaderCreateService = () => {
                     {
                         name: files[i].name,
                         url: URL.createObjectURL(files[i]),
+                        file: event.target.files[0]
                     },
                 ])
             }
