@@ -1,4 +1,4 @@
-import React ,{useState, useEffect} from "react";
+import React ,{useState, useEffect, useContext} from "react";
 import "./CreateService.css"
 import Select from 'react-select'
 import ImageUploaderCreateService from "../components/ImageUploaderCreateService";
@@ -7,8 +7,12 @@ import axios from "axios";
 import { getUserId } from "../services/authorize";
 import Swal from "sweetalert2"
 import { useNavigate } from "react-router-dom";
+import UserContext from "../contexts/UserProvider";
 
 const CreateService = () => {
+
+    // state ของ contextAPI
+    const { haveService, setHaveService } = useContext(UserContext);
 
     // redirect หน้า
     const navigate = useNavigate()
@@ -123,9 +127,9 @@ const CreateService = () => {
     // เช็คว่าแนบรูปไหม
     const [uploadImg, setUploadImg] = useState(false)
 
-
     const submitCreate = async (event) => {
         event.preventDefault();
+        // เช็คแนบรูป
         if (images.length > 0){
             for (let i = 0; i < images.length; i++) {
                 const img = images[i];
@@ -168,13 +172,12 @@ const CreateService = () => {
                 await axios.post(`${process.env.REACT_APP_API}/create-service`,{ serviceOwner, serviceName, serviceAddress, provinceName, districtName, introduceDesc, 
                     serviceDesc, startPrice, haveGrooming, havePetStuff, havePetCar, havePool, havePetWalk,
                     haveDog, haveCat, haveBird, haveRabbit, haveRoden, haveReptile, phone, facebook,
-                    instagram, line, image1, image2, image3, image4}).then((res) => {
-                        Swal.fire(
+                    instagram, line, image1, image2, image3, image4}).then(async (res) => {
+                        await Swal.fire(
                             'แจ้งเตือน',
                             res.data.message,
                             'success'
                         )
-                        setServiceOwner("")
                         setServiceName("")
                         setProvinceName("")
                         setDistrictName("")
@@ -210,7 +213,9 @@ const CreateService = () => {
                         setImage2("")
                         setImage3("")
                         setImage4("")
-                        navigate('/provider-home')
+                        setHaveService(true)
+                        navigate(`/provider-home/${serviceOwner}`)
+                        setServiceOwner("")
                     }).catch((err) => {
                         Swal.fire(
                             'แจ้งเตือน',
@@ -241,13 +246,12 @@ const CreateService = () => {
                 axios.post(`${process.env.REACT_APP_API}/create-service`,{ serviceOwner, serviceName, serviceAddress, provinceName, districtName, introduceDesc, 
                     serviceDesc, startPrice, haveGrooming, havePetStuff, havePetCar, havePool, havePetWalk,
                     haveDog, haveCat, haveBird, haveRabbit, haveRoden, haveReptile, phone, facebook,
-                    instagram, line, image1, image2, image3, image4}).then((res) => {
-                        Swal.fire(
+                    instagram, line, image1, image2, image3, image4}).then(async (res) => {
+                        await Swal.fire(
                             'แจ้งเตือน',
                             res.data.message,
                             'success'
                         )
-                        setServiceOwner("")
                         setServiceName("")
                         setProvinceName("")
                         setDistrictName("")
@@ -283,7 +287,9 @@ const CreateService = () => {
                         setImage2("")
                         setImage3("")
                         setImage4("")
-                        navigate('/provider-home')
+                        setHaveService(true)
+                        navigate(`/provider-home/${serviceOwner}`)
+                        setServiceOwner("")
                     }).catch((err) => {
                         Swal.fire(
                             'แจ้งเตือน',

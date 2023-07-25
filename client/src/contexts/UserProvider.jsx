@@ -8,6 +8,7 @@ export const UserProvider = ({children}) => {
 
     const navigate = useNavigate()
     const [user, setUser] = useState("")
+    const [haveService, setHaveService] = useState(false)
 
     useEffect(() => {
         const userInfo = JSON.parse(sessionStorage.getItem("user"))
@@ -20,7 +21,7 @@ export const UserProvider = ({children}) => {
     },[navigate])
 
     return (
-        <UserContext.Provider value={{username: user}}>
+        <UserContext.Provider value={{username: user, haveService, setHaveService}}>
             {children}
         </UserContext.Provider>
     )

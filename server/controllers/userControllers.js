@@ -150,7 +150,6 @@ exports.updateProfile = async (req,res) => {
     const { slug } = req.params
     const { mem_name,mem_surname,mem_phoneNumber,mem_birthDate } = req.body
     const mem_profileImage = req.body.newImage
-    console.log(req.body)
     
     // เช็คกรอกข้อมูลให้ครบ
     if (mem_name === "" || mem_surname === "" || mem_phoneNumber === "" || mem_birthDate === ""){
@@ -171,6 +170,7 @@ exports.updateProfile = async (req,res) => {
     })
 }
 
+// เอา id ของ member
 exports.getUserId = async (req,res) => {
     const { username } = req.body
     await Member.findOne({mem_username: username}).then((userInfo) => {

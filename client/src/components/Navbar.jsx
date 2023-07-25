@@ -6,6 +6,7 @@ import {RiArrowDropDownLine} from "react-icons/ri"
 import UserContext from "../contexts/UserProvider";
 import axios from "axios";
 import { logOut, logout } from "../services/authorize"
+import { getUserId } from "../services/authorize";
 
 const Navbar = () => {
 
@@ -13,7 +14,7 @@ const Navbar = () => {
     const navigate = useNavigate();
 
     // state ของ contextAPI
-    const { username } = useContext(UserContext);
+    const { username, haveService, setHaveService } = useContext(UserContext);
 
     // state ของ การ login
     const [dropdownClicked, setDropdownClicked] = useState(false);
@@ -28,6 +29,10 @@ const Navbar = () => {
     const closeMobileMenu = () => setClick(false);
 
     const [size, setSize] = useState(0);
+
+    // state ของ สมาชิกที่มีบริการ
+    const [userId, setUserId] = useState()
+
 
     // ขนาดของหน้าจอ
     useLayoutEffect(() => {
@@ -51,12 +56,33 @@ const Navbar = () => {
     }
 
     useEffect(() => {
+        loadData()
         getUserInfo()
         if (username) {
             setIsLogin(true)
             setUserFullName(username)
         }
-    },[isLogin,userFullName,username])
+    },[username]) // ,isLogin,userFullName
+
+    // เมื่อ userid เปลี่ยนแปลงให้มาทำ block นี้ กัน async
+    useEffect(() => {
+        // ยิง api เพื่อเช็คว่ามีบริการไหม
+        axios.post(`${process.env.REACT_APP_API}/check-service`,{userId}).then((res) => {
+            setHaveService(res.data.status)
+        }).catch((res) => {
+            setHaveService(res.response.data.status)
+        })
+    },[userId])
+
+    // โหลดข้อมูลเพื่อใช้ในการแสดงผล
+    const loadData = async () => {
+        try{
+            const id = await getUserId()
+            setUserId(id.data)
+        }catch (error) {
+            console.error(error);
+        }
+    } 
 
     return (
         <>
@@ -91,7 +117,7 @@ const Navbar = () => {
                                                 <Link to={`/edit-profile/${slug}`} onClick={() => setDropdownClicked(!dropdownClicked)}>แก้ไขข้อมูลส่วนตัว</Link>
                                             </div>
                                             <div className="login-dropdown-middle">
-                                                <Link to={'/create-service'} onClick={() => setDropdownClicked(!dropdownClicked)}>ให้บริการรับฝากสัตว์เลี้ยง</Link>
+                                                <Link to={haveService ? `/provider-home/${userId}`:'/create-service'} onClick={() => setDropdownClicked(!dropdownClicked)}>ให้บริการรับฝากสัตว์เลี้ยง</Link>
                                             </div>
                                             <div className="login-dropdown-menu-border login-dropdown-middle">
                                                 <Link onClick={() => setDropdownClicked(!dropdownClicked)}>ประวัติการแชท</Link>
@@ -99,6 +125,7 @@ const Navbar = () => {
                                             <div className="login-dropdown-bottom" role="button" onClick={() => logout(() => {
                                                 navigate("/")
                                                 setDropdownClicked(!dropdownClicked)
+                                                setHaveService(false)
                                                 // reload หน้าเว็บ
                                                 window.location.reload(true)
                                             })}>
@@ -110,7 +137,7 @@ const Navbar = () => {
                                         <Link to={`/edit-profile/${slug}`}>แก้ไขข้อมูลส่วนตัว</Link>
                                     </li>
                                     <li className={click ? size <= 850 ? "mobile-spacing" :"mobile-dropdown-display-none" : size <= 850 ? "mobile-spacing" :"mobile-dropdown-display-none"} onClick={closeMobileMenu}>
-                                        <Link>ให้บริการรับฝากสัตว์เลี้ยง</Link>
+                                        <Link to={haveService ? `/provider-home/${userId}`:'/create-service'}>ให้บริการรับฝากสัตว์เลี้ยง</Link>
                                     </li >
                                     <li className={click ? size <= 850 ? "mobile-spacing" :"mobile-dropdown-display-none" : size <= 850 ? "mobile-spacing" :"mobile-dropdown-display-none"} onClick={closeMobileMenu}>
                                         <Link>ประวัติการแชท</Link>
@@ -118,6 +145,7 @@ const Navbar = () => {
                                     <li className={click ? size <= 850 ? "mobile-spacing" :"mobile-dropdown-display-none" : size <= 850 ? "mobile-spacing" :"mobile-dropdown-display-none"} onClick={closeMobileMenu}>
                                         <Link onClick={() => logout(() => {
                                             navigate("/")
+                                            setHaveService(false)
                                             // reload หน้าเว็บ
                                             window.location.reload(true)
                                         })}>ออกจากระบบ</Link>

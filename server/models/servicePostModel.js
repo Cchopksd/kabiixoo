@@ -96,16 +96,25 @@ const servicePostSchema = mongoose.Schema({
     },
     svp_img1: {
         type: String,
+        default: ""
     },
     svp_img2: {
         type: String,
+        default: ""
     },
     svp_img3: {
         type: String,
+        default: ""
     },
     svp_img4: {
         type: String,
+        default: ""
     },
+    svp_slug: {
+        type: String,
+        lowercase: true,
+        unique: true
+    }
 })
 
 module.exports = mongoose.model("ServicePosts",servicePostSchema)

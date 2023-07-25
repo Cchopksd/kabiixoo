@@ -23,6 +23,7 @@ import ReportingService from './components/AdminComponents/ReportingService';
 import ConfirmBusiness from './pages/ConfirmBusiness';
 import CreateService from './pages/CreateService';
 import ProviderHome from './pages/ProviderHome'
+import EditService from './pages/EditService'
 
 function App() {
   return (
@@ -49,11 +50,12 @@ function App() {
             {/* ผู้ใช้งานที่เป็นสมาชิก */}
             <Route path="/review" element={<Review />}/>
             <Route path="/report-provider" element={<ReportProvider />}/>
-            <Route path="/confirm-business" element={<ConfirmBusiness/>} />
             <Route path='/create-service' element={<MemberRoute Component={CreateService}/>}/>
 
             {/* ผู้ให้บริการ */}
-            <Route path='/provider-home' element={<ProviderHome/>}/>
+            <Route path='/provider-home/:userId' element={<ProviderHome/>}/>
+            <Route path="/confirm-business" element={<ConfirmBusiness/>} />
+            <Route path='/edit-service/:slug' element={<EditService/>}/>
 
             {/* ผู้ดูแลระบบ */}
             <Route path="/administrator-homepage" element={<AdministratorHomepage />}/>
