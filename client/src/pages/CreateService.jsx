@@ -4,7 +4,7 @@ import Select from 'react-select'
 import ImageUploaderCreateService from "../components/ImageUploaderCreateService";
 import Footer from "../components/Footer"
 import axios from "axios";
-import { getUserId } from "../services/authorize";
+import { getToken, getUserId } from "../services/authorize";
 import Swal from "sweetalert2"
 import { useNavigate } from "react-router-dom";
 import UserContext from "../contexts/UserProvider";
@@ -172,7 +172,11 @@ const CreateService = () => {
                 await axios.post(`${process.env.REACT_APP_API}/create-service`,{ serviceOwner, serviceName, serviceAddress, provinceName, districtName, introduceDesc, 
                     serviceDesc, startPrice, haveGrooming, havePetStuff, havePetCar, havePool, havePetWalk,
                     haveDog, haveCat, haveBird, haveRabbit, haveRoden, haveReptile, phone, facebook,
-                    instagram, line, image1, image2, image3, image4}).then(async (res) => {
+                    instagram, line, image1, image2, image3, image4},{
+                        headers: {
+                            authorization: `Bearer ${getToken()}`
+                        }
+                    }).then(async (res) => {
                         await Swal.fire(
                             'แจ้งเตือน',
                             res.data.message,
@@ -246,7 +250,11 @@ const CreateService = () => {
                 axios.post(`${process.env.REACT_APP_API}/create-service`,{ serviceOwner, serviceName, serviceAddress, provinceName, districtName, introduceDesc, 
                     serviceDesc, startPrice, haveGrooming, havePetStuff, havePetCar, havePool, havePetWalk,
                     haveDog, haveCat, haveBird, haveRabbit, haveRoden, haveReptile, phone, facebook,
-                    instagram, line, image1, image2, image3, image4}).then(async (res) => {
+                    instagram, line, image1, image2, image3, image4},{
+                        headers: {
+                            authorization: `Bearer ${getToken()}`
+                        }
+                    }).then(async (res) => {
                         await Swal.fire(
                             'แจ้งเตือน',
                             res.data.message,
@@ -343,13 +351,11 @@ const CreateService = () => {
                                 </div>
                                 <div className="createService-item-box">
                                     <label className="createService-title-2">จังหวัด</label>
-                                    <div>
-                                        <select className="input-createService-address-2" onChange={onChangeProvince}>
-                                            <option value="" disabled selected>เลือกจังหวัด</option>
-                                            { provinceList.map((item, index) =>
-                                                <option key={index} value={item.province}>{item.province}</option>)}
-                                        </select>
-                                    </div>
+                                    <select className="input-createService-address-2" onChange={onChangeProvince}>
+                                        <option value="" disabled selected>เลือกจังหวัด</option>
+                                        { provinceList.map((item, index) =>
+                                            <option key={index} value={item.province}>{item.province}</option>)}
+                                    </select>
                                 </div>
                                 <div className="createService-item-box">
                                     <label className="createService-title-2">เขต/อำเภอ</label>

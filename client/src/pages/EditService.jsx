@@ -6,6 +6,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import Swal from "sweetalert2";
 import UserContext from "../contexts/UserProvider";
+import { getToken } from "../services/authorize";
 
 const EditService = () => {
 
@@ -86,7 +87,12 @@ const EditService = () => {
     // เมื่อเข้าสู่หน้า
     useEffect(() => {
         loadData()
-        axios.get(`${process.env.REACT_APP_API}/edit-service/${params.slug}`).then((res) => {
+        axios.get(`${process.env.REACT_APP_API}/edit-service/${params.slug}`,
+        {
+            headers: {
+                authorization: `Bearer ${getToken()}`
+            }
+        }).then((res) => {
             const addressSplitArr = res.data.svp_address.split(" ")
             setServiceName(res.data.svp_name)
             setAddressNumber(addressSplitArr[0])
@@ -268,7 +274,11 @@ const EditService = () => {
                     provinceName, districtName, introduceDesc, 
                     serviceDesc, startPrice, haveGrooming, havePetStuff, havePetCar, havePool, havePetWalk,
                     haveDog, haveCat, haveBird, haveRabbit, haveRoden, haveReptile, phone, facebook,
-                    instagram, line, image1, image2, image3, image4}).then(async(res) => {
+                    instagram, line, image1, image2, image3, image4},{
+                        headers: {
+                            authorization: `Bearer ${getToken()}`
+                        }
+                    }).then(async(res) => {
                         await Swal.fire(
                             'แจ้งเตือน',
                             res.data.message,
@@ -332,6 +342,7 @@ const EditService = () => {
                         'กรุณากรอกข้อมูลให้ครบ',
                         'error'
                     )
+                    setUploadImg(false)
                     return
             }
             // สร้าง Address แบบเต็ม
@@ -341,7 +352,11 @@ const EditService = () => {
                     provinceName, districtName, introduceDesc, 
                     serviceDesc, startPrice, haveGrooming, havePetStuff, havePetCar, havePool, havePetWalk,
                     haveDog, haveCat, haveBird, haveRabbit, haveRoden, haveReptile, phone, facebook,
-                    instagram, line, image1, image2, image3, image4}).then(async(res) => {
+                    instagram, line, image1, image2, image3, image4},{
+                        headers: {
+                            authorization: `Bearer ${getToken()}`
+                        }
+                    }).then(async(res) => {
                         await Swal.fire(
                             'แจ้งเตือน',
                             res.data.message,
@@ -406,7 +421,11 @@ const EditService = () => {
             confirmButtonText: 'ยืนยัน'
           }).then(async (result) => {
             if (result.isConfirmed) {
-                await axios.delete(`${process.env.REACT_APP_API}/edit-service/${params.slug}`).then(async(res) => {
+                await axios.delete(`${process.env.REACT_APP_API}/edit-service/${params.slug}`,{
+                    headers: {
+                        authorization: `Bearer ${getToken()}`
+                    }
+                }).then(async(res) => {
                     await Swal.fire(
                         'แจ้งเตือน',
                         res.data.message,

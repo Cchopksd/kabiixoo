@@ -5,7 +5,7 @@ import { FiMenu, FiX } from "react-icons/fi";
 import {RiArrowDropDownLine} from "react-icons/ri"
 import UserContext from "../contexts/UserProvider";
 import axios from "axios";
-import { logOut, logout } from "../services/authorize"
+import { getToken, logOut, logout } from "../services/authorize"
 import { getUserId } from "../services/authorize";
 
 const Navbar = () => {
@@ -67,7 +67,13 @@ const Navbar = () => {
     // เมื่อ userid เปลี่ยนแปลงให้มาทำ block นี้ กัน async
     useEffect(() => {
         // ยิง api เพื่อเช็คว่ามีบริการไหม
-        axios.post(`${process.env.REACT_APP_API}/check-service`,{userId}).then((res) => {
+        axios.post(`${process.env.REACT_APP_API}/check-service`,{userId},
+            {
+                headers: {
+                    authorization: `Bearer ${getToken()}`
+                }
+            }
+        ).then((res) => {
             setHaveService(res.data.status)
         }).catch((res) => {
             setHaveService(res.response.data.status)

@@ -114,7 +114,11 @@ const servicePostSchema = mongoose.Schema({
         type: String,
         lowercase: true,
         unique: true
+    },
+    svp_verified: {
+        type: Boolean,
+        default: false
     }
-})
+}, {timestamps: true})
 
 module.exports = mongoose.model("ServicePosts",servicePostSchema)

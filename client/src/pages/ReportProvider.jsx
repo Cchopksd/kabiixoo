@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import "./ReportProvider.css"
-import ImageUploader from "../components/ImageUploader";
+import ImageUploader from "../components/ImageUploaderBusiness";
 import Footer from "../components/Footer";
 
 const ReportProvider = () => {

@@ -3,7 +3,7 @@ import { BrowserRouter , Route, Routes, useLocation  } from 'react-router-dom';
 import MemberRoute from './MemberRoute';
 import './App.css'
 import Navbar from './components/Navbar';
-import ImageUploader from './components/ImageUploader';
+import ImageUploader from './components/ImageUploaderBusiness';
 import Home from './pages/Home';
 import About from './pages/About';
 import SignIn from './pages/SignIn';
@@ -54,7 +54,7 @@ function App() {
 
             {/* ผู้ให้บริการ */}
             <Route path='/provider-home/:userId' element={<ProviderHome/>}/>
-            <Route path="/confirm-business" element={<ConfirmBusiness/>} />
+            <Route path="/confirm-business/:slug" element={<ConfirmBusiness/>} />
             <Route path='/edit-service/:slug' element={<EditService/>}/>
 
             {/* ผู้ดูแลระบบ */}

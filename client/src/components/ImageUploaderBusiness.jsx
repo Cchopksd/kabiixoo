@@ -1,11 +1,15 @@
-import React, {useState, useRef} from "react"
+import React, {useState, useRef, useEffect} from "react"
 import "./ImageUploader.css"
 
-const ImageUploader = () => {
+const ImageUploaderBusiness = ({ onDataSendBusiness }) => {
 
     const [images, setImages] = useState([]);
     const [isDragging, setIsDragging] = useState(false);
     const fileInputRef = useRef(null);
+
+    useEffect(() => {
+        onDataSendBusiness(images)
+    },[images])
 
     const selectFiles = () => {
         fileInputRef.current.click();
@@ -22,6 +26,7 @@ const ImageUploader = () => {
                     {
                         name: files[i].name,
                         url: URL.createObjectURL(files[i]),
+                        file: event.target.files[0]
                     },
                 ])
             }
@@ -57,6 +62,7 @@ const ImageUploader = () => {
                     {
                         name: files[i].name,
                         url: URL.createObjectURL(files[i]),
+                        file: event.target.files[0]
                     },
                 ])
             }
@@ -96,4 +102,4 @@ const ImageUploader = () => {
     );
 }
 
-export default ImageUploader;
+export default ImageUploaderBusiness;

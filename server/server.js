@@ -7,6 +7,7 @@ const connectDB = require("./configs/connectDB") // ไฟล์เชื่อ�
 //import router ต่างๆ
 const userRoute = require('./routes/userRoutes')
 const servicePostRoute = require('./routes/servicePostRoutes')
+const confirmBusinessRoute = require('./routes/confirmBusinessRoutes')
 
 // ใช้งาน package dotenv
 require('dotenv').config()
@@ -25,6 +26,7 @@ app.use(morgan("dev"))
 // route ต่างๆ
 app.use("/api",userRoute)
 app.use("/api",servicePostRoute)
+app.use("/api",confirmBusinessRoute)
 
 const PORT = process.env.PORT || 5000
 
