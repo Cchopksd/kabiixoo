@@ -8,6 +8,7 @@ const connectDB = require("./configs/connectDB") // ไฟล์เชื่อ�
 const userRoute = require('./routes/userRoutes')
 const servicePostRoute = require('./routes/servicePostRoutes')
 const confirmBusinessRoute = require('./routes/confirmBusinessRoutes')
+const reportRoute = require('./routes/reportRoutes')
 
 // ใช้งาน package dotenv
 require('dotenv').config()
@@ -27,6 +28,7 @@ app.use(morgan("dev"))
 app.use("/api",userRoute)
 app.use("/api",servicePostRoute)
 app.use("/api",confirmBusinessRoute)
+app.use("/api",reportRoute)
 
 const PORT = process.env.PORT || 5000
 

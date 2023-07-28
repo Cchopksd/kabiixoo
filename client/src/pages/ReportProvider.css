@@ -22,6 +22,8 @@
 }
 .report-img-display{
     width:110px;
+    height: 110px;
+    border-radius: 55px;
     margin: auto;
     margin-bottom: 30px;
 }
@@ -94,6 +96,8 @@
     }
     .report-img-display{
         width:90px;
+        height: 90px;
+        border-radius: 45px;
     }
     .report-info-header {
         font-size: 17px;
@@ -126,6 +130,8 @@
     }
     .report-img-display{
         width:70px;
+        height: 70px;
+        border-radius: 35px;
     }
     .report-info-header {
         font-size: 15px;
