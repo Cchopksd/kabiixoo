@@ -1,13 +1,22 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import "./ReportProvider.css"
-import ImageUploader from "../components/ImageUploaderBusiness";
+import ImageUploaderReport from "../components/ImageUploaderReport";
 import Footer from "../components/Footer";
 
 const ReportProvider = () => {
 
-    const [businessName,setBusinessName] = useState("ร้านเวลแคร์ด๊อก");
+    const [businessName,setBusinessName] = useState("");
     const [reportTopic,setReportTopic] = useState("");
     const [reportDesc,setReportDesc] = useState("");
+
+    const [images, setImages] = useState([])
+    const [image1, setImage1] = useState("")
+    const [image2, setImage2] = useState("")
+    const [image3, setImage3] = useState("")
+
+    const handleDataFromChild = (data) => {
+        setImages(data)
+    }
 
     return (
         <div>
@@ -27,7 +36,7 @@ const ReportProvider = () => {
                 </div>
                 <div className="report-img-box">
                     <label className="report-info-header">รูปภาพประกอบ (ถ้ามี)</label>
-                    <ImageUploader/>
+                    <ImageUploaderReport onDataSend={handleDataFromChild}/>
                 </div>
                 <button className="comfirm-report-btn">ส่งรายงาน</button>
             </div>

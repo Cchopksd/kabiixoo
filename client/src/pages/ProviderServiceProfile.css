@@ -333,6 +333,9 @@
     height: 25px;
     margin-right: 5px;
 }
+.ps-profile-link {
+    text-decoration: none;
+}
 
 @media screen and (min-width : 850px) and (max-width : 1080px){
     .ps-profile-container {

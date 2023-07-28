@@ -79,7 +79,6 @@ const EditProfile = () => {
                     err.response.data.error,
                     'error'
                 )
-                window.location.reload(true)
             })
         }
     },[newImage])
@@ -135,7 +134,6 @@ const EditProfile = () => {
                     err.response.data.error,
                     'error'
                 )
-                window.location.reload(true)
             })
         }
     }

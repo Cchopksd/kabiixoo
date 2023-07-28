@@ -24,6 +24,7 @@ import ConfirmBusiness from './pages/ConfirmBusiness';
 import CreateService from './pages/CreateService';
 import ProviderHome from './pages/ProviderHome'
 import EditService from './pages/EditService'
+import ProviderServiceProfile from './pages/ProviderServiceProfile';
 
 function App() {
   return (
@@ -45,11 +46,12 @@ function App() {
             {/* ผู้ใช้งานระบบ */}
             <Route path="/signin" element={<SignIn />}/>
             <Route path="/signup" element={<SignUp />}/>
-            <Route path='/edit-profile/:slug' element={<MemberRoute Component={EditProfile}/>}/> 
+            <Route path='/edit-profile/:slug' element={<MemberRoute Component={EditProfile}/>}/>
+            <Route path='/provider-profile/:slug' element={<ProviderServiceProfile/>}/>
 
             {/* ผู้ใช้งานที่เป็นสมาชิก */}
             <Route path="/review" element={<Review />}/>
-            <Route path="/report-provider" element={<ReportProvider />}/>
+            <Route path="/report-provider/:slug" element={<ReportProvider />}/>
             <Route path='/create-service' element={<MemberRoute Component={CreateService}/>}/>
 
             {/* ผู้ให้บริการ */}

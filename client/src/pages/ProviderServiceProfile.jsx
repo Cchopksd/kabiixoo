@@ -1,10 +1,14 @@
-import React , {useState} from "react";
+import React , {useEffect, useState} from "react";
 import "./ProviderServiceProfile.css";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import {IoIosArrowForward,IoIosArrowBack} from "react-icons/io"
 import Footer from "../components/Footer";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import Swal from "sweetalert2";
+import axios from "axios";
+import { getToken } from "../services/authorize";
 
 const SampleNextArrow = ({onClick}) => {
     return (
@@ -24,6 +28,116 @@ const SamplePrevArrow = ({onClick}) => {
 
 const ProviderServiceProfile = () => {
 
+    // url parameter
+    const params = useParams()
+
+    //useState ต่างๆ
+    const [serviceName, setServiceName] = useState("");
+    const [introduceDesc, setIntroduceDesc] = useState("");
+    const [serviceDesc, setServiceDesc] = useState("")
+    const [serviceAddress, setServiceAddress] = useState("");
+    const [serviceProvince, setServiceProvince] = useState("");
+
+    const [confirmBusiness, setConfirmBusiness] = useState(true);
+
+    const [serviceGrooming, setServiceGrooming] = useState(true);
+    const [servicePetWalk, setServicePetWalk] = useState(false);
+    const [servicePool, setServicePool] = useState(false);
+    const [servicePetCar, setServicePetCar] = useState(true);
+    const [servicePetStuff, setServicePetStuff] = useState(true);
+
+    const [serviceDog, setServiceDog] = useState(true);
+    const [serviceCat, setServiceCat] = useState(true);
+    const [serviceRabbit, setServiceRabbit] = useState(false);
+    const [serviceBird, setServiceBird] = useState(false);
+    const [serviceRoden, setServiceRoden] = useState(false);
+    const [serviceReptile, setServiceReptile] = useState(false);
+
+    const [servicePhone, setServicePhone] = useState("")
+    const [serviceFacebook, setServiceFacebook] = useState("")
+    const [serviceInstagram, setServiceInstagram] = useState("")
+    const [serviceLine, setServiceLine] = useState("")
+
+    const [providerName, setProviderName] = useState("");
+    const [serviceReview, setServiceReview] = useState([]);
+
+    const [images, setImages] = useState([])
+    const [image1, setImage1] = useState("")
+    const [image2, setImage2] = useState("")
+    const [image3, setImage3] = useState("")
+    const [image4, setImage4] = useState("")
+    const [configImages, setConfigImages] = useState(false)
+
+    // เมื่อเข้าสู่หน้า
+    useEffect(() => {
+        axios.get(`${process.env.REACT_APP_API}/edit-service/${params.slug}`).then((res) => {
+            setServiceName(res.data.svp_name)
+            setIntroduceDesc(res.data.svp_introduce)
+            setServiceDesc(res.data.svp_description)
+            setServiceAddress(res.data.svp_address)
+            setServiceProvince(res.data.svp_province)
+            setConfirmBusiness(res.data.svp_verified)
+            setServiceGrooming(res.data.svp_grooming)
+            setServicePetWalk(res.data.svp_petWalk)
+            setServicePool(res.data.svp_pool)
+            setServicePetCar(res.data.svp_carService)
+            setServicePetStuff(res.data.svp_petStuff)
+            setServiceDog(res.data.svp_haveDog)
+            setServiceCat(res.data.svp_haveCat)
+            setServiceRabbit(res.data.svp_haveRabbit)
+            setServiceBird(res.data.svp_haveBird)
+            setServiceRoden(res.data.svp_haveRodent)
+            setServiceReptile(res.data.svp_haveReptile)
+            setServicePhone(res.data.svp_havePhone)
+            setServiceFacebook(res.data.svp_facebook)
+            setServiceInstagram(res.data.svp_instagram)
+            setServiceLine(res.data.svp_line)
+            setProviderName(`${res.data.svp_owner.mem_name} ${res.data.svp_owner.mem_surname}`)
+
+            if(!res.data.svp_img1){
+                setImage1('https://i.cbc.ca/1.5077459.1553886010!/fileImage/httpImage/pets.jpg')
+                setImage2('https://i.cbc.ca/1.5077459.1553886010!/fileImage/httpImage/pets.jpg')
+                setImage3('https://i.cbc.ca/1.5077459.1553886010!/fileImage/httpImage/pets.jpg')
+                setImage4('https://i.cbc.ca/1.5077459.1553886010!/fileImage/httpImage/pets.jpg')
+            }
+            else if (!res.data.svp_img2){
+                setImage1(res.data.svp_img1)
+                setImage2(res.data.svp_img1)
+                setImage3(res.data.svp_img1)
+                setImage4(res.data.svp_img1)
+            }
+            else if (!res.data.svp_img3){
+                setImage1(res.data.svp_img1)
+                setImage2(res.data.svp_img2)
+                setImage3(res.data.svp_img1)
+                setImage4(res.data.svp_img2)
+            }
+            else if (!res.data.svp_img4){
+                setImage1(res.data.svp_img1)
+                setImage2(res.data.svp_img2)
+                setImage3(res.data.svp_img3)
+                setImage4(res.data.svp_img1)
+            }
+            else {
+                setImage1(res.data.svp_img1)
+                setImage2(res.data.svp_img2)
+                setImage3(res.data.svp_img3)
+                setImage4(res.data.svp_img4)
+            }
+            configImages(true)
+        }).catch((err) => {
+            Swal.fire('แจ้งเตือน',err.response.data.error, 'error')
+        })
+    },[])
+
+    useEffect(() => {
+        const newArray = [image1, image2, image3, image4];
+        setImages(newArray);
+        setConfigImages(false)
+    },[image1, image2, image3, image4])
+
+
+    // configs ของ slider
     const settings = {
         dots: true,
         infinite: true,
@@ -63,25 +177,6 @@ const ProviderServiceProfile = () => {
         ]
     };
 
-    // dummy data
-    const imgArray = [
-        {
-            id: 1,
-            imgPath: "https://i.cbc.ca/1.5077459.1553886010!/fileImage/httpImage/pets.jpg"
-        },
-        {
-            id: 2,
-            imgPath: "https://www.flytap.com/-/media/Flytap/new-tap-pages/travelling-with-animals/pets/flying-with-pets-og-image-1200x630.jpg"
-        },
-        {
-            id: 3,
-            imgPath: "https://www.thesprucepets.com/thmb/Cnp-fNbwbXVavQgjuUsCMSCk-m8=/1500x0/filters:no_upscale():strip_icc()/exotic-pets-for-apartment-living-1238589-hero-6bd87a75363e4da4b38f6c244644b1db.jpg"
-        },
-        {
-            id: 4,
-            imgPath: "https://cdn.shopify.com/s/files/1/0095/4253/3179/files/mobile-banne_-new.jpg?v=1614330110"
-        }
-    ];
 
     const reviewArray = [
         {
@@ -104,45 +199,14 @@ const ProviderServiceProfile = () => {
         }
     ];
 
-    //useState ต่างๆ
-    const [serviceName, setServiceName] = useState("รับฝากน้องแมวทุกสายพันธ์ By Ally");
-    const [introduceDesc, setIntroduceDesc] = useState("สวัสดีค่ะ ชื่อแอลลี่นะคะ แอลลี่เป็นคนรักน้องแมวมากๆ ตั้งแต่เด็กแล้วคะ ตอนนี้เลี้ยงน้องแมวที่บ้านไว้อยู่ 3 ตัว ชื่อ น้องส้ม น้องชาไทย และ น้องคิงคอง น้องๆสามตัวที่บ้าน สนิทเป็นกันเองมาก น้องๆพร้อมตอนรับน้องแมว ที่จะมาอยู่ ด้วยกันเป็นเพื่อนๆ ไม่ให้ น้องแมวที่มาใช้ บริการ เหงานะคะ ถ้าท่านไหนสนใจใช้บริการสามารถเข้ามา พูดคุยกันก่อนได้ค่ะ"); 
-    const [serviceDesc, setServiceDesc] = useState("ตอนนี้ที่บ้านรับฝากน้องแมวทุกสายพันธ์เลยคะ ราคาเริ่มต้นต่อคืนจะอยู่ที่คืนละ 500 บาท\nมีรายละเอียดของน้องแมวที่จะเข้ารับฝากตามนี้คะ\nน้องแมวฉีดวัคซีนครบแล้ว\nน้องแมวไม่ดุหรือทำร้ายแมวตัวอื่นๆ\nน้องแมวมีอายุ 4 เดือนขึ้นไป\nน้องแมวไม่มีโรคประจำตัว\nเจ้าของต้องเตรียมอาหารน้องแมวมาเองตามจำนวนวันที่เข้ารับฝาก\nมีบริการเพิ่มเติมคือ บริการกรูมมิ่ง หรือ อาบน้ำให้กับน้องแมวคะ และถ้าลูกค้าไม่ได้นำอาหารมาให้น้องแมวสามารถซื้ออาหารที่นี่ได้คะ ถ้าสนใจหากเกิดเหตุฉุกเฉินกับน้องแมวจะรับพาไปยังโรงพยาบาลสัตว์ที่ใกล้ที่สุดเพื่อความปลอดภัยของน้องแมวคะ และจะรีบติดต่อกับเจ้าของให้เร็วที่สุด");
-    const [serviceAddress, setServiceAddress] = useState("64/123 ซอยหทัยราษฎร์64 ถนนหทัยราษฎร์ เขตคลองสามวา แขวงสามวาตะวันตก กรุงเทพมหาคร 10510");
-    const [serviceProvince, setServiceProvince] = useState("กรุงเทพมหานคร");
-
-    const [confirmBusiness, setConfirmBusiness] = useState(true);
-
-    const [serviceGrooming, setServiceGrooming] = useState(true);
-    const [servicePetWalk, setServicePetWalk] = useState(false);
-    const [servicePool, setServicePool] = useState(false);
-    const [servicePetCar, setServicePetCar] = useState(true);
-    const [servicePetStuff, setServicePetStuff] = useState(true);
-
-    const [serviceDog, setServiceDog] = useState(true);
-    const [serviceCat, setServiceCat] = useState(true);
-    const [serviceRabbit, setServiceRabbit] = useState(false);
-    const [serviceBird, setServiceBird] = useState(false);
-    const [serviceRoden, setServiceRoden] = useState(false);
-    const [serviceReptile, setServiceReptile] = useState(false);
-
-    const [servicePhone, setServicePhone] = useState("0834567642")
-    const [serviceFacebook, setServiceFacebook] = useState("รับฝากน้องแมว By Ally")
-    const [serviceInstagram, setServiceInstagram] = useState("รับฝากน้องแมว By Ally")
-    const [serviceLine, setServiceLine] = useState("@catloverally")
-
-    const [providerName, serProviderName] = useState("สายฝน ล่องทิพย์");
-    const [serviceReview, setServiceReview] = useState([]);
-
-
     return (
         <div>
             <div className="ps-profile-container">
                 <div className="ps-profile-img-slider-box">
                     <Slider {...settings}>
-                        {imgArray.map((item) => (
+                        {images.map((item) => (
                             <div className="ps-profile-card">
-                                <img src={item.imgPath}/>
+                                <img src={item}/>
                             </div>
                         ))}
                     </Slider>
@@ -255,14 +319,18 @@ const ProviderServiceProfile = () => {
                                 <label>{providerName}</label>
                             </div>
                             <div className="ps-profile-provider-btn-box">
-                                <div className="ps-profile-provider-chat-btn" role="button">
-                                    <img src={require("../images/providerServiceProfilePage/chatIcon.png")}/>
-                                    <label>แชทกับผู้ให้บริการ</label>
-                                </div>
-                                <div className="ps-profile-provider-report-btn" role="button">
-                                    <img src={require("../images/providerServiceProfilePage/fileIcon.png")}/>
-                                    <label>รายงานผู้ให้บริการ</label>
-                                </div>
+                                <Link className="ps-profile-link">
+                                    <div className="ps-profile-provider-chat-btn" role="button">
+                                        <img src={require("../images/providerServiceProfilePage/chatIcon.png")}/>
+                                        <label>แชทกับผู้ให้บริการ</label>
+                                    </div>
+                                </Link>
+                                <Link className="ps-profile-link" to={`/report-provider/${params.slug}`}>
+                                    <div className="ps-profile-provider-report-btn" role="button">
+                                        <img src={require("../images/providerServiceProfilePage/fileIcon.png")}/>
+                                        <label>รายงานผู้ให้บริการ</label>
+                                    </div>
+                                </Link>
                             </div>
                         </div>
                     </div>

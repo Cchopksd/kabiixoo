@@ -4,7 +4,7 @@ const { requireLogin }= require('../middlewares/authToken')
 const router = express.Router()
 
 router.post('/create-service',requireLogin, createService)
-router.get('/edit-service/:slug',requireLogin ,getService)
+router.get('/edit-service/:slug' ,getService)
 router.post('/check-service',requireLogin , checkHaveService)
 router.post('/get-service-slug',requireLogin , getServiceSlug)
 router.put('/edit-service/:slug',requireLogin , updateService)
