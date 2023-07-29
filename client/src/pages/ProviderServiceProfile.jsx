@@ -59,7 +59,10 @@ const ProviderServiceProfile = () => {
     const [serviceLine, setServiceLine] = useState("")
 
     const [providerName, setProviderName] = useState("");
+    const [providerImage, setProviderImage] = useState("");
     const [serviceReview, setServiceReview] = useState([]);
+
+    const [reviewArray, setReviewArray] = useState([]);
 
     const [images, setImages] = useState([])
     const [image1, setImage1] = useState("")
@@ -93,6 +96,7 @@ const ProviderServiceProfile = () => {
             setServiceInstagram(res.data.svp_instagram)
             setServiceLine(res.data.svp_line)
             setProviderName(`${res.data.svp_owner.mem_name} ${res.data.svp_owner.mem_surname}`)
+            setProviderImage(res.data.svp_owner.mem_profileImage)
 
             if(!res.data.svp_img1){
                 setImage1('https://i.cbc.ca/1.5077459.1553886010!/fileImage/httpImage/pets.jpg')
@@ -126,6 +130,12 @@ const ProviderServiceProfile = () => {
             }
             configImages(true)
         }).catch((err) => {
+            Swal.fire('แจ้งเตือน',err.response.data.error, 'error')
+        })
+
+        axios.get(`${process.env.REACT_APP_API}/review/${params.slug}`).then((res) => {
+            setReviewArray(res.data)
+        }).catch(() => {
             Swal.fire('แจ้งเตือน',err.response.data.error, 'error')
         })
     },[])
@@ -177,28 +187,6 @@ const ProviderServiceProfile = () => {
         ]
     };
 
-
-    const reviewArray = [
-        {
-            customerName : "สมหมาย ภักดี",
-            reviewPoint : 1,
-            reviewDesc : "คุณแอลลี่ บริการดีเป็นกันเองมากครับ คุยง่าย น้องแมวของผมไม่เหงาเลยในตอนที่ผมต้องไปต่างจังหวัด แล้วฝากน้องไว้กับคุณแอลลี่ น้องอยู่สบายไม่ลำบาก น้องสบายตัวด้วยได้อาบน้ำตอนอากาศร้อนๆแบบนี้ เอาไปเลย 5 ดาวครับ",
-            profileImg : "../images/dummy_profileImage.png"
-        },
-        {
-            customerName : "สมหมาย ภักดี",
-            reviewPoint : 2,
-            reviewDesc : "คุณแอลลี่ บริการดีเป็นกันเองมากครับ คุยง่าย น้องแมวของผมไม่เหงาเลยในตอนที่ผมต้องไปต่างจังหวัด แล้วฝากน้องไว้กับคุณแอลลี่ น้องอยู่สบายไม่ลำบาก น้องสบายตัวด้วยได้อาบน้ำตอนอากาศร้อนๆแบบนี้ เอาไปเลย 5 ดาวครับ",
-            profileImg : "../images/dummy_profileImage.png"
-        },
-        {
-            customerName : "ยุรนันท์ เจิดรุจิกุล",
-            reviewPoint : 1,
-            reviewDesc : "ควย",
-            profileImg : "../images/dummy_profileImage.png"
-        }
-    ];
-
     return (
         <div>
             <div className="ps-profile-container">
@@ -206,7 +194,7 @@ const ProviderServiceProfile = () => {
                     <Slider {...settings}>
                         {images.map((item) => (
                             <div className="ps-profile-card">
-                                <img src={item}/>
+                                <img src={item} key={item}/>
                             </div>
                         ))}
                     </Slider>
@@ -315,7 +303,7 @@ const ProviderServiceProfile = () => {
                         <div className="ps-profile-provider-box">
                             <label className="ps-profile-title">บัญชีผู้ให้บริการ</label>
                             <div className="ps-profile-provider-display">
-                                <img src={require("../images/dummy_profileImage.png")}/>
+                                <img src={providerImage}/>
                                 <label>{providerName}</label>
                             </div>
                             <div className="ps-profile-provider-btn-box">
@@ -337,30 +325,32 @@ const ProviderServiceProfile = () => {
                     <div className="ps-profile-part-4">
                         <div className="ps-profile-review-header">
                             <div>
-                                <label className="ps-profile-title">{serviceReview.length}</label>
+                                <label className="ps-profile-title">{reviewArray.length}</label>
                                 <label className="ps-profile-title">&emsp;การรีวิวและให้คะแนน</label>
                             </div>
-                            <div className="ps-profile-provider-review-btn" role="button">
-                                <img src={require("../images/providerServiceProfilePage/starIcon.png")}/>
-                                <label>เขียนรีวิว</label>
-                            </div>
+                            <Link className="ps-profile-link" to={`/review/${params.slug}`}>
+                                <div className="ps-profile-provider-review-btn" role="button">
+                                    <img src={require("../images/providerServiceProfilePage/starIcon.png")}/>
+                                    <label>เขียนรีวิว</label>
+                                </div>
+                            </Link>
                         </div>
                         <div className="ps-profile-review-content">
                             {reviewArray.map((item) => (
                                 <div className="ps-profile-review-content-display">
                                     <div>
-                                        <img src={require("../images/dummy_profileImage.png")}/>
+                                        <img className="ps-profile-customer-image" src={item.customer_id.mem_profileImage} key={item.customer_id.mem_profileImage}/>
                                         <div className="ps-profile-review-content-name-display">
-                                            <label>{item.customerName}</label>
+                                            <label key={item.customer_id.mem_name}>{`${item.customer_id.mem_name} ${item.customer_id.mem_surname}`}</label>
                                             <div>
-                                                {Array.from({length: item.reviewPoint}, (_,index) =>{
-                                                    return <img className="ps-profile-review-content-star" src={require("../images/providerServiceProfilePage/starIcon.png")}/>;
+                                                {Array.from({length: item.rev_point}, (_,index) =>{
+                                                    return <img key={index} className="ps-profile-review-content-star" src={require("../images/providerServiceProfilePage/starIcon.png")}/>;
                                                 })}
                                             </div>
                                         </div>
                                     </div>
                                     <div>
-                                        <p>{item.reviewDesc}</p>
+                                        <p key={item.rev_description}>{item.rev_description}</p>
                                     </div>
                                 </div>
                             ))}

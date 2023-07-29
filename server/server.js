@@ -9,6 +9,7 @@ const userRoute = require('./routes/userRoutes')
 const servicePostRoute = require('./routes/servicePostRoutes')
 const confirmBusinessRoute = require('./routes/confirmBusinessRoutes')
 const reportRoute = require('./routes/reportRoutes')
+const reviewRoute = require('./routes/reviewRoutes')
 
 // ใช้งาน package dotenv
 require('dotenv').config()
@@ -29,6 +30,7 @@ app.use("/api",userRoute)
 app.use("/api",servicePostRoute)
 app.use("/api",confirmBusinessRoute)
 app.use("/api",reportRoute)
+app.use("/api",reviewRoute)
 
 const PORT = process.env.PORT || 5000
 

@@ -50,7 +50,7 @@ function App() {
             <Route path='/provider-profile/:slug' element={<ProviderServiceProfile/>}/>
 
             {/* ผู้ใช้งานที่เป็นสมาชิก */}
-            <Route path="/review" element={<Review />}/>
+            <Route path="/review/:slug" element={<Review />}/>
             <Route path="/report-provider/:slug" element={<ReportProvider />}/>
             <Route path='/create-service' element={<MemberRoute Component={CreateService}/>}/>
 

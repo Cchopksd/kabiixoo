@@ -222,7 +222,6 @@ exports.getService = async (req,res) => {
     // url parameter
     const { slug } = req.params
     await ServicePost.findOne({svp_slug: slug},).populate('svp_owner').then((serviceInfo) => {
-        console.log(serviceInfo)
         res.status(200).json(serviceInfo)
     }).catch((err) => {
         res.status(400).json({error: "ไม่พบบริการ"})

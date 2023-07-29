@@ -1,14 +1,69 @@
-import React, {useState } from 'react';
+import React, {useEffect, useState } from 'react';
 import { FaStar } from "react-icons/fa";
 import "../pages/Review.css";
 import Footer from '../components/Footer';
+import { useNavigate, useParams } from 'react-router-dom';
+import { getUserId, getToken } from "../services/authorize";
+import axios from 'axios';
+import Swal from 'sweetalert2';
 
 const Review = () => {
-    const [businessName, setBusinessName] = useState("สมศักดิ์");
+
+    // redirect
+    const navigate = useNavigate()
+
+    // url parameter
+    const params = useParams()
+
+    // state ของผู้รีวิว
+    const [reviewerId, setReviewerId] = useState("")
+
+    // state ของบริการ
+    const [businessName, setBusinessName] = useState("");
+    const [providerImage, setProviderImage] = useState("");
+    const [reviewDesc, setReviewDesc] = useState("")
 
     // state เก็บคะแนนรีวิว
     const [rating, setRating] = useState(null);
     const [hover, setHover] = useState(null);
+
+    // เมื่อเข้าสู่หน้า
+    useEffect(() => {
+        loadData()
+    },[])
+
+    const loadData = async () => {
+        // ดึงข้อมูล id ของผู้ทำการรีวิว
+        try{
+            const id = await getUserId()
+            setReviewerId(id.data)
+        }catch (error) {
+            console.error(error);
+        }
+        // ดึงชื่อประกาศการให้บริการ
+        axios.get(`${process.env.REACT_APP_API}/edit-service/${params.slug}`).then((res) => {
+            setBusinessName(res.data.svp_name)
+            setProviderImage(res.data.svp_owner.mem_profileImage)
+        })
+    }
+
+    const submitReview = async (event) => {
+        event.preventDefault()
+
+        // ส่ง api ไปรีวิว
+        await axios.post(`${process.env.REACT_APP_API}/review/${params.slug}`,{
+            reviewerId, reviewDesc, rating
+        },{
+            headers: {
+                authorization: `Bearer ${getToken()}`
+            }
+        }).then(async (res) => {
+            await Swal.fire('แจ้งเตือน', res.data.message, 'success')
+            navigate(`/provider-profile/${params.slug}`)
+        }).catch((err) => {
+            Swal.fire('แจ้งเตือน', err.response.data.error, 'error')
+        })
+    }
 
     return(
         <div>
@@ -18,7 +73,7 @@ const Review = () => {
                     <label className='review-business-name'>{businessName}</label>
                 </div>
                 <div className='review-img-center'>
-                    <img className="review-provider-image" src={require('../images/dummy_profileImage.png')}></img>
+                    <img className="review-provider-image" src={providerImage}></img>
                 </div>
                 <div className='review-star-center'>
                     {[...Array(5)].map((star, i) => {
@@ -44,10 +99,10 @@ const Review = () => {
                     <label>เขียนรีวิว</label>
                 </div>
                 <div className='review-comment-center'>
-                    <textarea className='review-comment-box' rows={5} cols={40}/>
+                    <textarea className='review-comment-box' rows={5} cols={40} value={reviewDesc} onChange={(event) => {setReviewDesc(event.target.value)}}/>
                 </div>
                 <div className='review-center'>
-                    <button className='review-button'>ส่งรีวิวและคะแนน</button>
+                    <button className='review-button' onClick={submitReview}>ส่งรีวิวและคะแนน</button>
                 </div>
             </div>
             <Footer/>
