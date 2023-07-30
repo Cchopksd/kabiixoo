@@ -6,6 +6,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { getUserId, getToken } from "../services/authorize";
+import Loading from "../components/Loading";
 
 const ReportProvider = () => {
 
@@ -30,6 +31,9 @@ const ReportProvider = () => {
     const [image2, setImage2] = useState("")
     const [image3, setImage3] = useState("")
     const [uploadImg, setUploadImg] = useState(false)
+
+    // state เช็คว่า fetch api
+    const [loading, setLoading] = useState(false)
 
     // เมื่อเข้าสู่หน้า
     useEffect(() => {
@@ -58,8 +62,10 @@ const ReportProvider = () => {
 
     const submitReport = async(event) => {
         event.preventDefault()
+        setLoading(true)
         // validate
         if (!businessName || !reportTopic || !reportDesc) {
+            setLoading(false)
             Swal.fire('แจ้งเตือน','กรุณากรอกข้อมูลให้ครบ','error')
             return
         }
@@ -81,6 +87,7 @@ const ReportProvider = () => {
                             setImage3(imageUrl);
                         }
                     } catch (error) {
+                        setLoading(false)
                         Swal.fire('แจ้งเตือน', error.message, 'error');
                     }
             }
@@ -94,9 +101,11 @@ const ReportProvider = () => {
                     authorization: `Bearer ${getToken()}`
                 }
             }).then(async (res) => {
+                setLoading(false)
                 await Swal.fire('แจ้งเตือน', res.data.message, 'success')
                 navigate(`/provider-profile/${params.slug}`)
             }).catch((err) => {
+                setLoading(false)
                 Swal.fire('แจ้งเตือน', err.response.data.error, 'error')
             })
         }
@@ -112,10 +121,12 @@ const ReportProvider = () => {
                     authorization: `Bearer ${getToken()}`
                 }
             }).then(async (res) => {
+                setLoading(false)
                 await Swal.fire('แจ้งเตือน', res.data.message, 'success')
                 setUploadImg(false)
                 navigate(`/provider-profile/${params.slug}`)
             }).catch((err) => {
+                setLoading(false)
                 Swal.fire('แจ้งเตือน', err.response.data.error, 'error')
                 setUploadImg(false)
             })
@@ -124,6 +135,7 @@ const ReportProvider = () => {
 
     return (
         <div>
+            { loading && <Loading/>}
             <div className="report-container">
                 <div className="report-title-box">
                     <label className="report-title">รายงานผู้ให้บริการ</label>

@@ -6,6 +6,7 @@ import Swal from "sweetalert2"
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { authenticate } from "../services/authorize";
+import Loading from '../components/Loading';
 
 const SignUp = () => {
 
@@ -35,6 +36,9 @@ const SignUp = () => {
 
     // state ของยืนยันการอ่าน term of service
     const [confirmRead, setConfirmRead] = useState(false)
+
+    // state เช็คว่า fetch api
+    const [loading, setLoading] = useState(false)
 
     // set state
     const inputValue = name => event => {
@@ -70,9 +74,11 @@ const SignUp = () => {
     //ส่งยืนยันข้อมูล
     const submitSignUp = async (event) => {
         event.preventDefault();
+        setLoading(true)
 
         // ตรวจสอบว่าอ่าน term หรือยัง
         if (!confirmRead){
+            setLoading(false)
             Swal.fire(
                 'แจ้งเตือน',
                 'กรุณายืนยันการยอมรับข้อกำหนดการให้บริการ',
@@ -93,6 +99,7 @@ const SignUp = () => {
                 .then((response) => {
                     setImage(response.data.url.toString())
                 }).catch((error) => {
+                    setLoading(false)
                     Swal.fire(
                         'แจ้งเตือน',
                         error,
@@ -100,6 +107,7 @@ const SignUp = () => {
                     )
                 })
             }else{
+                setLoading(false)
                 Swal.fire(
                     'แจ้งเตือน',
                     'ประเภทไฟล์รูปภาพไม่รองรับ',
@@ -109,6 +117,7 @@ const SignUp = () => {
         }else {
             await axios.post(`${process.env.REACT_APP_API}/signup`, {name,surname,email,phone,birthDate,username,password,confirmPassword,image})
             .then(async (res) => {
+                setLoading(false)
                 await Swal.fire(
                     'แจ้งเตือน',
                     'สมัครสมาชิกสำเร็จ',
@@ -119,18 +128,19 @@ const SignUp = () => {
                 setImageFile("")
                 authenticate(res,()=>navigate('/'))
             }).catch((err) => {
+                setLoading(false)
                 Swal.fire(
                     'แจ้งเตือน',
                     err.response.data.error,
                     'error'
                 )
-                console.log(err.response.data.error)
             })
         }
     }
 
     return (
         <div>
+            { loading && <Loading/>}
             <div className='frame-signUp'>
                 <div className='backGroundImage'>
                     <img className="pic-backGround" src={require('../images/registerBackground2.png')}/>

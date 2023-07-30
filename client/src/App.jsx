@@ -3,7 +3,6 @@ import { BrowserRouter , Route, Routes, useLocation  } from 'react-router-dom';
 import MemberRoute from './MemberRoute';
 import './App.css'
 import Navbar from './components/Navbar';
-import ImageUploader from './components/ImageUploaderBusiness';
 import Home from './pages/Home';
 import About from './pages/About';
 import SignIn from './pages/SignIn';
@@ -50,8 +49,8 @@ function App() {
             <Route path='/provider-profile/:slug' element={<ProviderServiceProfile/>}/>
 
             {/* ผู้ใช้งานที่เป็นสมาชิก */}
-            <Route path="/review/:slug" element={<Review />}/>
-            <Route path="/report-provider/:slug" element={<ReportProvider />}/>
+            <Route path="/review/:slug" element={<MemberRoute Component={Review} />}/>
+            <Route path="/report-provider/:slug" element={<MemberRoute Component={ReportProvider} />}/>
             <Route path='/create-service' element={<MemberRoute Component={CreateService}/>}/>
 
             {/* ผู้ให้บริการ */}

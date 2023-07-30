@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { getToken } from "../services/authorize";
+import Loading from "../components/Loading";
 
 const EditProfile = () => {
 
@@ -26,6 +27,9 @@ const EditProfile = () => {
 
     const [imageFile, setImageFile] = useState(null)
     const [newImage, setNewImage] = useState()
+
+    // state เช็คว่า fetch api
+    const [loading, setLoading] = useState(false)
 
     // เปลี่ยนค่าตามการพิมพ์
     const inputValue = name => event => {
@@ -86,6 +90,7 @@ const EditProfile = () => {
 
     const submitUpdate = async (event) => {
         event.preventDefault();
+        setLoading(true)
         if(imageFile){
             if (imageFile.type === "image/jpeg" || imageFile.type === "image/png"){
                 const data = new FormData()
@@ -96,9 +101,9 @@ const EditProfile = () => {
                 // api upload รูป ไปยัง Cloudinary
                 await axios.post("https://api.cloudinary.com/v1_1/dmz2wct31/image/upload/", data)
                 .then((response) => {
-                    // setUserState({...userState,mem_profileImage:response.data.url.toString()});
                     setNewImage(response.data.url.toString())
                 }).catch((error) => {
+                    setLoading(false)
                     Swal.fire(
                         'แจ้งเตือน',
                         error,
@@ -106,6 +111,7 @@ const EditProfile = () => {
                     )
                 })
             }else{
+                setLoading(false)
                 Swal.fire(
                     'แจ้งเตือน',
                     'ประเภทไฟล์รูปภาพไม่รองรับ',
@@ -122,6 +128,7 @@ const EditProfile = () => {
                         }
                     }
                 ).then(async (res) => {
+                setLoading(false)
                 await Swal.fire(
                     'แจ้งเตือน',
                     res.data.message,
@@ -129,6 +136,7 @@ const EditProfile = () => {
                 )
                 window.location.reload(true)
             }).catch((err) => {
+                setLoading(false)
                 Swal.fire(
                     'แจ้งเตือน',
                     err.response.data.error,
@@ -140,6 +148,7 @@ const EditProfile = () => {
 
     return(
         <div>
+            { loading && <Loading/>}
             <div className="edit-container">
                 <Editbar username={mem_username} profileImage={mem_profileImage}/>
                 <div className="edit-frame">

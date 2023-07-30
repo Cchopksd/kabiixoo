@@ -8,6 +8,7 @@ import { getToken, getUserId } from "../services/authorize";
 import Swal from "sweetalert2"
 import { useNavigate } from "react-router-dom";
 import UserContext from "../contexts/UserProvider";
+import Loading from "../components/Loading";
 
 const CreateService = () => {
 
@@ -24,6 +25,9 @@ const CreateService = () => {
     const [provinceList, setProvinceList] = useState([])
     const [districtList, setDistrictList] = useState([])
     const [subDistrictList, setSubDistrictList] = useState([])
+
+    // state เช็คว่า fetch api
+    const [loading, setLoading] = useState(false)
 
     // เรียกให้ load ข้อมูล dropdown
     useEffect(() => {
@@ -129,6 +133,7 @@ const CreateService = () => {
 
     const submitCreate = async (event) => {
         event.preventDefault();
+        setLoading(true)
         // เช็คแนบรูป
         if (images.length > 0){
             for (let i = 0; i < images.length; i++) {
@@ -150,6 +155,7 @@ const CreateService = () => {
                             setImage4(imageUrl);
                         }
                     } catch (error) {
+                        setLoading(false)
                         Swal.fire('แจ้งเตือน', error.message, 'error');
                     }
             }
@@ -158,6 +164,7 @@ const CreateService = () => {
             // เช็คกรอกข้อมูลครบไหม
             if (!serviceName || !addressNumber || !alleyName || !roadName || !provinceName || !stateName ||
                 !districtName || !postalCode || !introduceDesc || !serviceDesc) {
+                    setLoading(false)
                     Swal.fire(
                         'แจ้งเตือน',
                         'กรุณากรอกข้อมูลให้ครบ',
@@ -177,6 +184,7 @@ const CreateService = () => {
                             authorization: `Bearer ${getToken()}`
                         }
                     }).then(async (res) => {
+                        setLoading(false)
                         await Swal.fire(
                             'แจ้งเตือน',
                             res.data.message,
@@ -221,6 +229,7 @@ const CreateService = () => {
                         navigate(`/provider-home/${serviceOwner}`)
                         setServiceOwner("")
                     }).catch((err) => {
+                        setLoading(false)
                         Swal.fire(
                             'แจ้งเตือน',
                             err.response.data.error,
@@ -237,6 +246,7 @@ const CreateService = () => {
             // เช็คกรอกข้อมูลครบไหม
             if (!serviceName || !addressNumber || !alleyName || !roadName || !provinceName || !stateName ||
                 !districtName || !postalCode || !introduceDesc || !serviceDesc) {
+                    setLoading(false)
                     Swal.fire(
                         'แจ้งเตือน',
                         'กรุณากรอกข้อมูลให้ครบ',
@@ -255,6 +265,7 @@ const CreateService = () => {
                             authorization: `Bearer ${getToken()}`
                         }
                     }).then(async (res) => {
+                        setLoading(false)
                         await Swal.fire(
                             'แจ้งเตือน',
                             res.data.message,
@@ -299,6 +310,7 @@ const CreateService = () => {
                         navigate(`/provider-home/${serviceOwner}`)
                         setServiceOwner("")
                     }).catch((err) => {
+                        setLoading(false)
                         Swal.fire(
                             'แจ้งเตือน',
                             err.response.data.error,
@@ -323,6 +335,7 @@ const CreateService = () => {
 
     return (
         <div>
+            { loading && <Loading/>}
             <div className="createService-container">
                 <label className="createService-header">สร้างประกาศการให้บริการ</label>
                 <div className="create-part-1">

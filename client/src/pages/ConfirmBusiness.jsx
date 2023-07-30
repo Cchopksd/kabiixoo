@@ -7,6 +7,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { getToken } from "../services/authorize";
+import Loading from "../components/Loading";
 
 const ConfirmBusiness = () => {
 
@@ -29,6 +30,9 @@ const ConfirmBusiness = () => {
     const [imageLicense2, setImageLicense2] = useState("")
     const [imageLicense3, setImageLicense3] = useState("")
 
+    // state เช็คว่า fetch api
+    const [loading, setLoading] = useState(false)
+
     //state เช็คว่ามีรูปแนปไหม
     const [uploadImg, setUploadImg] = useState(false)
 
@@ -42,8 +46,10 @@ const ConfirmBusiness = () => {
 
     const submitConfirmBusiness = async (event) => {
         event.preventDefault();
+        setLoading(true)
         // validate
         if (!businessName || !businessDesc){
+            setLoading(false)
             Swal.fire('แจ้งเตือน', "กรุณากรอกข้อมูลให้ครบ", 'error');
             return
         }
@@ -67,6 +73,7 @@ const ConfirmBusiness = () => {
                                 setImageBusiness3(imageUrl);
                             }
                         } catch (error) {
+                            setLoading(false)
                             Swal.fire('แจ้งเตือน', error.message, 'error');
                         }
                 }
@@ -90,6 +97,7 @@ const ConfirmBusiness = () => {
                                 setImageLicense3(imageUrl);
                             }
                         } catch (error) {
+                            setLoading(false)
                             Swal.fire('แจ้งเตือน', error.message, 'error');
                         }
                     }
@@ -105,8 +113,10 @@ const ConfirmBusiness = () => {
                 authorization: `Bearer ${getToken()}`
             }
         }).then((res) => {
+                setLoading(false)
                 Swal.fire('แจ้งเตือน', res.data.message, 'success');
             }).catch((err) => {
+                setLoading(false)
                 Swal.fire('แจ้งเตือน', err.response.data.error, 'error');
             })
         }
@@ -123,9 +133,11 @@ const ConfirmBusiness = () => {
                 authorization: `Bearer ${getToken()}`
             }
         }).then((res) => {
+                setLoading(false)
                 Swal.fire('แจ้งเตือน', res.data.message, 'success');
                 setUploadImg(false)
             }).catch((err) => {
+                setLoading(false)
                 Swal.fire('แจ้งเตือน', err.response.data.error, 'error');
                 setUploadImg(false)
             })
@@ -134,6 +146,7 @@ const ConfirmBusiness = () => {
 
     return (
         <div>
+            { loading && <Loading/> }
             <div className="confirm-container">
                 <label className="comfirm-title">แบบฟอร์มยืนยันการมีหน้าร้านและกิจการ</label>
                 <div className="comfirm-form-box">

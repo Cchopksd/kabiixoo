@@ -6,6 +6,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { getUserId, getToken } from "../services/authorize";
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import Loading from '../components/Loading';
 
 const Review = () => {
 
@@ -26,6 +27,9 @@ const Review = () => {
     // state เก็บคะแนนรีวิว
     const [rating, setRating] = useState(null);
     const [hover, setHover] = useState(null);
+
+    // state เช็คว่า fetch api
+    const [loading, setLoading] = useState(false)
 
     // เมื่อเข้าสู่หน้า
     useEffect(() => {
@@ -49,6 +53,7 @@ const Review = () => {
 
     const submitReview = async (event) => {
         event.preventDefault()
+        setLoading(true)
 
         // ส่ง api ไปรีวิว
         await axios.post(`${process.env.REACT_APP_API}/review/${params.slug}`,{
@@ -58,15 +63,18 @@ const Review = () => {
                 authorization: `Bearer ${getToken()}`
             }
         }).then(async (res) => {
+            setLoading(false)
             await Swal.fire('แจ้งเตือน', res.data.message, 'success')
             navigate(`/provider-profile/${params.slug}`)
         }).catch((err) => {
+            setLoading(false)
             Swal.fire('แจ้งเตือน', err.response.data.error, 'error')
         })
     }
 
     return(
         <div>
+            { loading && <Loading/>}
             <div className='review-container'>
                 <div className='review-title'>
                     <label>ส่งรีวิวหรือคำแนะนำให้กับ</label>
