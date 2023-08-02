@@ -1,5 +1,5 @@
 const express = require('express')
-const { createService, updateService, getService, checkHaveService, getServiceSlug, deleteService } = require('../controllers/servicePostControllers')
+const { createService, updateService, getService, checkHaveService, getServiceSlug, deleteService, getAllServices } = require('../controllers/servicePostControllers')
 const { requireLogin }= require('../middlewares/authToken')
 const router = express.Router()
 
@@ -9,5 +9,6 @@ router.post('/check-service',requireLogin , checkHaveService)
 router.post('/get-service-slug',requireLogin , getServiceSlug)
 router.put('/edit-service/:slug',requireLogin , updateService)
 router.delete('/edit-service/:slug',requireLogin , deleteService)
+router.get('/service', getAllServices)
 
 module.exports = router

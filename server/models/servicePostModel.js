@@ -22,6 +22,10 @@ const servicePostSchema = mongoose.Schema({
         type: String,
         require: true
     },
+    svp_state : {
+        type: String,
+        require: true
+    },
     svp_introduce : {
         type: String,
         require: true
@@ -118,6 +122,10 @@ const servicePostSchema = mongoose.Schema({
     svp_verified: {
         type: Boolean,
         default: false
+    },
+    svp_point : {
+        type: Number,
+        default: 0
     }
 }, {timestamps: true})
 

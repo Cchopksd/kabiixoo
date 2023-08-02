@@ -279,7 +279,7 @@ const EditService = () => {
             const serviceAddress = `${addressNumber} ${alleyName} ${roadName} ${districtName} ${stateName} ${provinceName} ${postalCode}`
             if (serviceAddress) {
                 await axios.put(`${process.env.REACT_APP_API}/edit-service/${params.slug}`,{serviceName, serviceAddress, 
-                    provinceName, districtName, introduceDesc, 
+                    provinceName, districtName, stateName, introduceDesc, 
                     serviceDesc, startPrice, haveGrooming, havePetStuff, havePetCar, havePool, havePetWalk,
                     haveDog, haveCat, haveBird, haveRabbit, haveRoden, haveReptile, phone, facebook,
                     instagram, line, image1, image2, image3, image4},{
@@ -360,7 +360,7 @@ const EditService = () => {
             const serviceAddress = `${addressNumber} ${alleyName} ${roadName} ${districtName} ${stateName} ${provinceName} ${postalCode}`
             if (serviceAddress) {
                 axios.put(`${process.env.REACT_APP_API}/edit-service/${params.slug}`,{serviceName, serviceAddress, 
-                    provinceName, districtName, introduceDesc, 
+                    provinceName, districtName, stateName, introduceDesc, 
                     serviceDesc, startPrice, haveGrooming, havePetStuff, havePetCar, havePool, havePetWalk,
                     haveDog, haveCat, haveBird, haveRabbit, haveRoden, haveReptile, phone, facebook,
                     instagram, line, image1, image2, image3, image4},{

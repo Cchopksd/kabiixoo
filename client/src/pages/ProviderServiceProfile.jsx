@@ -134,8 +134,9 @@ const ProviderServiceProfile = () => {
         })
 
         axios.get(`${process.env.REACT_APP_API}/review/${params.slug}`).then((res) => {
+            // console.log(res.data[0].customer_id.mem_profileImage)
             setReviewArray(res.data)
-        }).catch(() => {
+        }).catch((err) => {
             Swal.fire('แจ้งเตือน',err.response.data.error, 'error')
         })
     },[])
@@ -339,6 +340,7 @@ const ProviderServiceProfile = () => {
                             {reviewArray.map((item) => (
                                 <div className="ps-profile-review-content-display">
                                     <div>
+                                        {console.log(item.customer_id)}
                                         <img className="ps-profile-customer-image" src={item.customer_id.mem_profileImage} key={item.customer_id.mem_profileImage}/>
                                         <div className="ps-profile-review-content-name-display">
                                             <label key={item.customer_id.mem_name}>{`${item.customer_id.mem_name} ${item.customer_id.mem_surname}`}</label>

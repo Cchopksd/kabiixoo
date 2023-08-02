@@ -4,7 +4,7 @@ const { sendReview, getAllReview } = require('../controllers/reviewControllers')
 
 const router = express.Router()
 
-router.post('/review/:slug',requireLogin , sendReview)
+router.post('/review/:slug' , sendReview)
 router.get('/review/:slug', getAllReview)
 
 module.exports = router

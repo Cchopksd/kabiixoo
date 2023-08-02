@@ -20,6 +20,24 @@ exports.sendReview = async (req,res) => {
             rev_description : reviewDesc,
             rev_point : rating
         })
+
+        // เอาการรีวิวทั้งหมด
+        await Review.find({service_id: serviceId}).then(async (data) => {
+            let totalReviewPoint = 0;
+            for (const review of data) {
+                totalReviewPoint = totalReviewPoint + review.rev_point
+            }
+            // หารคะแนนทั้งหมดกับจำนวนคนที่รีวิว
+            totalReviewPoint = totalReviewPoint / data.length
+            // ปัดทศนิยม
+            const roundedTotalReviewPoint = Math.round(totalReviewPoint);
+            // แก้ไขคะแนนรีวิวรวม
+            await ServicePost.findOneAndUpdate({svp_slug: slug}, {svp_point: roundedTotalReviewPoint}, {new:true})
+        }).catch(async(err) => {
+            // ถ้ายังไม่มีคนรีวิว
+            await ServicePost.findOneAndUpdate({svp_slug: slug}, {svp_point: rating}, {new:true})
+        })
+        
         return res.status(200).json({message: "รีวิวผู้ให้บริการสำเร็จ"})
     }).catch(() => {
         return res.status(400).json({error : "ไม่พบบริการ"})

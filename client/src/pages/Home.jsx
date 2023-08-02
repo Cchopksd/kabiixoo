@@ -10,6 +10,9 @@ import Navbar from '../components/Navbar';
 
 const Home = () => {
 
+    // บริการ จาก child
+    const [services, setServices] = useState([])
+
     const providerArray = [
         {
             id : 1,
@@ -98,6 +101,12 @@ const Home = () => {
         };
     }, []);
 
+
+    // รับข้อมูลจาก child
+    const handleDataFromChild = (data) => {
+        setServices(data)
+    }
+
     return (
         <div>
             {/* <Navbar/> */}
@@ -105,7 +114,7 @@ const Home = () => {
                 <div className='xtf'>
                     <h1 className='text-find'>ค้นหาผู้ให้บริการ<br/>ที่ตรงตามความต้องการของคุณได้เลย</h1>
                 </div>
-                <SearchBar/>
+                <SearchBar onDataSend={handleDataFromChild}/>
                 <div className={providerArray.length > 0 ? 'home-provider-list-box' : "home-provider-list-box-none"}>
                     <label className='home-title'>รายการผู้ให้บริการจากการค้นหา</label>
                     <div className='home-provider-list'>

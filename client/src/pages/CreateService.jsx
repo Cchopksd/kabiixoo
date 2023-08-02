@@ -176,7 +176,7 @@ const CreateService = () => {
             // สร้าง Address แบบเต็ม
             const serviceAddress = `${addressNumber} ${alleyName} ${roadName} ${districtName} ${stateName} ${provinceName} ${postalCode}`
             if (serviceAddress) {
-                await axios.post(`${process.env.REACT_APP_API}/create-service`,{ serviceOwner, serviceName, serviceAddress, provinceName, districtName, introduceDesc, 
+                await axios.post(`${process.env.REACT_APP_API}/create-service`,{ serviceOwner, serviceName, serviceAddress, provinceName, districtName, stateName, introduceDesc, 
                     serviceDesc, startPrice, haveGrooming, havePetStuff, havePetCar, havePool, havePetWalk,
                     haveDog, haveCat, haveBird, haveRabbit, haveRoden, haveReptile, phone, facebook,
                     instagram, line, image1, image2, image3, image4},{
@@ -257,7 +257,7 @@ const CreateService = () => {
             // สร้าง Address แบบเต็ม
             const serviceAddress = `${addressNumber} ${alleyName} ${roadName} ${districtName} ${stateName} ${provinceName} ${postalCode}`
             if (serviceAddress) {
-                axios.post(`${process.env.REACT_APP_API}/create-service`,{ serviceOwner, serviceName, serviceAddress, provinceName, districtName, introduceDesc, 
+                axios.post(`${process.env.REACT_APP_API}/create-service`,{ serviceOwner, serviceName, serviceAddress, provinceName, districtName, stateName, introduceDesc, 
                     serviceDesc, startPrice, haveGrooming, havePetStuff, havePetCar, havePool, havePetWalk,
                     haveDog, haveCat, haveBird, haveRabbit, haveRoden, haveReptile, phone, facebook,
                     instagram, line, image1, image2, image3, image4},{

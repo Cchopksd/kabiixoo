@@ -5,7 +5,7 @@ const { v4: uuidv4 } = require('uuid');
 // สร้างประกาศ
 exports.createService = async (req,res) => {
     // destructuring
-    const { serviceOwner, serviceName, serviceAddress, provinceName, districtName, introduceDesc, 
+    const { serviceOwner, serviceName, serviceAddress, provinceName, districtName, stateName, introduceDesc, 
         serviceDesc, startPrice, haveGrooming, havePetStuff, havePetCar, havePool, havePetWalk,
         haveDog, haveCat, haveBird, haveRabbit, haveRoden, haveReptile, phone, facebook,
         instagram, line, image1, image2, image3, image4 } = req.body
@@ -30,6 +30,7 @@ exports.createService = async (req,res) => {
             svp_address: serviceAddress,
             svp_province: provinceName,
             svp_district: districtName,
+            svp_state: stateName,
             svp_introduce: introduceDesc,
             svp_description: serviceDesc,
             svp_startPrice: startPrice,
@@ -61,6 +62,7 @@ exports.createService = async (req,res) => {
             svp_address: serviceAddress,
             svp_province: provinceName,
             svp_district: districtName,
+            svp_state: stateName,
             svp_introduce: introduceDesc,
             svp_description: serviceDesc,
             svp_startPrice: startPrice,
@@ -93,6 +95,7 @@ exports.createService = async (req,res) => {
             svp_address: serviceAddress,
             svp_province: provinceName,
             svp_district: districtName,
+            svp_state: stateName,
             svp_introduce: introduceDesc,
             svp_description: serviceDesc,
             svp_startPrice: startPrice,
@@ -126,6 +129,7 @@ exports.createService = async (req,res) => {
             svp_address: serviceAddress,
             svp_province: provinceName,
             svp_district: districtName,
+            svp_state: stateName,
             svp_introduce: introduceDesc,
             svp_description: serviceDesc,
             svp_startPrice: startPrice,
@@ -160,6 +164,7 @@ exports.createService = async (req,res) => {
             svp_address: serviceAddress,
             svp_province: provinceName,
             svp_district: districtName,
+            svp_state: stateName,
             svp_introduce: introduceDesc,
             svp_description: serviceDesc,
             svp_startPrice: startPrice,
@@ -217,7 +222,7 @@ exports.getServiceSlug = async (req,res) => {
     })
 }
 
-// เอาข้อมูล service
+// เอาข้อมูล service 1 อัน เพื่อไปแก้ไข
 exports.getService = async (req,res) => {
     // url parameter
     const { slug } = req.params
@@ -234,7 +239,7 @@ exports.updateService = async (req,res) => {
     // url path ของ ชื่อประกาศการให้บริการ
     const { slug } = req.params
     // destructuring
-    const { serviceName, serviceAddress, provinceName, districtName, introduceDesc, 
+    const { serviceName, serviceAddress, provinceName, districtName, stateName, introduceDesc, 
         serviceDesc, startPrice, haveGrooming, havePetStuff, havePetCar, havePool, havePetWalk,
         haveDog, haveCat, haveBird, haveRabbit, haveRoden, haveReptile, phone, facebook,
         instagram, line, image1, image2, image3, image4 } = req.body
@@ -245,6 +250,7 @@ exports.updateService = async (req,res) => {
             svp_address: serviceAddress,
             svp_province: provinceName,
             svp_district: districtName,
+            svp_state: stateName,
             svp_introduce: introduceDesc,
             svp_description: serviceDesc,
             svp_startPrice: startPrice,
@@ -278,6 +284,7 @@ exports.updateService = async (req,res) => {
             svp_address: serviceAddress,
             svp_province: provinceName,
             svp_district: districtName,
+            svp_state: stateName,
             svp_introduce: introduceDesc,
             svp_description: serviceDesc,
             svp_startPrice: startPrice,
@@ -311,6 +318,7 @@ exports.updateService = async (req,res) => {
             svp_address: serviceAddress,
             svp_province: provinceName,
             svp_district: districtName,
+            svp_state: stateName,
             svp_introduce: introduceDesc,
             svp_description: serviceDesc,
             svp_startPrice: startPrice,
@@ -344,6 +352,7 @@ exports.updateService = async (req,res) => {
             svp_address: serviceAddress,
             svp_province: provinceName,
             svp_district: districtName,
+            svp_state: stateName,
             svp_introduce: introduceDesc,
             svp_description: serviceDesc,
             svp_startPrice: startPrice,
@@ -377,6 +386,7 @@ exports.updateService = async (req,res) => {
             svp_address: serviceAddress,
             svp_province: provinceName,
             svp_district: districtName,
+            svp_state: stateName,
             svp_introduce: introduceDesc,
             svp_description: serviceDesc,
             svp_startPrice: startPrice,
@@ -418,4 +428,24 @@ exports.deleteService = async (req,res) => {
         res.status(400).json({error: err})
     })
 
+}
+
+// เอาข้อมูล service ตามที่ search
+exports.getAllServices = async (req,res) => {
+    const keyword = req.query.search ? {
+        $or: [
+            { svp_name: { $regex: req.query.search, $options: "i" } },
+            { svp_district: { $regex: req.query.search, $options: "i" } },
+            { svp_state: { $regex: req.query.search, $options: "i" } }
+        ],
+    } : {}
+
+    if (keyword) {
+        const services = await ServicePost.find(keyword)
+        res.status(200).json(services)
+    }
+    else {
+        const services = await ServicePost.find()
+        res.status(200).json(services)
+    }
 }
