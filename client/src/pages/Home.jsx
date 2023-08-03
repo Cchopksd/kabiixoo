@@ -7,11 +7,14 @@ import '../pages/Home.css'
 import Filter from '../components/Filter';
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
 
     // บริการ จาก child
-    const [services, setServices] = useState([])
+    const [servicesArr, setServicesArr] = useState([])
+
+    const [searchText, setSearchText] = useState(false)
 
     const providerArray = [
         {
@@ -104,7 +107,17 @@ const Home = () => {
 
     // รับข้อมูลจาก child
     const handleDataFromChild = (data) => {
-        setServices(data)
+        setServicesArr(data)
+    }
+
+    // รับค่าแสดงผลคำหลังค้นหา
+    const handleOnSearch = (data) => {
+        setSearchText(data)
+    }
+
+    // คลิก เลือกบริการ
+    const selectedService = (slug) => {
+
     }
 
     return (
@@ -114,50 +127,58 @@ const Home = () => {
                 <div className='xtf'>
                     <h1 className='text-find'>ค้นหาผู้ให้บริการ<br/>ที่ตรงตามความต้องการของคุณได้เลย</h1>
                 </div>
-                <SearchBar onDataSend={handleDataFromChild}/>
-                <div className={providerArray.length > 0 ? 'home-provider-list-box' : "home-provider-list-box-none"}>
-                    <label className='home-title'>รายการผู้ให้บริการจากการค้นหา</label>
+                <SearchBar onDataSend={handleDataFromChild} onSearch={handleOnSearch}/>
+                <div className={searchText ? 'home-provider-list-box' : "home-provider-list-box-none"}>
+                    { searchText && <label className='home-title'>รายการผู้ให้บริการจากการค้นหา</label>}
                     <div className='home-provider-list'>
-                        {providerArray.map((item) => (
-                            <div className='home-provider-item' role='button'>
-                                <div className='home-provider-img-box'>
-                                    <img src={item.imgPath}/>
-                                </div>
-                                <div className='home-provider-info-box'>
-                                    <div className='home-business-name-box'>
-                                        <label className='home-business-name'>{item.businessName}</label>
-                                        <div className={item.confirmBusiness ? 'home-confirm-business-sign' : 'home-confirm-business-sign-none'}>
-                                            <img src={require("../images/providerHomePage/confirmIcon.png")}/>
-                                            <label>มีหน้าร้าน</label>
+                        { searchText && servicesArr.length > 0 ? 
+                            servicesArr.map((item) => (
+                                <Link to={`/provider-profile/${item.svp_slug}`} className='home-link'>
+                                    <div className='home-provider-item' role='button' key={item._id}>
+                                        <div className='home-provider-img-box'>
+                                            <img src={item.svp_img1 ? item.svp_img1 : "https://i.cbc.ca/1.5077459.1553886010!/fileImage/httpImage/pets.jpg"}/>
+                                        </div>
+                                        <div className='home-provider-info-box'>
+                                            <div className='home-business-name-box'>
+                                                <label className='home-business-name'>{item.svp_name}</label>
+                                                <div className={item.svp_verified ? 'home-confirm-business-sign' : 'home-confirm-business-sign-none'}>
+                                                    <img src={require("../images/providerHomePage/confirmIcon.png")}/>
+                                                    <label>มีหน้าร้าน</label>
+                                                </div>
+                                            </div>
+                                            <div className='home-star-box'>
+                                                <div>
+                                                    {Array.from({length: item.svp_point}, (_,index) =>{
+                                                        return <img className="home-star" src={require("../images/providerServiceProfilePage/starIcon.png")}/>;
+                                                    })}
+                                                </div>
+                                                <div className="home-province-box">
+                                                    <img src={require("../images/providerServiceProfilePage/locationIcon.png")}/>
+                                                    <label>{item.svp_province}</label>
+                                                </div>
+                                            </div>
+                                            <p>
+                                                {item.svp_introduce}
+                                            </p>
+                                            <div className='home-contact-box'>
+                                                <img className={item.svp_havePhone ? "home-phone-display" : "home-phone-display-none"} src={require("../images/providerServiceProfilePage/phoneIcon.png")}/>
+                                                <img className={item.svp_facebook ? "home-facebook-display" : "home-facebook-display-none"} src={require("../images/providerServiceProfilePage/facebookIcon.png")}/>
+                                                <img className={item.svp_instagram ? "home-instagram-display" : "home-instagram-display-none"} src={require("../images/providerServiceProfilePage/instagramIcon.png")}/>
+                                                <img className={item.svp_line ? "home-line-display" : "home-line-display-none"} src={require("../images/providerServiceProfilePage/lineIcon.png")}/>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div className='home-star-box'>
-                                        <div>
-                                            {Array.from({length: item.point}, (_,index) =>{
-                                                return <img className="home-star" src={require("../images/providerServiceProfilePage/starIcon.png")}/>;
-                                            })}
-                                        </div>
-                                        <div className="home-province-box">
-                                            <img src={require("../images/providerServiceProfilePage/locationIcon.png")}/>
-                                            <label>{item.province}</label>
-                                        </div>
-                                    </div>
-                                    <p>
-                                        สวัสดีค่ะ ชื่อแอลลี่นะคะ แอลลี่เป็นคนรักน้องแมวมากๆ ตั้งแต่เด็กแล้วคะ ตอนนี้เลี้ยงน้องแมวที่บ้านไว้อยู่ 3 ตัว ชื่อ น้องส้ม น้องชาไทย และ น้องคิงคอง น้องๆสามตัวที่บ้าน สนิทเป็นกันเองมาก น้องๆพร้อมตอนรับน้องแมว ที่จะมาอยู่ ด้วยกันเป็นเพื่อนๆ ไม่ให้ น้องแมวที่มาใช้ บริการ เหงานะคะ ถ้าท่านไหนสนใจใช้บริการสามารถเข้ามา พูดคุยกันก่อนได้ค่ะ"
-                                    </p>
-                                    <div className='home-contact-box'>
-                                        <img className={item.phone ? "home-phone-display" : "home-phone-display-none"} src={require("../images/providerServiceProfilePage/phoneIcon.png")}/>
-                                        <img className={item.facebook ? "home-facebook-display" : "home-facebook-display-none"} src={require("../images/providerServiceProfilePage/facebookIcon.png")}/>
-                                        <img className={item.instagram ? "home-instagram-display" : "home-instagram-display-none"} src={require("../images/providerServiceProfilePage/instagramIcon.png")}/>
-                                        <img className={item.line ? "home-line-display" : "home-line-display-none"} src={require("../images/providerServiceProfilePage/lineIcon.png")}/>
-                                    </div>
-                                </div>
+                                </Link>
+                            )) : 
+                            <div className='home-notFound'>
+                                <img src={require('../images/notFound.png')}/>
+                                <label>ไม่พบข้อมูลผู้ให้บริการ</label>
                             </div>
-                        ))}
+                        }
                     </div>
                 </div>
             </div>
-            <div className={providerArray.length == 0 ? "home-footer-none" : "home-footer"}>
+            <div className={!searchText ? "home-footer-none" : "home-footer"}>
                 <Footer/>
             </div>
         </div>

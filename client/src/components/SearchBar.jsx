@@ -7,13 +7,15 @@ import { useState } from 'react';
 import Filter from './Filter';
 import Swal from 'sweetalert2';
 import axios from 'axios';
+import Loading from './Loading';
 
 
-const SearchBar = ({ onDataSend }) => {
+const SearchBar = ({ onDataSend, onSearch }) => {
     const [isVisible, setIsVisible] = useState(false);
 
     // keyword การ search
     const [searchKeyword, setSearchKeyword] = useState("")
+    const [isSearch, setIsSearch] = useState(false)
 
     // array ของ service
     const [services, setServices] = useState([])
@@ -28,11 +30,18 @@ const SearchBar = ({ onDataSend }) => {
     const handleSearch = async () => {
         setLoading(true)
         await axios.get(`${process.env.REACT_APP_API}/service?search=${searchKeyword}`).then((res) => {
-            console.log(res.data)
-            setServices(res.data)
-            setLoading(false);
+            setTimeout(() => {
+                console.log(res.data)
+                setServices(res.data)
+                setSearchKeyword("")
+                setLoading(false);
+                setIsSearch(true)
+            }, 2000);
         }).catch(err => {
-            Swal.fire('แจ้งเตือน', err, 'error')
+            setTimeout(() => {
+                setLoading(false);
+                Swal.fire('แจ้งเตือน', err, 'error')
+            }, 2000);
         })
     }
 
@@ -41,12 +50,17 @@ const SearchBar = ({ onDataSend }) => {
         onDataSend(services)
     },[services])
 
+    useEffect(() => {
+        onSearch(isSearch)
+    },[isSearch])
+
     return (
         <div className='search-bar'>
+            { loading && <Loading/>}
             <div className={`box-search ${isVisible ? 'visible' : ''}`}>
                 <div className='frameEntry'>
                     <div className='frameEt_fill'>
-                        <input className="entry-fill" type='search' placeholder="ค้นหาชื่อร้าน , แขวง" value={searchKeyword} 
+                        <input className="entry-fill" type='search' placeholder="ค้นหาชื่อร้าน , แขวง หรือ เขต" value={searchKeyword} 
                         onChange={(event) => setSearchKeyword(event.target.value)}/>
                     </div>
                     <div className='fbt-filter'>
