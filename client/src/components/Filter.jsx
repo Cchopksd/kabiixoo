@@ -4,8 +4,12 @@ import SearchBar from "./SearchBar.jsx";
 import { useState, useEffect } from "react";
 import Select from 'react-select'
 import {FaSearch} from 'react-icons/fa'
+import axios from "axios";
 
-const Filter = () => {
+const Filter = ({ onDataSendToSearch, onSearchToSearchBar }) => {
+
+    // service ที่ ค้นหาแล้ว
+    const [filterServices, setFilterServices] = useState([])
 
     // state ของ filter สัตว์
     const [dog, setDog] = useState(false);
@@ -18,19 +22,19 @@ const Filter = () => {
     // state ของ filter บริการเพิ่มเติม
     const [grooming, setGrooming] = useState(false);
     const [swimming, setSwimming] = useState(false);
-    const [comsume, setConsume] = useState(false);
+    const [consume, setConsume] = useState(false);
     const [walk, setWalk] = useState(false);
     const [transport, setTransport] = useState(false);
 
     // state ของ filter มีหน้าร้าน
     const [store, setStore] = useState(false);
 
-    // state ของ filter คะแนน
+    // state ของ filter คะแนน เป็น sort
     const [topPoint, setTopPoint] = useState(false);
     const [lowPoint, setLowPoint] = useState(false);
     const [point, setPoint] = useState("");
 
-    //state ของ filter ราคา
+    //state ของ filter ราคาเป็นช่วงราคา
     const [lowPrice, setLowPrice] = useState(false);
     const [topPrice, setTopPrice] = useState(false);
     const [fiveToTenPrice, setFiveToTenPrice] = useState(false);
@@ -38,7 +42,11 @@ const Filter = () => {
     const [fifteenToTwentyPrice, setFifteenToTwentyPrice] = useState(false);
     const [price, setPrice] = useState("");
 
+    // state ของจังหวัด
+    const [province, setProvince] = useState("")
 
+    // โหลด api
+    const [loading, setLoading] = useState(false)
 
 
     const handleCheckboxChange = (event) => {
@@ -49,8 +57,10 @@ const Filter = () => {
         }));
     };
 
+    // state ของ filter จังหวัดทั้งหมด
     const [provinces,setProvinces] = useState({});
 
+    // เมื่อเรียก component
     useEffect(() => {
         fetch('https://raw.githubusercontent.com/kongvut/thai-province-data/master/api_province.json')
         .then(res => res.json())
@@ -64,6 +74,32 @@ const Filter = () => {
         .catch(error => console.log(error));
     }, []);
 
+    // ล้าง filter
+    const handleResetFilter = (event) => {
+        event.preventDefault()
+        setDog(false)
+        setCat(false)
+        setBird(false)
+        setRodent(false)
+        setReptile(false)
+        setRabbit(false)
+        setGrooming(false)
+        setSwimming(false)
+        setConsume(false)
+        setWalk(false)
+        setTransport(false)
+        setStore(false)
+        setTopPoint(false)
+        setLowPoint(false)
+        setPoint("")
+        setLowPrice(false)
+        setTopPrice(false)
+        setFiveToTenPrice(false)
+        setTenToFifteenPrice(false)
+        setFifteenToTwentyPrice(false)
+        setPrice("")
+        setProvince("")
+    }
 
     return (
         <form className="container-filter">
@@ -127,8 +163,8 @@ const Filter = () => {
                         </div>
                     </li>
                     <li>
-                        <div className={`item-type ${comsume && "item-type-checked"}`}>
-                            <input id="service-checkbox" type="checkbox" checked={comsume} onChange={() => setComsume(!comsume)} />
+                        <div className={`item-type ${consume && "item-type-checked"}`}>
+                            <input id="service-checkbox" type="checkbox" checked={consume} onChange={() => setConsume(!consume)} />
                             <label className="lb-checkbox" htmlFor="consume-checkbox">อาหารและของใช้เกี่ยวกับสัตว์</label>
                         </div>
                     </li>
@@ -151,13 +187,12 @@ const Filter = () => {
                 <h3 className="label-filter">จังหวัด</h3>
                 <ul className='items-filter'>
                     <div>
-                        <Select className="select-province" options={provinces}/>
+                        <Select className="select-province" options={provinces} defaultValue={province} onChange={setProvince} placeholder="เลือกจังหวัด"/>
                     </div>
                     <div className={`item-type ${store && "item-type-checked"}`}>
                         <input id="store-checkbox" type="checkbox" checked={store} onChange={() => setStore(!store)} />
                         <label className="lb-checkbox" htmlFor="store-checkbox">มีหน้าร้าน</label>
                     </div>
-
                 </ul>
             </div>
             <hr className='line-filter'></hr>
@@ -212,7 +247,7 @@ const Filter = () => {
                                 setFifteenToTwentyPrice(false);
                                 setTopPrice(false); 
                             }} />
-                            <label className="lb-checkbox" htmlFor="price-2-checkbox">500 - 1000 บาท</label>
+                            <label className="lb-checkbox" htmlFor="price-2-checkbox">500 - 999 บาท</label>
                         </div>
                     </li>
                     <li>
@@ -225,7 +260,7 @@ const Filter = () => {
                                 setFifteenToTwentyPrice(false);
                                 setTopPrice(false);
                             }} />
-                            <label className="lb-checkbox" htmlFor="price-3-checkbox">1000 - 1500 บาท</label>
+                            <label className="lb-checkbox" htmlFor="price-3-checkbox">1000 - 1499 บาท</label>
                         </div>
                     </li>
                     <li>
@@ -238,7 +273,7 @@ const Filter = () => {
                                 setFifteenToTwentyPrice(!fifteenToTwentyPrice);
                                 setTopPrice(false);
                             }} />
-                            <label className="lb-checkbox" htmlFor="price-4-checkbox">1500 - 2000 บาท</label>
+                            <label className="lb-checkbox" htmlFor="price-4-checkbox">1500 - 1999 บาท</label>
                         </div>
                     </li>
                     <li>
@@ -261,7 +296,8 @@ const Filter = () => {
                 <ul className='summary-filter'>
                     <li>
                         <div>
-                            <input className="btn-resetFilter" type="reset"/>
+                            {/* <input className="btn-resetFilter" type="reset"/> */}
+                            <button className="btn-resetFilter" onClick={handleResetFilter}>ล้างตัวกรองการค้นหา</button>
                         </div>
                     </li>
                     <li>

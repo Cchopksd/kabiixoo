@@ -1,6 +1,6 @@
 import React from 'react';
 import Select from 'react-select';
-import { useEffect,useState} from 'react';
+import { useEffect, useState, useRef } from 'react';
 import {FaSearch} from 'react-icons/fa'
 import SearchBar from '../components/SearchBar';
 import '../pages/Home.css'
@@ -10,6 +10,9 @@ import Navbar from '../components/Navbar';
 import { Link } from 'react-router-dom';
 
 const Home = () => {
+    // เลื่อนหน้าจอ
+    const providerListBoxRef = useRef(null);
+    const [autoScroll, setAutoScroll] = useState(false)
 
     // บริการ จาก child
     const [servicesArr, setServicesArr] = useState([])
@@ -113,22 +116,38 @@ const Home = () => {
     // รับค่าแสดงผลคำหลังค้นหา
     const handleOnSearch = (data) => {
         setSearchText(data)
+        // const handleScrollToProviderListBox = () => {
+        //     if (providerListBoxRef.current) {
+        //         providerListBoxRef.current.scrollIntoView({ behavior: 'smooth' });
+        //     }
+        // };
+        // if (searchText === true) {
+        //     handleScrollToProviderListBox();
+        // }
     }
 
-    // คลิก เลือกบริการ
-    const selectedService = (slug) => {
-
-    }
+    // เมื่อ searchText เป็น true
+    useEffect(() => {
+        const handleScrollToProviderListBox = () => {
+            if (providerListBoxRef.current) {
+                providerListBoxRef.current.scrollIntoView({ behavior: 'smooth' });
+            }
+        };
+    
+        // เมื่อ searchText เป็น true ให้ทำการเลื่อนหน้าจอมาที่ div ที่มี className เป็น "home-provider-list-box"
+        if (searchText) {
+            handleScrollToProviderListBox();
+        }
+    }, [searchText]);
 
     return (
         <div>
-            {/* <Navbar/> */}
             <div className='home'>
                 <div className='xtf'>
                     <h1 className='text-find'>ค้นหาผู้ให้บริการ<br/>ที่ตรงตามความต้องการของคุณได้เลย</h1>
                 </div>
                 <SearchBar onDataSend={handleDataFromChild} onSearch={handleOnSearch}/>
-                <div className={searchText ? 'home-provider-list-box' : "home-provider-list-box-none"}>
+                <div ref={providerListBoxRef} className={searchText ? 'home-provider-list-box' : "home-provider-list-box-none"}>
                     { searchText && <label className='home-title'>รายการผู้ให้บริการจากการค้นหา</label>}
                     <div className='home-provider-list'>
                         { searchText && servicesArr.length > 0 ? 
