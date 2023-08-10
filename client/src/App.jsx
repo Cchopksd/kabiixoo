@@ -24,6 +24,7 @@ import CreateService from './pages/CreateService';
 import ProviderHome from './pages/ProviderHome'
 import EditService from './pages/EditService'
 import ProviderServiceProfile from './pages/ProviderServiceProfile';
+import Chat from './pages/Chat';
 
 function App() {
   return (
@@ -52,6 +53,7 @@ function App() {
             <Route path="/review/:slug" element={<MemberRoute Component={Review} />}/>
             <Route path="/report-provider/:slug" element={<MemberRoute Component={ReportProvider} />}/>
             <Route path='/create-service' element={<MemberRoute Component={CreateService}/>}/>
+            <Route path='/chats/:userId' element={<Chat />}/>
 
             {/* ผู้ให้บริการ */}
             <Route path='/provider-home/:userId' element={<ProviderHome/>}/>

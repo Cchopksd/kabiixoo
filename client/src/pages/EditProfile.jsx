@@ -71,6 +71,7 @@ const EditProfile = () => {
                     }
                 }
                 ).then(async (res) => {
+                    setLoading(false)
                     await Swal.fire(
                         'แจ้งเตือน',
                         res.data.message,
@@ -78,6 +79,7 @@ const EditProfile = () => {
                     )
                 window.location.reload(true)
             }).catch((err) => {
+                setLoading(false)
                 Swal.fire(
                     'แจ้งเตือน',
                     err.response.data.error,

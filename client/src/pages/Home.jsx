@@ -116,14 +116,6 @@ const Home = () => {
     // รับค่าแสดงผลคำหลังค้นหา
     const handleOnSearch = (data) => {
         setSearchText(data)
-        // const handleScrollToProviderListBox = () => {
-        //     if (providerListBoxRef.current) {
-        //         providerListBoxRef.current.scrollIntoView({ behavior: 'smooth' });
-        //     }
-        // };
-        // if (searchText === true) {
-        //     handleScrollToProviderListBox();
-        // }
     }
 
     // เมื่อ searchText เป็น true

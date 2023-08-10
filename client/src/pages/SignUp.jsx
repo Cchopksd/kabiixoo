@@ -50,6 +50,7 @@ const SignUp = () => {
         if (image){
             axios.post(`${process.env.REACT_APP_API}/signup`, {name,surname,email,phone,birthDate,username,password,confirmPassword,image})
             .then(async (res) => {
+                setLoading(false)
                 await Swal.fire(
                     'แจ้งเตือน',
                     'สมัครสมาชิกสำเร็จ',
@@ -60,6 +61,7 @@ const SignUp = () => {
                 setImageFile("")
                 authenticate(res,()=>navigate('/'))
             }).catch((err) => {
+                setLoading(false)
                 Swal.fire(
                     'แจ้งเตือน',
                     err.response.data.error,

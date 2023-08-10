@@ -126,7 +126,7 @@ const Navbar = () => {
                                                 <Link to={haveService ? `/provider-home/${userId}`:'/create-service'} onClick={() => setDropdownClicked(!dropdownClicked)}>ให้บริการรับฝากสัตว์เลี้ยง</Link>
                                             </div>
                                             <div className="login-dropdown-menu-border login-dropdown-middle">
-                                                <Link onClick={() => setDropdownClicked(!dropdownClicked)}>ประวัติการแชท</Link>
+                                                <Link to={`/chats/${userId}`} onClick={() => setDropdownClicked(!dropdownClicked)}>ประวัติการแชท</Link>
                                             </div>
                                             <div className="login-dropdown-bottom" role="button" onClick={() => logout(() => {
                                                 navigate("/")
@@ -146,7 +146,7 @@ const Navbar = () => {
                                         <Link to={haveService ? `/provider-home/${userId}`:'/create-service'}>ให้บริการรับฝากสัตว์เลี้ยง</Link>
                                     </li >
                                     <li className={click ? size <= 850 ? "mobile-spacing" :"mobile-dropdown-display-none" : size <= 850 ? "mobile-spacing" :"mobile-dropdown-display-none"} onClick={closeMobileMenu}>
-                                        <Link>ประวัติการแชท</Link>
+                                        <Link to={`/chats/${userId}`} >ประวัติการแชท</Link>
                                     </li>
                                     <li className={click ? size <= 850 ? "mobile-spacing" :"mobile-dropdown-display-none" : size <= 850 ? "mobile-spacing" :"mobile-dropdown-display-none"} onClick={closeMobileMenu}>
                                         <Link onClick={() => logout(() => {

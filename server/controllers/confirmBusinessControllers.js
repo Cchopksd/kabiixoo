@@ -10,7 +10,7 @@ exports.createRequest = async (req,res) => {
 
     // destructuring
     const { businessName, businessDesc, imageBusiness1, imageBusiness2, imageBusiness3,
-        imageLicense1, imageLicense2, imageLicense3} = req.body
+        imageLicense1, imageLicense2, imageLicense3 } = req.body
 
     // validate
     if (!businessName || !businessDesc){
