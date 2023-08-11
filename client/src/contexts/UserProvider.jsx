@@ -14,7 +14,7 @@ export const UserProvider = ({children}) => {
     const [chats, setChats] = useState([])
 
     useEffect(() => {
-        const userInfo = JSON.parse(sessionStorage.getItem("user"))
+        const userInfo = JSON.parse(localStorage.getItem("user"))
         console.log(userInfo)
         setUser(userInfo)
 

@@ -1,7 +1,27 @@
-import React , {useState}from "react";
+import React , {useEffect, useState}from "react";
 import "./Editbar.css";
+import { Link } from "react-router-dom";
+import { getUserId } from "../services/authorize";
 
 const Editbar = ({username, profileImage}) => {
+
+    // id ของคน login
+    const [userId, setUserId] = useState("")
+
+    // เมื่อเรียก component
+    useEffect(() => {
+        loadData()
+    },[])
+
+    // เอา id ของคน login
+    const loadData = async () => {
+        try{
+            const id = await getUserId()
+            setUserId(id.data)
+        }catch (error) {
+            console.error(error);
+        }
+    }
 
     return(
         <div className="editbar-container">
@@ -19,7 +39,9 @@ const Editbar = ({username, profileImage}) => {
                     <li className="change-pwd">เปลี่ยนรหัสผ่าน</li>
                     <div className="chat-style">
                         <img className="image-menu-display" src={require("../images/editBar/chat.png")}/>
-                        <li className="chat-history">ประวัติการสนทนา</li>
+                        <Link to={`/chats/${userId}`} className="remove-link-style">
+                            <li className="chat-history">ประวัติการสนทนา</li>
+                        </Link>
                     </div>
                 </ul>
             </div>

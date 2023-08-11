@@ -67,12 +67,13 @@ const Navbar = () => {
     // เมื่อ userid เปลี่ยนแปลงให้มาทำ block นี้ กัน async
     useEffect(() => {
         // ยิง api เพื่อเช็คว่ามีบริการไหม
-        axios.post(`${process.env.REACT_APP_API}/check-service`,{userId},
-            {
-                headers: {
-                    authorization: `Bearer ${getToken()}`
-                }
-            }
+        axios.post(`${process.env.REACT_APP_API}/check-service`,{userId}
+        // ,
+        //     {
+        //         headers: {
+        //             authorization: `Bearer ${getToken()}`
+        //         }
+        //     }
         ).then((res) => {
             setHaveService(res.data.status)
         }).catch((res) => {
