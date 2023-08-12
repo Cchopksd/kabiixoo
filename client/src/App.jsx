@@ -53,10 +53,10 @@ function App() {
             <Route path="/review/:slug" element={<MemberRoute Component={Review} />}/>
             <Route path="/report-provider/:slug" element={<MemberRoute Component={ReportProvider} />}/>
             <Route path='/create-service' element={<MemberRoute Component={CreateService}/>}/>
-            <Route path='/chats/:userId' element={<Chat />}/>
+            <Route path='/chats/:userId' element={<MemberRoute Component={Chat} />}/>
 
             {/* ผู้ให้บริการ */}
-            <Route path='/provider-home/:userId' element={<ProviderHome/>}/>
+            <Route path='/provider-home/:userId' element={<MemberRoute Component={ProviderHome}/>}/>
             <Route path="/confirm-business/:slug" element={<ConfirmBusiness/>} />
             <Route path='/edit-service/:slug' element={<EditService/>}/>
 

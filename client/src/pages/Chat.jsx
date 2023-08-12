@@ -32,6 +32,11 @@ const Chat = () => {
     const [messages, setMessages] = useState([])
     const [newMessage, setNewMessage] = useState()
 
+    // ข้อความรูปภาพ
+    const [imageFile, setImageFile] = useState()
+    const [image, setImage] = useState("")
+    const imageCheckDisplay = "res.cloudinary"
+
     // ขนาดของหน้าจอ
     const [size, setSize] = useState(0);
 
@@ -135,45 +140,6 @@ const Chat = () => {
         setSelectedChat("")
     }
 
-    const dummyArray = [
-        {
-            name: "สายฝน ล่องทิพย์",
-            chat: "สวัสดีจ้า",
-        },
-        {
-            name: "ชินาธิป ไชยถาวร",
-            chat: "ควยไรน้อง"
-        },
-        {
-            name: "ผมชื่อโต ควยไรอะ",
-            chat: "ควยไรครับพี่"
-        },
-        {
-            name: "โทมัส เชลบี้",
-            chat: "มึงตายแน่"
-        },
-        {
-            name: "ซอล กู้ดแมน",
-            chat: "เจอกูแน่ไอสัส"
-        },
-        {
-            name: "ซอล กู้ดแมน",
-            chat: "เจอกูแน่ไอสัส"
-        },
-        {
-            name: "ซอล กู้ดแมน",
-            chat: "เจอกูแน่ไอสัส"
-        },
-        {
-            name: "ซอล กู้ดแมน",
-            chat: "เจอกูแน่ไอสัส"
-        },
-        {
-            name: "ซอล กู้ดแมน",
-            chat: "เจอกูแน่ไอสัส"
-        },
-    ]
-
     // ส่งข้อความ แบบ กด enter
     const sendMessage = async (event) => {
         if (event.key === "Enter" && newMessage) {
@@ -216,6 +182,85 @@ const Chat = () => {
                     Swal.fire("แจ้งเตือน", "ส่งข้อความไม่สำเร็จ", "error")
                 }
         }
+    }
+
+    // ส่งข้อความที่เป็นรูปภาพ
+    // const sendImageMessage = (event) => {
+    //     event.preventDefault();
+    // }
+
+    const setFile = async () => {
+        // ตรวจสอบสกุลไฟล์
+        if(imageFile){
+            if (imageFile.type === "image/jpeg" || imageFile.type === "image/png"){
+                const data = new FormData()
+                data.append("file", imageFile)
+                data.append("upload_preset", "kabiixoo")
+                data.append("cloud_name", "dmz2wct31")
+
+                // api upload รูป ไปยัง Cloudinary
+                await axios.post("https://api.cloudinary.com/v1_1/dmz2wct31/image/upload/", data)
+                .then((response) => {
+                    setImage(response.data.url.toString())
+                    setImageFile("")
+                }).catch((error) => {
+                    setImageFile("")
+                    Swal.fire(
+                        'แจ้งเตือน',
+                        error,
+                        'error'
+                    )
+                })
+            }else{
+                setImageFile("")
+                Swal.fire(
+                    'แจ้งเตือน',
+                    'ประเภทไฟล์รูปภาพไม่รองรับ',
+                    'error'
+                )
+            }
+        }
+    }
+
+    const sendImageMessage = async () => {
+        if(image) {
+            socket.emit('stop typing', selectedChat._id)
+            try {
+                setImage("")
+                const { data } = await axios.post(`${process.env.REACT_APP_API}/send-message`,{
+                    loginUser: loginUser,
+                    content: image,
+                    chatId: selectedChat._id
+                })
+                console.log(data)
+
+                socket.emit('new message', data)
+                setMessages([...messages, data])
+                fetchChats()
+            }catch (error) {
+                Swal.fire("แจ้งเตือน", "ส่งข้อความไม่สำเร็จ", "error")
+            }
+        }
+    }
+
+    // เมื่อเลือกไฟล์ให้มา set file
+    useEffect(() => {
+        setFile()
+    },[imageFile])
+
+    // เมื่อเลือกรูปแล้ว
+    useEffect(() => {
+        sendImageMessage()
+    },[image])
+
+    const newPageImage = (imagePath) => {
+        if (!imagePath.includes("res.cloudinary")) return
+        // window.open(imagePath, '_blank');
+        // Swal.fire({
+        //     imageUrl: 'https://placeholder.pics/svg/300x1500',
+        //     imageHeight: 1500,
+        //     imageAlt: 'A tall image'
+        // })
     }
 
     // จัดการการพิมพ์ข้อความ
@@ -262,8 +307,8 @@ const Chat = () => {
                                             <div>
                                                 <label className={selectedChat === chat ?'chat-myChat-profile-latest-bold-selected':'chat-myChat-profile-latest-bold'}>{chat.latestMessage.sender.mem_name}</label>
                                                 <label> : </label>
-                                                {chat.latestMessage.content.length > 20 ?
-                                                chat.latestMessage.content.substring(0, 21) + "..." : chat.latestMessage.content}
+                                                {!chat.latestMessage.content.includes("res.cloudinary") ? chat.latestMessage.content.length > 20  
+                                                ? chat.latestMessage.content.substring(0, 21) + "..." : chat.latestMessage.content : "รูปภาพ" }
                                             </div>
                                         )}
                                         {/* <label className='chat-myChat-profile-latest-bold'>{item.name} </label> */}
@@ -300,20 +345,25 @@ const Chat = () => {
                                                 {messages && messages.map((m,i) => (
                                                     <div>
                                                         <div style={{display: "flex"}} key={m._id}>
-                                                            {/* <div className='chat-chat-message-one'> */}
                                                                 {(isSameSender(messages,m,i,loginUser) || isLastMessage(messages,i,loginUser))
                                                                 && (
                                                                     <div>
                                                                         <img className='chat-chat-avatar' src={m.sender.mem_profileImage} />
                                                                     </div>
                                                                 )}
-                                                                <span style={{backgroundColor: `${m.sender._id === loginUser ? '#f0c7d0' : '#B9F5D0'}`,
+                                                                <span style={{backgroundColor: `${m.sender._id === loginUser ? !m.content.includes("res.cloudinary") ? '#f0c7d0' : "transparent" : 
+                                                                    !m.content.includes("res.cloudinary") ? '#B9F5D0' : "transparent"}`,
                                                                     borderRadius: '20px', padding: '5px 15px', maxWidth: '75%',
                                                                     marginLeft: isSameSenderMargin(messages, m, i, loginUser),
-                                                                    marginTop: isSameUser(messages, m, i , loginUser) ? 3 : 10}}>
-                                                                        {m.content}
+                                                                    marginTop: isSameUser(messages, m, i , loginUser) ? 3 : 10}}
+                                                                    // onClick={
+                                                                        // m.content.includes("res.cloudinary") && 
+                                                                    // newPageImage(m.content)}
+                                                                    >
+                                                                        {m.content.includes("res.cloudinary") ? 
+                                                                        <img src={m.content} className='chat-chat-img-display'></img> 
+                                                                        : m.content}
                                                                 </span>
-                                                            {/* </div> */}
                                                         </div>
                                                     </div>
                                                 ))}
@@ -326,7 +376,12 @@ const Chat = () => {
                                     )}
                                 </div>
                                 <div className='chat-chat-input-box'>
-                                    <img src={require("../images/chatPage/galleryIcon.png")}/>
+                                    <input type="file" id='chat-chat-file-display-none' onChange={(e) => {setImageFile(e.target.files[0])}}/>
+                                    <label for="chat-chat-file-display-none" id="chat-chat-customFileLabel">
+                                        <img src={require("../images/chatPage/galleryIcon.png")} 
+                                        // onClick={sendImageMessage}
+                                        />
+                                    </label>
                                     <input type="text" placeholder='กรอกข้อความ...' onKeyDown={sendMessage} 
                                     value={newMessage} onChange={typingHandler}/>
                                     <img src={require("../images/chatPage/sendChatIcon.png")} onClick={sendMessageByClick}/>

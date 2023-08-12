@@ -207,6 +207,17 @@
 .chat-chat-messages-one {
     display: flex;
 }
+#chat-chat-file-display-none {
+    display: none;
+}
+#chat-chat-customFileLabel {
+    display: inline-block;
+    cursor: pointer;
+}
+.chat-chat-img-display {
+    width: 250px;
+    border-radius: 20px;
+}
 
 @media screen and (min-width: 1080px) and (max-width: 1919px){
     .chat-myChat-box {
