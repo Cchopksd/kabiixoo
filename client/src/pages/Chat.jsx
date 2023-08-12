@@ -12,6 +12,7 @@ import io from 'socket.io-client'
 import Lottie from 'react-lottie'
 import animationData from '../animations/typing.json'
 import Loading from '../components/Loading';
+import { getToken } from '../services/authorize';
 
 // endpoint เปลี่ยนตอน deploy
 const ENDPOINT = "http://localhost:5500"
@@ -81,9 +82,6 @@ const Chat = () => {
 
     useEffect(() => {
         socket.on('message recieved', (newMessageRecieved) => {
-            // if(!selectedChatCompare || selectedChatCompare._id !== newMessageRecieved.chat._id){
-
-            // }
             setMessages([...messages, newMessageRecieved])
             fetchChats()
         })
@@ -92,7 +90,13 @@ const Chat = () => {
     const fetchChats = async () => {
         try {
             console.log(loginUser)
-            const { data } = await axios.post(`${process.env.REACT_APP_API}/fetch-chats`,{loginUser})
+            const { data } = await axios.post(`${process.env.REACT_APP_API}/fetch-chats`,{loginUser},
+                {
+                    headers: {
+                        authorization: `Bearer ${getToken()}`
+                    }
+                }
+            )
             console.log(data)
             setChats(data)
             setPageLoading(false)
@@ -108,8 +112,13 @@ const Chat = () => {
         try {
             setLoading(true)
 
-            const { data } = await axios.get(`${process.env.REACT_APP_API}/get-message/${selectedChat._id}`)
-            // console.log(messages)
+            const { data } = await axios.get(`${process.env.REACT_APP_API}/get-message/${selectedChat._id}`,
+                {
+                    headers: {
+                        authorization: `Bearer ${getToken()}`
+                    }
+                }
+            )
             setMessages(data)
             setLoading(false)
 
@@ -122,8 +131,6 @@ const Chat = () => {
     // เมื่อเลือกแชท
     useEffect(() => {
         fetchMessages()
-
-        // selectedChatCompare = selectedChat
     },[selectedChat])
 
     // ขนาดของหน้าจอ
@@ -150,7 +157,13 @@ const Chat = () => {
                     loginUser: loginUser,
                     content: newMessage,
                     chatId: selectedChat._id
-                })
+                },
+                {
+                    headers: {
+                        authorization: `Bearer ${getToken()}`
+                    }
+                }
+                )
                 console.log(data)
 
                 socket.emit('new message', data)
@@ -172,6 +185,11 @@ const Chat = () => {
                         loginUser: loginUser,
                         content: newMessage,
                         chatId: selectedChat._id
+                    },
+                    {
+                        headers: {
+                            authorization: `Bearer ${getToken()}`
+                        }
                     })
                     console.log(data)
     
@@ -185,10 +203,6 @@ const Chat = () => {
     }
 
     // ส่งข้อความที่เป็นรูปภาพ
-    // const sendImageMessage = (event) => {
-    //     event.preventDefault();
-    // }
-
     const setFile = async () => {
         // ตรวจสอบสกุลไฟล์
         if(imageFile){
@@ -231,6 +245,11 @@ const Chat = () => {
                     loginUser: loginUser,
                     content: image,
                     chatId: selectedChat._id
+                },
+                {
+                    headers: {
+                        authorization: `Bearer ${getToken()}`
+                    }
                 })
                 console.log(data)
 

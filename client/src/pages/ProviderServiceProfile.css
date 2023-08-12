@@ -342,6 +342,27 @@
 .ps-profile-link {
     text-decoration: none;
 }
+.ps-profile-review-showMore-box {
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+}
+.ps-profile-reviewMore-button {
+    margin: 10px 0 10px 0;
+    border-radius: 20px;
+    width: 180px;
+    height: 50px;
+    font-size: 15px;
+    border: none;
+    background-color: #A7727D;
+    color: aliceblue;
+    box-shadow:0px 5px 20px 10px rgba(0,0,0,0.16);
+}
+.ps-profile-reviewMore-button:hover {
+    transition: 0.3s ease;
+    opacity: 0.7;
+    cursor: pointer;
+}
 
 @media screen and (min-width : 850px) and (max-width : 1080px){
     .ps-profile-container {

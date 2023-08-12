@@ -84,6 +84,9 @@ const ProviderServiceProfile = () => {
     // โหลด api
     const [loading, setLoading] = useState(false)
 
+    // แสดงรีวิวเมื่อแสดงรีวิว 5 อันขึ้นไป
+    const [showMoreCount, setShowMoreCount] = useState(5);
+
     // เมื่อเข้าสู่หน้า
     useEffect(() => {
         loadData()
@@ -148,8 +151,12 @@ const ProviderServiceProfile = () => {
             Swal.fire('แจ้งเตือน',err.response.data.error, 'error')
         })
 
-        axios.get(`${process.env.REACT_APP_API}/review/${params.slug}`).then((res) => {
-            // console.log(res.data[0].customer_id.mem_profileImage)
+        axios.get(`${process.env.REACT_APP_API}/review/${params.slug}`,
+        {
+            headers: {
+                authorization: `Bearer ${getToken()}`
+            }
+        }).then((res) => {
             setReviewArray(res.data)
         }).catch((err) => {
             Swal.fire('แจ้งเตือน',err.response.data.error, 'error')
@@ -180,7 +187,12 @@ const ProviderServiceProfile = () => {
                 return
             }
             setLoading(true)
-            const { data } = await axios.post(`${process.env.REACT_APP_API}/access-chat`, {loginId, serviceOwnerId})
+            const { data } = await axios.post(`${process.env.REACT_APP_API}/access-chat`, {loginId, serviceOwnerId},
+            {
+                headers: {
+                    authorization: `Bearer ${getToken()}`
+                }
+            })
 
             if (!chats.find((c) => c._id === data._id)) setChats([data, ...chats])
             setSelectedChat(data)
@@ -382,7 +394,7 @@ const ProviderServiceProfile = () => {
                             </Link>
                         </div>
                         <div className="ps-profile-review-content">
-                            {reviewArray.map((item) => (
+                            {reviewArray.slice(0, showMoreCount).map((item) => (
                                 <div className="ps-profile-review-content-display">
                                     <div>
                                         {console.log(item.customer_id)}
@@ -401,6 +413,13 @@ const ProviderServiceProfile = () => {
                                     </div>
                                 </div>
                             ))}
+                            {reviewArray.length > showMoreCount && ( 
+                                <div className='ps-profile-review-showMore-box'>
+                                    <button className='ps-profile-reviewMore-button' onClick={() => setShowMoreCount(prevCount => prevCount + 9)}>
+                                        แสดงรีวิวเพิ่ม
+                                    </button>
+                                </div>
+                            )}
                         </div>
                     </div>
                 </div>

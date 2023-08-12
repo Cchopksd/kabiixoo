@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import './SearchBar.css';
 import "./Filter.css";
 import {FaSearch} from 'react-icons/fa'
-import {FiFilter} from 'react-icons/fi'
+import {IoIosOptions} from 'react-icons/io'
 import Select from 'react-select'
 import ReactTags from 'react-tag-input';
 import { useState } from 'react';
@@ -210,7 +210,7 @@ const SearchBar = ({ onDataSend, onSearch }) => {
                         onChange={(event) => setSearchKeyword(event.target.value)}/>
                     </div>
                     <div className='fbt-filter'>
-                        <button className='bt-filter' onClick={handleToggle}><FiFilter className='bt-filter-size'/></button>
+                        <button className='bt-filter' onClick={handleToggle}><IoIosOptions className='bt-filter-size'/></button>
                     </div>
                     <div className='fbt-search'>
                         <button className="bt-search" type="submit"> <FaSearch className='bt-search-size' size={45} color="#fff"

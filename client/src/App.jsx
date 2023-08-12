@@ -57,8 +57,8 @@ function App() {
 
             {/* ผู้ให้บริการ */}
             <Route path='/provider-home/:userId' element={<MemberRoute Component={ProviderHome}/>}/>
-            <Route path="/confirm-business/:slug" element={<ConfirmBusiness/>} />
-            <Route path='/edit-service/:slug' element={<EditService/>}/>
+            <Route path="/confirm-business/:slug" element={<MemberRoute Component={ConfirmBusiness}/>} />
+            <Route path='/edit-service/:slug' element={<MemberRoute Component={EditService}/>}/>
 
             {/* ผู้ดูแลระบบ */}
             <Route path="/administrator-homepage" element={<AdministratorHomepage />}/>
