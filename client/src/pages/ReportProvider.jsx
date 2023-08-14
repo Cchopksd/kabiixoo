@@ -7,6 +7,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import { getUserId, getToken } from "../services/authorize";
 import Loading from "../components/Loading";
+import AnimatedPage from "../AnimatedPage";
 
 const ReportProvider = () => {
 
@@ -134,7 +135,7 @@ const ReportProvider = () => {
     },[uploadImg])
 
     return (
-        <div>
+        <AnimatedPage>
             { loading && <Loading/>}
             <div className="report-container">
                 <div className="report-title-box">
@@ -157,7 +158,7 @@ const ReportProvider = () => {
                 <button className="comfirm-report-btn" onClick={submitReport}>ส่งรายงาน</button>
             </div>
             <Footer/>
-        </div>
+        </AnimatedPage>
     );
 }
 

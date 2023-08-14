@@ -2,10 +2,11 @@ import React from "react";
 import "./ArticleOne.css";
 import {Link } from 'react-router-dom';
 import Footer from "../components/Footer";
+import AnimatedPage from "../AnimatedPage";
 
 const ArticleOne = () => {
     return (
-        <div>
+        <AnimatedPage>
             <div className="article-1-container">
                 <label className="article-1-header-label">โรคภัยไข้เจ็บของสัตว์เลี้ยง</label>
                 <img src={require("../images/articleOnePage/headerImg1.png")}/>
@@ -96,7 +97,7 @@ const ArticleOne = () => {
                 </div>
             </div>
             <Footer/>
-        </div>
+        </AnimatedPage>
     );
 }
 export default ArticleOne;

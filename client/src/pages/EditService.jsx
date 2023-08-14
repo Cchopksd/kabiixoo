@@ -9,6 +9,7 @@ import UserContext from "../contexts/UserProvider";
 import { getToken } from "../services/authorize";
 import Footer from "../components/Footer"
 import Loading from "../components/Loading";
+import AnimatedPage from "../AnimatedPage";
 
 const EditService = () => {
 
@@ -454,7 +455,7 @@ const EditService = () => {
     }
 
     return (
-        <div>
+        <AnimatedPage>
             <div className="createService-container">
                 { loading && <Loading/>}
                 <label className="createService-header">แก้ไขประกาศการให้บริการ</label>
@@ -641,7 +642,7 @@ const EditService = () => {
                 </div>
             </div>
             <Footer/>
-        </div>
+        </AnimatedPage>
     );
 }
 

@@ -7,6 +7,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import { getToken } from "../services/authorize";
 import Loading from "../components/Loading";
+import AnimatedPage from "../AnimatedPage";
 
 const EditProfile = () => {
 
@@ -149,7 +150,7 @@ const EditProfile = () => {
     }
 
     return(
-        <div>
+        <AnimatedPage>
             { loading && <Loading/>}
             <div className="edit-container">
                 <Editbar username={mem_username} profileImage={mem_profileImage}/>
@@ -188,7 +189,7 @@ const EditProfile = () => {
                 </div>
             </div>
             <Footer/>
-        </div>
+        </AnimatedPage>
     );
 }
 

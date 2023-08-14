@@ -9,6 +9,7 @@ import Swal from "sweetalert2"
 import { useNavigate } from "react-router-dom";
 import UserContext from "../contexts/UserProvider";
 import Loading from "../components/Loading";
+import AnimatedPage from "../AnimatedPage";
 
 const CreateService = () => {
 
@@ -334,7 +335,7 @@ const CreateService = () => {
     }, [images]);
 
     return (
-        <div>
+        <AnimatedPage>
             { loading && <Loading/>}
             <div className="createService-container">
                 <label className="createService-header">สร้างประกาศการให้บริการ</label>
@@ -516,7 +517,7 @@ const CreateService = () => {
                 <button className="createService-btn" onClick={submitCreate}>สร้างประกาศการให้บริการ</button>
             </div>
             <Footer/>
-        </div>
+        </AnimatedPage>
     );
 }
 

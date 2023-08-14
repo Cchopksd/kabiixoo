@@ -7,6 +7,7 @@ import { getUserId, getToken } from "../services/authorize";
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import Loading from '../components/Loading';
+import AnimatedPage from "../AnimatedPage";
 
 const Review = () => {
 
@@ -74,7 +75,7 @@ const Review = () => {
     }
 
     return(
-        <div>
+        <AnimatedPage>
             { loading && <Loading/>}
             <div className='review-container'>
                 <div className='review-title'>
@@ -115,7 +116,7 @@ const Review = () => {
                 </div>
             </div>
             <Footer/>
-        </div>
+        </AnimatedPage>
     );
 }
 

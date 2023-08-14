@@ -8,6 +8,7 @@ import Filter from '../components/Filter';
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
 import { Link } from 'react-router-dom';
+import AnimatedPage from "../AnimatedPage";
 
 const Home = () => {
     // เลื่อนหน้าจอ
@@ -55,7 +56,7 @@ const Home = () => {
     }, [searchText]);
 
     return (
-        <div>
+        <AnimatedPage>
             <div className='home'>
                 <div className='xtf'>
                     <h1 className='text-find'>ค้นหาผู้ให้บริการ<br/>ที่ตรงตามความต้องการของคุณได้เลย</h1>
@@ -121,7 +122,7 @@ const Home = () => {
             <div className={!searchText ? "home-footer-none" : "home-footer"}>
                 <Footer/>
             </div>
-        </div>
+        </AnimatedPage>
     );
 };
 

@@ -1,10 +1,11 @@
 import React from "react";
 import "./TermOfService.css"
 import Footer from "../components/Footer";
+import AnimatedPage from "../AnimatedPage";
 
 const TermOfService = () => {
     return (
-        <div>
+        <AnimatedPage>
             <div className="term-container">
                 <label className="term-header">ข้อกำหนดการให้บริการของ KabiiXoo</label>
                 <div className="term-box">
@@ -55,7 +56,7 @@ const TermOfService = () => {
                 </div>
             </div>
             <Footer/>
-        </div>
+        </AnimatedPage>
     );
 }
 

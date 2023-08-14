@@ -25,47 +25,51 @@ import ProviderHome from './pages/ProviderHome'
 import EditService from './pages/EditService'
 import ProviderServiceProfile from './pages/ProviderServiceProfile';
 import Chat from './pages/Chat';
+import { AnimatePresence } from 'framer-motion';
 
 function App() {
+  const location = useLocation()
   return (
     <div>
         <Navbar/>
-        <Routes>
-          {/* MemberRoute คือ component ที่ใช้ตรวจสอบและ redirect หน้า เมื่อไม่ได้เข้าสู่ระบบ */}
-            <Route index  element={<Home />}/>
-            {/* บทความ */}
-            <Route path="/article" element={<Article />}/>
-            <Route path="/article-1" element={<ArticleOne />}/>
-            <Route path="/article-2" element={<ArticleTwo />}/>
-            <Route path="/article-3" element={<ArticleThree />}/>
+        <AnimatePresence>
+          <Routes key={location.pathname} location={location}>
+            {/* MemberRoute คือ component ที่ใช้ตรวจสอบและ redirect หน้า เมื่อไม่ได้เข้าสู่ระบบ */}
+              <Route index  element={<Home />}/>
+              {/* บทความ */}
+              <Route path="/article" element={<Article />}/>
+              <Route path="/article-1" element={<ArticleOne />}/>
+              <Route path="/article-2" element={<ArticleTwo />}/>
+              <Route path="/article-3" element={<ArticleThree />}/>
 
-            {/* ทั่วไป */}
-            <Route path="/about" element={<About />}/>
-            <Route path="/term-of-service" element={<TermOfService />}/>
+              {/* ทั่วไป */}
+              <Route path="/about" element={<About />}/>
+              <Route path="/term-of-service" element={<TermOfService />}/>
 
-            {/* ผู้ใช้งานระบบ */}
-            <Route path="/signin" element={<SignIn />}/>
-            <Route path="/signup" element={<SignUp />}/>
-            <Route path='/edit-profile/:slug' element={<MemberRoute Component={EditProfile}/>}/>
-            <Route path='/provider-profile/:slug' element={<ProviderServiceProfile/>}/>
+              {/* ผู้ใช้งานระบบ */}
+              <Route path="/signin" element={<SignIn />}/>
+              <Route path="/signup" element={<SignUp />}/>
+              <Route path='/edit-profile/:slug' element={<MemberRoute Component={EditProfile}/>}/>
+              <Route path='/provider-profile/:slug' element={<ProviderServiceProfile/>}/>
 
-            {/* ผู้ใช้งานที่เป็นสมาชิก */}
-            <Route path="/review/:slug" element={<MemberRoute Component={Review} />}/>
-            <Route path="/report-provider/:slug" element={<MemberRoute Component={ReportProvider} />}/>
-            <Route path='/create-service' element={<MemberRoute Component={CreateService}/>}/>
-            <Route path='/chats/:userId' element={<MemberRoute Component={Chat} />}/>
+              {/* ผู้ใช้งานที่เป็นสมาชิก */}
+              <Route path="/review/:slug" element={<MemberRoute Component={Review} />}/>
+              <Route path="/report-provider/:slug" element={<MemberRoute Component={ReportProvider} />}/>
+              <Route path='/create-service' element={<MemberRoute Component={CreateService}/>}/>
+              <Route path='/chats/:userId' element={<MemberRoute Component={Chat} />}/>
 
-            {/* ผู้ให้บริการ */}
-            <Route path='/provider-home/:userId' element={<MemberRoute Component={ProviderHome}/>}/>
-            <Route path="/confirm-business/:slug" element={<MemberRoute Component={ConfirmBusiness}/>} />
-            <Route path='/edit-service/:slug' element={<MemberRoute Component={EditService}/>}/>
+              {/* ผู้ให้บริการ */}
+              <Route path='/provider-home/:userId' element={<MemberRoute Component={ProviderHome}/>}/>
+              <Route path="/confirm-business/:slug" element={<MemberRoute Component={ConfirmBusiness}/>} />
+              <Route path='/edit-service/:slug' element={<MemberRoute Component={EditService}/>}/>
 
-            {/* ผู้ดูแลระบบ */}
-            <Route path="/administrator-homepage" element={<AdministratorHomepage />}/>
-            <Route path="/administrator-homepage/account" element={<ManageAccount/>} />
-            <Route path="/store" element={<VerifyStore/>} />
-            <Route path="/reporting" element={<ReportingService/>} />
-        </Routes>
+              {/* ผู้ดูแลระบบ */}
+              <Route path="/administrator-homepage" element={<AdministratorHomepage />}/>
+              <Route path="/administrator-homepage/account" element={<ManageAccount/>} />
+              <Route path="/store" element={<VerifyStore/>} />
+              <Route path="/reporting" element={<ReportingService/>} />
+          </Routes>
+        </AnimatePresence>
     </div>
   );
 }

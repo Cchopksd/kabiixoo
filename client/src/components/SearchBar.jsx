@@ -10,6 +10,7 @@ import Filter from './Filter';
 import Swal from 'sweetalert2';
 import axios from 'axios';
 import Loading from './Loading';
+import AnimatedPage from "../AnimatedPage";
 
 
 const SearchBar = ({ onDataSend, onSearch }) => {
@@ -201,233 +202,235 @@ const SearchBar = ({ onDataSend, onSearch }) => {
     }
 
     return (
-        <div className='search-bar'>
-            { loading && <Loading/>}
-            <div className={`box-search ${isVisible ? 'visible' : ''}`}>
-                <div className='frameEntry'>
-                    <div className='frameEt_fill'>
-                        <input className="entry-fill" type='search' placeholder="ค้นหาชื่อร้าน , แขวง หรือ เขต" value={searchKeyword} 
-                        onChange={(event) => setSearchKeyword(event.target.value)}/>
-                    </div>
-                    <div className='fbt-filter'>
-                        <button className='bt-filter' onClick={handleToggle}><IoIosOptions className='bt-filter-size'/></button>
-                    </div>
-                    <div className='fbt-search'>
-                        <button className="bt-search" type="submit"> <FaSearch className='bt-search-size' size={45} color="#fff"
-                        onClick={handleSearch}/></button>
+        <AnimatedPage>
+            <div className='search-bar'>
+                { loading && <Loading/>}
+                <div className={`box-search ${isVisible ? 'visible' : ''}`}>
+                    <div className='frameEntry'>
+                        <div className='frameEt_fill'>
+                            <input className="entry-fill" type='search' placeholder="ค้นหาชื่อร้าน , แขวง หรือ เขต" value={searchKeyword} 
+                            onChange={(event) => setSearchKeyword(event.target.value)}/>
+                        </div>
+                        <div className='fbt-filter'>
+                            <button className='bt-filter' onClick={handleToggle}><IoIosOptions className='bt-filter-size'/></button>
+                        </div>
+                        <div className='fbt-search'>
+                            <button className="bt-search" type="submit"> <FaSearch className='bt-search-size' size={45} color="#fff"
+                            onClick={handleSearch}/></button>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div className={isVisible ? "filter-active" : "filter-active-none"}>
-                {/* <Filter/> */}
-                <div className="container-filter">
-                    <hr className='line-filter'></hr>
-                    <div className="animal-checkbox">
-                        <h3 className="label-filter">ประเภทสัตว์เลี้ยง</h3>
-                        <ul className='items-filter'>
-                            <li>
-                                {/* <div className={`item-type ${checkedItems["cat-checkbox"] ? "checked" : ""}`}> */}
-                                <div className={`item-type ${cat && "item-type-checked"}`}>
-                                    <input id="pet-checkbox" type="checkbox" checked={cat} onChange={() => setCat(!cat)}/>
-                                    <label className="lb-checkbox" htmlFor="cat-checkbox" onChange={handleCheckboxChange}>แมว</label>
-                                </div>
-                            </li>
-                            <li>
-                                <div className={`item-type ${dog && "item-type-checked"}`}>
-                                    <input id="pet-checkbox" type="checkbox" checked={dog} onChange={() => setDog(!dog)} />
-                                    <label className="lb-checkbox" htmlFor="dog-checkbox">สุนัข</label>
-                                </div>
-                            </li>
-                            <li>
-                                <div className={`item-type ${bird && "item-type-checked"}`}>
-                                    <input id="pet-checkbox" type="checkbox" checked={bird} onChange={() => setBird(!bird)} />
-                                    <label className="lb-checkbox" htmlFor="bird-checkbox">นก</label>
-                                </div>
-                            </li>
-                            <li>
-                                <div className={`item-type ${rabbit && "item-type-checked"}`}>
-                                    <input id="pet-checkbox" type="checkbox" checked={rabbit} onChange={() => setRabbit(!rabbit)} />
-                                    <label className="lb-checkbox" htmlFor="rabbit-checkbox">กระต่าย</label>
-                                </div>
-                            </li>
-                            <li>
-                                <div className={`item-type ${rodent && "item-type-checked"}`}>
-                                    <input id="pet-checkbox" type="checkbox" checked={rodent} onChange={() => setRodent(!rodent)} />
-                                    <label className="lb-checkbox" htmlFor="rodent-checkbox">สัตว์ฟันแทะ</label>
-                                </div>
-                            </li>
-                            <li>
-                                <div className={`item-type ${reptile && "item-type-checked"}`}>
-                                    <input id="pet-checkbox" type="checkbox" checked={reptile} onChange={() => setReptile(!reptile)} />
-                                    <label className="lb-checkbox" htmlFor="reptile-checkbox">สัตว์เลื้อยคลาน</label>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <hr className='line-filter'></hr>
-                    <div className="services-checkbox">
-                        <h3 className="label-filter">บริการเพิ่มเติม</h3>
-                        <ul className='items-filter'>
-                            <li>
-                                <div className={`item-type ${grooming && "item-type-checked"}`}>
-                                    <input id="service-checkbox" type="checkbox" checked={grooming} onChange={() => setGrooming(!grooming)} />
-                                    <label className="lb-checkbox" htmlFor="grooming-checkbox" onChange={handleCheckboxChange}>บริการกรูมมิ่ง (อาบน้ำตัดขน)</label>
-                                </div>
-                            </li>
-                            <li>
-                                <div className={`item-type ${swimming && "item-type-checked"}`}>
-                                    <input id="service-checkbox" type="checkbox" checked={swimming} onChange={() => setSwimming(!swimming)} />
-                                    <label className="lb-checkbox" htmlFor="swimming-checkbox">สระว่ายน้ำสัตว์เลี้ยง</label>
-                                </div>
-                            </li>
-                            <li>
-                                <div className={`item-type ${consume && "item-type-checked"}`}>
-                                    <input id="service-checkbox" type="checkbox" checked={consume} onChange={() => setConsume(!consume)} />
-                                    <label className="lb-checkbox" htmlFor="consume-checkbox">อาหารและของใช้เกี่ยวกับสัตว์</label>
-                                </div>
-                            </li>
-                            <li>
-                                <div className={`item-type ${walk && "item-type-checked"}`}>
-                                    <input id="service-checkbox" type="checkbox" checked={walk} onChange={() => setWalk(!walk)} />
-                                    <label className="lb-checkbox" htmlFor="walk-checkbox">พาสัตว์เลี้ยงเดินเล่น</label>
-                                </div>
-                            </li>
-                            <li>
-                                <div className={`item-type ${transport && "item-type-checked"}`}>
-                                    <input id="service-checkbox" type="checkbox" checked={transport} onChange={() => setTransport(!transport)} />
-                                    <label className="lb-checkbox" htmlFor="transport-checkbox">รถรับส่งสัตว์เลี้ยง</label>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <hr className='line-filter'></hr>
-                    <div className="province-checkbox">
-                        <h3 className="label-filter">จังหวัด</h3>
-                        <ul className='items-filter'>
-                            <div>
-                                <Select className="select-province" options={provinces} value={province} onChange={setProvince} placeholder="เลือกจังหวัด"/>
-                            </div>
-                            <div className={`item-type ${store && "item-type-checked"}`}>
-                                <input id="store-checkbox" type="checkbox" checked={store} onChange={() => setStore(!store)} />
-                                <label className="lb-checkbox" htmlFor="store-checkbox">มีหน้าร้าน</label>
-                            </div>
-                        </ul>
-                    </div>
-                    <hr className='line-filter'></hr>
-                    <div className="score-checkbox">
-                        <h3 className="label-filter">คะแนน</h3>
-                        <ul className='items-filter'>
-                            <li>
-                                <div className={`item-type ${topPoint && "item-type-checked"}`}>
-                                    <input id="point-checkbox" type="radio" value="lowPoint" checked={point === "lowPoint"} onChange={(event) => {
-                                        setPoint(event.target.value)
-                                        setTopPoint(!lowPoint)
-                                        setLowPoint(false)
-                                    }}/>
-                                    <label className="lb-checkbox" htmlFor="less-checkbox" onChange={handleCheckboxChange}>คะแนนน้อยไปมาก</label>
-                                </div>
-                            </li>
-                            <li>
-                                <div className={`item-type ${lowPoint && "item-type-checked"}`}>
-                                    <input id="point-checkbox" type="radio" value="topPoint" checked={point === "topPoint"} onChange={(event) => {
-                                        setPoint(event.target.value);
-                                        setLowPoint(!topPoint);
-                                        setTopPoint(false);
-                                    }}/>
-                                    <label className="lb-checkbox" htmlFor="more -checkbox">คะแนนมากไปน้อย</label>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <hr className='line-filter'></hr>
-                    <div className="price-checkbox">
-                        <h3 className="label-filter">ราคาเริ่มต้น</h3>
-                        <ul className='price-filter'>
-                            <li>
-                                <div className={`item-price ${lowPrice && "item-type-checked"}`}>
-                                    <input id="price-checkbox" type="radio" value="lowPrice" checked={price === "lowPrice"} onChange={(event) => {
-                                        setPrice(event.target.value);
-                                        setLowPrice(!lowPrice)
-                                        setFiveToTenPrice(false);
-                                        setTenToFifteenPrice(false);
-                                        setFifteenToTwentyPrice(false);
-                                        setTopPrice(false);                            }} />
-                                    <label className="lb-checkbox" htmlFor="price-1-checkbox" onChange={handleCheckboxChange}>น้อยกว่า 500 บาท</label>
-                                </div>
-                            </li>
-                            <li>
-                                <div className={`item-price ${fiveToTenPrice && "item-type-checked"}`}>
-                                    <input id="price-checkbox" type="radio" value="fiveToTenPrice" checked={price === "fiveToTenPrice"} onChange={(event) => {
-                                        setPrice(event.target.value);
-                                        setLowPrice(false)
-                                        setFiveToTenPrice(!fiveToTenPrice);
-                                        setTenToFifteenPrice(false);
-                                        setFifteenToTwentyPrice(false);
-                                        setTopPrice(false); 
-                                    }} />
-                                    <label className="lb-checkbox" htmlFor="price-2-checkbox">500 - 999 บาท</label>
-                                </div>
-                            </li>
-                            <li>
-                                <div className={`item-price ${tenToFifteenPrice && "item-type-checked"}`}>
-                                    <input id="price-checkbox" type="radio" value="tenToFifteenPrice" checked={price === "tenToFifteenPrice"} onChange={(event) => {
-                                        setPrice(event.target.value);
-                                        setLowPrice(false)
-                                        setFiveToTenPrice(false);
-                                        setTenToFifteenPrice(!tenToFifteenPrice);
-                                        setFifteenToTwentyPrice(false);
-                                        setTopPrice(false);
-                                    }} />
-                                    <label className="lb-checkbox" htmlFor="price-3-checkbox">1000 - 1499 บาท</label>
-                                </div>
-                            </li>
-                            <li>
-                                <div className={`item-price ${fifteenToTwentyPrice && "item-type-checked"}`}>
-                                    <input id="price-checkbox" type="radio" value="fifteenToTwentyPrice" checked={price === "fifteenToTwentyPrice"} onChange={(event) => {
-                                        setPrice(event.target.value);
-                                        setLowPrice(false)
-                                        setFiveToTenPrice(false);
-                                        setTenToFifteenPrice(false);
-                                        setFifteenToTwentyPrice(!fifteenToTwentyPrice);
-                                        setTopPrice(false);
-                                    }} />
-                                    <label className="lb-checkbox" htmlFor="price-4-checkbox">1500 - 1999 บาท</label>
-                                </div>
-                            </li>
-                            <li>
-                                <div className={`item-price ${topPrice && "item-type-checked"}`}>
-                                    <input id="price-checkbox" type="radio" value="topPrice" checked={price === "topPrice"} onChange={(event) => {
-                                        setPrice(event.target.value);
-                                        setLowPrice(false)
-                                        setFiveToTenPrice(false);
-                                        setTenToFifteenPrice(false);
-                                        setFifteenToTwentyPrice(false);
-                                        setTopPrice(!topPrice);
-                                    }} />
-                                    <label className="lb-checkbox" htmlFor="price-5-checkbox">มากกว่า 2500 บาท</label>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <hr className='line-filter'></hr>
-                    <div className="function-filter">
-                        <ul className='summary-filter'>
-                            <li>
+                <div className={isVisible ? "filter-active" : "filter-active-none"}>
+                    {/* <Filter/> */}
+                    <div className="container-filter">
+                        <hr className='line-filter'></hr>
+                        <div className="animal-checkbox">
+                            <h3 className="label-filter">ประเภทสัตว์เลี้ยง</h3>
+                            <ul className='items-filter'>
+                                <li>
+                                    {/* <div className={`item-type ${checkedItems["cat-checkbox"] ? "checked" : ""}`}> */}
+                                    <div className={`item-type ${cat && "item-type-checked"}`}>
+                                        <input id="pet-checkbox" type="checkbox" checked={cat} onChange={() => setCat(!cat)}/>
+                                        <label className="lb-checkbox" htmlFor="cat-checkbox" onChange={handleCheckboxChange}>แมว</label>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div className={`item-type ${dog && "item-type-checked"}`}>
+                                        <input id="pet-checkbox" type="checkbox" checked={dog} onChange={() => setDog(!dog)} />
+                                        <label className="lb-checkbox" htmlFor="dog-checkbox">สุนัข</label>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div className={`item-type ${bird && "item-type-checked"}`}>
+                                        <input id="pet-checkbox" type="checkbox" checked={bird} onChange={() => setBird(!bird)} />
+                                        <label className="lb-checkbox" htmlFor="bird-checkbox">นก</label>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div className={`item-type ${rabbit && "item-type-checked"}`}>
+                                        <input id="pet-checkbox" type="checkbox" checked={rabbit} onChange={() => setRabbit(!rabbit)} />
+                                        <label className="lb-checkbox" htmlFor="rabbit-checkbox">กระต่าย</label>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div className={`item-type ${rodent && "item-type-checked"}`}>
+                                        <input id="pet-checkbox" type="checkbox" checked={rodent} onChange={() => setRodent(!rodent)} />
+                                        <label className="lb-checkbox" htmlFor="rodent-checkbox">สัตว์ฟันแทะ</label>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div className={`item-type ${reptile && "item-type-checked"}`}>
+                                        <input id="pet-checkbox" type="checkbox" checked={reptile} onChange={() => setReptile(!reptile)} />
+                                        <label className="lb-checkbox" htmlFor="reptile-checkbox">สัตว์เลื้อยคลาน</label>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <hr className='line-filter'></hr>
+                        <div className="services-checkbox">
+                            <h3 className="label-filter">บริการเพิ่มเติม</h3>
+                            <ul className='items-filter'>
+                                <li>
+                                    <div className={`item-type ${grooming && "item-type-checked"}`}>
+                                        <input id="service-checkbox" type="checkbox" checked={grooming} onChange={() => setGrooming(!grooming)} />
+                                        <label className="lb-checkbox" htmlFor="grooming-checkbox" onChange={handleCheckboxChange}>บริการกรูมมิ่ง (อาบน้ำตัดขน)</label>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div className={`item-type ${swimming && "item-type-checked"}`}>
+                                        <input id="service-checkbox" type="checkbox" checked={swimming} onChange={() => setSwimming(!swimming)} />
+                                        <label className="lb-checkbox" htmlFor="swimming-checkbox">สระว่ายน้ำสัตว์เลี้ยง</label>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div className={`item-type ${consume && "item-type-checked"}`}>
+                                        <input id="service-checkbox" type="checkbox" checked={consume} onChange={() => setConsume(!consume)} />
+                                        <label className="lb-checkbox" htmlFor="consume-checkbox">อาหารและของใช้เกี่ยวกับสัตว์</label>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div className={`item-type ${walk && "item-type-checked"}`}>
+                                        <input id="service-checkbox" type="checkbox" checked={walk} onChange={() => setWalk(!walk)} />
+                                        <label className="lb-checkbox" htmlFor="walk-checkbox">พาสัตว์เลี้ยงเดินเล่น</label>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div className={`item-type ${transport && "item-type-checked"}`}>
+                                        <input id="service-checkbox" type="checkbox" checked={transport} onChange={() => setTransport(!transport)} />
+                                        <label className="lb-checkbox" htmlFor="transport-checkbox">รถรับส่งสัตว์เลี้ยง</label>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <hr className='line-filter'></hr>
+                        <div className="province-checkbox">
+                            <h3 className="label-filter">จังหวัด</h3>
+                            <ul className='items-filter'>
                                 <div>
-                                    {/* <input className="btn-resetFilter" type="reset"/> */}
-                                    <button className="btn-resetFilter" onClick={handleResetFilter}>ล้างตัวกรองการค้นหา</button>
+                                    <Select className="select-province" options={provinces} value={province} onChange={setProvince} placeholder="เลือกจังหวัด"/>
                                 </div>
-                            </li>
-                            <li>
-                                <div className="frame-btn-searchFilter">
-                                    <button className="btn-searchFilter" onClick={handleSearch}><FaSearch size={20}/></button>
+                                <div className={`item-type ${store && "item-type-checked"}`}>
+                                    <input id="store-checkbox" type="checkbox" checked={store} onChange={() => setStore(!store)} />
+                                    <label className="lb-checkbox" htmlFor="store-checkbox">มีหน้าร้าน</label>
                                 </div>
-                            </li>
-                        </ul>
+                            </ul>
+                        </div>
+                        <hr className='line-filter'></hr>
+                        <div className="score-checkbox">
+                            <h3 className="label-filter">คะแนน</h3>
+                            <ul className='items-filter'>
+                                <li>
+                                    <div className={`item-type ${topPoint && "item-type-checked"}`}>
+                                        <input id="point-checkbox" type="radio" value="lowPoint" checked={point === "lowPoint"} onChange={(event) => {
+                                            setPoint(event.target.value)
+                                            setTopPoint(!lowPoint)
+                                            setLowPoint(false)
+                                        }}/>
+                                        <label className="lb-checkbox" htmlFor="less-checkbox" onChange={handleCheckboxChange}>คะแนนน้อยไปมาก</label>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div className={`item-type ${lowPoint && "item-type-checked"}`}>
+                                        <input id="point-checkbox" type="radio" value="topPoint" checked={point === "topPoint"} onChange={(event) => {
+                                            setPoint(event.target.value);
+                                            setLowPoint(!topPoint);
+                                            setTopPoint(false);
+                                        }}/>
+                                        <label className="lb-checkbox" htmlFor="more -checkbox">คะแนนมากไปน้อย</label>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <hr className='line-filter'></hr>
+                        <div className="price-checkbox">
+                            <h3 className="label-filter">ราคาเริ่มต้น</h3>
+                            <ul className='price-filter'>
+                                <li>
+                                    <div className={`item-price ${lowPrice && "item-type-checked"}`}>
+                                        <input id="price-checkbox" type="radio" value="lowPrice" checked={price === "lowPrice"} onChange={(event) => {
+                                            setPrice(event.target.value);
+                                            setLowPrice(!lowPrice)
+                                            setFiveToTenPrice(false);
+                                            setTenToFifteenPrice(false);
+                                            setFifteenToTwentyPrice(false);
+                                            setTopPrice(false);                            }} />
+                                        <label className="lb-checkbox" htmlFor="price-1-checkbox" onChange={handleCheckboxChange}>น้อยกว่า 500 บาท</label>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div className={`item-price ${fiveToTenPrice && "item-type-checked"}`}>
+                                        <input id="price-checkbox" type="radio" value="fiveToTenPrice" checked={price === "fiveToTenPrice"} onChange={(event) => {
+                                            setPrice(event.target.value);
+                                            setLowPrice(false)
+                                            setFiveToTenPrice(!fiveToTenPrice);
+                                            setTenToFifteenPrice(false);
+                                            setFifteenToTwentyPrice(false);
+                                            setTopPrice(false); 
+                                        }} />
+                                        <label className="lb-checkbox" htmlFor="price-2-checkbox">500 - 999 บาท</label>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div className={`item-price ${tenToFifteenPrice && "item-type-checked"}`}>
+                                        <input id="price-checkbox" type="radio" value="tenToFifteenPrice" checked={price === "tenToFifteenPrice"} onChange={(event) => {
+                                            setPrice(event.target.value);
+                                            setLowPrice(false)
+                                            setFiveToTenPrice(false);
+                                            setTenToFifteenPrice(!tenToFifteenPrice);
+                                            setFifteenToTwentyPrice(false);
+                                            setTopPrice(false);
+                                        }} />
+                                        <label className="lb-checkbox" htmlFor="price-3-checkbox">1000 - 1499 บาท</label>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div className={`item-price ${fifteenToTwentyPrice && "item-type-checked"}`}>
+                                        <input id="price-checkbox" type="radio" value="fifteenToTwentyPrice" checked={price === "fifteenToTwentyPrice"} onChange={(event) => {
+                                            setPrice(event.target.value);
+                                            setLowPrice(false)
+                                            setFiveToTenPrice(false);
+                                            setTenToFifteenPrice(false);
+                                            setFifteenToTwentyPrice(!fifteenToTwentyPrice);
+                                            setTopPrice(false);
+                                        }} />
+                                        <label className="lb-checkbox" htmlFor="price-4-checkbox">1500 - 1999 บาท</label>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div className={`item-price ${topPrice && "item-type-checked"}`}>
+                                        <input id="price-checkbox" type="radio" value="topPrice" checked={price === "topPrice"} onChange={(event) => {
+                                            setPrice(event.target.value);
+                                            setLowPrice(false)
+                                            setFiveToTenPrice(false);
+                                            setTenToFifteenPrice(false);
+                                            setFifteenToTwentyPrice(false);
+                                            setTopPrice(!topPrice);
+                                        }} />
+                                        <label className="lb-checkbox" htmlFor="price-5-checkbox">มากกว่า 2500 บาท</label>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <hr className='line-filter'></hr>
+                        <div className="function-filter">
+                            <ul className='summary-filter'>
+                                <li>
+                                    <div>
+                                        {/* <input className="btn-resetFilter" type="reset"/> */}
+                                        <button className="btn-resetFilter" onClick={handleResetFilter}>ล้างตัวกรองการค้นหา</button>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div className="frame-btn-searchFilter">
+                                        <button className="btn-searchFilter" onClick={handleSearch}><FaSearch size={20}/></button>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </AnimatedPage>
     );
 }
 

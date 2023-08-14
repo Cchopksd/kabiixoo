@@ -12,6 +12,7 @@ import { getToken } from "../services/authorize";
 import { getUserId } from "../services/authorize";
 import UserContext from "../contexts/UserProvider";
 import Loading from '../components/Loading'
+import AnimatedPage from "../AnimatedPage";
 
 const SampleNextArrow = ({onClick}) => {
     return (
@@ -245,7 +246,7 @@ const ProviderServiceProfile = () => {
     };
 
     return (
-        <div>
+        <AnimatedPage>
             { loading && <Loading/>}
             <div className="ps-profile-container">
                 <div className="ps-profile-img-slider-box">
@@ -425,7 +426,7 @@ const ProviderServiceProfile = () => {
                 </div>
             </div>
             <Footer/>
-        </div>
+        </AnimatedPage>
     );
 }
 

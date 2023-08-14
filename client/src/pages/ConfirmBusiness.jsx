@@ -8,6 +8,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import { getToken } from "../services/authorize";
 import Loading from "../components/Loading";
+import AnimatedPage from "../AnimatedPage";
 
 const ConfirmBusiness = () => {
 
@@ -145,7 +146,7 @@ const ConfirmBusiness = () => {
     },[uploadImg])
 
     return (
-        <div>
+        <AnimatedPage>
             { loading && <Loading/> }
             <div className="confirm-container">
                 <label className="comfirm-title">แบบฟอร์มยืนยันการมีหน้าร้านและกิจการ</label>
@@ -171,7 +172,7 @@ const ConfirmBusiness = () => {
                 </div>
             </div>
             <Footer/>
-        </div>
+        </AnimatedPage>
     );
 }
 

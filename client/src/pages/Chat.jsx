@@ -9,10 +9,11 @@ import { getSender, getSenderImage, isLastMessage, isSameSender, isSameSenderMar
 import { ClipLoader } from "react-spinners";
 import ScrollableFeed from 'react-scrollable-feed'
 import io from 'socket.io-client'
-import Lottie from 'react-lottie'
+import LottieAnimation from '../animations/LottieAnimation';
 import animationData from '../animations/typing.json'
 import Loading from '../components/Loading';
 import { getToken } from '../services/authorize';
+import AnimatedPage from "../AnimatedPage";
 
 // endpoint เปลี่ยนตอน deploy
 const ENDPOINT = "http://localhost:5500"
@@ -306,7 +307,7 @@ const Chat = () => {
     }
 
     return (
-        <div>
+        <AnimatedPage>
             {pageLoading && <Loading/>}
             <div className='chat-container'>
                 <div className={size > 1079 ? 'chat-myChat-box' : selectedChat ? 'chat-myChat-box-mobile-none' : 'chat-myChat-box-mobile'}>
@@ -388,7 +389,8 @@ const Chat = () => {
                                                 ))}
                                                 {isTyping ? 
                                                 <div>
-                                                    <Lottie width={100} style={{marginBottom: 0, marginLeft: 0}} options={defaultOptions}/>
+                                                    {/* <Lottie width={100} style={{marginBottom: 0, marginLeft: 0}} options={defaultOptions}/> */}
+                                                    <LottieAnimation animationData={animationData} width={100}></LottieAnimation>
                                                 </div> : <></>}
                                             </ScrollableFeed>
                                         </div>
@@ -398,7 +400,6 @@ const Chat = () => {
                                     <input type="file" id='chat-chat-file-display-none' onChange={(e) => {setImageFile(e.target.files[0])}}/>
                                     <label for="chat-chat-file-display-none" id="chat-chat-customFileLabel">
                                         <img src={require("../images/chatPage/galleryIcon.png")} 
-                                        // onClick={sendImageMessage}
                                         />
                                     </label>
                                     <input type="text" placeholder='กรอกข้อความ...' onKeyDown={sendMessage} 
@@ -410,7 +411,7 @@ const Chat = () => {
                     ) : (<div className='chat-chat-not-selected'>คลิกที่ผู้ให้บริการ เพื่อเริ่มการสนทนา</div>)}
                 </div>
             </div>
-        </div>
+        </AnimatedPage>
     )
 }
 

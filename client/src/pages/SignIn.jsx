@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom'
 import Swal from "sweetalert2";
 import axios from "axios";
 import { authenticate } from "../services/authorize";
+import AnimatedPage from "../AnimatedPage";
 
 export default function SignIn()  {
 
@@ -55,58 +56,60 @@ export default function SignIn()  {
     }, []);
 
     return (
-        <div className='page'>
-            <div className="loginFormContainer">
-                <div className='logoContainer'>
-                    <img src={require('../images/login_logo.png')} className='logoSize'></img>
-                </div>
-                <form className="login_form" onSubmit={submitLogin}>
-                    <div className='loginForm'>
-                        <div className='lBUser'>
-                            <label className="labelUsername">ชื่อผู้ใช้งาน</label>
-                            <label className="linkSignUp">ยังไม่มีบัญชี <Link to='/signup'>สมัครสมาชิก</Link></label>
-                        </div>
-                        <div className='inputUsername'>
-                            <input className="inputTextUsername"
-                            name="username"
-                            type="text"
-                            placeholder="กรอกชื่อผู้ใช้งาน"
-                            value={username}
-                            onChange={inputValue("username")}
-                            />
-                        </div>
-                        <br />
-                        <div className='lBPwd'>
-                            <label className="labelPassword">รหัสผ่าน</label>
-                        </div>
-                        <div className='inputPass'>
-                            <input className="inputTextPass"
-                                    name="password"
-                                    type="password"
-                                    placeholder="กรอกรหัสผ่าน"
-                                    value={password}
-                                    onChange={inputValue("password")}
-                            />
-                        </div>
-                        <div className='frameBtSignIn'>
-                            <button className="btSignIn"
-                            type="submit"
-                            variant="contained"
-                            >เข้าสู่ระบบ</button>
-                        </div>
-                        <div className='xt_1_hr'>
-                            <hr className='line'></hr>
-                                <div className="label1">เข้าใช้งานผ่าน</div>
-                            <hr className='line'></hr>
-                        </div>
-                        <div className='lg_google'>
-                            <button className='bt_lwg' type="button"><FcGoogle className="iconGoogle"/>เข้าสู่ระบบผ่าน google</button>
-                        </div>
-                    <p className='plc_pvr'>การดำเนินการต่อแสดงว่าคุณยอมรับข้อกำหนดในการให้บริการของ <Link to="/term-of-service" >Kabixoo</Link> และ <Link to="/term-of-service">นโยบายความเป็นส่วนตัว</Link></p>
+        <AnimatedPage>
+            <div className='page'>
+                <div className="loginFormContainer">
+                    <div className='logoContainer'>
+                        <img src={require('../images/login_logo.png')} className='logoSize'></img>
                     </div>
-                </form>
+                    <form className="login_form" onSubmit={submitLogin}>
+                        <div className='loginForm'>
+                            <div className='lBUser'>
+                                <label className="labelUsername">ชื่อผู้ใช้งาน</label>
+                                <label className="linkSignUp">ยังไม่มีบัญชี <Link to='/signup'>สมัครสมาชิก</Link></label>
+                            </div>
+                            <div className='inputUsername'>
+                                <input className="inputTextUsername"
+                                name="username"
+                                type="text"
+                                placeholder="กรอกชื่อผู้ใช้งาน"
+                                value={username}
+                                onChange={inputValue("username")}
+                                />
+                            </div>
+                            <br />
+                            <div className='lBPwd'>
+                                <label className="labelPassword">รหัสผ่าน</label>
+                            </div>
+                            <div className='inputPass'>
+                                <input className="inputTextPass"
+                                        name="password"
+                                        type="password"
+                                        placeholder="กรอกรหัสผ่าน"
+                                        value={password}
+                                        onChange={inputValue("password")}
+                                />
+                            </div>
+                            <div className='frameBtSignIn'>
+                                <button className="btSignIn"
+                                type="submit"
+                                variant="contained"
+                                >เข้าสู่ระบบ</button>
+                            </div>
+                            <div className='xt_1_hr'>
+                                <hr className='line'></hr>
+                                    <div className="label1">เข้าใช้งานผ่าน</div>
+                                <hr className='line'></hr>
+                            </div>
+                            <div className='lg_google'>
+                                <button className='bt_lwg' type="button"><FcGoogle className="iconGoogle"/>เข้าสู่ระบบผ่าน google</button>
+                            </div>
+                        <p className='plc_pvr'>การดำเนินการต่อแสดงว่าคุณยอมรับข้อกำหนดในการให้บริการของ <Link to="/term-of-service" >Kabixoo</Link> และ <Link to="/term-of-service">นโยบายความเป็นส่วนตัว</Link></p>
+                        </div>
+                    </form>
+                </div>
             </div>
-        </div>
+        </AnimatedPage>
     );
 }
 

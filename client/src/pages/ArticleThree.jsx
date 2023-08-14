@@ -6,6 +6,7 @@ import "slick-carousel/slick/slick-theme.css";
 import {IoIosArrowForward,IoIosArrowBack} from "react-icons/io"
 import {Link } from 'react-router-dom';
 import Footer from "../components/Footer";
+import AnimatedPage from "../AnimatedPage";
 
 const SampleNextArrow = ({onClick}) => {
     return (
@@ -83,7 +84,7 @@ const ArticleThree = () => {
         }
     ];
     return (
-        <div>
+        <AnimatedPage>
             <div className="article-3-container">
                 <label className="article-3-header-label">ความนิยมการเลี้ยงสัตว์เลี้ยง</label>
                 <img src={require("../images/articleThreePage/headerImg.png")}/>
@@ -156,7 +157,7 @@ const ArticleThree = () => {
                 </div>
             </div>
             <Footer/>
-        </div>
+        </AnimatedPage>
     );
 }
 export default ArticleThree;

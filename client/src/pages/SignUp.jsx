@@ -7,6 +7,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { authenticate } from "../services/authorize";
 import Loading from '../components/Loading';
+import AnimatedPage from "../AnimatedPage";
 
 const SignUp = () => {
 
@@ -141,7 +142,7 @@ const SignUp = () => {
     }
 
     return (
-        <div>
+        <AnimatedPage>
             { loading && <Loading/>}
             <div className='frame-signUp'>
                 <div className='backGroundImage'>
@@ -224,7 +225,7 @@ const SignUp = () => {
                         </form>
                     </div>
             </div>
-        </div>
+        </AnimatedPage>
         
     );
 }
