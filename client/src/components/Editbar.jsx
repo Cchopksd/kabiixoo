@@ -40,7 +40,7 @@ const Editbar = ({username, profileImage}) => {
                     <div className="chat-style">
                         <img className="image-menu-display" src={require("../images/editBar/chat.png")}/>
                         <Link to={`/chats/${userId}`} className="remove-link-style">
-                            <li className="chat-history">ประวัติการสนทนา</li>
+                            <li className="chat-history">การสนทนา</li>
                         </Link>
                     </div>
                 </ul>

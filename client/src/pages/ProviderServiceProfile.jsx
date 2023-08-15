@@ -204,6 +204,19 @@ const ProviderServiceProfile = () => {
         }
     }
 
+    // format date thai
+    const formatDate = (dateString) => {
+        const options = {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+            timeZone: 'UTC'
+        };
+    
+        const date = new Date(dateString);
+        const formatter = new Intl.DateTimeFormat('th-TH', options);
+        return formatter.format(date);
+    }
 
     // configs ของ slider
     const settings = {
@@ -411,6 +424,9 @@ const ProviderServiceProfile = () => {
                                     </div>
                                     <div>
                                         <p key={item.rev_description}>{item.rev_description}</p>
+                                    </div>
+                                    <div>
+                                        <label className="ps-profile-review-date">เมื่อวันที่ : {formatDate(item.createdAt)}</label>
                                     </div>
                                 </div>
                             ))}

@@ -113,7 +113,7 @@ const Navbar = () => {
                                     <li className={size <= 850 ? "mobile-spacing-login" : 'mobile-spacing'} onClick={closeMobileMenu}>
                                         <div className={size <= 850 ? "login-dropdown-desktop-none" : 'login-dropdown-display'} role="button" onClick={() => setDropdownClicked(!dropdownClicked)}>
                                             <img src={userImage}/>
-                                            <label>{userFullName}</label>
+                                            <label>{userFullName.length > 10 ? userFullName.substring(0, 11) + "..." : userFullName}</label>
                                             <RiArrowDropDownLine color="#FFFFFF" size={30}/>
                                         </div>
                                         <div className={dropdownClicked && size >= 850 ? "login-dropdown" : "login-dropdown-none"}>
@@ -127,7 +127,7 @@ const Navbar = () => {
                                                 <Link to={haveService ? `/provider-home/${userId}`:'/create-service'} onClick={() => setDropdownClicked(!dropdownClicked)}>ให้บริการรับฝากสัตว์เลี้ยง</Link>
                                             </div>
                                             <div className="login-dropdown-menu-border login-dropdown-middle">
-                                                <Link to={`/chats/${userId}`} onClick={() => setDropdownClicked(!dropdownClicked)}>ประวัติการแชท</Link>
+                                                <Link to={`/chats/${userId}`} onClick={() => setDropdownClicked(!dropdownClicked)}>การสนทนา</Link>
                                             </div>
                                             <div className="login-dropdown-bottom" role="button" onClick={() => logout(() => {
                                                 navigate("/")
@@ -147,7 +147,7 @@ const Navbar = () => {
                                         <Link to={haveService ? `/provider-home/${userId}`:'/create-service'}>ให้บริการรับฝากสัตว์เลี้ยง</Link>
                                     </li >
                                     <li className={click ? size <= 850 ? "mobile-spacing" :"mobile-dropdown-display-none" : size <= 850 ? "mobile-spacing" :"mobile-dropdown-display-none"} onClick={closeMobileMenu}>
-                                        <Link to={`/chats/${userId}`} >ประวัติการแชท</Link>
+                                        <Link to={`/chats/${userId}`} >การสนทนา</Link>
                                     </li>
                                     <li className={click ? size <= 850 ? "mobile-spacing" :"mobile-dropdown-display-none" : size <= 850 ? "mobile-spacing" :"mobile-dropdown-display-none"} onClick={closeMobileMenu}>
                                         <Link onClick={() => logout(() => {

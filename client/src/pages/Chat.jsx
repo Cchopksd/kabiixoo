@@ -90,7 +90,6 @@ const Chat = () => {
 
     const fetchChats = async () => {
         try {
-            console.log(loginUser)
             const { data } = await axios.post(`${process.env.REACT_APP_API}/fetch-chats`,{loginUser},
                 {
                     headers: {

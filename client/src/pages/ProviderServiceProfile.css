@@ -363,6 +363,11 @@
     opacity: 0.7;
     cursor: pointer;
 }
+.ps-profile-review-content-display div .ps-profile-review-date {
+    margin: 10px 0 0 auto;
+    font-size: 16px;
+    color: black;
+}
 
 @media screen and (min-width : 850px) and (max-width : 1080px){
     .ps-profile-container {
@@ -508,6 +513,9 @@
     .ps-profile-review-content-name-display img{
         height: 20px;
         margin-right: 5px;
+    }
+    .ps-profile-review-content-display div .ps-profile-review-date {
+        font-size: 15px;
     }
 }
 
@@ -709,5 +717,8 @@
     .ps-profile-review-content-name-display img{
         height: 17px;
         margin-right: 5px;
+    }
+    .ps-profile-review-content-display div .ps-profile-review-date {
+        font-size: 13px;
     }
 }
