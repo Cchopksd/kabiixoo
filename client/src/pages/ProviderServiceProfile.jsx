@@ -379,12 +379,10 @@ const ProviderServiceProfile = () => {
                                 <label>{providerName}</label>
                             </div>
                             <div className="ps-profile-provider-btn-box">
-                                {/* <Link className="ps-profile-link"> */}
-                                    <div className="ps-profile-provider-chat-btn" role="button" onClick={handleChat}>
-                                        <img src={require("../images/providerServiceProfilePage/chatIcon.png")}/>
-                                        <label>แชทกับผู้ให้บริการ</label>
-                                    </div>
-                                {/* </Link> */}
+                                <div className="ps-profile-provider-chat-btn" role="button" onClick={handleChat}>
+                                    <img src={require("../images/providerServiceProfilePage/chatIcon.png")}/>
+                                    <label>แชทกับผู้ให้บริการ</label>
+                                </div>
                                 <Link className="ps-profile-link" to={`/report-provider/${params.slug}`}>
                                     <div className="ps-profile-provider-report-btn" role="button">
                                         <img src={require("../images/providerServiceProfilePage/fileIcon.png")}/>
@@ -409,12 +407,11 @@ const ProviderServiceProfile = () => {
                         </div>
                         <div className="ps-profile-review-content">
                             {reviewArray.slice(0, showMoreCount).map((item) => (
-                                <div className="ps-profile-review-content-display">
+                                <div className="ps-profile-review-content-display" key={item._id}>
                                     <div>
-                                        {console.log(item.customer_id)}
-                                        <img className="ps-profile-customer-image" src={item.customer_id.mem_profileImage} key={item.customer_id.mem_profileImage}/>
+                                        <img className="ps-profile-customer-image" src={item.customer_id.mem_profileImage}/>
                                         <div className="ps-profile-review-content-name-display">
-                                            <label key={item.customer_id.mem_name}>{`${item.customer_id.mem_name} ${item.customer_id.mem_surname}`}</label>
+                                            <label>{`${item.customer_id.mem_name} ${item.customer_id.mem_surname}`}</label>
                                             <div>
                                                 {Array.from({length: item.rev_point}, (_,index) =>{
                                                     return <img key={index} className="ps-profile-review-content-star" src={require("../images/providerServiceProfilePage/starIcon.png")}/>;
@@ -423,7 +420,7 @@ const ProviderServiceProfile = () => {
                                         </div>
                                     </div>
                                     <div>
-                                        <p key={item.rev_description}>{item.rev_description}</p>
+                                        <p>{item.rev_description}</p>
                                     </div>
                                     <div>
                                         <label className="ps-profile-review-date">เมื่อวันที่ : {formatDate(item.createdAt)}</label>

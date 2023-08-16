@@ -4,6 +4,8 @@ const { requireLogin }= require('../middlewares/authToken')
 
 const router = express.Router()
 
-router.post('/confirm-business/:slug', requireLogin, createRequest)
+router.post('/confirm-business/:slug'
+, requireLogin
+, createRequest)
 
 module.exports = router

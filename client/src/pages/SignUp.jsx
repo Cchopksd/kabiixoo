@@ -46,6 +46,8 @@ const SignUp = () => {
         setState({...state,[name]:event.target.value});
     }
 
+    const [birthDay, setBirthDay] = useState("")
+
     useEffect(() => {
         // หลังจากมีการเปลี่ยนค่า ใน image ให้ส่งข้อมูลไป server
         if (image){
@@ -189,7 +191,6 @@ const SignUp = () => {
                                     </div>
                                     <input className='inputBirthDay' type="date"  ref={dateInputRef} value={birthDate} onChange={inputValue("birthDate")}/>
                                 </div>
-
                                 <div className='regisTel'>
                                     <div>
                                         <label className="lbRegisPhone">เบอร์โทรศัพท์</label>

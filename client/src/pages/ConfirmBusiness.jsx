@@ -3,17 +3,21 @@ import "./ConfirmBusiness.css"
 import ImageUploaderBusiness from "../components/ImageUploaderBusiness";
 import ImageUploaderLicense from "../components/ImageUploaderLicense";
 import Footer from "../components/Footer"
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { getToken } from "../services/authorize";
 import Loading from "../components/Loading";
 import AnimatedPage from "../AnimatedPage";
+import { getUserId } from "../services/authorize";
 
 const ConfirmBusiness = () => {
 
     // url parameter
     const params = useParams()
+
+    // redirect
+    const navigate = useNavigate()
 
     // state ของข้อมูล
     const [businessName, setBusinessName] = useState("")
@@ -36,6 +40,23 @@ const ConfirmBusiness = () => {
 
     //state เช็คว่ามีรูปแนปไหม
     const [uploadImg, setUploadImg] = useState(false)
+
+    //state ของคนที่ login
+    const [userId, setUserId] = useState("")
+
+    // เมื่อเข้าสู่หน้า
+    useEffect(() => {
+        loadData()
+    },[])
+
+    const loadData = async () => {
+        try{
+            const id = await getUserId()
+            setUserId(id.data)
+        }catch (error) {
+            console.error(error);
+        }
+    } 
 
     const handleDataFromChildBusiness = (data) => {
         setImagesBusiness(data)
@@ -113,9 +134,10 @@ const ConfirmBusiness = () => {
             headers: {
                 authorization: `Bearer ${getToken()}`
             }
-        }).then((res) => {
+        }).then(async (res) => {
                 setLoading(false)
-                Swal.fire('แจ้งเตือน', res.data.message, 'success');
+                await Swal.fire('แจ้งเตือน', res.data.message, 'success');
+                navigate(`/provider-home/${userId}`)
             }).catch((err) => {
                 setLoading(false)
                 Swal.fire('แจ้งเตือน', err.response.data.error, 'error');
@@ -133,10 +155,11 @@ const ConfirmBusiness = () => {
             headers: {
                 authorization: `Bearer ${getToken()}`
             }
-        }).then((res) => {
+        }).then(async (res) => {
                 setLoading(false)
-                Swal.fire('แจ้งเตือน', res.data.message, 'success');
+                await Swal.fire('แจ้งเตือน', res.data.message, 'success');
                 setUploadImg(false)
+                navigate(`/provider-home/${userId}`)
             }).catch((err) => {
                 setLoading(false)
                 Swal.fire('แจ้งเตือน', err.response.data.error, 'error');

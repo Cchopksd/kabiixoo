@@ -1,18 +1,18 @@
 const mongoose = require('mongoose')
 
 const confirmBusinessSchema = mongoose.Schema({
-    svp_id : {
+    service_id : {
         type: mongoose.Schema.Types.ObjectId,
-        require: true,
+        required: true,
         ref: "ServicePosts"
     },
     conf_businessName : {
         type: String,
-        require: true,
+        required: true,
     },
     conf_description : {
         type: String,
-        require: true,
+        required: true,
     },
     conf_businessImage1 : {
         type: String,
@@ -37,11 +37,6 @@ const confirmBusinessSchema = mongoose.Schema({
     conf_licenseImage3 : {
         type: String,
         default : ""
-    },
-    conf_slug : {
-        type: String,
-        lowercase: true,
-        unique: true
     }
 }, {timestamps: true})
 

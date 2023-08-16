@@ -67,8 +67,8 @@ const Home = () => {
                     <div className='home-provider-list'>
                         { searchText && servicesArr.length > 0 ? 
                             servicesArr.slice(0, showMoreCount).map((item) => (
-                                <Link to={`/provider-profile/${item.svp_slug}`} className='home-link'>
-                                    <div className='home-provider-item' role='button' key={item._id}>
+                                <Link to={`/provider-profile/${item.svp_slug}`} className='home-link' key={item._id}>
+                                    <div className='home-provider-item' role='button'>
                                         <div className='home-provider-img-box'>
                                             <img src={item.svp_img1 ? item.svp_img1 : "https://i.cbc.ca/1.5077459.1553886010!/fileImage/httpImage/pets.jpg"}/>
                                         </div>
@@ -83,7 +83,7 @@ const Home = () => {
                                             <div className='home-star-box'>
                                                 <div>
                                                     {Array.from({length: item.svp_point}, (_,index) =>{
-                                                        return <img className="home-star" src={require("../images/providerServiceProfilePage/starIcon.png")}/>;
+                                                        return <img className="home-star" src={require("../images/providerServiceProfilePage/starIcon.png")} key={index}/>;
                                                     })}
                                                 </div>
                                                 <div className="home-province-box">

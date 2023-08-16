@@ -127,7 +127,7 @@ const ArticleThree = () => {
                 </p>
                 <Slider {...settings}>
                         {imgArray.map((item) => (
-                            <div className="article-3-profile-card">
+                            <div className="article-3-profile-card" key={item.imgPath}>
                                 <img src={item.imgPath}/>
                             </div>
                         ))}

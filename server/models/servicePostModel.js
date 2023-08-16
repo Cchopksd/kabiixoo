@@ -3,40 +3,40 @@ const mongoose = require('mongoose')
 const servicePostSchema = mongoose.Schema({
     svp_owner : {
         type: mongoose.Schema.Types.ObjectId,
-        require: true,
+        required: true,
         ref: "Members"
     },
     svp_name : {
         type: String,
-        require: true
+        required: true
     },
     svp_address : {
         type: String,
-        require: true
+        required: true
     },
     svp_province : {
         type: String,
-        require: true
+        required: true
     },
     svp_district : {
         type: String,
-        require: true
+        required: true
     },
     svp_state : {
         type: String,
-        require: true
+        required: true
     },
     svp_introduce : {
         type: String,
-        require: true
+        required: true
     },
     svp_description: {
         type: String,
-        require: true
+        required: true
     },
     svp_startPrice: {
         type: Number,
-        require: true
+        required: true
     },
     svp_grooming: {
         type: Boolean,

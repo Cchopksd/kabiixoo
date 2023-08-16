@@ -3,21 +3,21 @@ const mongoose = require('mongoose')
 const reportSchema = mongoose.Schema({
     provider_id : {
         type: mongoose.Schema.Types.ObjectId,
-        require: true,
+        required: true,
         ref: "Members"
     },
     reporter_id : {
         type: mongoose.Schema.Types.ObjectId,
-        require: true,
+        required: true,
         ref: "Members"
     },
     rep_title : {
         type: String,
-        require: true
+        required: true
     },
     rep_description : {
         type: String,
-        require: true
+        required: true
     },
     rep_image1 : {
         type: String,

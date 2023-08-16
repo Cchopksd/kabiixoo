@@ -37,7 +37,6 @@ const Chat = () => {
     // ข้อความรูปภาพ
     const [imageFile, setImageFile] = useState()
     const [image, setImage] = useState("")
-    const imageCheckDisplay = "res.cloudinary"
 
     // ขนาดของหน้าจอ
     const [size, setSize] = useState(0);
@@ -50,16 +49,6 @@ const Chat = () => {
     const [socketConnected, setSocketConnected] = useState(false)
     const [typing, setTyping] = useState(false)
     const [isTyping, setIsTyping] = useState(false)
-
-    // ตั้งค่า animation พิมพ์ข้อความ
-    const defaultOptions = {
-        loop: true,
-        autoplay: true,
-        animationData: animationData,
-        rendererSettings: {
-            preserveAspectRatio : "xMidYMid slice"
-        }
-    }
 
     // เมื่อเข้าสู่หน้า
     useEffect(() => {
@@ -330,8 +319,6 @@ const Chat = () => {
                                                 ? chat.latestMessage.content.substring(0, 21) + "..." : chat.latestMessage.content : "รูปภาพ" }
                                             </div>
                                         )}
-                                        {/* <label className='chat-myChat-profile-latest-bold'>{item.name} </label> */}
-                                        {/* <label>: {chat.chat}</label> */}
                                     </div>
                                 </div>
                             </div>
@@ -362,8 +349,8 @@ const Chat = () => {
                                         <div className='chat-chat-messages'>
                                             <ScrollableFeed className="scrollable-feed">
                                                 {messages && messages.map((m,i) => (
-                                                    <div>
-                                                        <div style={{display: "flex"}} key={m._id}>
+                                                    <div key={m._id}>
+                                                        <div style={{display: "flex"}}>
                                                                 {(isSameSender(messages,m,i,loginUser) || isLastMessage(messages,i,loginUser))
                                                                 && (
                                                                     <div>
@@ -388,7 +375,6 @@ const Chat = () => {
                                                 ))}
                                                 {isTyping ? 
                                                 <div>
-                                                    {/* <Lottie width={100} style={{marginBottom: 0, marginLeft: 0}} options={defaultOptions}/> */}
                                                     <LottieAnimation animationData={animationData} width={100}></LottieAnimation>
                                                 </div> : <></>}
                                             </ScrollableFeed>
@@ -397,7 +383,7 @@ const Chat = () => {
                                 </div>
                                 <div className='chat-chat-input-box'>
                                     <input type="file" id='chat-chat-file-display-none' onChange={(e) => {setImageFile(e.target.files[0])}}/>
-                                    <label for="chat-chat-file-display-none" id="chat-chat-customFileLabel">
+                                    <label htmlFor="chat-chat-file-display-none" id="chat-chat-customFileLabel">
                                         <img src={require("../images/chatPage/galleryIcon.png")} 
                                         />
                                     </label>
