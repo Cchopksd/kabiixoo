@@ -185,17 +185,10 @@ exports.googleAuth = async (req,res) => {
     //destructuring
     const { email, imageUrl, givenName, familyName } = req.body
 
-    console.log(email)
-    console.log(imageUrl)
-    console.log(givenName)
-    console.log(familyName)
-
     // สร้าง slug
     let slug = slugify(givenName)
 
     let userExist = await Member.findOne({mem_email : email})
-
-    console.log(slug)
 
     // ยังไม่มีบัญชี google นี้
     if (userExist === null) {

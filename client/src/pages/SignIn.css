@@ -127,6 +127,10 @@
     border-radius: 25px;
     border-style: none;
 }
+.bt_lwg:hover{
+    transition: 0.3s ease;
+    opacity: 0.7;
+}
 .plc_pvr{
     color: #A0A0A0;
     width: 80%;
