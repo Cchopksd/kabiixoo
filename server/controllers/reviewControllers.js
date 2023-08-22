@@ -38,7 +38,7 @@ exports.sendReview = async (req,res) => {
             await ServicePost.findOneAndUpdate({svp_slug: slug}, {svp_point: rating}, {new:true})
         })
         
-        return res.status(200).json({message: "รีวิวผู้ให้บริการสำเร็จ"})
+        return res.status(200).json({message: "ส่งรีวิวและคะแนนสำเร็จ"})
     }).catch(() => {
         return res.status(400).json({error : "ไม่พบบริการ"})
     })

@@ -34,7 +34,7 @@ exports.createRequest = async (req,res) => {
             conf_licenseImage3: imageLicense3,
         })
 
-            res.status(200).json({message: "ส่งคำร้องการยืนยันสำเร็จ"})
+            res.status(200).json({message: "ส่งหลักฐานการยืนยันสำเร็จ"})
     }).catch((err) => {
         console.error(err);
         res.status(500).json({error: "ไม่พบบริการ"})

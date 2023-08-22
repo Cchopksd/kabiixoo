@@ -2,6 +2,7 @@ const Member = require('../models/memberModel')
 const generateToken = require('../configs/generateToken')
 const slugify = require("slugify")
 const { v4: uuidv4 } = require('uuid');
+const { OAuth2Client } = require('google-auth-library')
 require('dotenv').config()
 
 // เข้าสู่ระบบ
@@ -23,7 +24,7 @@ exports.signin = async (req,res) => {
         )
         {
         return(res.json({
-            _id: user.id,
+            _id: user._id,
             mem_username: user.mem_username,
             mem_password: user.mem_password,
             mem_name: user.mem_name,
@@ -34,7 +35,7 @@ exports.signin = async (req,res) => {
             mem_profileImage: user.mem_profileImage,
             mem_verified: user.mem_verified,
             mem_role: user.mem_role,
-            token: generateToken(user.id)
+            token: generateToken(user._id)
         }))
     }else {
         return res.status(400).json({error: "ชื่อผู้ใช้งานหรือรหัสผ่านไม่ถูกต้อง"})
@@ -97,7 +98,7 @@ exports.signup = async (req,res) => {
             mem_phoneNumber: phone,
             mem_slug: slug})
             .then((user) => {
-                res.json({token: generateToken(user.id), mem_username: user.mem_username})
+                res.json({token: generateToken(user._id), mem_username: user.mem_username})
         }).catch((err) => {
             res.status(400).json({error: err})
         })
@@ -115,7 +116,7 @@ exports.signup = async (req,res) => {
             mem_profileImage: image,
             mem_slug: slug})
             .then((user) => {
-                res.json({token: generateToken(user.id), mem_username: user.mem_username})
+                res.json({token: generateToken(user._id), mem_username: user.mem_username})
         }).catch((err) => {
             res.status(400).json({error: err})
         })
@@ -164,7 +165,7 @@ exports.updateProfile = async (req,res) => {
 
     await Member.findOneAndUpdate({mem_slug: slug}, { mem_name,mem_surname,mem_phoneNumber,mem_birthDate,mem_profileImage }, {new:true})
     .then((userInfo) => {
-        res.status(200).json({message: "แก้ไขข้อมูลสมาชิกสำเร็จ"})
+        res.status(200).json({message: "แก้ไขข้อมูลผู้ใช้งานสำเร็จ"})
     }).catch((err) => {
         res.status(400).json({error: "มีข้อผิดพลาด"})
     })
@@ -178,4 +179,62 @@ exports.getUserId = async (req,res) => {
     }).catch((err) => {
         res.status(400).json({error: err})
     })
+}
+
+exports.googleAuth = async (req,res) => {
+    //destructuring
+    const { email, imageUrl, givenName, familyName } = req.body
+
+    console.log(email)
+    console.log(imageUrl)
+    console.log(givenName)
+    console.log(familyName)
+
+    // สร้าง slug
+    let slug = slugify(givenName)
+
+    let userExist = await Member.findOne({mem_email : email})
+
+    console.log(slug)
+
+    // ยังไม่มีบัญชี google นี้
+    if (userExist === null) {
+        await Member.create({
+            mem_username : givenName,
+            mem_password: "google",
+            mem_name : givenName,
+            mem_surname : familyName,
+            mem_email : email,
+            mem_profileImage : imageUrl,
+            mem_slug : slug
+        }).then((user) => {
+            return res.json({token: generateToken(user._id), mem_username: user.mem_username})
+        }).catch((err) => {
+            console.log(err)
+            return res.status(400).json({error: err})
+        })
+    }
+
+    // มีแล้ว
+    else if (userExist
+        && (await userExist.matchPassword('google'))
+        )
+        {
+        return(res.json({
+            _id: userExist._id,
+            mem_username: userExist.mem_username,
+            mem_password: userExist.mem_password,
+            mem_name: userExist.mem_name,
+            mem_surname: userExist.mem_surname,
+            mem_email: userExist.mem_email,
+            mem_birthDate: userExist.mem_birthDate,
+            mem_phoneNumber: userExist.mem_phoneNumber,
+            mem_profileImage: userExist.mem_profileImage,
+            mem_verified: userExist.mem_verified,
+            mem_role: userExist.mem_role,
+            token: generateToken(userExist._id)
+        }))
+    }else {
+        return res.status(400).json({error: "ชื่อผู้ใช้งานหรือรหัสผ่านไม่ถูกต้อง"})
+    }
 }

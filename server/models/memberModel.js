@@ -4,27 +4,27 @@ const bcrypt = require('bcryptjs')
 const memberSchema = mongoose.Schema({
     mem_username : {
         type: String,
-        required: true
+        // required: true
     },
     mem_password : {
         type: String,
-        required: true
+        // required: true
     },
     mem_name : {
         type: String,
-        required: true
+        // required: true
     },
     mem_surname : {
         type: String,
-        required: true
+        // required: true
     },
     mem_email : {
         type: String,
-        required: true
+        // required: true
     },
     mem_birthDate : {
         type: String,
-        required: true,
+        // required: true,
         // default: new Date()
     },
     mem_phoneNumber : {
@@ -34,10 +34,6 @@ const memberSchema = mongoose.Schema({
         type: String,
         default: "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg"
     },
-    // mem_verified : {
-    //     type: Boolean,
-    //     default: false
-    // },
     mem_role : {
         type: String,
         default: "member"
