@@ -79,13 +79,13 @@ const SearchBar = ({ onDataSend, onSearch }) => {
         setIsVisible(!isVisible);
     };
 
-    const handleCheckboxChange = (event) => {
-        const { id, checked } = event.target;
-        setCheckedItems((prevCheckedItems) => ({
-        ...prevCheckedItems,
-        [id]: checked,
-        }));
-    };
+    // const handleCheckboxChange = (event) => {
+    //     const { id, checked } = event.target;
+    //     setCheckedItems((prevCheckedItems) => ({
+    //     ...prevCheckedItems,
+    //     [id]: checked,
+    //     }));
+    // };
 
     const handleSearch = async () => {
         setLoading(true)
@@ -229,7 +229,7 @@ const SearchBar = ({ onDataSend, onSearch }) => {
                                     {/* <div className={`item-type ${checkedItems["cat-checkbox"] ? "checked" : ""}`}> */}
                                     <div className={`item-type ${cat && "item-type-checked"}`}>
                                         <input id="pet-checkbox" type="checkbox" checked={cat} onChange={() => setCat(!cat)}/>
-                                        <label className="lb-checkbox" htmlFor="cat-checkbox" onChange={handleCheckboxChange}>แมว</label>
+                                        <label className="lb-checkbox" htmlFor="cat-checkbox">แมว</label>
                                     </div>
                                 </li>
                                 <li>
@@ -271,7 +271,7 @@ const SearchBar = ({ onDataSend, onSearch }) => {
                                 <li>
                                     <div className={`item-type ${grooming && "item-type-checked"}`}>
                                         <input id="service-checkbox" type="checkbox" checked={grooming} onChange={() => setGrooming(!grooming)} />
-                                        <label className="lb-checkbox" htmlFor="grooming-checkbox" onChange={handleCheckboxChange}>บริการกรูมมิ่ง (อาบน้ำตัดขน)</label>
+                                        <label className="lb-checkbox" htmlFor="grooming-checkbox">บริการกรูมมิ่ง (อาบน้ำตัดขน)</label>
                                     </div>
                                 </li>
                                 <li>
@@ -324,7 +324,7 @@ const SearchBar = ({ onDataSend, onSearch }) => {
                                             setTopPoint(!topPoint)
                                             setLowPoint(false)
                                         }}/>
-                                        <label className="lb-checkbox" htmlFor="less-checkbox" onChange={handleCheckboxChange}>คะแนนมากไปน้อย</label>
+                                        <label className="lb-checkbox" htmlFor="less-checkbox">คะแนนมากไปน้อย</label>
                                     </div>
                                 </li>
                                 <li>
@@ -352,7 +352,7 @@ const SearchBar = ({ onDataSend, onSearch }) => {
                                             setTenToFifteenPrice(false);
                                             setFifteenToTwentyPrice(false);
                                             setTopPrice(false);                            }} />
-                                        <label className="lb-checkbox" htmlFor="price-1-checkbox" onChange={handleCheckboxChange}>น้อยกว่า 500 บาท</label>
+                                        <label className="lb-checkbox" htmlFor="price-1-checkbox">น้อยกว่า 500 บาท</label>
                                     </div>
                                 </li>
                                 <li>
