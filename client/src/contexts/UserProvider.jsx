@@ -1,5 +1,4 @@
-const { useState, useEffect } = require("react")
-import { createContext, useContext } from "react";
+import { createContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const UserContext = createContext()

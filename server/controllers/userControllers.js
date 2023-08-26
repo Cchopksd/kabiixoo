@@ -199,7 +199,7 @@ exports.googleAuth = async (req,res) => {
             mem_surname : familyName,
             mem_email : email,
             mem_profileImage : imageUrl,
-            mem_slug : slug
+            mem_slug : uuidv4()
         }).then((user) => {
             return res.json({token: generateToken(user._id), mem_username: user.mem_username})
         }).catch((err) => {

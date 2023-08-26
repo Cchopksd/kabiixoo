@@ -1,7 +1,6 @@
 import React from 'react';
 import '../pages/SignUp.css'
 import { useRef, useState, useEffect } from 'react';
-import Footer from "../components/Footer"
 import Swal from "sweetalert2"
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';

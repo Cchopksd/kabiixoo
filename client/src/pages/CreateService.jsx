@@ -1,6 +1,5 @@
 import React ,{useState, useEffect, useContext} from "react";
 import "./CreateService.css"
-import Select from 'react-select'
 import ImageUploaderCreateService from "../components/ImageUploaderCreateService";
 import Footer from "../components/Footer"
 import axios from "axios";

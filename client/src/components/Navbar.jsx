@@ -5,7 +5,7 @@ import { FiMenu, FiX } from "react-icons/fi";
 import {RiArrowDropDownLine} from "react-icons/ri"
 import UserContext from "../contexts/UserProvider";
 import axios from "axios";
-import { getToken, logOut, logout } from "../services/authorize"
+import { logout } from "../services/authorize"
 import { getUserId } from "../services/authorize";
 
 const Navbar = () => {

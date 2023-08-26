@@ -1,6 +1,5 @@
 import React , {useState, useEffect, useContext} from "react";
 import "./EditService.css";
-import Select from 'react-select'
 import ImageUploaderEditService from "../components/ImageUploaderEditService";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";

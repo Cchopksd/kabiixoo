@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Outlet,Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import '../pages/SignIn.css';
 import { FcGoogle } from "react-icons/fc";
 import { useNavigate } from 'react-router-dom'
@@ -9,20 +9,7 @@ import { authenticate } from "../services/authorize";
 import AnimatedPage from "../AnimatedPage";
 import { LoginSocialGoogle } from 'reactjs-social-login'
 
-const googleNavigate = (url) => {
-    window.location.href = url
-}
-
-const googleAuth = async () => {
-    const response = await fetch(`${process.env.REACT_APP_API}/googleAuth`, {method:'post'})
-    const data = await response.json()
-    console.log(data)
-    googleNavigate(data.url)
-}
-
 export default function SignIn()  {
-
-    const clientId = "487675977490-hbu4phrdsshvjedtsp1j94urp0ec8fj8.apps.googleusercontent.com"
 
     // ใช้ redirect page
     const navigate = useNavigate();

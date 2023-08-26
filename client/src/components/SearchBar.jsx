@@ -4,9 +4,7 @@ import "./Filter.css";
 import {FaSearch} from 'react-icons/fa'
 import {IoIosOptions} from 'react-icons/io'
 import Select from 'react-select'
-import ReactTags from 'react-tag-input';
 import { useState } from 'react';
-import Filter from './Filter';
 import Swal from 'sweetalert2';
 import axios from 'axios';
 import Loading from './Loading';
@@ -321,22 +319,22 @@ const SearchBar = ({ onDataSend, onSearch }) => {
                             <ul className='items-filter'>
                                 <li>
                                     <div className={`item-type ${topPoint && "item-type-checked"}`}>
-                                        <input id="point-checkbox" type="radio" value="lowPoint" checked={point === "lowPoint"} onChange={(event) => {
+                                        <input id="point-checkbox" type="radio" value="topPoint" checked={point === "topPoint"} onChange={(event) => {
                                             setPoint(event.target.value)
-                                            setTopPoint(!lowPoint)
+                                            setTopPoint(!topPoint)
                                             setLowPoint(false)
                                         }}/>
-                                        <label className="lb-checkbox" htmlFor="less-checkbox" onChange={handleCheckboxChange}>คะแนนน้อยไปมาก</label>
+                                        <label className="lb-checkbox" htmlFor="less-checkbox" onChange={handleCheckboxChange}>คะแนนมากไปน้อย</label>
                                     </div>
                                 </li>
                                 <li>
                                     <div className={`item-type ${lowPoint && "item-type-checked"}`}>
-                                        <input id="point-checkbox" type="radio" value="topPoint" checked={point === "topPoint"} onChange={(event) => {
+                                        <input id="point-checkbox" type="radio" value="lowPoint" checked={point === "lowPoint"} onChange={(event) => {
                                             setPoint(event.target.value);
-                                            setLowPoint(!topPoint);
+                                            setLowPoint(!lowPoint);
                                             setTopPoint(false);
                                         }}/>
-                                        <label className="lb-checkbox" htmlFor="more -checkbox">คะแนนมากไปน้อย</label>
+                                        <label className="lb-checkbox" htmlFor="more -checkbox">คะแนนน้อยไปมาก</label>
                                     </div>
                                 </li>
                             </ul>
