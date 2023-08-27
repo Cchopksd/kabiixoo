@@ -1,81 +1,45 @@
-import React from 'react';
-import { useState, useEffect  } from 'react';
-import backgroundAdmin from '../images/bgAdmin.png';
+import React, { useState } from 'react';
 import imageLogo from '../images/asd.png';
 import VerifyStore from './AdminComponents/VerifyStore';
 import MangeAccount from './AdminComponents/MangeAccount';
 import ReportingService from './AdminComponents/ReportingService';
+import DefaultComponent from './AdminComponents/DefaultComponent';
+import '../components/sideBarAdmin.css';
 
 const SideBarAdmin = () => {
-    const [selectedComponent, setSelectedComponent] = useState(null);
-    const [isButtonClicked, setIsButtonClicked] = useState(false);
-    const [data, setData] = useState(null);
+    const [activeComponent, setActiveComponent] = useState(null);
+    const [selectedButton, setSelectedButton] = useState(false); // Add this line
 
-    const handleComponentClick = (component) => {
-        setSelectedComponent(component);
-        setIsButtonClicked(true)
+    const handleComponentChange = (componentName, buttonId) => {
+        setActiveComponent(componentName);
+        setSelectedButton(buttonId); // Set the selected button ID
     };
 
+    let currentComponent;
 
-    useEffect(() => {
-        fetchData();
-    }, [selectedComponent]);
-
-    const fetchData = () => {
-        // ทำการเรียก API หรือดึงข้อมูลจาก backend ตาม selectedComponent
-        // ตัวอย่างเพียงแสดงการเติมค่าตัวอย่างเข้าไปใน data state และแสดงผลลัพธ์
-        if (selectedComponent === 'VerifyStore') {
-            setData('ข้อมูลจาก Component A');
-        } else if (selectedComponent === 'MangeAccount') {
-            setData('ข้อมูลจาก Component B');
-        } else if (selectedComponent === 'ReportingService') {
-            setData('ข้อมูลจาก Component C');
-        }
-    };
+    if (activeComponent === 'A') {
+        currentComponent = <VerifyStore />;
+    } else if (activeComponent === 'B') {
+        currentComponent = <MangeAccount />;
+    } else if (activeComponent === 'C') {
+        currentComponent = <ReportingService />;
+    } else {
+        currentComponent = <DefaultComponent />;
+    }
 
     return (
         <div className='welcomeAdminPage'>
-            <div className='sideMenu'>
-                <ul className='menuOnSidebar'>
-                    <li className='itemListAdmin'>
-                        <button className={`btItem ${isButtonClicked ? 'clicked' : ''}`} onClick={() => handleComponentClick('VerifyStore')}>
-                            จัดการบัญชีผู้ใช้งาน
-                        </button>
-                    </li>
-                    <li className='itemListAdmin'>
-                        <button className={`btItem ${isButtonClicked ? 'clicked' : ''}`} onClick={() => handleComponentClick('MangeAccount')}>
-                            ยืนยันการมีหน้าร้าน
-                        </button>
-                    </li>
-                    <li className='itemListAdmin'>
-                        <button className={`btItem ${isButtonClicked ? 'clicked' : ''}`} onClick={() => handleComponentClick('ReportingService')}>
-                            การรายงาน
-                        </button>
-                    </li>
-                </ul>
-                <div className='frameImageOnSidebar'>
-                    <img className='imageOnSidebar' src={imageLogo} alt="Logo" />
-                </div>
+        <div className='sideMenu'>
+            <div className='optionSelect'>
+            <button className={selectedButton === 1 ? 'optionClicked selected' : 'optionClicked'} onClick={() => handleComponentChange('A', 1)}>จัดการบัญชีผู้ใช้งาน</button>
+            <button className={selectedButton === 2 ? 'optionClicked selected' : 'optionClicked'} onClick={() => handleComponentChange('B', 2)}>ยืนยันการมีหน้าร้าน</button>
+            <button className={selectedButton === 3 ? 'optionClicked selected' : 'optionClicked'} onClick={() => handleComponentChange('C', 3)}>การรายงาน</button>
             </div>
-            <div className='picAdminPage' style={{ backgroundImage: `url(${backgroundAdmin})` }}>
-                <h1 className='welcomeAdmin'></h1>
-                {selectedComponent === 'VerifyStore' && (
-                    <div className='picAdminPage'>
-                        <VerifyStore data={data} />
-                    </div>
-                )}
-                {selectedComponent === 'MangeAccount' && (
-                    <MangeAccount data={data} />
-                )}
-                {selectedComponent === 'ReportingService' && (
-                    <div className='picAdminPage'>
-                        <ReportingService data={data} />
-                    </div>
-                )}
-            </div>
+            <img src={imageLogo} alt="" />
+        </div>
+        <div className='mainContent'>{currentComponent}</div>
         </div>
     );
-}
-
+};
 
 export default SideBarAdmin;

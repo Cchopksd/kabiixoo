@@ -1,0 +1,51 @@
+.welcomeAdminPage {
+    display: flex;
+    height: 853px;
+}
+
+.sideMenu{
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    background-color: #F8EAD8;
+    justify-content: space-between;
+    box-shadow:0px 24px 48px 0 rgba(0,0,0,0.16);
+}
+
+.optionSelect{
+    display: flex;
+    flex-direction: column;
+    margin-top: 80px;
+}
+
+.optionClicked{
+    color: #A7727D;
+    font-size: 24px;
+    font-weight: bold;
+    border: none;
+    background-color: #F8EAD8;
+    text-align: left;
+    width: auto;
+    margin-bottom: 40px;
+    padding-left: 20px;
+    cursor: pointer;
+}
+
+.optionClicked.selected {
+    color: #A7727D;
+    font-size: 24px;
+    font-weight: bold;
+    border: none;
+    background-color: #FFF;
+    text-align: left;
+    width: auto;
+    margin-bottom: 40px;
+    cursor: pointer;
+}
+
+.mainContent {
+    flex: 1;
+    overflow-y: auto;
+    align-items: center;
+    text-align: center;
+}

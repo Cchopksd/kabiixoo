@@ -1,0 +1,8 @@
+.backgroundPageAdmin{
+    background-image: url('../../images/bgAdmin.png');
+    display: flex;
+    height: 100%;
+    margin-top: 0;
+    object-fit: contain;
+    
+}
