@@ -122,6 +122,9 @@
     color: #A7727D;
     font-weight: bold;
 }
+.ps-profile-serviceDesc {
+    white-space: pre-line;
+}
 .ps-profile-serviceAddress-box p {
     margin-bottom: 0px;
 }

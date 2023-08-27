@@ -11,11 +11,12 @@ exports.createService = async (req,res) => {
         instagram, line, image1, image2, image3, image4 } = req.body
     
     // สร้าง slug
-    let slug = slugify(serviceName)
+    // let slug = slugify(serviceName)
+    let slug = uuidv4();
     // เช็คถ้า slug เป็นภาษาไทย หรือค่าว่าง
-    if (!slug) {
-        slug = uuidv4();
-    }
+    // if (!slug) {
+    //     slug = uuidv4();
+    // }
 
     // เช็คว่า member มีประกาศการให้บริการรึยัง
     const idExists = await ServicePost.findOne({ svp_owner : serviceOwner})

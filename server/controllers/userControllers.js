@@ -49,7 +49,8 @@ exports.signup = async (req,res) => {
     // console.log(JSON.stringify(req.body))
 
     // สร้าง slug
-    let slug = slugify(username)
+    // let slug = slugify(username)
+    let slug = uuidv4()
     // เช็คถ้า slug เป็นภาษาไทย หรือค่าว่าง
     if (!slug) {
         slug = uuidv4();
