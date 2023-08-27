@@ -34,14 +34,14 @@
     opacity: 0.6;
 }
 .create-img-upl-card .create-img-upl-container {
-  width: 100%;
-  height: auto;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  max-height: 240px;
-  margin-top: 20px;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    max-height: 240px;
+    margin-top: 20px;
 }
 .create-img-upl-card .create-img-upl-container .create-upl-image {
     width: 215px;

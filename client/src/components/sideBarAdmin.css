@@ -1,10 +1,11 @@
 .welcomeAdminPage {
     display: flex;
-    height: 853px;
+    height: 955px;
 }
 
 .sideMenu{
-    width: 250px;
+    width: 335px;
+    bottom: 0;
     display: flex;
     flex-direction: column;
     background-color: #F8EAD8;
@@ -28,19 +29,16 @@
     width: auto;
     margin-bottom: 40px;
     padding-left: 20px;
-    cursor: pointer;
+    height: 54px;
 }
 
 .optionClicked.selected {
-    color: #A7727D;
-    font-size: 24px;
-    font-weight: bold;
-    border: none;
     background-color: #FFF;
-    text-align: left;
-    width: auto;
-    margin-bottom: 40px;
-    cursor: pointer;
+}
+
+.logoAdmin{
+    width: 100%;
+    height: auto;
 }
 
 .mainContent {

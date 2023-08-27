@@ -28,10 +28,12 @@ import Chat from './pages/Chat';
 import { AnimatePresence } from 'framer-motion';
 
 function App() {
-  const location = useLocation()
+  const location = useLocation();
+  const isAdminPage = location.pathname.includes('/administrator-homepage');
+
   return (
     <div>
-        <Navbar/>
+        {isAdminPage ? null : <Navbar />}
         <AnimatePresence>
           <Routes key={location.pathname} location={location}>
             {/* MemberRoute คือ component ที่ใช้ตรวจสอบและ redirect หน้า เมื่อไม่ได้เข้าสู่ระบบ */}
