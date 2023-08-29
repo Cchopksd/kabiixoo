@@ -25,6 +25,8 @@ import ProviderHome from './pages/ProviderHome'
 import EditService from './pages/EditService'
 import ProviderServiceProfile from './pages/ProviderServiceProfile';
 import Chat from './pages/Chat';
+import ForgotPassword from './pages/ForgotPassword';
+import ForgotChangePassword from './pages/ForgotChangePassword';
 import { AnimatePresence } from 'framer-motion';
 
 function App() {
@@ -51,6 +53,8 @@ function App() {
               <Route path="/signup" element={<SignUp />}/>
               <Route path='/edit-profile/:slug' element={<MemberRoute Component={EditProfile}/>}/>
               <Route path='/provider-profile/:slug' element={<ProviderServiceProfile/>}/>
+              <Route path='/forgot-password' element={<ForgotPassword/>}/>
+              <Route path='/forgot-change-password' element={<ForgotChangePassword/>}/>
 
               {/* ผู้ใช้งานที่เป็นสมาชิก */}
               <Route path="/review/:slug" element={<MemberRoute Component={Review} />}/>

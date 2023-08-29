@@ -48,15 +48,23 @@
     margin-right: 5px;
 }
 .linkSignUp{
-    font-size: 10px;
+    font-size: 12px;
     text-align: end;
     padding-left: 150px;
+}
+.linkForgot{
+    font-size: 12px;
+    text-align: end;
+    margin-top: 5px;
+    padding-left: 230px;
 }
 .frameLinkSignUp{
     margin-left: auto;
 }
 .lBPwd{
-    margin-right: 270px;
+    display: flex;
+
+    /* margin-right: 270px; */
 }
 .inputTextUsername,
 .inputTextPass{
