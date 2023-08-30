@@ -1,8 +1,11 @@
 .signin-page{
     /* background-color: #A7727D; */
-    background-image: url(../images/imagePd.png);
+    background-image: url(../images/loginBg2.png);
     background-repeat: no-repeat;
     background-position-x: center;
+    /* transition: 0.1s ease; */
+    /* background-position-y: -20%; */
+    /* background-position: center; */
 }
 .page{
     display: flex;

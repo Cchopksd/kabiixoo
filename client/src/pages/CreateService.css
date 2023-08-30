@@ -1,3 +1,12 @@
+.createService-page{
+    /* background-color: #A7727D; */
+    background-image: url(../images/loginBg.png);
+    /* background-repeat: no-repeat; */
+    background-position-x: center;
+    /* transition: 0.1s ease; */
+    background-position-y: -145%;
+    /* background-position: center; */
+}
 .createService-container {
     display: flex;
     flex-direction: column;

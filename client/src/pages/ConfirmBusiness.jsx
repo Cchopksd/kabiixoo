@@ -13,6 +13,13 @@ import { getUserId } from "../services/authorize";
 
 const ConfirmBusiness = () => {
 
+    useEffect(() => {
+        document.body.classList.add('confirm-page');
+        return () => {
+            document.body.classList.remove('confirm-page');
+        };
+    }, []);
+
     // url parameter
     const params = useParams()
 

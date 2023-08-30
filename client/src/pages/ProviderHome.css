@@ -1,3 +1,8 @@
+.providerHome-page{
+    background-image: url(../images/loginBg.png);
+    background-repeat: no-repeat;
+    background-position-x: center;
+}
 .providerHome-container {
     display: flex;
     justify-content: center;

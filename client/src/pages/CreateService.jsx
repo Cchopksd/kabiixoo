@@ -12,6 +12,13 @@ import AnimatedPage from "../AnimatedPage";
 
 const CreateService = () => {
 
+    // useEffect(() => {
+    //     document.body.classList.add('createService-page');
+    //     return () => {
+    //         document.body.classList.remove('createService-page');
+    //     };
+    // }, []);
+
     // state ของ contextAPI
     const { haveService, setHaveService } = useContext(UserContext);
 

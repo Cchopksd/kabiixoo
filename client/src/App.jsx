@@ -54,7 +54,7 @@ function App() {
               <Route path='/edit-profile/:slug' element={<MemberRoute Component={EditProfile}/>}/>
               <Route path='/provider-profile/:slug' element={<ProviderServiceProfile/>}/>
               <Route path='/forgot-password' element={<ForgotPassword/>}/>
-              <Route path='/forgot-change-password' element={<ForgotChangePassword/>}/>
+              <Route path='/forgot-change-password/:id/:token' element={<ForgotChangePassword/>}/>
 
               {/* ผู้ใช้งานที่เป็นสมาชิก */}
               <Route path="/review/:slug" element={<MemberRoute Component={Review} />}/>
