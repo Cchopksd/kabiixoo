@@ -1,8 +1,3 @@
-.review-page{
-    background-image: url(../images/loginBg.png);
-    background-repeat: no-repeat;
-    background-position-x: center;
-}
 .review-container {
     display: flex;
     flex-direction: column;

@@ -236,7 +236,7 @@ exports.googleAuth = async (req,res) => {
     }
 }
 
-//ลืมรหัสผ่าน
+// ลืมรหัสผ่าน
 exports.forgotPassword = async (req,res) => {
     const { email } = req.body
     if (!email) {
@@ -276,6 +276,7 @@ exports.forgotPassword = async (req,res) => {
     })
 }
 
+// เปลี่ยนรหัสผ่านแบบลืม
 exports.forgotChangePassword = async (req,res) => {
     const { id, token } = req.params
     const { newPassword, confirmNewPassword } = req.body
@@ -288,11 +289,12 @@ exports.forgotChangePassword = async (req,res) => {
         return res.status(400).json({message : 'ยืนยันรหัสผ่านไม่สำเร็จ'})
     }
 
-    jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
+    jwt.verify(token, process.env.JWT_SECRET, async(err, decoded) => {
         if (err) {
             return res.status(400).json({message : "เกิดข้อผิดพลาด"})
         } else {
-            bcrypt.hash(newPassword, 10).then(async (hash) => {
+            const salt = await bcrypt.genSalt(10);
+            bcrypt.hash(newPassword, salt).then(async (hash) => {
                 await Member.findByIdAndUpdate({_id: id}, {mem_password : hash}).then(() => {
                     res.json({message : "แก้ไขรหัสผ่านสำเร็จ"})
                 }).catch(err => {
@@ -300,5 +302,36 @@ exports.forgotChangePassword = async (req,res) => {
                 })
             })
         }
+    })
+}
+
+// เปลี่ยนรหัสผ่านแบบไม่ลืม
+exports.changePassword = async (req,res) => {
+    const { password, newPassword, confirmNewPassword, slug } = req.body
+
+    // ตรวจสอบว่ากรอกกครบไหม
+    if (!password || !newPassword || !confirmNewPassword){
+        return res.status(400).json({message : 'กรุณากรอกข้อมูลให้ครบ'})
+    }
+
+    // เช็ครหัสเก่าตรงไหม
+    await Member.findOne({mem_slug : slug}).then(async(user) => {
+        // hash รหัสผ่านใหม่
+        const salt = await bcrypt.genSalt(10);
+        const hashNewPassword = await bcrypt.hash(newPassword, salt)
+        // ตรวจสอบ password
+        const match = await bcrypt.compare(password, user.mem_password)
+        if (match) {
+            if (newPassword === confirmNewPassword) {
+                await Member.findOneAndUpdate({mem_slug : slug}, {mem_password : hashNewPassword})
+                return res.json({message : "แก้ไขรหัสผ่านสำเร็จ"})
+            } else {
+                return res.status(400).json({message : "รหัสผ่านใหม่ไม่ตรงกัน"})
+            }
+        } else {
+            return res.status(400).json({message : "รหัสผ่านปัจจุบันไม่ถูกต้อง"})
+        }
+    }).catch(() => {
+        return res.status(400).json({message : "ไม่มีบัญชีผู้ใช้งานนี้"})
     })
 }

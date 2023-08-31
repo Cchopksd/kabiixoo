@@ -9,13 +9,6 @@ import Loading from '../components/Loading'
 
 const ForgotPassword = () => {
 
-    useEffect(() => {
-        document.body.classList.add('review-page');
-        return () => {
-            document.body.classList.remove('review-page');
-        };
-    }, []);
-
     // state ของ email ที่กรอกเปลี่ยนรหัส
     const [email, setEmail] = useState()
 

@@ -1,5 +1,5 @@
 const express = require('express')
-const { signin, signup, getUserLogin, getProfile, updateProfile, getUserId, googleAuth, forgotPassword, forgotChangePassword } = require('../controllers/userControllers')
+const { signin, signup, getUserLogin, getProfile, updateProfile, getUserId, googleAuth, forgotPassword, forgotChangePassword, changePassword } = require('../controllers/userControllers')
 const { requireLogin }= require('../middlewares/authToken')
 const router = express.Router()
 
@@ -12,5 +12,6 @@ router.post('/get-userId', getUserId)
 router.post('/googleAuth', googleAuth)
 router.post('/forgot-password', forgotPassword)
 router.post('/forgot-change-password/:id/:token', forgotChangePassword)
+router.post('/change-password', changePassword)
 
 module.exports = router
