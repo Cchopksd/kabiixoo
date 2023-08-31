@@ -54,6 +54,7 @@ const EditPassword = () => {
     },[])
 
     const handleSubmit = async (event) => {
+        setLoading(true)
         event.preventDefault()
         const slug = params.slug
         await axios.post(`${process.env.REACT_APP_API}/change-password`, {
@@ -62,9 +63,11 @@ const EditPassword = () => {
                     authorization: `Bearer ${getToken()}`
                 }
             }).then(async(res)=> {
+                setLoading(false)
                 await Swal.fire('แจ้งเตือน',res.data.message,'success')
                 setUserState({...userState,password:"",newPassword:"",confirmNewPassword:""});
             }).catch(async(err) => {
+                setLoading(false)
                 await Swal.fire('แจ้งเตือน', err.response.data.message, 'error')
             })
     }

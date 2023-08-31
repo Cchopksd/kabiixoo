@@ -347,6 +347,11 @@
         font-size: 12px;
         box-shadow: inset 0px 0px 8px rgba(0, 0, 0, 0.2);
     }
+    .confirm-updateInfo-btn {
+        width: 150px;
+        height: 40px;
+        font-size: 16px;
+    }
 }
 
 /* จอ mobile */
@@ -401,7 +406,9 @@
     }
     .edit-profileImage {
         height: 70px;
-        margin-left: 22px;
+        width: 70px;
+        border-radius: 35px;
+        margin-left: 52px;
     }
     .choosePhoto-btn {
         margin-left: 18px;
@@ -427,5 +434,10 @@
         height: 20px;
         font-size: 12px;
         box-shadow: inset 0px 0px 8px rgba(0, 0, 0, 0.2);
+    }
+    .confirm-updateInfo-btn {
+        width: 150px;
+        height: 40px;
+        font-size: 16px;
     }
 }

@@ -248,7 +248,9 @@
         height: 25px;
     }
     .image-edit-display {
+        width: 50px;
         height: 50px;
+        border-radius: 25px;
         margin-right: 30px;
     }
     .username-edit-display {
@@ -322,7 +324,9 @@
         height: 20px;
     }
     .image-edit-display {
+        width: 40px;
         height: 40px;
+        border-radius: 20px;
         margin-right: 30px;
     }
     .username-edit-display {
