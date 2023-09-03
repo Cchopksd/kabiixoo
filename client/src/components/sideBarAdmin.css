@@ -1,14 +1,14 @@
 .welcomeAdminPage {
     display: flex;
-    height: 955px;
+    height: 868px;
 }
 
 .sideMenu{
-    width: 335px;
+    width: 300px;
     bottom: 0;
     display: flex;
     flex-direction: column;
-    background-color: #F8EAD8;
+    background-color: #F9F5E7;
     justify-content: space-between;
     box-shadow:0px 24px 48px 0 rgba(0,0,0,0.16);
 }
@@ -24,7 +24,7 @@
     font-size: 24px;
     font-weight: bold;
     border: none;
-    background-color: #F8EAD8;
+    background-color: #F9F5E7;
     text-align: left;
     width: auto;
     margin-bottom: 40px;
@@ -37,7 +37,8 @@
 }
 
 .logoAdmin{
-    width: 100%;
+    margin: 0 auto;
+    width: 200px;
     height: auto;
 }
 
@@ -46,4 +47,22 @@
     overflow-y: auto;
     align-items: center;
     text-align: center;
+}
+
+.logoutAdmin{
+    color: #fa748f;
+    font-size: 24px;
+    font-weight: bold;
+    border: none;
+    background-color: #F9F5E7;
+    text-align: left;
+    margin-bottom: 40px;
+    padding-left: 20px;
+    height: 54px;
+    display: flex;
+    align-items: center;
+}
+
+.iconLogOut{
+    padding-right: 10px;
 }

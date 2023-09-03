@@ -36,9 +36,9 @@ export default function SignIn()  {
                 'แจ้งเตือน',
                 'เข้าสู่ระบบสำเร็จ',
                 'success'
-              )
-              setState({...state,username:"",password:""})
-              authenticate(res,()=>navigate('/'))
+            )
+            setState({...state,username:"",password:""})
+            authenticate(res,()=>navigate('/'))
             //   location.reload();
         }).catch((err) => {
             Swal.fire(

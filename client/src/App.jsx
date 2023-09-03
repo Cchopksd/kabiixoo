@@ -16,7 +16,7 @@ import EditProfile from './pages/EditProfile';
 import TermOfService from './pages/TermOfService';
 import ReportProvider from './pages/ReportProvider';
 import AdministratorHomepage from './pages/admin/AdministratorHomepage';
-import ManageAccount from './components/AdminComponents/MangeAccount';
+import ManageAccount from './components/AdminComponents/ManageAccount';
 import VerifyStore from './components/AdminComponents/VerifyStore';
 import ReportingService from './components/AdminComponents/ReportingService';
 import ConfirmBusiness from './pages/ConfirmBusiness';

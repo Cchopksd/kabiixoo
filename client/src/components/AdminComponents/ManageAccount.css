@@ -1,0 +1,88 @@
+.manageContainer{
+    /* display: flex; */
+    padding-left: 80px;
+}
+
+.headerAccount{
+    display: flex;
+    color: #A7727D;
+    margin-top: 80px;
+}
+
+.searchLine{
+    display: flex;
+}
+
+.searchAccount{
+    border-radius: 25px;
+    background-color: #F9F5E7;
+    color: #A7727D;
+    border: none;
+    box-shadow:0px 24px 48px 0 rgba(0,0,0,0.16);
+    width: 350px;
+    height: 34px;
+    display: flex;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bolder;
+}
+
+.submitAccount{
+    display: flex;
+    align-items: center;
+    border: none;
+    background-color: #A7727D;
+    color: #F9F5E7;
+    border-radius: 13px;
+    width: 35px;
+    font-size: 24px;
+    margin-left: 20px;
+}
+
+.frameGroup{
+    width: 1280px;
+    height: 580px;
+    background-color: #F9F5E7;
+    margin-top: 30px;
+    /* margin: auto; */
+}
+
+.groupFilter{
+    display: flex;
+    align-items: center;
+    /* justify-content: space-evenly; */
+    background-color: #A7727D;
+    color: #F9F5E7;
+    height: 40px;
+
+}
+
+.nameFilter-id{
+    margin-left: 20px;
+    list-style: none;
+}
+
+.nameFilter-profile{
+    margin-left: 60px;
+    list-style: none;
+}
+
+.nameFilter-name{
+    margin-left: 100px;
+    list-style: none;
+}
+
+.nameFilter-surname{
+    margin-left: 100px;
+    list-style: none;
+}
+
+.nameFilter-username{
+    margin-left: 120px;
+    list-style: none;
+}
+
+.nameFilter-email{
+    margin-left: 100px;
+    list-style: none;
+}
