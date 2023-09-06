@@ -80,11 +80,20 @@ const EditPassword = () => {
                     <div className='editPassword-top'>
                         <img src={require('../images/editPasswordPage/editPasswordPhoto.png')} alt="editPassword-photo" />
                         <div className='editPassword-input-box'>
-                            <label>รหัสผ่านปัจจุบัน</label>
+                            <div>
+                                <label>รหัสผ่านปัจจุบัน</label>
+                                <label style={{color : '#A7727D'}}> *</label>
+                            </div>
                             <input type="password" placeholder='กรอกรหัสผ่านปัจจุบัน' value={password} onChange={inputValue("password")}/>
-                            <label>รหัสผ่านใหม่</label>
+                            <div>
+                                <label>รหัสผ่านใหม่</label>
+                                <label style={{color : '#A7727D'}}> *</label>
+                            </div>
                             <input type="password" placeholder='กรอกรหัสผ่านใหม่' value={newPassword} onChange={inputValue("newPassword")}/>
-                            <label>ยืนยันรหัสผ่านใหม่</label>
+                            <div>
+                                <label>ยืนยันรหัสผ่านใหม่</label>
+                                <label style={{color : '#A7727D'}}> *</label>
+                            </div>
                             <input type="password" placeholder='ยืนยันรหัสผ่านใหม่' value={confirmNewPassword} onChange={inputValue("confirmNewPassword")}/>
                         </div>
                     </div>

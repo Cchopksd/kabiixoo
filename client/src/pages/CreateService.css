@@ -61,6 +61,9 @@
     box-shadow: inset 0 2px 8px rgba(0,0,0,0.16);
     font-size: 18px;
 }
+.input-createService-name::placeholder {
+    color: #000000;
+}
 .createService-address {
     display: flex;
     flex-direction: column;
@@ -83,6 +86,9 @@
     font-size: 18px;
     box-shadow: inset 0 2px 8px rgba(0,0,0,0.16);
     margin-right: 15px;
+}
+.input-createService-address-1::placeholder{
+    color: #000000;
 }
 .input-createService-address-2 {
     outline: none;
@@ -124,6 +130,9 @@
     height: 247px;
     box-shadow: inset 0 2px 8px rgba(0,0,0,0.16);
 }
+.input-createService-introduce::placeholder {
+    color: #000000;
+}
 .input-createService-service {
     font-size: 18px;
     border-radius: 10px;
@@ -133,6 +142,9 @@
     width: 513px;
     height: 247px;
     box-shadow: inset 0 2px 8px rgba(0,0,0,0.16);
+}
+.input-createService-service::placeholder {
+    color: #000000;
 }
 .create-part-3 {
     display: flex;
@@ -273,6 +285,10 @@
     padding: 0 10px;
     font-size: 18px;
     width: 160px;
+}
+.createService-contact-input::placeholder {
+    font-size: 14px;
+    color: #000000;
 }
 .createService-contact-checkbox-box-1 {
     display: flex;
@@ -552,6 +568,9 @@
         font-size: 14px;
         width: 100px;
     }
+    .createService-contact-input::placeholder{
+        font-size: 12px;
+    }
     .createService-contact-checkbox-box-1 {
         width: 145px;
         height: 75px;
@@ -805,6 +824,9 @@
     .createService-contact-input {
         font-size: 15px;
         width: 120px;
+    }
+    .createService-contact-input::placeholder{
+        font-size: 12px;
     }
     .createService-contact-checkbox-box-1 {
         font-size: 12px;
