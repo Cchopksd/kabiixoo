@@ -43,12 +43,12 @@ const ForgotChangePassword = () => {
                         <img src={require('../images/forgotChangePasswordPage/forgotChangePhoto.png')} alt="reset-password"/>
                         <div className='forgot-change-input-box'>
                             <label>เปลี่ยนรหัสผ่าน</label>
-                            <input type="password" onChange={(event) => setNewPassword(event.target.value)}/>
+                            <input type="password" onChange={(event) => setNewPassword(event.target.value)} placeholder='กรอกรหัสผ่านใหม่'/>
                             <label>ยืนยันเปลี่ยนรหัสผ่าน</label>
-                            <input type="password" onChange={(event) => setConfirmNewPassword(event.target.value)}/>
+                            <input type="password" onChange={(event) => setConfirmNewPassword(event.target.value)} placeholder='ยืนยันรหัสผ่านใหม่'/>
                         </div>
                     </div>
-                    <button onClick={handleSubmit}>ส่งรหัสผ่านใหม่</button>
+                    <button onClick={handleSubmit}>ยืนยันการเปลี่ยนรหัสผ่าน</button>
                 </div>
             </div>
             <Footer/>

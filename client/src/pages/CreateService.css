@@ -99,6 +99,11 @@
     font-size: 18px;
     box-shadow: inset 0 2px 8px rgba(0,0,0,0.16);
     margin-right: 15px;
+    appearance: none;
+    background:  url('../images/dropdownIcon.png') no-repeat right center;
+    background-size: 10px;
+    background-position: 90%;
+    background-color: #FFFFFF;
     /* appearance: none; */
 }
 .input-createService-end {

@@ -134,6 +134,10 @@ const ReportProvider = () => {
         }
     },[uploadImg])
 
+    const onChangeTopic = (event) => {
+        setReportTopic(event.target.value)
+    }
+
     return (
         <AnimatedPage>
             { loading && <Loading/>}
@@ -144,12 +148,20 @@ const ReportProvider = () => {
                 </div>
                 <img className="report-img-display" src={providerImage}/>
                 <div className="report-topic-box">
-                    <label className="report-info-header">หัวข้อการรายงาน</label>
-                    <input className="input-report-topic" type="text" value={reportTopic} onChange={(event)=>setReportTopic(event.target.value)}/>
+                    <label className="report-info-header">หัวข้อการรายงาน *</label>
+                    {/* <input className="input-report-topic" type="text" value={reportTopic} onChange={(event)=>setReportTopic(event.target.value)}/> */}
+                    <select className="input-report-topic" onChange={onChangeTopic}>
+                        <option value="" disabled selected>เลือกหัวข้อการรายงาน</option>
+                        <option value="มีความประพฤติไม่เหมาะสม">มีความประพฤติไม่เหมาะสม</option>
+                        <option value="ฉ้อโกงผู้ใช้บริการ">ฉ้อโกงผู้ใช้บริการ</option>
+                        <option value="สร้างความเสียหายให้กับสัตว์เลี้ยง">สร้างความเสียหายให้กับสัตว์เลี้ยง</option>
+                        <option value="อื่นๆ">อื่นๆ</option>
+                    </select>
                 </div>
                 <div className="report-description-box">
-                    <label className="report-info-header">รายละเอียดการรายงาน</label>
-                    <textarea className="input-description-topic" value={reportDesc} onChange={(event)=>setReportDesc(event.target.value)}></textarea>
+                    <label className="report-info-header">รายละเอียดการรายงาน *</label>
+                    <textarea className="input-description-topic" value={reportDesc} onChange={(event)=>setReportDesc(event.target.value)}
+                    placeholder="กรอกรายละเอียดการรายงาน"></textarea>
                 </div>
                 <div className="report-img-box">
                     <label className="report-info-header">รูปภาพประกอบ (ถ้ามี)</label>

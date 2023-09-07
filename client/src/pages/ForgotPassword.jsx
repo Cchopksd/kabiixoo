@@ -47,7 +47,8 @@ const ForgotPassword = () => {
                     <img src={require('../images/forgotPasswordPage/forgotPhoto.png')} alt="forgot-photo" />
                     <div className="forgot-input-box">
                         <label>อีเมล (ที่ใช้ในการสมัครสมาชิก)</label>
-                        <input type="text" onChange={(event) => setEmail(event.target.value)}/>
+                        <input type="text" onChange={(event) => setEmail(event.target.value)}
+                        placeholder="กรอกอีเมล"/>
                         <button onClick={handleSubmit}>ส่งอีเมลเปลี่ยนรหัสผ่าน</button>
                     </div>
                 </div>

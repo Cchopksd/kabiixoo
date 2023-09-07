@@ -183,12 +183,14 @@ const ConfirmBusiness = () => {
                 <div className="comfirm-form-box">
                     <img className="comfirm-logo" src={require("../images/logo3.png")} alt="" />
                     <div className="businessName-box">
-                        <label className="confirm-info-title">ชื่อกิจการ</label>
-                        <input className="input-businessName" type="text" value={businessName} onChange={(event)=>setBusinessName(event.target.value)}/>
+                        <label className="confirm-info-title">ชื่อกิจการ *</label>
+                        <input className="input-businessName" type="text" value={businessName} onChange={(event)=>setBusinessName(event.target.value)}
+                        placeholder="กรอกชื่อกิจการ"/>
                     </div>
                     <div className="businessDesc-box">
-                        <label className="confirm-info-title">รายละเอียด</label>
-                        <textarea className="input-businessDesc" type="text" value={businessDesc} onChange={(event)=>setBusinessDesc(event.target.value)}/>
+                        <label className="confirm-info-title">รายละเอียด *</label>
+                        <textarea className="input-businessDesc" type="text" value={businessDesc} onChange={(event)=>setBusinessDesc(event.target.value)}
+                        placeholder="กรอกรายละเอียด"/>
                     </div>
                     <div className="businessStorePic-box">
                         <label className="confirm-info-title storePic">รูปถ่ายหน้าร้านหรือกิจการ</label>
