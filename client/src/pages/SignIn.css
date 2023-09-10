@@ -1,8 +1,11 @@
 .signin-page{
     /* background-color: #A7727D; */
-    background-image: url(../images/imagePd.png);
+    background-image: url(../images/loginBg2.png);
     background-repeat: no-repeat;
     background-position-x: center;
+    /* transition: 0.1s ease; */
+    /* background-position-y: -20%; */
+    /* background-position: center; */
 }
 .page{
     display: flex;
@@ -48,15 +51,22 @@
     margin-right: 5px;
 }
 .linkSignUp{
-    font-size: 10px;
+    font-size: 12px;
     text-align: end;
     padding-left: 150px;
+}
+.linkForgot{
+    font-size: 12px;
+    text-align: end;
+    margin-top: 5px;
+    padding-left: 230px;
 }
 .frameLinkSignUp{
     margin-left: auto;
 }
 .lBPwd{
-    margin-right: 270px;
+    display: flex;
+    /* margin-right: 270px; */
 }
 .inputTextUsername,
 .inputTextPass{
@@ -170,7 +180,7 @@
         padding-left: 20px;
     }
     .lBPwd{
-        margin-right: 250px;
+        margin-right: 0px;
     }
     .labelPassword {
         font-size: 14px;
@@ -209,6 +219,10 @@
     }
     .plc_pvr{
         font-size: 10px;
+    }
+    .linkForgot{
+        font-size: 10px;
+        padding-left: 190px;
     }
 }
 
@@ -244,7 +258,7 @@
         padding-left: 20px;
     }
     .lBPwd{
-        margin-right: 250px;
+        margin-right: 0px;
     }
     .labelPassword {
         font-size: 14px;
@@ -283,5 +297,9 @@
     }
     .plc_pvr{
         font-size: 10px;
+    }
+    .linkForgot{
+        font-size: 10px;
+        padding-left: 190px;
     }
 }

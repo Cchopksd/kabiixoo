@@ -50,6 +50,13 @@ const Chat = () => {
     const [typing, setTyping] = useState(false)
     const [isTyping, setIsTyping] = useState(false)
 
+    // useEffect(() => {
+    //     document.body.classList.add('chat-page');
+    //     return () => {
+    //         document.body.classList.remove('chat-page');
+    //     };
+    // }, []);
+
     // เมื่อเข้าสู่หน้า
     useEffect(() => {
         setPageLoading(true)

@@ -5,6 +5,9 @@
     margin: 70px auto 150px auto;
 }
 .report-title-box {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     margin: auto;
     margin-bottom: 30px;
 }
@@ -37,15 +40,19 @@
     color: #A7727D;
 }
 .input-report-topic {
-    background-color: #F9F5E7;
-    border: none;
     outline: none;
+    border: none;
     box-shadow: inset 0 2px 8px rgba(0,0,0,0.16);
     border-radius: 20px;
-    width: 540px;
-    height: 0px;
-    padding: 30px;
+    width: 600px;
+    height: 60px;
+    padding: 0px 30px;
     font-size: 16px;
+    appearance: none;
+    background:  url('../images/dropdownIcon.png') no-repeat right center;
+    background-size: 15px;
+    background-position: 95%;
+    background-color: #F9F5E7;
 }
 .report-description-box {
     display: flex;
@@ -103,8 +110,8 @@
         font-size: 17px;
     }
     .input-report-topic {
-        width: 440px;
-        height: 0px;
+        width: 500px;
+        height: 50px;
         font-size: 14px;
     }
     .input-description-topic {
@@ -137,10 +144,10 @@
         font-size: 15px;
     }
     .input-report-topic {
-        width: 335px;
-        height: 0px;
+        width: 375px;
+        height: 40px;
         font-size: 14px;
-        padding: 20px;
+        padding: 0px 20px;
         border-radius: 15px;
     }
     .input-description-topic {

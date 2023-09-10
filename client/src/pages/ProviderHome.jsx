@@ -7,6 +7,14 @@ import { getToken } from "../services/authorize";
 import AnimatedPage from "../AnimatedPage";
 
 const ProviderHome = () => {
+
+    useEffect(() => {
+        document.body.classList.add('providerHome-page');
+        return () => {
+            document.body.classList.remove('providerHome-page');
+        };
+    }, []);
+
     // เอาไอดีจาก url parameter
     const params = useParams();
     const [providerId, setProviderId] = useState(params.userId)

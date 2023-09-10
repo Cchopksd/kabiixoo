@@ -290,7 +290,7 @@ const ProviderServiceProfile = () => {
                         </div>
                         <div className="ps-profile-serviceDesc-box">
                             <label className="ps-profile-title">รายละเอียดการให้บริการ</label>
-                            <p>{serviceDesc}</p>
+                            <p className="ps-profile-serviceDesc">{serviceDesc}</p>
                         </div>
                         <div className="ps-profile-serviceAddress-box">
                             <label className="ps-profile-title">ที่ตั้งของผู้ให้บริการ</label>

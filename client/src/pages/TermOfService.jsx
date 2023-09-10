@@ -2,8 +2,17 @@ import React from "react";
 import "./TermOfService.css"
 import Footer from "../components/Footer";
 import AnimatedPage from "../AnimatedPage";
+import { useEffect } from "react";
 
 const TermOfService = () => {
+
+    useEffect(() => {
+        document.body.classList.add('term-page');
+        return () => {
+            document.body.classList.remove('term-page');
+        };
+    }, []);
+
     return (
         <AnimatedPage>
             <div className="term-container">
@@ -30,7 +39,7 @@ const TermOfService = () => {
     ผู้ใช้บริการที่เป็นผู้ให้บริการแต่ละคนจะมีนโยบายการคุ้มครองสัตว์เลี้ยงแตกต่างกันไป
                     </p>
                     <p className="term">
-                    4.&ensp;การใช้งานเว็บไซต์ศูนย์กลางรับฝากสัตว์เลี้ยง ผู้ใช้บริการจำเป็นที่จะต้องมีอายุ 18 ปี บริบูรณ์ขึ้นไป และ ข้อมูลการลงทะเบียนทั้งหมดที่คุณส่งมาเป็น
+                    4.&ensp;การใช้งานเว็บไซต์ศูนย์กลางรับฝากสัตว์เลี้ยง ข้อมูลการลงทะเบียนทั้งหมดที่คุณส่งมาเป็น
     ความจริงและถูกต้อง รวมทั้งคุณจะรักษาความถูกต้องของข้อมูลดังกล่าว และ ข้อมูลของคุณ ในการใช้เว็บไซต์ไม่ละเมิดกฎหมายหรือข้อบังคับใดๆ 
     หากตรวจสอบและพบว่าข้อมูลนั้นไม่ผ่านคุณสมบัติ ผู้ให้บริการจะทำการลบบัญชีผู้ใช้งาน ของผู้ใช้บริการทันที
                     </p>

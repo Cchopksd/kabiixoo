@@ -157,14 +157,14 @@ const SignUp = () => {
                             <div className='largeForm'>
                                 <div className='regisName'>
                                     <div>
-                                        <label className="lbRegisName">ชื่อ</label>
+                                        <label className="lbRegisName">ชื่อ *</label>
                                     </div>
                                     <input className="inputRegisName" id="name" type="text" placeholder="กรอกชื่อ" value={name} onChange={inputValue("name")}/>
                                 </div>
 
                                 <div className='regisSurname'>
                                     <div>
-                                        <label className="lbRegisSurName">นามสกุล</label>
+                                        <label className="lbRegisSurName">นามสกุล *</label>
                                     </div>
                                     <input className="inputRegisSurName" id="surName" type="text" placeholder="กรอกนามสกุล" value={surname} onChange={inputValue("surname")}/>
                                 </div>
@@ -179,38 +179,38 @@ const SignUp = () => {
 
                                 <div className='regisEmail'>
                                     <div>
-                                        <label className="lbRegisEmail">อีเมลล์</label>
+                                        <label className="lbRegisEmail">อีเมลล์ *</label>
                                     </div>
                                     <input className="inputRegisEmail" id="email" type="email" placeholder="กรอกอีเมล" value={email} onChange={inputValue("email")}/>
                                 </div>
 
                                 <div className='regisBirthDay'>
                                     <div>
-                                        <label className="lbRegisBirthDay">วันเกิด</label>
+                                        <label className="lbRegisBirthDay">วันเกิด *</label>
                                     </div>
                                     <input className='inputBirthDay' type="date"  ref={dateInputRef} value={birthDate} onChange={inputValue("birthDate")}/>
                                 </div>
                                 <div className='regisTel'>
                                     <div>
-                                        <label className="lbRegisPhone">เบอร์โทรศัพท์</label>
+                                        <label className="lbRegisPhone">เบอร์โทรศัพท์ *</label>
                                     </div>
                                     <input className="inputRegisPhone" id="phone" type="tel" placeholder="กรอกเบอร์โทรศัพท์" value={phone} onChange={inputValue("phone")}/>
                                 </div>
                                 <div className='regisUsername'>
                                     <div>
-                                        <label className="lbRegisUsername">ชื่อผู้ใช้งาน</label>
+                                        <label className="lbRegisUsername">ชื่อผู้ใช้งาน *</label>
                                     </div>
                                     <input className="inputRegisUsername" id="username" type="text" placeholder="กรอกชื่อผู้ใช้งาน" value={username} onChange={inputValue("username")}/>
                                 </div>
                                 <div className='regisPassword'>
                                     <div>
-                                        <label className="lbRegisPassword">รหัสผ่าน</label>
+                                        <label className="lbRegisPassword">รหัสผ่าน *</label>
                                     </div>
                                     <input className="inputRegisPassword" id="password" type="password" placeholder="กรอกรหัสผ่าน" value={password} onChange={inputValue("password")}/>
                                 </div>
                                 <div className='regisConfirmPassword'>
                                     <div>
-                                        <label className="lbRegisConfirmPassword">ยืนยันรหัสผ่าน</label>
+                                        <label className="lbRegisConfirmPassword">ยืนยันรหัสผ่าน *</label>
                                     </div>
                                     <input className="inputRegisConfirmPassword" id="confirmPassword" type="password" placeholder="ยืนยันรหัสผ่าน" value={confirmPassword} onChange={inputValue("confirmPassword")}/>
                                 </div>

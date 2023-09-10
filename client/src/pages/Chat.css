@@ -1,3 +1,8 @@
+.chat-page{
+    background-image: url(../images/loginBg2.png);
+    background-repeat: no-repeat;
+    background-position-x: center;
+}
 .chat-container {
     display: flex;
     margin: 20px;

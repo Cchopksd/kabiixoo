@@ -12,6 +12,13 @@ import AnimatedPage from "../AnimatedPage";
 
 const CreateService = () => {
 
+    // useEffect(() => {
+    //     document.body.classList.add('createService-page');
+    //     return () => {
+    //         document.body.classList.remove('createService-page');
+    //     };
+    // }, []);
+
     // state ของ contextAPI
     const { haveService, setHaveService } = useContext(UserContext);
 
@@ -344,26 +351,30 @@ const CreateService = () => {
                     </div>
                     <div className="create-info-1-box">
                         <div className="createService-name-box">
-                            <label className="createService-title-1">ชื่อผู้ให้บริการ</label>
-                            <input className="input-createService-name" type="text" value={serviceName} onChange={(event) => setServiceName(event.target.value)}/>
+                            <label className="createService-title-1">ชื่อผู้ให้บริการ *</label>
+                            <input className="input-createService-name" type="text" value={serviceName} onChange={(event) => setServiceName(event.target.value)}
+                            placeholder="กรอก ชื่อผู้ให้บริการ"/>
                         </div>
                         <div className="createService-address">
-                            <label className="createService-title-1">ที่อยู่ของผู้ให้บริการหรือกิจการ</label>
+                            <label className="createService-title-1">ที่อยู่ของผู้ให้บริการหรือกิจการ *</label>
                             <div className="createService-item">
                                 <div className="createService-item-box">
-                                    <label className="createService-title-2">เลขที่</label>
-                                    <input className="input-createService-address-1" type="text" value={addressNumber} onChange={(event) => setAddressNumber(event.target.value)}/>
+                                    <label className="createService-title-2">เลขที่ *</label>
+                                    <input className="input-createService-address-1" type="text" value={addressNumber} onChange={(event) => setAddressNumber(event.target.value)}
+                                    placeholder="กรอก เลขที่"/>
                                 </div>
                                 <div className="createService-item-box">
-                                    <label className="createService-title-2">ซอย</label>
-                                    <input className="input-createService-address-1" type="text" value={alleyName} onChange={(event) => setAlleyName(event.target.value)}/>
+                                    <label className="createService-title-2">ซอย *</label>
+                                    <input className="input-createService-address-1" type="text" value={alleyName} onChange={(event) => setAlleyName(event.target.value)}
+                                    placeholder="กรอก ชื่อซอย"/>
                                 </div>
                                 <div className="createService-item-box">
-                                    <label className="createService-title-2">ถนน</label>
-                                    <input className="input-createService-address-1 input-createService-end" type="text" value={roadName} onChange={(event) => setRoadName(event.target.value)}/>
+                                    <label className="createService-title-2">ถนน *</label>
+                                    <input className="input-createService-address-1 input-createService-end" type="text" value={roadName} onChange={(event) => setRoadName(event.target.value)}
+                                    placeholder="กรอก ชื่อถนน"/>
                                 </div>
                                 <div className="createService-item-box">
-                                    <label className="createService-title-2">จังหวัด</label>
+                                    <label className="createService-title-2">จังหวัด *</label>
                                     <select className="input-createService-address-2" onChange={onChangeProvince}>
                                         <option value="" disabled selected>เลือกจังหวัด</option>
                                         { provinceList.map((item, index) =>
@@ -371,7 +382,7 @@ const CreateService = () => {
                                     </select>
                                 </div>
                                 <div className="createService-item-box">
-                                    <label className="createService-title-2">เขต/อำเภอ</label>
+                                    <label className="createService-title-2">เขต/อำเภอ *</label>
                                     <select className="input-createService-address-2" onChange={onChangeDistrict}>
                                         <option value="" disabled selected>เลือกอำเภอ</option>
                                         { districtList.map((item, index) =>
@@ -379,7 +390,7 @@ const CreateService = () => {
                                     </select>
                                 </div>
                                 <div className="createService-item-box">
-                                    <label className="createService-title-2">แขวง/ตำบล</label>
+                                    <label className="createService-title-2">แขวง/ตำบล *</label>
                                     <select className="input-createService-address-2 input-createService-end" onChange={onChangeSubDistrict}>
                                         <option value="" disabled selected>เลือกตำบล</option>
                                         { subDistrictList.map((item, index) =>
@@ -387,8 +398,9 @@ const CreateService = () => {
                                     </select>
                                 </div>
                                 <div className="createService-item-box">
-                                    <label className="createService-title-2">รหัสไปรษณีย์</label>
-                                    <input className="input-createService-address-1" type="text" value={postalCode} onChange={(event) => setPostalCode(event.target.value)}/>
+                                    <label className="createService-title-2">รหัสไปรษณีย์ *</label>
+                                    <input className="input-createService-address-1" type="text" value={postalCode} onChange={(event) => setPostalCode(event.target.value)}
+                                    placeholder="กรอก รหัส"/>
                                 </div>
                             </div>
                         </div>
@@ -396,12 +408,14 @@ const CreateService = () => {
                 </div>
                 <div className="create-part-2">
                     <div className="create-info-2-box">
-                        <label className="createService-title-1">คำแนะนำตัว</label>
-                        <textarea className="input-createService-introduce" value={introduceDesc} onChange={(event) => setIntroduceDesc(event.target.value)}></textarea>
+                        <label className="createService-title-1">คำแนะนำตัว *</label>
+                        <textarea className="input-createService-introduce" value={introduceDesc} onChange={(event) => setIntroduceDesc(event.target.value)}
+                        placeholder="กรอก คำแนะนำตัว"></textarea>
                     </div>
                     <div className="create-info-3-box">
-                        <label className="createService-title-1">รายละเอียดการให้บริการ</label>
-                        <textarea className="input-createService-service" value={serviceDesc} onChange={(event) => setServiceDesc(event.target.value)}></textarea>
+                        <label className="createService-title-1">รายละเอียดการให้บริการ *</label>
+                        <textarea className="input-createService-service" value={serviceDesc} onChange={(event) => setServiceDesc(event.target.value)}
+                        placeholder="กรอก รายละเอียดการให้บริการ"></textarea>
                     </div>
                 </div>
                 <div className="create-part-3">
@@ -468,25 +482,29 @@ const CreateService = () => {
                                     <input type="checkbox" checked={havePhone} onChange={()=> {setHavePhone(!havePhone)
                                     setPhone("")}}/>เบอร์โทรศัพท์
                                     <img className="createService-contact-type-icon" src={require("../images/createServicePage/phoneIcon.png")}/>
-                                    <input disabled={!havePhone} className="createService-contact-input" type="text" value={phone} onChange={(event) => setPhone(event.target.value)}/>
+                                    <input disabled={!havePhone} className="createService-contact-input" type="text" value={phone} onChange={(event) => setPhone(event.target.value)}
+                                    placeholder="กรอก เบอร์โทรศัพท์"/>
                                 </div>
                                 <div className={!haveFacebook ? "createService-contact-checkbox-box-2" : "createService-contact-checkbox-box-2-checked"}>
                                     <input type="checkbox" checked={haveFacebook} onChange={()=> {setHaveFacebook(!haveFacebook)
                                     setFacebook("")}}/>Facebook
                                     <img className="createService-contact-type-icon" src={require("../images/createServicePage/facebookIcon.png")}/>
-                                    <input disabled={!haveFacebook} className="createService-contact-input" type="text" value={facebook} onChange={(event) => setFacebook(event.target.value)}/>
+                                    <input disabled={!haveFacebook} className="createService-contact-input" type="text" value={facebook} onChange={(event) => setFacebook(event.target.value)}
+                                    placeholder="กรอกชื่อ Facebook"/>
                                 </div>
                                 <div className={!haveInstagram ? "createService-contact-checkbox-box-1 createService-contact-endline" : "createService-contact-checkbox-box-1-checked createService-contact-endline"}>
                                     <input type="checkbox" checked={haveInstagram} onChange={()=> {setHaveInstagram(!haveInstagram)
                                     setInstagram("")}}/>Instagram
                                     <img className="createService-contact-type-icon" src={require("../images/createServicePage/instagramIcon.png")}/>
-                                    <input disabled={!haveInstagram} className="createService-contact-input" type="text" value={instagram} onChange={(event) => setInstagram(event.target.value)}/>
+                                    <input disabled={!haveInstagram} className="createService-contact-input" type="text" value={instagram} onChange={(event) => setInstagram(event.target.value)}
+                                    placeholder="กรอกชื่อ Instagram"/>
                                 </div>
                                 <div className={!haveLine ? "createService-contact-checkbox-box-2 createService-contact-endline" : "createService-contact-checkbox-box-2-checked createService-contact-endline"}>
                                     <input type="checkbox" checked={haveLine} onChange={()=> {setHaveLine(!haveLine)
                                     setLine("")}}/>Line
                                     <img className="createService-contact-type-icon" src={require("../images/createServicePage/lineIcon.png")}/>
-                                    <input disabled={!haveLine} className="createService-contact-input" type="text" value={line} onChange={(event) => setLine(event.target.value)}/>
+                                    <input disabled={!haveLine} className="createService-contact-input" type="text" value={line} onChange={(event) => setLine(event.target.value)}
+                                    placeholder="กรอกไอดี Line"/>
                                 </div>
                             </div>
                         </div>

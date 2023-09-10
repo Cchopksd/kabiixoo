@@ -109,7 +109,8 @@ const Review = () => {
                     <label>เขียนรีวิว</label>
                 </div>
                 <div className='review-comment-center'>
-                    <textarea className='review-comment-box' rows={5} cols={40} value={reviewDesc} onChange={(event) => {setReviewDesc(event.target.value)}}/>
+                    <textarea className='review-comment-box' rows={5} cols={40} value={reviewDesc} onChange={(event) => {setReviewDesc(event.target.value)}}
+                    placeholder='กรอกการรีวิว'/>
                 </div>
                 <div className='review-center'>
                     <button className='review-button' onClick={submitReview}>ส่งรีวิวและคะแนน</button>

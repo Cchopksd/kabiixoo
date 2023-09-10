@@ -153,7 +153,7 @@ const EditProfile = () => {
         <AnimatedPage>
             { loading && <Loading/>}
             <div className="edit-container">
-                <Editbar username={mem_username} profileImage={mem_profileImage}/>
+                <Editbar username={mem_username} profileImage={mem_profileImage} slug={params.slug}/>
                 <div className="edit-frame">
                     <div className="change-imageProfile-box">
                         <img className="edit-profileImage" src={mem_profileImage}/>

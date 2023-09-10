@@ -78,9 +78,10 @@ export default function SignIn()  {
                                 onChange={inputValue("username")}
                                 />
                             </div>
-                            <br />
+                            <br/>
                             <div className='lBPwd'>
                                 <label className="labelPassword">รหัสผ่าน</label>
+                                <label className="linkForgot"><Link to='/forgot-password'>ลืมรหัสผ่าน</Link></label>
                             </div>
                             <div className='inputPass'>
                                 <input className="inputTextPass"

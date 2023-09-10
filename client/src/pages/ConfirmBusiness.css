@@ -1,3 +1,12 @@
+.confirm-page{
+    /* background-color: #A7727D; */
+    background-image: url(../images/loginBg.png);
+    /* background-repeat: no-repeat; */
+    background-position-x: center;
+    /* transition: 0.1s ease; */
+    /* background-position-y: -20%; */
+    /* background-position: center; */
+}
 .confirm-container {
     display: flex;
     flex-direction: column;
@@ -10,6 +19,7 @@
     color: #A7727D;
     font-weight: bold;
     margin-bottom: 50px;
+    text-shadow: 2px 2px 0 white;
 }
 .comfirm-form-box {
     width: 900px;

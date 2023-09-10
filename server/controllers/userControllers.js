@@ -3,6 +3,9 @@ const generateToken = require('../configs/generateToken')
 const slugify = require("slugify")
 const { v4: uuidv4 } = require('uuid');
 const { OAuth2Client } = require('google-auth-library')
+const nodemailer = require('nodemailer')
+const jwt = require('jsonwebtoken')
+const bcrypt = require('bcryptjs')
 require('dotenv').config()
 
 // เข้าสู่ระบบ
@@ -49,7 +52,8 @@ exports.signup = async (req,res) => {
     // console.log(JSON.stringify(req.body))
 
     // สร้าง slug
-    let slug = slugify(username)
+    // let slug = slugify(username)
+    let slug = uuidv4()
     // เช็คถ้า slug เป็นภาษาไทย หรือค่าว่าง
     if (!slug) {
         slug = uuidv4();
@@ -230,4 +234,104 @@ exports.googleAuth = async (req,res) => {
     }else {
         return res.status(400).json({error: "ชื่อผู้ใช้งานหรือรหัสผ่านไม่ถูกต้อง"})
     }
+}
+
+// ลืมรหัสผ่าน
+exports.forgotPassword = async (req,res) => {
+    const { email } = req.body
+    if (!email) {
+        return res.status(400).json({message : 'กรุณากรอกอีเมล'})
+    }
+    await Member.findOne({mem_email : email}).then(user => {
+        if(!user) {
+            return res.status(400).json({message : 'ไม่มีบัญชีผู้ใช้งานนี้'})
+        }
+
+        const token = jwt.sign({id : user._id}, process.env.JWT_SECRET, {expiresIn: '1d'})
+
+        // console.log(user)
+
+        var transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+                user: 'chinathip.chai@bumail.net',
+                pass: 'Chinasss2544'
+                }
+            });
+            
+        var mailOptions = {
+            from: 'chinathip.chai@bumail.net',
+            to: user.mem_email,
+            subject: 'ตั้งค่ารหัสผ่านใหม่ใน KabiiXoo',
+            text: `${process.env.REACT_APP}/forgot-change-password/${user._id}/${token}`
+        };
+        
+        transporter.sendMail(mailOptions, function(error, info){
+            if (error) {
+                console.log(error);
+            } else {
+                return res.json({message : "ตรวจสอบอีเมลของท่านเพื่อเปลี่ยนรหัสผ่าน"})
+            }
+        });
+    })
+}
+
+// เปลี่ยนรหัสผ่านแบบลืม
+exports.forgotChangePassword = async (req,res) => {
+    const { id, token } = req.params
+    const { newPassword, confirmNewPassword } = req.body
+
+    if (!newPassword || !confirmNewPassword) {
+        return res.status(400).json({message : 'กรุณากรอกข้อมูลให้ครบ'})
+    }
+
+    if (newPassword !== confirmNewPassword) {
+        return res.status(400).json({message : 'ยืนยันรหัสผ่านไม่สำเร็จ'})
+    }
+
+    jwt.verify(token, process.env.JWT_SECRET, async(err, decoded) => {
+        if (err) {
+            return res.status(400).json({message : "เกิดข้อผิดพลาด"})
+        } else {
+            const salt = await bcrypt.genSalt(10);
+            bcrypt.hash(newPassword, salt).then(async (hash) => {
+                await Member.findByIdAndUpdate({_id: id}, {mem_password : hash}).then(() => {
+                    res.json({message : "แก้ไขรหัสผ่านสำเร็จ"})
+                }).catch(err => {
+                    res.status(400).json({message : "เกิดข้อผิดพลาด"})
+                })
+            })
+        }
+    })
+}
+
+// เปลี่ยนรหัสผ่านแบบไม่ลืม
+exports.changePassword = async (req,res) => {
+    const { password, newPassword, confirmNewPassword, slug } = req.body
+
+    // ตรวจสอบว่ากรอกกครบไหม
+    if (!password || !newPassword || !confirmNewPassword){
+        return res.status(400).json({message : 'กรุณากรอกข้อมูลให้ครบ'})
+    }
+
+    // เช็ครหัสเก่าตรงไหม
+    await Member.findOne({mem_slug : slug}).then(async(user) => {
+        // hash รหัสผ่านใหม่
+        const salt = await bcrypt.genSalt(10);
+        const hashNewPassword = await bcrypt.hash(newPassword, salt)
+        // ตรวจสอบ password
+        const match = await bcrypt.compare(password, user.mem_password)
+        if (match) {
+            if (newPassword === confirmNewPassword) {
+                await Member.findOneAndUpdate({mem_slug : slug}, {mem_password : hashNewPassword})
+                return res.json({message : "แก้ไขรหัสผ่านสำเร็จ"})
+            } else {
+                return res.status(400).json({message : "รหัสผ่านใหม่ไม่ตรงกัน"})
+            }
+        } else {
+            return res.status(400).json({message : "รหัสผ่านปัจจุบันไม่ถูกต้อง"})
+        }
+    }).catch(() => {
+        return res.status(400).json({message : "ไม่มีบัญชีผู้ใช้งานนี้"})
+    })
 }

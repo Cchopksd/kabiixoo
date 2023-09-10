@@ -1,6 +1,9 @@
 const ServicePost = require('../models/servicePostModel')
 const slugify = require("slugify")
 const { v4: uuidv4 } = require('uuid');
+const Review = require('../models/reviewModel')
+const Chat = require('../models/chatModel')
+const Message = require('../models/messageModel')
 
 // สร้างประกาศ
 exports.createService = async (req,res) => {
@@ -11,11 +14,12 @@ exports.createService = async (req,res) => {
         instagram, line, image1, image2, image3, image4 } = req.body
     
     // สร้าง slug
-    let slug = slugify(serviceName)
+    // let slug = slugify(serviceName)
+    let slug = uuidv4();
     // เช็คถ้า slug เป็นภาษาไทย หรือค่าว่าง
-    if (!slug) {
-        slug = uuidv4();
-    }
+    // if (!slug) {
+    //     slug = uuidv4();
+    // }
 
     // เช็คว่า member มีประกาศการให้บริการรึยัง
     const idExists = await ServicePost.findOne({ svp_owner : serviceOwner})
@@ -422,12 +426,17 @@ exports.updateService = async (req,res) => {
 exports.deleteService = async (req,res) => {
     // url path ของ ชื่อประกาศการให้บริการ
     const { slug } = req.params
+
+    await ServicePost.findOne({svp_slug: slug}).populate('svp_owner').then(async (serviceInfo) => {
+        await Chat.deleteMany({ users : serviceInfo.svp_owner._id })
+        await Review.deleteMany({ service_id : serviceInfo._id })
+    })
+
     await ServicePost.findOneAndRemove({svp_slug: slug}).then(()=> {
         res.status(200).json({message: "ลบประกาศการให้บริการสำเร็จ"})
     }).catch((err) => {
         res.status(400).json({error: err})
     })
-
 }
 
 // เอาข้อมูล service ตามที่ search
