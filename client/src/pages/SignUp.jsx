@@ -83,7 +83,7 @@ const SignUp = () => {
         // ตรวจสอบว่าอ่าน term หรือยัง
         if (!confirmRead){
             setLoading(false)
-            Swal.fire(
+            return Swal.fire(
                 'แจ้งเตือน',
                 'กรุณายืนยันการยอมรับข้อกำหนดการให้บริการ',
                 'error'
