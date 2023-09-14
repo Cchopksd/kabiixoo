@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter , Route, Routes, useLocation  } from 'react-router-dom';
+import { Route, Routes, useLocation, Router  } from 'react-router-dom';
 import MemberRoute from './MemberRoute';
 import './App.css'
 import Navbar from './components/Navbar';
@@ -38,7 +38,8 @@ function App() {
     <div>
         {isAdminPage ? null : <Navbar />}
         <AnimatePresence>
-          <Routes key={location.pathname} location={location}>
+          {/* <Router> */}
+          <Routes>
             {/* MemberRoute คือ component ที่ใช้ตรวจสอบและ redirect หน้า เมื่อไม่ได้เข้าสู่ระบบ */}
               <Route index  element={<Home />}/>
               {/* บทความ */}
@@ -77,6 +78,7 @@ function App() {
               <Route path="/store" element={<VerifyStore/>} />
               <Route path="/reporting" element={<ReportingService/>} />
           </Routes>
+          {/* </Router> */}
         </AnimatePresence>
     </div>
   );
