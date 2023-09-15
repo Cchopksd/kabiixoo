@@ -19,7 +19,8 @@ import AnimatedPage from "../AnimatedPage";
 // const ENDPOINT = "http://localhost:5500"
 
 // endpoint ตอน deploy
-const ENDPOINT = process.env.SERVER_URL
+const ENDPOINT = "https://kabiixoo-server.onrender.com"
+
 var socket;
 
 const Chat = () => {
