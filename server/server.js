@@ -45,7 +45,7 @@ const server = app.listen(PORT, ()=> {
 const io = require('socket.io')(server, {
     pingTimeout: 60000,
     cors: {
-        origin: `https://kabiixoo-z3v6.onrender.com`
+        origin: process.env.REACT_APP
     }
 })
 

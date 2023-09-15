@@ -16,8 +16,11 @@ import { getToken } from '../services/authorize';
 import AnimatedPage from "../AnimatedPage";
 
 // endpoint เปลี่ยนตอน deploy
-const ENDPOINT = "http://localhost:5500"
-var socket, selectedChatCompare;
+// const ENDPOINT = "http://localhost:5500"
+
+// endpoint ตอน deploy
+const ENDPOINT = process.env.SERVER_URL
+var socket;
 
 const Chat = () => {
 
