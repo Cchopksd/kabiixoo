@@ -200,7 +200,8 @@ const ProviderServiceProfile = () => {
             setLoading(false)
             navigate(`/chats/${loginId}`)
         }catch (error) {
-            Swal.fire('แจ้งเตือน', 'ไม่มีผู้ให้บริการรายนี้', 'error')
+            setLoading(false)
+            navigate(`/chats/${loginId}`)
         }
     }
 
