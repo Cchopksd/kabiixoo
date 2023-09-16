@@ -24,7 +24,7 @@ const ForgotPassword = () => {
     // redirect หน้า
     const navigate = useNavigate()
 
-    // axios.defaults.withCredentials = true
+    axios.defaults.withCredentials = true
     const handleSubmit = async (event) => {
         setLoading(true)
         event.preventDefault()
