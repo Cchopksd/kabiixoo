@@ -12,6 +12,8 @@ export const UserProvider = ({children}) => {
     const [selectedChat, setSelectedChat] = useState()
     const [chats, setChats] = useState([])
 
+    const [account, setAccount] = useState(true);
+
     useEffect(() => {
         const userInfo = JSON.parse(localStorage.getItem("user"))
         setUser(userInfo)
@@ -22,7 +24,7 @@ export const UserProvider = ({children}) => {
     },[navigate])
 
     return (
-        <UserContext.Provider value={{username: user, haveService, setHaveService, selectedChat, setSelectedChat, chats, setChats}}>
+        <UserContext.Provider value={{username: user, haveService, setHaveService, selectedChat, setSelectedChat, chats, setChats, account, setAccount}}>
             {children}
         </UserContext.Provider>
     )

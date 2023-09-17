@@ -1,24 +1,27 @@
-.manageContainer{
-    /* display: flex; */
-    padding-left: 80px;
+.mainContent {
+    display: flex;
 }
 
-.headerAccount{
+.manageContainer {
+    margin: 0 0 0 170px;
+}
+
+.headerAccount {
     display: flex;
     color: #A7727D;
-    margin-top: 80px;
+    margin-top: 30px;
 }
 
-.searchLine{
+.searchLine {
     display: flex;
 }
 
-.searchAccount{
+.searchAccount {
     border-radius: 25px;
     background-color: #F9F5E7;
     color: #A7727D;
     border: none;
-    box-shadow:0px 24px 48px 0 rgba(0,0,0,0.16);
+    box-shadow: 0px 24px 48px 0 rgba(0, 0, 0, 0.16);
     width: 350px;
     height: 34px;
     display: flex;
@@ -27,7 +30,7 @@
     font-weight: bolder;
 }
 
-.submitAccount{
+.submitAccount {
     display: flex;
     align-items: center;
     border: none;
@@ -39,50 +42,88 @@
     margin-left: 20px;
 }
 
-.frameGroup{
-    width: 1280px;
+.account-image{
+    height: 40px;
+    border-radius: 20px;
+}
+
+.fixed-height-tbody {
     height: 580px;
+    overflow-y: auto;
+}
+
+.fixed-height-tr {
+    color: #A7727D;
+    text-align: left;
+}
+
+.vertical-align {
+    vertical-align: middle;
+}
+
+.frameGroup {
+    width: 1280px;
+    height: 720px;
     background-color: #F9F5E7;
     margin-top: 30px;
     /* margin: auto; */
 }
 
-.groupFilter{
-    display: flex;
-    align-items: center;
-    /* justify-content: space-evenly; */
+.groupFilter {
     background-color: #A7727D;
     color: #F9F5E7;
-    height: 40px;
-
 }
 
-.nameFilter-id{
-    margin-left: 20px;
-    list-style: none;
+.account-button-design {
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
 }
 
-.nameFilter-profile{
-    margin-left: 60px;
-    list-style: none;
+.pagination-info {
+    display: flex;
+    justify-content: end;
+    color: #A7727D;
+    font-size: 16px;
+    font-weight: bold;
+    margin: auto;
 }
 
-.nameFilter-name{
-    margin-left: 100px;
-    list-style: none;
+.custom-label{
+    color: #A7727D;
 }
 
-.nameFilter-surname{
-    margin-left: 100px;
-    list-style: none;
+
+/* Style the pagination links */
+.pagination__link {
+    margin: 0 5px;
+    font-size: 20px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
-.nameFilter-username{
-    margin-left: 120px;
-    list-style: none;
+/* Style the active pagination link */
+.pagination__link--active {
+    background-color: #A7727D;
+    color: #fff;
+    border: 1px solid #A7727D;
 }
 
-.nameFilter-email{
-    margin-left: 100px;
-    list-style: none;
+/* Style the previous and next buttons */
+.pagination__link[aria-disabled='true'] {
+    pointer-events: none;
+    opacity: 0.5;
 }
+
+/* Style the pagination info text */
+.pagination-info {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.pagination__page {
+    display: none;
+  }
+

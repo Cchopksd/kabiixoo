@@ -1,4 +1,4 @@
-import React from 'react';
+import {React, useContext} from 'react';
 import { BrowserRouter , Route, Routes, useLocation  } from 'react-router-dom';
 import MemberRoute from './MemberRoute';
 import './App.css'
@@ -29,14 +29,16 @@ import ForgotPassword from './pages/ForgotPassword';
 import ForgotChangePassword from './pages/ForgotChangePassword';
 import EditPassword from './pages/EditPassword';
 import { AnimatePresence } from 'framer-motion';
+import UserContext from './contexts/UserProvider';
 
 function App() {
   const location = useLocation();
-  const isAdminPage = location.pathname.includes('/administrator-homepage');
+  // const isAdminPage = location.pathname.includes('/administrator-homepage');
+  const { account, setAccount } = useContext(UserContext);
 
   return (
     <div>
-        {isAdminPage ? null : <Navbar />}
+        {<Navbar />}
         <AnimatePresence>
           <Routes key={location.pathname} location={location}>
             {/* MemberRoute คือ component ที่ใช้ตรวจสอบและ redirect หน้า เมื่อไม่ได้เข้าสู่ระบบ */}
@@ -72,10 +74,10 @@ function App() {
               <Route path='/edit-service/:slug' element={<MemberRoute Component={EditService}/>}/>
 
               {/* ผู้ดูแลระบบ */}
-              <Route path="/administrator-homepage" element={<AdministratorHomepage />}/>
-              <Route path="/administrator-homepage/account" element={<ManageAccount/>} />
-              <Route path="/store" element={<VerifyStore/>} />
-              <Route path="/reporting" element={<ReportingService/>} />
+              <Route exeat path="/administrator-homepage" element={<AdministratorHomepage />}/>
+              <Route exeat path="/account" element={<ManageAccount/>} />
+              <Route exeat path="/store" element={<VerifyStore/>} />
+              <Route exeat path="/reporting" element={<ReportingService/>} />
           </Routes>
         </AnimatePresence>
     </div>
