@@ -1,7 +1,5 @@
 import {React, useContext} from 'react';
 import { BrowserRouter , Route, Routes, useLocation  } from 'react-router-dom';
-import React from 'react';
-import { Route, Routes, useLocation, Router  } from 'react-router-dom';
 import MemberRoute from './MemberRoute';
 import './App.css'
 import Navbar from './components/Navbar';
