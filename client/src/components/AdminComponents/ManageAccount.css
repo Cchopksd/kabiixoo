@@ -42,7 +42,7 @@
     margin-left: 20px;
 }
 
-.account-image{
+.account-image {
     height: 40px;
     border-radius: 20px;
 }
@@ -72,6 +72,7 @@
 .groupFilter {
     background-color: #A7727D;
     color: #F9F5E7;
+    height: 50px;
 }
 
 .account-button-design {
@@ -79,6 +80,7 @@
     border-radius: 5px;
     color: #fff;
     cursor: pointer;
+
 }
 
 .pagination-info {
@@ -90,8 +92,15 @@
     margin: auto;
 }
 
-.custom-label{
+.custom-label {
     color: #A7727D;
+    list-style: none;
+}
+
+.pagination {
+    display: flex;
+    list-style: none;
+    padding: 0;
 }
 
 
@@ -125,5 +134,19 @@
 
 .pagination__page {
     display: none;
-  }
+}
 
+
+.table-striped tbody tr:nth-child(odd) {
+    background-color: #F9F5E7;
+    /* Color for odd rows */
+}
+
+.table-striped tbody tr:nth-child(even) {
+    background-color: #ffffff;
+    /* Color for even rows */
+}
+
+.table {
+    border-collapse: collapse;
+}

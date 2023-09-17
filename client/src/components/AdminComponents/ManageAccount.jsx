@@ -27,10 +27,10 @@ const ManageAccount = () => {
 
     const deleteBlog = (slug) => {
         axios.delete(`${process.env.REACT_APP_API}/account/${slug}`)
-        .then(response => {
-            Swal.fire('Deleted!',response.data.message,"success")
-            fetchData()
-        }).catch(err => alert(err));
+            .then(response => {
+                Swal.fire('Deleted!', response.data.message, "success")
+                fetchData()
+            }).catch(err => alert(err));
     }
 
     const confirmDelete = (slug) => {
@@ -83,7 +83,7 @@ const ManageAccount = () => {
                 <table className='table table-striped frameGroup'>
                     <thead className='fixed-height-tr'>
                         <tr className='groupFilter'>
-                            <th scope='col'>id</th>
+                            <th scope='col' className='borderColor' style={{width:'5%',paddingLeft:'10px'}}>id</th>
                             <th scope='col'>รูปโปรไฟล์</th>
                             <th scope='col'>ชื่อจริง</th>
                             <th scope='col'>นามสกุล</th>
@@ -97,20 +97,20 @@ const ManageAccount = () => {
                     <tbody className="fixed-height-tbody">
                         {currentPageData.map((user, index) => (
                             <tr key={user._id} className='fixed-height-tr'>
-                                <th scope='row' className='vertical-align'>{offset + index + 1}</th>
-                                <td className='vertical-align'><img className='account-image' src={user.mem_profileImage} alt="" /></td>
-                                <td className='vertical-align'><input type="text" value={user.mem_name}/></td>
-                                <td className='vertical-align'>{user.mem_surname}</td>
-                                <td className='vertical-align'>{user.mem_username}</td>
-                                <td className='vertical-align'>{user.mem_email}</td>
-                                <td className='vertical-align'>
-                                    <button className='account-button-design' style={{background:'#DBC36C'}}>แก้ไขข้อมูล</button>
+                                <th scope='row' className='vertical-align' style={{paddingLeft:'10px'}}>{offset + index + 1}</th>
+                                <td className='vertical-align '><img className='account-image' src={user.mem_profileImage} alt="" /></td>
+                                <td className='vertical-align '><input type="text" value={user.mem_name} /></td>
+                                <td className='vertical-align '>{user.mem_surname}</td>
+                                <td className='vertical-align '>{user.mem_username}</td>
+                                <td className='vertical-align '>{user.mem_email}</td>
+                                <td className='vertical-align '>
+                                    <button className='account-button-design' style={{ background: '#DBC36C' }}>แก้ไขข้อมูล</button>
                                 </td>
                                 <td>
-                                    <button className='account-button-design' style={{background:'#D29965'}}>ระงับบัญชี</button>
+                                    <button className='account-button-design' style={{ background: '#D29965' }}>ระงับบัญชี</button>
                                 </td>
                                 <td>
-                                    <button className='account-button-design' onClick={()=> confirmDelete(user.mem_slug)} style={{background:'#B73953'}}>ลบบัญชี</button>
+                                    <button className='account-button-design' onClick={() => confirmDelete(user.mem_slug)} style={{ background: '#B73953' }}>ลบบัญชี</button>
                                 </td>
                             </tr>
                         ))}
@@ -122,7 +122,7 @@ const ManageAccount = () => {
                     </p>
                     <ReactPaginate
                         previousLabel={<span className="custom-label">{'<'}</span>}
-                        nextLabel=<span className="custom-label">{'>'}</span>
+                        nextLabel={<span className="custom-label">{'>'}</span>}
                         pageCount={pageCount}
                         onPageChange={handlePageClick}
                         containerClassName={'pagination'}

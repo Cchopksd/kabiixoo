@@ -2,8 +2,8 @@
 .backgroundPageAdmin{
     background-image: url('../../images/bgAdmin.png');
     display: flex;
-    height: 100%;
-    object-fit: fill;
+    height: 100vh;
+    object-fit: cover;
 }
 
 .headerWelcome{
@@ -11,4 +11,8 @@
     align-items: center;
     margin: auto;
     color: #A7727D;
+}
+
+.defaultAdmin{
+    display: flex;
 }

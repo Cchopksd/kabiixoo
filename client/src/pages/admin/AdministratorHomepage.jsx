@@ -5,11 +5,11 @@ import SideBarAdmin from '../../components/AdminComponents/SideBarAdmin'
 const AdministratorHomepage = () => {
 
     return (
-        <div>
+        <div className='defaultAdmin'>
             <SideBarAdmin />
-            {/* <div className='backgroundPageAdmin'>
+            <div className='backgroundPageAdmin'>
                 <h1 className='headerWelcome'>ยินดีต้อนเข้ารับสู่ระบบของผู้ดูแลระบบคาบิซู</h1>
-            </div> */}
+            </div>
         </div>
     );
 }
