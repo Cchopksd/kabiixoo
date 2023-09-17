@@ -152,12 +152,7 @@ const ProviderServiceProfile = () => {
             Swal.fire('แจ้งเตือน',err.response.data.error, 'error')
         })
 
-        axios.get(`${process.env.REACT_APP_API}/review/${params.slug}`,
-        {
-            headers: {
-                authorization: `Bearer ${getToken()}`
-            }
-        }).then((res) => {
+        axios.get(`${process.env.REACT_APP_API}/review/${params.slug}`).then((res) => {
             setReviewArray(res.data)
         }).catch((err) => {
             Swal.fire('แจ้งเตือน',err.response.data.error, 'error')
@@ -200,7 +195,8 @@ const ProviderServiceProfile = () => {
             setLoading(false)
             navigate(`/chats/${loginId}`)
         }catch (error) {
-            Swal.fire('แจ้งเตือน', 'ไม่มีผู้ให้บริการรายนี้', 'error')
+            setLoading(false)
+            navigate(`/chats/${loginId}`)
         }
     }
 

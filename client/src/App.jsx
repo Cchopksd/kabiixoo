@@ -1,5 +1,7 @@
 import {React, useContext} from 'react';
 import { BrowserRouter , Route, Routes, useLocation  } from 'react-router-dom';
+import React from 'react';
+import { Route, Routes, useLocation, Router  } from 'react-router-dom';
 import MemberRoute from './MemberRoute';
 import './App.css'
 import Navbar from './components/Navbar';
@@ -40,7 +42,8 @@ function App() {
     <div>
         {<Navbar />}
         <AnimatePresence>
-          <Routes key={location.pathname} location={location}>
+          {/* <Router> */}
+          <Routes>
             {/* MemberRoute คือ component ที่ใช้ตรวจสอบและ redirect หน้า เมื่อไม่ได้เข้าสู่ระบบ */}
               <Route index  element={<Home />}/>
               {/* บทความ */}
@@ -66,7 +69,7 @@ function App() {
               <Route path="/review/:slug" element={<MemberRoute Component={Review} />}/>
               <Route path="/report-provider/:slug" element={<MemberRoute Component={ReportProvider} />}/>
               <Route path='/create-service' element={<MemberRoute Component={CreateService}/>}/>
-              <Route path='/chats/:userId' element={<MemberRoute Component={Chat} />}/>
+              <Route path='/chats/:userId' element={<MemberRoute Component={Chat}/>}/>
 
               {/* ผู้ให้บริการ */}
               <Route path='/provider-home/:userId' element={<MemberRoute Component={ProviderHome}/>}/>
@@ -79,6 +82,7 @@ function App() {
               <Route exeat path="/store" element={<VerifyStore/>} />
               <Route exeat path="/reporting" element={<ReportingService/>} />
           </Routes>
+          {/* </Router> */}
         </AnimatePresence>
     </div>
   );

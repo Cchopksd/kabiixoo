@@ -253,14 +253,20 @@ exports.forgotPassword = async (req,res) => {
 
         var transporter = nodemailer.createTransport({
             service: 'gmail',
+            // port: 534,
+            // host: 'smtp.gmail.com',
+            // pool: true,
+            // host: "smtp.example.com",
+            // port: 465,
+            // secure: true, // use TLS
             auth: {
-                user: 'chinathip.chai@bumail.net',
-                pass: 'Chinasss2544'
+                user: process.env.EMAIL_FORGOT,
+                pass: process.env.EMAIL_FORGOT_PASS
                 }
             });
             
         var mailOptions = {
-            from: 'chinathip.chai@bumail.net',
+            from: process.env.EMAIL_FORGOT,
             to: user.mem_email,
             subject: 'ตั้งค่ารหัสผ่านใหม่ใน KabiiXoo',
             text: `${process.env.REACT_APP}/forgot-change-password/${user._id}/${token}`
@@ -272,6 +278,7 @@ exports.forgotPassword = async (req,res) => {
             } else {
                 return res.json({message : "ตรวจสอบอีเมลของท่านเพื่อเปลี่ยนรหัสผ่าน"})
             }
+            transporter.close();
         });
     })
 }

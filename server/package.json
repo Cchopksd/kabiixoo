@@ -2,10 +2,11 @@
   "name": "kabixoo-server",
   "version": "1.0.0",
   "description": "kabixoo-server-side",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js"
+    "start": "nodemon server.js",
+    "build": "npm i"
   },
   "author": "",
   "license": "ISC",

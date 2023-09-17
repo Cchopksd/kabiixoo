@@ -107,7 +107,7 @@ export default function SignIn()  {
                                 <LoginSocialGoogle client_id='487675977490-hbu4phrdsshvjedtsp1j94urp0ec8fj8.apps.googleusercontent.com'
                                     scope='openid profile email'
                                     discoveryDocs='claims_supported'
-                                    access_type='offline'
+                                    access_type='online'
                                     onResolve={async ({ provider, data }) => {
                                         const email = data.email
                                         const imageUrl = data.picture
