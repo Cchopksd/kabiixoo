@@ -157,7 +157,6 @@ const EditProfile = () => {
                 <div className="edit-frame">
                     <div className="change-imageProfile-box">
                         <img className="edit-profileImage" src={mem_profileImage}/>
-                        {/* <button className="choosePhoto-btn">เลือกรูป</button> */}
                         <input className="choosePhoto-input" type="file" onChange={(e) => {setImageFile(e.target.files[0])}}/>
                         <div className="max-edit-box">
                             <label className="max-edit-photosize">ขนาดไฟล์ : สูงสุด 5 MB</label>
@@ -184,7 +183,7 @@ const EditProfile = () => {
                         </div>
                     </div>
                     <div className="updateInfo-btn-box">
-                        <button className="confirm-updateInfo-btn" onClick={submitUpdate}>แก้ไข</button>
+                        <button className="confirm-updateInfo-btn" onClick={submitUpdate}>ยืนยันแก้ไข</button>
                     </div>
                 </div>
             </div>

@@ -79,14 +79,6 @@ const SearchBar = ({ onDataSend, onSearch }) => {
         setIsVisible(!isVisible);
     };
 
-    // const handleCheckboxChange = (event) => {
-    //     const { id, checked } = event.target;
-    //     setCheckedItems((prevCheckedItems) => ({
-    //     ...prevCheckedItems,
-    //     [id]: checked,
-    //     }));
-    // };
-
     const handleSearch = async () => {
         setLoading(true)
 
@@ -226,38 +218,37 @@ const SearchBar = ({ onDataSend, onSearch }) => {
                             <h3 className="label-filter">ประเภทสัตว์เลี้ยง</h3>
                             <ul className='items-filter'>
                                 <li>
-                                    {/* <div className={`item-type ${checkedItems["cat-checkbox"] ? "checked" : ""}`}> */}
-                                    <div className={`item-type ${cat && "item-type-checked"}`}>
+                                    <div className={`item-type ${cat && "item-type-checked"}`} role='button' onClick={() => setCat(!cat)}>
                                         <input id="pet-checkbox" type="checkbox" checked={cat} onChange={() => setCat(!cat)}/>
                                         <label className="lb-checkbox" htmlFor="cat-checkbox">แมว</label>
                                     </div>
                                 </li>
                                 <li>
-                                    <div className={`item-type ${dog && "item-type-checked"}`}>
+                                    <div className={`item-type ${dog && "item-type-checked"}`} role='button' onClick={() => setDog(!dog)}>
                                         <input id="pet-checkbox" type="checkbox" checked={dog} onChange={() => setDog(!dog)} />
                                         <label className="lb-checkbox" htmlFor="dog-checkbox">สุนัข</label>
                                     </div>
                                 </li>
                                 <li>
-                                    <div className={`item-type ${bird && "item-type-checked"}`}>
+                                    <div className={`item-type ${bird && "item-type-checked"}`} role='button' onClick={() => setBird(!bird)}>
                                         <input id="pet-checkbox" type="checkbox" checked={bird} onChange={() => setBird(!bird)} />
                                         <label className="lb-checkbox" htmlFor="bird-checkbox">นก</label>
                                     </div>
                                 </li>
                                 <li>
-                                    <div className={`item-type ${rabbit && "item-type-checked"}`}>
+                                    <div className={`item-type ${rabbit && "item-type-checked"}`} role='button' onClick={() => setRabbit(!rabbit)}>
                                         <input id="pet-checkbox" type="checkbox" checked={rabbit} onChange={() => setRabbit(!rabbit)} />
                                         <label className="lb-checkbox" htmlFor="rabbit-checkbox">กระต่าย</label>
                                     </div>
                                 </li>
                                 <li>
-                                    <div className={`item-type ${rodent && "item-type-checked"}`}>
+                                    <div className={`item-type ${rodent && "item-type-checked"}`} role='button' onClick={() => setRodent(!rodent)}>
                                         <input id="pet-checkbox" type="checkbox" checked={rodent} onChange={() => setRodent(!rodent)} />
                                         <label className="lb-checkbox" htmlFor="rodent-checkbox">สัตว์ฟันแทะ</label>
                                     </div>
                                 </li>
                                 <li>
-                                    <div className={`item-type ${reptile && "item-type-checked"}`}>
+                                    <div className={`item-type ${reptile && "item-type-checked"}`} role='button' onClick={() => setReptile(!reptile)}>
                                         <input id="pet-checkbox" type="checkbox" checked={reptile} onChange={() => setReptile(!reptile)} />
                                         <label className="lb-checkbox" htmlFor="reptile-checkbox">สัตว์เลื้อยคลาน</label>
                                     </div>
@@ -269,31 +260,31 @@ const SearchBar = ({ onDataSend, onSearch }) => {
                             <h3 className="label-filter">บริการเพิ่มเติม</h3>
                             <ul className='items-filter'>
                                 <li>
-                                    <div className={`item-type ${grooming && "item-type-checked"}`}>
+                                    <div className={`item-type ${grooming && "item-type-checked"}`} role='button' onClick={() => setGrooming(!grooming)}>
                                         <input id="service-checkbox" type="checkbox" checked={grooming} onChange={() => setGrooming(!grooming)} />
                                         <label className="lb-checkbox" htmlFor="grooming-checkbox">บริการกรูมมิ่ง (อาบน้ำตัดขน)</label>
                                     </div>
                                 </li>
                                 <li>
-                                    <div className={`item-type ${swimming && "item-type-checked"}`}>
+                                    <div className={`item-type ${swimming && "item-type-checked"}`} role='button' onClick={() => setSwimming(!swimming)}>
                                         <input id="service-checkbox" type="checkbox" checked={swimming} onChange={() => setSwimming(!swimming)} />
                                         <label className="lb-checkbox" htmlFor="swimming-checkbox">สระว่ายน้ำสัตว์เลี้ยง</label>
                                     </div>
                                 </li>
                                 <li>
-                                    <div className={`item-type ${consume && "item-type-checked"}`}>
+                                    <div className={`item-type ${consume && "item-type-checked"}`} role='button' onClick={() => setConsume(!consume)}>
                                         <input id="service-checkbox" type="checkbox" checked={consume} onChange={() => setConsume(!consume)} />
                                         <label className="lb-checkbox" htmlFor="consume-checkbox">อาหารและของใช้เกี่ยวกับสัตว์</label>
                                     </div>
                                 </li>
                                 <li>
-                                    <div className={`item-type ${walk && "item-type-checked"}`}>
+                                    <div className={`item-type ${walk && "item-type-checked"}`} role='button' onClick={() => setWalk(!walk)}>
                                         <input id="service-checkbox" type="checkbox" checked={walk} onChange={() => setWalk(!walk)} />
                                         <label className="lb-checkbox" htmlFor="walk-checkbox">พาสัตว์เลี้ยงเดินเล่น</label>
                                     </div>
                                 </li>
                                 <li>
-                                    <div className={`item-type ${transport && "item-type-checked"}`}>
+                                    <div className={`item-type ${transport && "item-type-checked"}`} role='button' onClick={() => setTransport(!transport)}>
                                         <input id="service-checkbox" type="checkbox" checked={transport} onChange={() => setTransport(!transport)} />
                                         <label className="lb-checkbox" htmlFor="transport-checkbox">รถรับส่งสัตว์เลี้ยง</label>
                                     </div>
@@ -307,7 +298,7 @@ const SearchBar = ({ onDataSend, onSearch }) => {
                                 <div>
                                     <Select className="select-province" options={provinces} value={province} onChange={setProvince} placeholder="เลือกจังหวัด"/>
                                 </div>
-                                <div className={`item-type ${store && "item-type-checked"}`}>
+                                <div className={`item-type ${store && "item-type-checked"}`} role='button' onClick={() => setStore(!store)}>
                                     <input id="store-checkbox" type="checkbox" checked={store} onChange={() => setStore(!store)} />
                                     <label className="lb-checkbox" htmlFor="store-checkbox">มีหน้าร้าน</label>
                                 </div>
@@ -318,7 +309,16 @@ const SearchBar = ({ onDataSend, onSearch }) => {
                             <h3 className="label-filter">คะแนน</h3>
                             <ul className='items-filter'>
                                 <li>
-                                    <div className={`item-type ${topPoint && "item-type-checked"}`}>
+                                    <div className={`item-type ${topPoint && "item-type-checked"}`} role='button' onClick={() => {
+                                        if (point === "topPoint"){
+                                            return
+                                        }
+                                        else {
+                                            setPoint("topPoint")
+                                            setTopPoint(!topPoint)
+                                            setLowPoint(false)
+                                        }
+                                    }}>
                                         <input id="point-checkbox" type="radio" value="topPoint" checked={point === "topPoint"} onChange={(event) => {
                                             setPoint(event.target.value)
                                             setTopPoint(!topPoint)
@@ -328,7 +328,16 @@ const SearchBar = ({ onDataSend, onSearch }) => {
                                     </div>
                                 </li>
                                 <li>
-                                    <div className={`item-type ${lowPoint && "item-type-checked"}`}>
+                                    <div className={`item-type ${lowPoint && "item-type-checked"}`} role='button' onClick={() => {
+                                        if (point === "lowPoint"){
+                                            return
+                                        }
+                                        else {
+                                            setPoint("lowPoint");
+                                            setLowPoint(!lowPoint);
+                                            setTopPoint(false);
+                                        }
+                                    }}>
                                         <input id="point-checkbox" type="radio" value="lowPoint" checked={point === "lowPoint"} onChange={(event) => {
                                             setPoint(event.target.value);
                                             setLowPoint(!lowPoint);
@@ -344,7 +353,19 @@ const SearchBar = ({ onDataSend, onSearch }) => {
                             <h3 className="label-filter">ราคาเริ่มต้น</h3>
                             <ul className='price-filter'>
                                 <li>
-                                    <div className={`item-price ${lowPrice && "item-type-checked"}`}>
+                                    <div className={`item-price ${lowPrice && "item-type-checked"}`} role='button' onClick={() => {
+                                        if (price === "lowPrice"){
+                                            return
+                                        }
+                                        else {
+                                            setPrice("lowPrice");
+                                            setLowPrice(!lowPrice)
+                                            setFiveToTenPrice(false);
+                                            setTenToFifteenPrice(false);
+                                            setFifteenToTwentyPrice(false);
+                                            setTopPrice(false);
+                                        }
+                                    }}>
                                         <input id="price-checkbox" type="radio" value="lowPrice" checked={price === "lowPrice"} onChange={(event) => {
                                             setPrice(event.target.value);
                                             setLowPrice(!lowPrice)
@@ -356,7 +377,19 @@ const SearchBar = ({ onDataSend, onSearch }) => {
                                     </div>
                                 </li>
                                 <li>
-                                    <div className={`item-price ${fiveToTenPrice && "item-type-checked"}`}>
+                                    <div className={`item-price ${fiveToTenPrice && "item-type-checked"}`} role='button' onClick={() => {
+                                        if (price === "fiveToTenPrice"){
+                                            return
+                                        }
+                                        else {
+                                            setPrice("fiveToTenPrice");
+                                            setLowPrice(false)
+                                            setFiveToTenPrice(!fiveToTenPrice);
+                                            setTenToFifteenPrice(false);
+                                            setFifteenToTwentyPrice(false);
+                                            setTopPrice(false);
+                                        }
+                                    }}>
                                         <input id="price-checkbox" type="radio" value="fiveToTenPrice" checked={price === "fiveToTenPrice"} onChange={(event) => {
                                             setPrice(event.target.value);
                                             setLowPrice(false)
@@ -369,7 +402,19 @@ const SearchBar = ({ onDataSend, onSearch }) => {
                                     </div>
                                 </li>
                                 <li>
-                                    <div className={`item-price ${tenToFifteenPrice && "item-type-checked"}`}>
+                                    <div className={`item-price ${tenToFifteenPrice && "item-type-checked"}`} role='button' onClick={() => {
+                                        if (price === "tenToFifteenPrice"){
+                                            return
+                                        }
+                                        else {
+                                            setPrice("tenToFifteenPrice");
+                                            setLowPrice(false)
+                                            setFiveToTenPrice(false);
+                                            setTenToFifteenPrice(!tenToFifteenPrice);
+                                            setFifteenToTwentyPrice(false);
+                                            setTopPrice(false);
+                                        }
+                                    }}>
                                         <input id="price-checkbox" type="radio" value="tenToFifteenPrice" checked={price === "tenToFifteenPrice"} onChange={(event) => {
                                             setPrice(event.target.value);
                                             setLowPrice(false)
@@ -382,7 +427,19 @@ const SearchBar = ({ onDataSend, onSearch }) => {
                                     </div>
                                 </li>
                                 <li>
-                                    <div className={`item-price ${fifteenToTwentyPrice && "item-type-checked"}`}>
+                                    <div className={`item-price ${fifteenToTwentyPrice && "item-type-checked"}`} role='button' onClick={() => {
+                                        if (price === "fifteenToTwentyPrice"){
+                                            return
+                                        }
+                                        else {
+                                            setPrice("fifteenToTwentyPrice");
+                                            setLowPrice(false)
+                                            setFiveToTenPrice(false);
+                                            setTenToFifteenPrice(false);
+                                            setFifteenToTwentyPrice(!fifteenToTwentyPrice);
+                                            setTopPrice(false);
+                                        }
+                                    }}>
                                         <input id="price-checkbox" type="radio" value="fifteenToTwentyPrice" checked={price === "fifteenToTwentyPrice"} onChange={(event) => {
                                             setPrice(event.target.value);
                                             setLowPrice(false)
@@ -395,7 +452,19 @@ const SearchBar = ({ onDataSend, onSearch }) => {
                                     </div>
                                 </li>
                                 <li>
-                                    <div className={`item-price ${topPrice && "item-type-checked"}`}>
+                                    <div className={`item-price ${topPrice && "item-type-checked"}`} role='button' onClick={() => {
+                                        if (price === "topPrice"){
+                                            return
+                                        }
+                                        else {
+                                            setPrice("topPrice");
+                                            setLowPrice(false)
+                                            setFiveToTenPrice(false);
+                                            setTenToFifteenPrice(false);
+                                            setFifteenToTwentyPrice(false);
+                                            setTopPrice(!topPrice);
+                                        }
+                                    }}>
                                         <input id="price-checkbox" type="radio" value="topPrice" checked={price === "topPrice"} onChange={(event) => {
                                             setPrice(event.target.value);
                                             setLowPrice(false)
@@ -414,7 +483,6 @@ const SearchBar = ({ onDataSend, onSearch }) => {
                             <ul className='summary-filter'>
                                 <li>
                                     <div>
-                                        {/* <input className="btn-resetFilter" type="reset"/> */}
                                         <button className="btn-resetFilter" onClick={handleResetFilter}>ล้างตัวกรองการค้นหา</button>
                                     </div>
                                 </li>
