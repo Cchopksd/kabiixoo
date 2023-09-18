@@ -96,10 +96,10 @@ const ManageAccount = () => {
                     </thead>
                     <tbody className="fixed-height-tbody">
                         {currentPageData.map((user, index) => (
-                            <tr key={user._id} className='fixed-height-tr'>
+                            <tr key={user.mem_id} className='fixed-height-tr' style={{height:'60px'}}>
                                 <th scope='row' className='vertical-align' style={{paddingLeft:'10px'}}>{offset + index + 1}</th>
                                 <td className='vertical-align '><img className='account-image' src={user.mem_profileImage} alt="" /></td>
-                                <td className='vertical-align '><input type="text" value={user.mem_name} /></td>
+                                <td className='vertical-align '>{user.mem_name}</td>
                                 <td className='vertical-align '>{user.mem_surname}</td>
                                 <td className='vertical-align '>{user.mem_username}</td>
                                 <td className='vertical-align '>{user.mem_email}</td>

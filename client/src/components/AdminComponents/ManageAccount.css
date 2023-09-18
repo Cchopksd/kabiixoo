@@ -54,6 +54,7 @@
 
 .fixed-height-tr {
     color: #A7727D;
+    max-height: 40px;
     text-align: left;
 }
 
