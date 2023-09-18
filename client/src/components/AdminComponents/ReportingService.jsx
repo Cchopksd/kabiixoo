@@ -13,7 +13,7 @@ const ReportingService = () => {
 
     const fetchData = () => {
         axios
-            .get(`${process.env.REACT_APP_API}/verify`)
+            .get(`${process.env.REACT_APP_API}/report`)
             .then((response) => {
                 // console.log(response)
                 setUsers(response.data);
@@ -54,7 +54,7 @@ const ReportingService = () => {
         <div className='mainContent'>
             <SideBarAdmin />
             <div className='manageContainer'>
-                <h1 className='headerAccount'>จัดการบัญชีผู้ใช้งาน</h1>
+                <h1 className='headerAccount'>ตรวจสอบและจัดการผู้ให้บริการที่ถูกรายงาน</h1>
                 <div className='searchLine'>
                     <input
                         className='searchAccount'

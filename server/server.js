@@ -13,7 +13,8 @@ const reviewRoute = require('./routes/reviewRoutes')
 const chatRoute = require('./routes/chatRoutes')
 const messageRoute = require('./routes/messageRoutes')
 const manageAccountRoutes = require('./routes/manageAccountRoutes')
-const verifyBusinessRoute = require('./routes/manaageReportRoute')
+const manageReportRoute = require('./routes/manageReportRoute')
+const manageVerifyRoute = require('./routes/manageVerifyRoute')
 
 // ใช้งาน package dotenv
 require('dotenv').config()
@@ -39,7 +40,8 @@ app.use("/api", chatRoute)
 app.use("/api", messageRoute)
 
 app.use("/api", manageAccountRoutes)
-app.use("/api", verifyBusinessRoute)
+app.use("/api", manageReportRoute)
+app.use("/api", manageVerifyRoute)
 
 const PORT = process.env.PORT || 5000
 
