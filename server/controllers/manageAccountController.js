@@ -13,16 +13,25 @@ exports.getAllAccounts = async (req, res) => {
     }
 };
 
-// exports.singleAccount = async (req, res) => {
-//     const {slug} = req.params
-//     try {
-//         const member = await Members.findOne({ mem_slug: slug });
-//         res.json(member);
-//     } catch (error) {
-//         console.error(error);
-//         res.status(500).json({ message: 'Server Error' });
+// exports.getAllServices = async (req,res) => {
+//     const keyword = req.query.search ? {
+//         $or: [
+//             { mem_name: { $regex: req.query.search, $options: "i" } },
+//             { mem_surname: { $regex: req.query.search, $options: "i" } },
+//             { mem_username: { $regex: req.query.search, $options: "i" } },
+//             { mem_email: { $regex: req.query.search, $options: "i" } }
+//         ],
+//     } : {}
+
+//     if (keyword) {
+//         const member = await Members.find(keyword)
+//         res.status(200).json(member)
 //     }
-// };
+//     else {
+//         const member = await Members.find()
+//         res.status(200).json(member)
+//     }
+// }
 
 exports.removeAccount = async (req, res) => {
     const {slug} = req.params
