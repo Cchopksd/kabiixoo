@@ -16,7 +16,6 @@ const ReportingService = () => {
         axios
             .get(`${process.env.REACT_APP_API}/report`)
             .then((response) => {
-                console.log(response)
                 setUsers(response.data);
             })
             .catch((err) => alert(err));
@@ -49,7 +48,6 @@ const ReportingService = () => {
 
     const offset = currentPage * perPage;
     const currentPageData = filteredUsers.slice(offset, offset + perPage);
-    console.log(currentPageData)
 
     return (
         <div className='mainContent'>

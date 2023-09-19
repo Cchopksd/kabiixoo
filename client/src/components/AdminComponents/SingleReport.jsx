@@ -57,8 +57,9 @@ const SingleReport = (props) => {
                         <button className='col col-delete' onClick={() => confirmDelete(report.rep_slug)}>ลบการร้องเรียน</button>
                     </div>
                 </section>
-                <section className='sec-body'>
-                    <h3>เนื้อหาการถูกรายงาน </h3>
+                <section className='sec-body' >
+                    <h2 >เนื้อหาการถูกรายงาน </h2>
+                    <hr className='opacity-br'/>
                     <div className='body-description'>
                         <div><img className='size-img-report' src={report.rep_image1} alt="" /></div>
                         <div><img className='size-img-report' src={report.rep_image2} alt="" /></div>
