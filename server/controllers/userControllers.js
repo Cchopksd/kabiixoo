@@ -257,7 +257,6 @@ exports.forgotPassword = async (req,res) => {
             port: 465,
             secure: true,
             auth: {
-                // type: 'OAuth2',
                 user: process.env.EMAIL_FORGOT,
                 // accessToken: 'ya29.Xx_XX0xxxxx-xX0X0XxXXxXxXXXxX0x'
                 pass: process.env.EMAIL_FORGOT_PASS
