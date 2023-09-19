@@ -16,7 +16,7 @@ const ReportingService = () => {
         axios
             .get(`${process.env.REACT_APP_API}/report`)
             .then((response) => {
-                // console.log(response)
+                console.log(response)
                 setUsers(response.data);
             })
             .catch((err) => alert(err));
@@ -79,7 +79,7 @@ const ReportingService = () => {
                     </thead>
                     <tbody className="fixed-height-tbody">
                         {currentPageData.map((user, index) => (
-                            <tr key={user.mem_id} className='fixed-height-tr' style={{ height: '60px' }}>
+                            <tr key={user} className='fixed-height-tr' style={{ height: '60px' }}>
                                 <th scope='row' className='vertical-align' style={{ paddingLeft: '10px' }}>{offset + index + 1}</th>
                                 <td className='vertical-align '>{user.reporter_id?.mem_username || 'N/A'}</td>
                                 <td className='vertical-align '>{user.reporter_id?.mem_email || 'N/A'}</td>
@@ -87,7 +87,7 @@ const ReportingService = () => {
                                 <td className='vertical-align '>{user.provider_id?.mem_name || 'N/A'}</td>
                                 <td className='vertical-align '>{user.rep_title}</td>
                                 <td className='vertical-align '>
-                                    <Link to={`/reporting/${user.provider_id?.slug}`} className='account-button-design' style={{ background: '#DBC36C' }}>ตรวจสอบ</Link>
+                                    <Link to={`/reporting/${user.rep_slug}`} className='account-button-design line-none' style={{ background: '#DBC36C'}}>ตรวจสอบ</Link>
                                 </td>
                             </tr>
                         ))}

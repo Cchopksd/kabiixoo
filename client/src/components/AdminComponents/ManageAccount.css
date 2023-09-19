@@ -81,7 +81,10 @@
     border-radius: 5px;
     color: #fff;
     cursor: pointer;
+}
 
+.line-none{
+    text-decoration: none;
 }
 
 .pagination-info {
