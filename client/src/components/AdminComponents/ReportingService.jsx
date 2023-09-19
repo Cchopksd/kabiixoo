@@ -4,6 +4,7 @@ import '../AdminComponents/ManageAccount.css';
 import axios from 'axios';
 import Swal from "sweetalert2"
 import ReactPaginate from 'react-paginate';
+import { Link } from 'react-router-dom';
 
 const ReportingService = () => {
     const [users, setUsers] = useState([]);
@@ -86,7 +87,7 @@ const ReportingService = () => {
                                 <td className='vertical-align '>{user.provider_id?.mem_name || 'N/A'}</td>
                                 <td className='vertical-align '>{user.rep_title}</td>
                                 <td className='vertical-align '>
-                                    <button className='account-button-design' style={{ background: '#DBC36C' }}>ตรวจสอบ</button>
+                                    <Link to={`/reporting/${user.provider_id?.slug}`} className='account-button-design' style={{ background: '#DBC36C' }}>ตรวจสอบ</Link>
                                 </td>
                             </tr>
                         ))}
