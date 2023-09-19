@@ -299,20 +299,35 @@ const Chat = () => {
         const inputValue = event.target.value;
         const lines = inputValue.split('\n');
 
-        const formattedLines = lines.map((line) => {
-        if (line.length > 50) {
-            const parts = [];
-            while (line.length > 50) {
-                parts.push(line.substring(0, 50));
-                line = line.substring(50);
+        if (size > 1234){
+            const formattedLines = lines.map((line) => {
+            if (line.length > 50) {
+                const parts = [];
+                while (line.length > 50) {
+                    parts.push(line.substring(0, 50));
+                    line = line.substring(50);
+                }
+                parts.push(line);
+                return parts.join('\n');
             }
-            parts.push(line);
-            return parts.join('\n');
+            return line;
+            });
+            setNewMessage(formattedLines.join('\n'));
+        } else {
+            const formattedLines = lines.map((line) => {
+                if (line.length > 20) {
+                    const parts = [];
+                    while (line.length > 20) {
+                        parts.push(line.substring(0, 20));
+                        line = line.substring(20);
+                    }
+                    parts.push(line);
+                    return parts.join('\n');
+                }
+                return line;
+                });
+            setNewMessage(formattedLines.join('\n'));
         }
-        return line;
-        });
-
-        setNewMessage(formattedLines.join('\n'));
 
         if (!socketConnected) return
 
@@ -396,9 +411,15 @@ const Chat = () => {
                                                                         <img className='chat-chat-avatar' src={m.sender.mem_profileImage} />
                                                                     </div>
                                                                 )}
-                                                                <span style={{backgroundColor: `${m.sender._id === loginUser ? !m.content.includes("res.cloudinary") ? '#f0c7d0' : "transparent" : 
+                                                                <span style={size > 1234 ? {backgroundColor: `${m.sender._id === loginUser ? !m.content.includes("res.cloudinary") ? '#f0c7d0' : "transparent" : 
                                                                     !m.content.includes("res.cloudinary") ? '#B9F5D0' : "transparent"}`,
                                                                     borderRadius: '20px', padding: '5px 15px', maxWidth: '65%',
+                                                                    marginLeft: isSameSenderMargin(messages, m, i, loginUser),
+                                                                    marginTop: isSameUser(messages, m, i , loginUser) ? 3 : 10,
+                                                                    whiteSpace: 'pre-line'} : 
+                                                                    {backgroundColor: `${m.sender._id === loginUser ? !m.content.includes("res.cloudinary") ? '#f0c7d0' : "transparent" : 
+                                                                    !m.content.includes("res.cloudinary") ? '#B9F5D0' : "transparent"}`,
+                                                                    borderRadius: '20px', padding: '5px 15px', maxWidth: '45%',
                                                                     marginLeft: isSameSenderMargin(messages, m, i, loginUser),
                                                                     marginTop: isSameUser(messages, m, i , loginUser) ? 3 : 10,
                                                                     whiteSpace: 'pre-line'}}
