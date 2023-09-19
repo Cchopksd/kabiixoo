@@ -30,6 +30,7 @@ import ForgotChangePassword from './pages/ForgotChangePassword';
 import EditPassword from './pages/EditPassword';
 import { AnimatePresence } from 'framer-motion';
 import UserContext from './contexts/UserProvider';
+import SingleReport from './components/AdminComponents/SingleReport';
 
 function App() {
   const location = useLocation();
@@ -79,6 +80,7 @@ function App() {
               <Route exeat path="/account" element={<ManageAccount/>} />
               <Route exeat path="/store" element={<VerifyStore/>} />
               <Route exeat path="/reporting" element={<ReportingService/>} />
+              <Route exeat path='/reporting/:slug' element={<SingleReport/>}/>
           </Routes>
           {/* </Router> */}
         </AnimatePresence>
