@@ -173,6 +173,16 @@ const Chat = () => {
                 Swal.fire("แจ้งเตือน", "ส่งข้อความไม่สำเร็จ", "error")
             }
         }
+        // else if (event.key === 'Tab' && event.shiftKey) {
+        //     e.preventDefault(); // ป้องกันเกิดการเลื่อนไปยังคอลัมน์ถัดไป
+        //     const textarea = e.target;
+        //     const start = textarea.selectionStart;
+        //     const end = textarea.selectionEnd;
+        //     const newText = `${text.substring(0, start)}\n${text.substring(end)}`;
+        //     setText(newText);
+        //     // ตั้งค่าตำแหน่งเลือกข้อความใหม่ให้ตรงกับบรรทัดใหม่
+        //     textarea.selectionStart = textarea.selectionEnd = start + 1;
+        // }
     }
 
     // ส่งข้อความแบบ กดปุ่มส่ง
@@ -284,7 +294,25 @@ const Chat = () => {
 
     // จัดการการพิมพ์ข้อความ
     const typingHandler = (event) => {
-        setNewMessage(event.target.value)
+        // setNewMessage(event.target.value)
+
+        const inputValue = event.target.value;
+        const lines = inputValue.split('\n');
+
+        const formattedLines = lines.map((line) => {
+        if (line.length > 50) {
+            const parts = [];
+            while (line.length > 50) {
+                parts.push(line.substring(0, 50));
+                line = line.substring(50);
+            }
+            parts.push(line);
+            return parts.join('\n');
+        }
+        return line;
+        });
+
+        setNewMessage(formattedLines.join('\n'));
 
         if (!socketConnected) return
 
@@ -370,16 +398,18 @@ const Chat = () => {
                                                                 )}
                                                                 <span style={{backgroundColor: `${m.sender._id === loginUser ? !m.content.includes("res.cloudinary") ? '#f0c7d0' : "transparent" : 
                                                                     !m.content.includes("res.cloudinary") ? '#B9F5D0' : "transparent"}`,
-                                                                    borderRadius: '20px', padding: '5px 15px', maxWidth: '75%',
+                                                                    borderRadius: '20px', padding: '5px 15px', maxWidth: '65%',
                                                                     marginLeft: isSameSenderMargin(messages, m, i, loginUser),
-                                                                    marginTop: isSameUser(messages, m, i , loginUser) ? 3 : 10}}
-                                                                    // onClick={
-                                                                        // m.content.includes("res.cloudinary") && 
-                                                                    // newPageImage(m.content)}
+                                                                    marginTop: isSameUser(messages, m, i , loginUser) ? 3 : 10,
+                                                                    whiteSpace: 'pre-line'}}
                                                                     >
-                                                                        {m.content.includes("res.cloudinary") ? 
-                                                                        <img src={m.content} className='chat-chat-img-display'></img> 
-                                                                        : m.content}
+                                                                        <p 
+                                                                        style={{margin: '0px'}}
+                                                                        >
+                                                                            {m.content.includes("res.cloudinary") ? 
+                                                                            <img src={m.content} className='chat-chat-img-display'></img> 
+                                                                            : m.content}
+                                                                        </p>
                                                                 </span>
                                                         </div>
                                                     </div>
@@ -398,8 +428,8 @@ const Chat = () => {
                                         <img src={require("../images/chatPage/galleryIcon.png")} 
                                         />
                                     </label>
-                                    <input type="text" placeholder='กรอกข้อความ...' onKeyDown={sendMessage} 
-                                    value={newMessage} onChange={typingHandler}/>
+                                    <textarea type="text" placeholder='กรอกข้อความ...' onKeyDown={sendMessage} 
+                                    value={newMessage} onChange={typingHandler} className='chat-textarea-style-remove'/>
                                     <img src={require("../images/chatPage/sendChatIcon.png")} onClick={sendMessageByClick}/>
                                 </div>
                             </div>

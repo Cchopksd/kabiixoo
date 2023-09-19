@@ -31,6 +31,11 @@ const reportSchema = mongoose.Schema({
         type: String,
         default: ""
     },
+    rep_slug : {
+        type: String,
+        lowercase: true,
+        unique: true
+    }
 }, {timestamps: true})
 
 module.exports = mongoose.model("Reports", reportSchema)
