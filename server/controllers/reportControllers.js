@@ -19,7 +19,8 @@ exports.sendReport = async (req,res) => {
             rep_description: reportDesc,
             rep_image1: image1,
             rep_image2: image2,
-            rep_image3: image3
+            rep_image3: image3,
+            rep_slug: reportSlug
         })
         return res.status(200).json({message: "รายงานผู้ให้บริการสำเร็จ"})
     }).catch((err) => {
