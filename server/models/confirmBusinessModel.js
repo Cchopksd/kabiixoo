@@ -37,6 +37,11 @@ const confirmBusinessSchema = mongoose.Schema({
     conf_licenseImage3 : {
         type: String,
         default : ""
+    },
+    conf_slug : {
+        type: String,
+        lowercase: true,
+        unique: true
     }
 }, {timestamps: true})
 

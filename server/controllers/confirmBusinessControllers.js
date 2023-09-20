@@ -6,6 +6,8 @@ exports.createRequest = async (req,res) => {
 
     // slug ของ service
     const { slug } = req.params
+     // สร้าง slug
+     let confSlug = uuidv4()
 
     // destructuring
     const { businessName, businessDesc, imageBusiness1, imageBusiness2, imageBusiness3,
@@ -32,6 +34,7 @@ exports.createRequest = async (req,res) => {
             conf_licenseImage1: imageLicense1,
             conf_licenseImage2: imageLicense2,
             conf_licenseImage3: imageLicense3,
+            conf_slug:confSlug,
         })
 
             res.status(200).json({message: "ส่งหลักฐานการยืนยันสำเร็จ"})
