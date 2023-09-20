@@ -41,17 +41,28 @@
 }
 
 .fixed-col{
-    flex: 1;
+    flex: 1.4;
 }
 
 
 .col-delete{
-    /* justify-content: left; */
     border: none;
     border-radius: 20px;
     background-color: #B73953;
     font-size: 18px;
     font-weight: bold;
+    max-width: 200px;
+    left: 0;
+}
+
+.col-confirm{
+    border: none;
+    border-radius: 20px;
+    background-color: rgb(91, 188, 95);
+    font-size: 18px;
+    font-weight: bold;
+    max-width: 200px;
+    left: 0;
 }
 
 .sec-body{
