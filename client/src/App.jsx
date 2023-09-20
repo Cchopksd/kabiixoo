@@ -31,6 +31,7 @@ import EditPassword from './pages/EditPassword';
 import { AnimatePresence } from 'framer-motion';
 import UserContext from './contexts/UserProvider';
 import SingleReport from './components/AdminComponents/SingleReport';
+import SingleVerify from './components/AdminComponents/SingleVerify';
 
 function App() {
   const location = useLocation();
@@ -80,7 +81,8 @@ function App() {
               <Route exeat path="/account" element={<ManageAccount/>} />
               <Route exeat path="/store" element={<VerifyStore/>} />
               <Route exeat path="/reporting" element={<ReportingService/>} />
-              <Route exeat path='/reporting/:slug' element={<SingleReport/>}/>
+              <Route exeat path='/reporting/slug/:slug' element={<SingleReport/>}/>
+              <Route exeat path='/store/id/:_id' element={<SingleVerify/>}/>
           </Routes>
           {/* </Router> */}
         </AnimatePresence>

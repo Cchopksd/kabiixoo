@@ -4,7 +4,6 @@ import axios from 'axios';
 import SideBarAdmin from './SideBarAdmin'
 import './SingleReport.css'
 import Swal from 'sweetalert2';
-import ReportingService from './ReportingService';
 
 const SingleReport = (props) => {
 
