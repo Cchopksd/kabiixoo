@@ -4,6 +4,7 @@ import ReactPaginate from 'react-paginate';
 import '../AdminComponents/ManageAccount.css';
 import SideBarAdmin from './SideBarAdmin';
 import Swal from "sweetalert2";
+import { Link } from 'react-router-dom';
 
 const ManageAccount = () => {
     const [users, setUsers] = useState([]);
@@ -100,7 +101,7 @@ const ManageAccount = () => {
                                 <td className='vertical-align '>{user.mem_username}</td>
                                 <td className='vertical-align '>{user.mem_email}</td>
                                 <td className='vertical-align '>
-                                    <button className='account-button-design' style={{ background: '#DBC36C' }}>แก้ไขข้อมูล</button>
+                                    <Link to={`/account/edit/${user.mem_slug}`} className='account-button-design' style={{ background: '#DBC36C' }}>แก้ไขข้อมูล</Link>
                                 </td>
                                 <td>
                                     <button className='account-button-design' style={{ background: '#D29965' }}>ระงับบัญชี</button>

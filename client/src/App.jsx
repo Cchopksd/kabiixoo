@@ -32,6 +32,7 @@ import { AnimatePresence } from 'framer-motion';
 import UserContext from './contexts/UserProvider';
 import SingleReport from './components/AdminComponents/SingleReport';
 import SingleVerify from './components/AdminComponents/SingleVerify';
+import UpdateAccount from './components/AdminComponents/UpdateAccount';
 
 function App() {
   const location = useLocation();
@@ -81,8 +82,11 @@ function App() {
               <Route exeat path="/account" element={<ManageAccount/>} />
               <Route exeat path="/store" element={<VerifyStore/>} />
               <Route exeat path="/reporting" element={<ReportingService/>} />
+              
               <Route exeat path='/reporting/slug/:slug' element={<SingleReport/>}/>
               <Route exeat path='/store/id/:_id' element={<SingleVerify/>}/>
+
+              <Route exeat path='/account/edit/:mem_slug' element={<UpdateAccount/>} />
           </Routes>
           {/* </Router> */}
         </AnimatePresence>

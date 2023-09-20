@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate  } from 'react-router-dom';
 import axios from 'axios';
 import SideBarAdmin from './SideBarAdmin'
-import './SingleReport.css'
+import './SingleComponent.css'
 import Swal from 'sweetalert2';
 
 const SingleReport = (props) => {
@@ -43,7 +43,7 @@ const SingleReport = (props) => {
         <div className='singleContainer'>
             <SideBarAdmin />
             <main className='inContainer text-center'>
-                <h1 className='text-center' style={{ margin: '0 auto' }}>รายละเอียดการรายงาน</h1>
+                <h1 className='text-center' style={{ margin: '0 auto' }}>รายละเอียดแบบฟอร์มการมีหน้าร้าน</h1>
                 <section className='sec-header'>
                     <div className='row-header'>
                         <p className='col'>เลขที่รายงาน :</p>

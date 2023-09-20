@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate  } from 'react-router-dom';
 import axios from 'axios';
 import SideBarAdmin from './SideBarAdmin'
-import './SingleReport.css'
+import './SingleComponent.css'
 import Swal from 'sweetalert2';
 
 const SingleVerify = (props) => {
