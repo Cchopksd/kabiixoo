@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { FaSearch } from 'react-icons/fa';
 import axios from 'axios';
 import ReactPaginate from 'react-paginate';
 import '../AdminComponents/ManageAccount.css';
@@ -28,14 +27,14 @@ const ManageAccount = () => {
     const deleteBlog = (slug) => {
         axios.delete(`${process.env.REACT_APP_API}/account/${slug}`)
             .then(response => {
-                Swal.fire('Deleted!', response.data.message, "success")
+                Swal.fire('Deleted!', response.data.message, "ลบบัญขีสำเร็จ")
                 fetchData()
             }).catch(err => alert(err));
     }
 
     const confirmDelete = (slug) => {
         Swal.fire({
-            title: 'Are you sure you want to delete',
+            title: 'ยืนยันที่จะลบข้อมูล',
             icon: 'warning',
             showCancelButton: true
         }).then((result) => {
@@ -76,9 +75,6 @@ const ManageAccount = () => {
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
                     />
-                    <button className='submitAccount' type='submit'>
-                        <FaSearch />
-                    </button>
                 </div>
                 <table className='table table-striped frameGroup'>
                     <thead className='fixed-height-tr'>

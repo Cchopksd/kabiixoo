@@ -1,6 +1,6 @@
 .sideMenu{
     width: 300px;
-    height: 100vh;
+    height: 1000px;
     display: flex;
     flex-direction: column;
     background-color: #F9F5E7;
@@ -18,17 +18,20 @@
 }
 
 .optionClicked{
-    display: flex;
+    display:inline-flex;
     text-decoration: none;
     color: #A7727D;
     font-size: 24px;
     font-weight: bold;
     background-color: #F9F5E7;
-    width: auto;
     margin-top: 30px;
     height: 50px;
+    align-items: center;
+    width: 200px;
+    padding:0 60px 0 40px;
 
 }
+
 
 .optionClicked.selected {
     background-color: #FFF;
@@ -38,15 +41,10 @@
     justify-content: end;
 }
 
-.mainContent {
-    flex: 1;
-    overflow-y: auto;
-    align-items: center;
-    text-align: center;
-}
+
 
 .logoutAdmin{
-    display: flex;
+    display: inline-flex;
     color: #fa748f;
     font-size: 24px;
     font-weight: bold;
@@ -54,8 +52,10 @@
     background-color: #F9F5E7;
     text-align: left;
     margin-top: 30px;
-    height: 54px;
+    height: 50px;
     align-items: center;
+    text-decoration: none;
+    padding:0 60px 0 40px;
 }
 
 .iconLogOut{

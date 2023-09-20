@@ -1,18 +1,21 @@
+.defaultAdmin {
+    display: flex;
+}
 
-.backgroundPageAdmin{
+.backgroundPageAdmin {
     background-image: url('../../images/bgAdmin.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center  ;
     display: flex;
-    height: 100vh;
-    object-fit: cover;
-}
-
-.headerWelcome{
-    display: flex;
+    justify-content: center;
     align-items: center;
-    margin: auto;
-    color: #A7727D;
+    width: 100%;
+
 }
 
-.defaultAdmin{
-    display: flex;
+.headerWelcome {
+    color: #A7727D;
+    font-size: 54px;
+    text-align: center;
 }

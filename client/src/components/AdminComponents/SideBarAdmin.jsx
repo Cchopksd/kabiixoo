@@ -15,7 +15,7 @@ const SideBarAdmin = () => {
     return (
         <nav className='sideMenu'>
             <ul className='optionSelect'>
-                <li>
+                <li className='frame-link'>
                     <Link
                         to='/account'
                         className={`optionClicked ${selectedLink === '/account' ? 'selected' : ''}`}
@@ -24,7 +24,7 @@ const SideBarAdmin = () => {
                         จัดการบัญชีผู้ใช้งาน
                     </Link>
                 </li>
-                <li>
+                <li className='frame-link'>
                     <Link
                         to='/store'
                         className={`optionClicked ${selectedLink === '/store' ? 'selected' : ''}`}
@@ -33,7 +33,7 @@ const SideBarAdmin = () => {
                         ยืนยันการมีหน้าร้าน
                     </Link>
                 </li>
-                <li>
+                <li className='frame-link'>
                     <Link
                         to='/reporting'
                         className={`optionClicked ${selectedLink === '/reporting' ? 'selected' : ''}`}
@@ -42,7 +42,7 @@ const SideBarAdmin = () => {
                         การรายงาน
                     </Link>
                 </li>
-                <li>
+                <li className='frame-link'>
                     <Link to="/" className='logoutAdmin'>
                         <BiLogOut className='iconLogOut'/>ออกจากระบบ
                     </Link>
