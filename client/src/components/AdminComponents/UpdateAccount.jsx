@@ -40,27 +40,31 @@ const UpdateAccount = () => {
     }, [params.mem_slug])
 
     const inputValue = name => event => {
-        // console.log(name,"=", event.target.value)
         setState({ ...state, [name]: event.target.value });
     }
 
     // เมื่อแก้ไขรูปด้วย
     useEffect(() => {
-        axios.patch(`${process.env.REACT_APP_API}/account/${params.mem_slug}`, state)
-                .then(response => {
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'บันทึกข้อมูลเรียบร้อย',
-                        showConfirmButton: false,
-                        timer: 1500
+        if(newImage){
+            axios.patch(`${process.env.REACT_APP_API}/account/${params.mem_slug}`, state)
+                    .then(async(response) => {
+                        setImageFile(null)
+                        setNewImage("")
+                        await Swal.fire(
+                            'แจ้งเตือน',
+                            'แก้ไขข้อมูลผู้ใช้งานสำเร็จ',
+                            'success'
+                        )
+                    }).catch(async(err) => {
+                        setImageFile(null)
+                        setNewImage("")
+                        await Swal.fire(
+                            'แจ้งเตือน',
+                            'เกิดข้อผิดพลาด',
+                            'error'
+                        )
                     })
-                }).catch(err => {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
-                        text: 'Something went wrong!',
-                    })
-                })
+        }
     },[newImage])
 
     const submitForm = async (e) => {
@@ -74,7 +78,8 @@ const UpdateAccount = () => {
 
                 // api upload รูป ไปยัง Cloudinary
                 await axios.post("https://api.cloudinary.com/v1_1/dmz2wct31/image/upload/", data)
-                .then((response) => {
+                .then(async(response) => {
+                    setState({...state,mem_profileImage:response.data.url.toString()});
                     setNewImage(response.data.url.toString())
                 }).catch((error) => {
                     // setLoading(false)
@@ -85,7 +90,6 @@ const UpdateAccount = () => {
                     )
                 })
             }else{
-                setLoading(false)
                 Swal.fire(
                     'แจ้งเตือน',
                     'ประเภทไฟล์รูปภาพไม่รองรับ',
@@ -95,19 +99,22 @@ const UpdateAccount = () => {
         }
         else {
             axios.patch(`${process.env.REACT_APP_API}/account/${params.mem_slug}`, state)
-                .then(response => {
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'บันทึกข้อมูลเรียบร้อย',
-                        showConfirmButton: false,
-                        timer: 1500
-                    })
-                }).catch(err => {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
-                        text: 'Something went wrong!',
-                    })
+                .then(async (response) => {
+                    setImageFile(null)
+                    setNewImage("")
+                    await Swal.fire(
+                        'แจ้งเตือน',
+                        'แก้ไขข้อมูลผู้ใช้งานสำเร็จ',
+                        'success'
+                    )
+                }).catch(async (err) => {
+                    setImageFile(null)
+                    setNewImage("")
+                    await Swal.fire(
+                        'แจ้งเตือน',
+                        'เกิดข้อผิดพลาด',
+                        'error'
+                    )
                 })
         }
     }
