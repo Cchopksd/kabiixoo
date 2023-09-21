@@ -37,11 +37,11 @@ import UpdateAccount from './components/AdminComponents/UpdateAccount';
 function App() {
   const location = useLocation();
   // const isAdminPage = location.pathname.includes('/administrator-homepage');
-  const { account, setAccount } = useContext(UserContext);
+  const { isAdmin, setIsAdmin } = useContext(UserContext);
 
   return (
     <div>
-        {<Navbar />}
+        {!isAdmin && <Navbar />}
         <AnimatePresence>
           {/* <Router> */}
           <Routes>

@@ -1,16 +1,36 @@
-import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom'; // Import useLocation from react-router-dom
+import React, { useState, useContext } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom'; // Import useLocation from react-router-dom
 import { BiLogOut } from "react-icons/bi";
 import logoKabiixoo from "../../images/logoKabiixoo.png"
 import '../AdminComponents/SideBarAdmin.css'
+import { logout } from "../../services/authorize"
+import UserContext from '../../contexts/UserProvider';
 
 const SideBarAdmin = () => {
+
+    // Context API
+    const {isAdmin, setIsAdmin, setHaveService} = useContext(UserContext)
+
+    // redirect
+    const navigate = useNavigate();
+
     const location = useLocation();
     const [selectedLink, setSelectedLink] = useState(location.pathname);
 
     const handleLinkClick = (path) => {
         setSelectedLink(path);
     };
+
+    // logout ของ admin
+    const handleAdminLogout = () => {
+        logout(() => {
+            navigate("/")
+            setIsAdmin(false)
+            setHaveService(false)
+            // reload หน้าเว็บ
+            window.location.reload(true)
+        })
+    }
 
     return (
         <nav className='sideMenu'>
@@ -43,7 +63,7 @@ const SideBarAdmin = () => {
                     </Link>
                 </li>
                 <li className='frame-link'>
-                    <Link to="/" className='logoutAdmin'>
+                    <Link className='logoutAdmin' onClick={handleAdminLogout}>
                         <BiLogOut className='iconLogOut'/>ออกจากระบบ
                     </Link>
                 </li>

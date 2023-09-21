@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import '../pages/SignIn.css';
 import { FcGoogle } from "react-icons/fc";
@@ -8,6 +8,7 @@ import axios from "axios";
 import { authenticate } from "../services/authorize";
 import AnimatedPage from "../AnimatedPage";
 import { LoginSocialGoogle } from 'reactjs-social-login'
+import UserContext from '../contexts/UserProvider';
 
 export default function SignIn()  {
 
@@ -22,6 +23,9 @@ export default function SignIn()  {
 
     // Destructuring
     const {username, password} = state
+
+    // Context api
+    const {isAdmin, setIsAdmin} = useContext(UserContext);
 
     // เปลี่ยนค่าตามการพิมพ์
     const inputValue = name => event => {
@@ -38,7 +42,12 @@ export default function SignIn()  {
                 'success'
             )
             setState({...state,username:"",password:""})
-            authenticate(res,()=>navigate('/'))
+            if (res.data.mem_role === "admin") {
+                setIsAdmin(true)
+                authenticate(res,()=>navigate('/administrator-homepage'))
+            }else {
+                authenticate(res,()=>navigate('/'))
+            }
             //   location.reload();
         }).catch((err) => {
             Swal.fire(

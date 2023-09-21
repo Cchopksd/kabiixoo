@@ -36,7 +36,6 @@ exports.signin = async (req,res) => {
             mem_birthDate: user.mem_birthDate,
             mem_phoneNumber: user.mem_phoneNumber,
             mem_profileImage: user.mem_profileImage,
-            mem_verified: user.mem_verified,
             mem_role: user.mem_role,
             token: generateToken(user._id)
         }))
