@@ -5,6 +5,7 @@ import axios from 'axios';
 import Swal from "sweetalert2";
 import ReactPaginate from 'react-paginate';
 import { Link } from 'react-router-dom';
+import AnimatedPage from '../../AnimatedPage';
 
 const VerifyStore = () => {
     const [users, setUsers] = useState([]);
@@ -74,72 +75,74 @@ const VerifyStore = () => {
     const currentPageData = filteredUsers.slice(offset, offset + perPage);
 
     return (
-        <div className='mainContent'>
-            <SideBarAdmin />
-            <div className='manageContainer'>
-                <h1 className='headerAccount'>ตรวจสอบและยืนยันการมีหน้าร้าน</h1>
-                <div className='searchLine'>
-                    <input
-                        className='searchAccount'
-                        type='search'
-                        placeholder='ค้นหาชื่อ, นามสกุล, ชื่อผู้ใช้งาน หรือ อีเมล'
-                        value={searchTerm}
-                        onChange={(e) => setSearchTerm(e.target.value)}
-                    />
-                </div>
-                <table className='table table-striped frameGroup'>
-                    <thead className='fixed-height-tr'>
-                        <tr className='groupFilter'>
-                            <th scope='col' className='borderColor' style={{ width: '10%', paddingLeft: '10px' }}>ไอดี</th>
-                            <th scope='col'>ชื่อร้าน</th>
-                            <th scope='col'>ชื่อจริง</th>
-                            <th scope='col'>นามสกุล</th>
-                            <th scope='col'>อีเมล</th>
-                            <th scope='col'></th>
-                            <th scope='col'></th>
-                            <th scope='col'></th>
-                        </tr>
-                    </thead>
-                    <tbody className="fixed-height-tbody">
-                        {currentPageData.map((user, index) => (
-                            <tr key={user.mem_id} className='fixed-height-tr' style={{ height: '60px' }}>
-                                <th scope='row' className='vertical-align' style={{ paddingLeft: '10px' }}>{offset + index + 1}</th>
-                                <td className='vertical-align'>{user.conf_businessName || 'N/A'}</td>
-                                <td className='vertical-align'>{user.service_id?.svp_owner?.mem_name || 'N/A'}</td>
-                                <td className='vertical-align'>{user.service_id?.svp_owner?.mem_surname || 'N/A'}</td>
-                                <td className='vertical-align'>{user.service_id?.svp_owner?.mem_email || 'N/A'}</td>
-                                <td className='vertical-align'>
-                                    <Link to={`/store/id/${user._id}`} className='account-button-design' style={{ background: '#DBC36C' }}>ตรวจสอบ</Link>
-                                </td>
-                                <td className='vertical-align'>
-                                    <button className='account-button-design' style={{ background: '#5BBC5F' }}>ยืนยัน</button>
-                                </td>
-                                <td className='vertical-align'>
-                                    <button className='account-button-design' onClick={() => confirmDelete(user._id)} style={{ background: '#B73953' }}>ปฎิเสธ</button>
-                                </td>
+        <AnimatedPage>
+            <div className='mainContent'>
+                <SideBarAdmin />
+                <div className='manageContainer'>
+                    <h1 className='headerAccount'>ตรวจสอบและยืนยันการมีหน้าร้าน</h1>
+                    <div className='searchLine'>
+                        <input
+                            className='searchAccount'
+                            type='search'
+                            placeholder='ค้นหาชื่อ, นามสกุล, ชื่อผู้ใช้งาน หรือ อีเมล'
+                            value={searchTerm}
+                            onChange={(e) => setSearchTerm(e.target.value)}
+                        />
+                    </div>
+                    <table className='table table-striped frameGroup'>
+                        <thead className='fixed-height-tr'>
+                            <tr className='groupFilter'>
+                                <th scope='col' className='borderColor' style={{ width: '10%', paddingLeft: '10px' }}>ไอดี</th>
+                                <th scope='col'>ชื่อร้าน</th>
+                                <th scope='col'>ชื่อจริง</th>
+                                <th scope='col'>นามสกุล</th>
+                                <th scope='col'>อีเมล</th>
+                                <th scope='col'></th>
+                                <th scope='col'></th>
+                                <th scope='col'></th>
                             </tr>
-                        ))}
-                    </tbody>
-                </table>
-                <div className='pagination-info'>
-                    <p>
-                        {currentPage + 1} จากทั้งหมด {pageCount} หน้า
-                    </p>
-                    <ReactPaginate
-                        previousLabel={<span className="custom-label">{'<'}</span>}
-                        nextLabel={<span className="custom-label">{'>'}</span>}
-                        pageCount={pageCount}
-                        onPageChange={handlePageClick}
-                        containerClassName={'pagination'}
-                        previousLinkClassName={'pagination__link'}
-                        nextLinkClassName={'pagination__link'}
-                        disabledClassName={'pagination__link--disabled'}
-                        activeClassName={'pagination__link--active'}
-                        pageClassName={'pagination__page'}
-                    />
+                        </thead>
+                        <tbody className="fixed-height-tbody">
+                            {currentPageData.map((user, index) => (
+                                <tr key={user.mem_id} className='fixed-height-tr' style={{ height: '60px' }}>
+                                    <th scope='row' className='vertical-align' style={{ paddingLeft: '10px' }}>{offset + index + 1}</th>
+                                    <td className='vertical-align'>{user.conf_businessName || 'N/A'}</td>
+                                    <td className='vertical-align'>{user.service_id?.svp_owner?.mem_name || 'N/A'}</td>
+                                    <td className='vertical-align'>{user.service_id?.svp_owner?.mem_surname || 'N/A'}</td>
+                                    <td className='vertical-align'>{user.service_id?.svp_owner?.mem_email || 'N/A'}</td>
+                                    <td className='vertical-align'>
+                                        <Link to={`/store/id/${user._id}`} className='account-button-design' style={{ background: '#DBC36C' }}>ตรวจสอบ</Link>
+                                    </td>
+                                    <td className='vertical-align'>
+                                        <button className='account-button-design' style={{ background: '#5BBC5F' }}>ยืนยัน</button>
+                                    </td>
+                                    <td className='vertical-align'>
+                                        <button className='account-button-design' onClick={() => confirmDelete(user._id)} style={{ background: '#B73953' }}>ปฎิเสธ</button>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                    <div className='pagination-info'>
+                        <p>
+                            {currentPage + 1} จากทั้งหมด {pageCount} หน้า
+                        </p>
+                        <ReactPaginate
+                            previousLabel={<span className="custom-label">{'<'}</span>}
+                            nextLabel={<span className="custom-label">{'>'}</span>}
+                            pageCount={pageCount}
+                            onPageChange={handlePageClick}
+                            containerClassName={'pagination'}
+                            previousLinkClassName={'pagination__link'}
+                            nextLinkClassName={'pagination__link'}
+                            disabledClassName={'pagination__link--disabled'}
+                            activeClassName={'pagination__link--active'}
+                            pageClassName={'pagination__page'}
+                        />
+                    </div>
                 </div>
             </div>
-        </div>
+        </AnimatedPage>
     );
 }
 
