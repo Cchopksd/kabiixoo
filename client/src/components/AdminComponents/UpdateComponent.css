@@ -1,18 +1,15 @@
 .update-main{
     display: flex;
 }
-
 .update-frame{
     display: flex;
     flex-direction: column;
     margin: auto;
 }
-
 .text-header{
     text-align: center;
     color: #A7727D;
 }
-
 .update-container{
     display: flex;
     width: 1000px;
@@ -24,15 +21,14 @@
     color: #A7727D;
 }
 
-.sec-left{
+/* .sec-left{
 
-}
+} */
 
 .line-center{
     top: 0;
     margin-right: 0px;
 }
-
 .sec-right{
     display: flex;
     flex-direction: column;
@@ -41,7 +37,6 @@
     padding-top: 50px;
     padding-left: 6rem;
 }
-
 .update-row{
     display: flex;
     align-items: center;
@@ -52,7 +47,6 @@
     flex: 1;
     grid-column: 1;
 }
-
 .input-update{
     flex: 2.3;
     margin-left: 40px;
@@ -78,12 +72,26 @@
     width: 200px;
     height: 40px;
     font-size: 20px;
-    font-weight: bold;
-    border: none;
-    background-color: #A7727D;
-    color: #E9E9E9;
-    border-radius: 10px;
-    box-shadow: 0px 5px 15px 0 rgba(0,0,0,0.16);
+}
 
+.label-update{
+
+}
+.update-imageProfile-box{
+    width: 170px;
+    height: 200px;
+    /* display: grid;
+    justify-content: center; */
+}
+.update-profileImage {
+    height: 70px;
+    width: 70px;
+    border-radius: 35px;
+    margin-left: 52px;
+}
+.update-max-edit-photosize {
+    text-align: center;
+    font-size: 14px;
+    color: #616161;
 }
 
