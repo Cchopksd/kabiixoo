@@ -125,61 +125,61 @@ const UpdateAccount = () => {
         }
     }
 
+    
+
     return (
-        <AnimatedPage>
-            <div className='update-main'>
-                <SideBarAdmin />
-                <main className='update-frame'>
-                    <h1 className='text-header'>แก้ไขข้อมูลผู้ใช้งาน</h1>
-                    <form className='update-container' onSubmit={submitForm}>
-                            <section className='sec-left'>
-                                <div className='update-imageProfile-box'>
-                                    <img className="update-profileImage" src={mem_profileImage}/>
-                                    <input className="update-choosePhoto-input" type="file" onChange={(e) => {setImageFile(e.target.files[0])}}/>
-                                    <div className="update-max-edit-box">
-                                        <label className="update-max-edit-photosize">ขนาดไฟล์ : สูงสุด 5 MB</label>
-                                        <label className="update-max-edit-photosize">ไฟล์ที่รองรับ : .JPEG, .PNG</label>
-                                    </div>
+        <div className='update-main'>
+            <SideBarAdmin />
+            <main className='update-frame'>
+                <h1 className='text-header'>แก้ไขข้อมูลผู้ใช้งาน</h1>
+                <form className='update-container' onSubmit={submitForm}>
+                        <section className='sec-left'>
+                            <div className='update-imageProfile-box'>
+                                <img className="update-profileImage" src={mem_profileImage}/>
+                                <input className="update-choosePhoto-input" type="file" onChange={(e) => {setImageFile(e.target.files[0])}}/>
+                                <div className="update-max-edit-box">
+                                    <label className="update-max-edit-photosize">ขนาดไฟล์ : สูงสุด 5 MB</label>
+                                    <label className="update-max-edit-photosize">ไฟล์ที่รองรับ : .JPEG, .PNG</label>
                                 </div>
-                            </section>
-                            <hr className='line-center' />
-                            <section className='sec-right'>
-                                <div className='update-row'>
-                                    <label className='label-update' htmlFor="">ชื่อผู้ใช้งาน :</label>
-                                    <input className='input-update' type="text" value={mem_username} onChange={inputValue('mem_username')} />
-                                </div>
-                                <div className='update-row'>
-                                    <label className='label-update' htmlFor="">รหัสผ่าน :</label>
-                                    <input className='input-update' type="text" value={mem_password} onChange={inputValue('mem_password')} />
-                                </div>
-                                <div className='update-row'>
-                                    <label className='label-update' htmlFor="">ชื่อ :</label>
-                                    <input className='input-update' type="text" value={mem_name} onChange={inputValue('mem_name')} />
-                                </div>
-                                <div className='update-row'>
-                                    <label className='label-update' htmlFor="">นามสกุล :</label>
-                                    <input className='input-update' type="text" value={mem_surname} onChange={inputValue('mem_surname')} />
-                                </div>
-                                <div className='update-row'>
-                                    <label className='label-update' htmlFor="">อีเมล :</label>
-                                    <input className='input-update' type="text" value={mem_email} onChange={inputValue('mem_email')} />
-                                </div>
-                                <div className='update-row'>
-                                    <label className='label-update' htmlFor="">วันเกิด :</label>
-                                    <input className='input-update' type="date" value={mem_birthDate} onChange={inputValue('mem_birthDate')} />
-                                </div>
-                                <div className='update-row'>
-                                    <label className='label-update' htmlFor="">เบอร์โทร :</label>
-                                    <input className='input-update' type="text" value={mem_phoneNumber} onChange={inputValue('mem_phoneNumber')} />
-                                </div>
-                                {/* Add other input fields for mem_password, mem_name, mem_surname, mem_email, mem_role */}
-                                <input type="submit" value='อัพเดต' className="btn btn-primary" />
-                            </section>
-                            {/* <input type="submit" value='อัพเดต' className="btn btn-primary" /> */}
-                        </form>
-                </main>
-            </div>
-        </AnimatedPage>
+                            </div>
+                        </section>
+                        <hr className='line-center' />
+                        <section className='sec-right'>
+                            <div className='update-row'>
+                                <label className='label-update' htmlFor="">ชื่อผู้ใช้งาน :</label>
+                                <input className='input-update' type="text" value={mem_username} onChange={inputValue('mem_username')} />
+                            </div>
+                            <div className='update-row'>
+                                <label className='label-update' htmlFor="">รหัสผ่าน :</label>
+                                <input className='input-update' type="text" value={mem_password} onChange={inputValue('mem_password')} />
+                            </div>
+                            <div className='update-row'>
+                                <label className='label-update' htmlFor="">ชื่อ :</label>
+                                <input className='input-update' type="text" value={mem_name} onChange={inputValue('mem_name')} />
+                            </div>
+                            <div className='update-row'>
+                                <label className='label-update' htmlFor="">นามสกุล :</label>
+                                <input className='input-update' type="text" value={mem_surname} onChange={inputValue('mem_surname')} />
+                            </div>
+                            <div className='update-row'>
+                                <label className='label-update' htmlFor="">อีเมล :</label>
+                                <input className='input-update' type="text" value={mem_email} onChange={inputValue('mem_email')} />
+                            </div>
+                            <div className='update-row'>
+                                <label className='label-update' htmlFor="">วันเกิด :</label>
+                                <input className='input-update' type="date" value={mem_birthDate} onChange={inputValue('mem_birthDate')} />
+                            </div>
+                            <div className='update-row'>
+                                <label className='label-update' htmlFor="">เบอร์โทร :</label>
+                                <input className='input-update' type="text" value={mem_phoneNumber} onChange={inputValue('mem_phoneNumber')} />
+                            </div>
+                            {/* Add other input fields for mem_password, mem_name, mem_surname, mem_email, mem_role */}
+                            <input type="submit" value='อัพเดต' className="btn btn-primary" />
+                        </section>
+                        {/* <input type="submit" value='อัพเดต' className="btn btn-primary" /> */}
+                    </form>
+            </main>
+        </div>
     );
 }
 

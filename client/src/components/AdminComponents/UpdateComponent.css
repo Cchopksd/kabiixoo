@@ -20,34 +20,82 @@
     font-size: 22px;
     color: #A7727D;
 }
-/* .sec-left{
 
-} */
+.sec-left{
+    display: flex;
+    margin: auto;
+    text-align: center;
+    padding-left: 40px;
+}
+
+
 .line-center{
     top: 0;
-    margin-right: 0;
+    margin-right: 0px;
 }
 .sec-right{
     display: flex;
     flex-direction: column;
-    padding-left: 20px;
-    margin-right: 25rem;
+    padding: auto;
+    margin-right: 7.5rem;
+    padding-top: 50px;
+    padding-left: 6rem;
 }
 .update-row{
-    display: grid;
-    grid-template-columns: auto auto;
+    display: flex;
     align-items: center;
-    padding: 10px;
+    margin: 10px;
+}
+
+.label-update{
+    flex: 1;
+    grid-column: 1;
 }
 .input-update{
+    flex: 2.3;
+    margin-left: 40px;
     display: flex;
     width: 250px;
     height: 40px;
-    font-size: 20px;
+    border: none;
+    border-radius: 10px;
+    outline: none;
+    font-size: 25px;
+    color: #A7727D;
+    box-shadow: inset 0 2px 8px rgba(0,0,0,0.16);
 }
-.label-update{
 
+
+.div-btn-update{
+    display: flex;
+    padding-top: 20px;
+    justify-content: flex-end;
+    margin-right: 10px;
 }
+
+.btn-update{
+    width: 200px;
+    height: 40px;
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+    background-color: #A7727D;
+    color: #E9E9E9;
+    border-radius: 10px;
+}
+
+
+
+.update-profileImage-admin{
+    height: 80px;
+    width: 80px;
+    border-radius: 40px;
+}
+
+.label-update{
+    font-weight: bold;
+}
+
 .update-imageProfile-box{
     width: 170px;
     height: 200px;
@@ -64,5 +112,9 @@
     text-align: center;
     font-size: 14px;
     color: #616161;
+}
+
+.admin-account-update{
+    width: 200px;
 }
 
