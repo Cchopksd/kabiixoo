@@ -119,6 +119,8 @@ const UpdateAccount = () => {
         }
     }
 
+    
+
     return (
         <div className='update-main'>
             <SideBarAdmin />
@@ -127,10 +129,10 @@ const UpdateAccount = () => {
                 <form className='update-container' onSubmit={submitForm}>
                         <section className='sec-left'>
                             <div className='update-imageProfile-box'>
-                                <img className="update-profileImage" src={mem_profileImage}/>
-                                <input className="update-choosePhoto-input" type="file" onChange={(e) => {setImageFile(e.target.files[0])}}/>
+                                <img className="update-profileImage-admin" src={mem_profileImage}/>
+                                <input className="update-choosePhoto-input admin-account-update" type="file" onChange={(e) => {setImageFile(e.target.files[0])}}/>
                                 <div className="update-max-edit-box">
-                                    <label className="update-max-edit-photosize">ขนาดไฟล์ : สูงสุด 5 MB</label>
+                                    <label className="update-max-edit-photosize">ขนาดไฟล์ : สูงสุด 5 MB</label><br />
                                     <label className="update-max-edit-photosize">ไฟล์ที่รองรับ : .JPEG, .PNG</label>
                                 </div>
                             </div>

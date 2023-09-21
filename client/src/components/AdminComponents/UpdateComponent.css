@@ -21,9 +21,13 @@
     color: #A7727D;
 }
 
-/* .sec-left{
+.sec-left{
+    display: flex;
+    margin: auto;
+    text-align: center;
+    padding-left: 40px;
+}
 
-} */
 
 .line-center{
     top: 0;
@@ -64,19 +68,34 @@
 
 .div-btn-update{
     display: flex;
-    justify-content: flex-end;
     padding-top: 20px;
+    justify-content: flex-end;
+    margin-right: 10px;
 }
 
 .btn-update{
     width: 200px;
     height: 40px;
     font-size: 20px;
+    font-weight: bold;
+    border: none;
+    background-color: #A7727D;
+    color: #E9E9E9;
+    border-radius: 10px;
+}
+
+
+
+.update-profileImage-admin{
+    height: 80px;
+    width: 80px;
+    border-radius: 40px;
 }
 
 .label-update{
-
+    font-weight: bold;
 }
+
 .update-imageProfile-box{
     width: 170px;
     height: 200px;
@@ -93,5 +112,9 @@
     text-align: center;
     font-size: 14px;
     color: #616161;
+}
+
+.admin-account-update{
+    width: 200px;
 }
 
