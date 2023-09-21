@@ -1,18 +1,15 @@
 .update-main{
     display: flex;
 }
-
 .update-frame{
     display: flex;
     flex-direction: column;
     margin: auto;
 }
-
 .text-header{
     text-align: center;
     color: #A7727D;
 }
-
 .update-container{
     display: flex;
     width: 1000px;
@@ -23,38 +20,49 @@
     font-size: 22px;
     color: #A7727D;
 }
-
 /* .sec-left{
 
 } */
-
 .line-center{
     top: 0;
     margin-right: 0;
 }
-
 .sec-right{
     display: flex;
     flex-direction: column;
     padding-left: 20px;
     margin-right: 25rem;
 }
-
 .update-row{
     display: grid;
     grid-template-columns: auto auto;
     align-items: center;
     padding: 10px;
 }
-
 .input-update{
     display: flex;
     width: 250px;
     height: 40px;
     font-size: 20px;
 }
-
 .label-update{
 
+}
+.update-imageProfile-box{
+    width: 170px;
+    height: 200px;
+    /* display: grid;
+    justify-content: center; */
+}
+.update-profileImage {
+    height: 70px;
+    width: 70px;
+    border-radius: 35px;
+    margin-left: 52px;
+}
+.update-max-edit-photosize {
+    text-align: center;
+    font-size: 14px;
+    color: #616161;
 }
 
