@@ -97,7 +97,9 @@ const UpdateAccount = () => {
                                 <input className='input-update' type="text" value={state.mem_phoneNumber} onChange={inputValue('mem_phoneNumber')} />
                             </div>
                             {/* Add other input fields for mem_password, mem_name, mem_surname, mem_email, mem_role */}
-                            <input type="submit" value='อัพเดต' className="btn-update" />
+                            <div className='div-btn-update'>
+                                <input type="submit" value='อัพเดตข้อมูล' className="btn-update" />
+                            </div>
                         </section>
                         {/* <input type="submit" value='อัพเดต' className="btn btn-primary" /> */}
                     </form>
