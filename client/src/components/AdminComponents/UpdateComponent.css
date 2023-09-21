@@ -24,27 +24,28 @@
     color: #A7727D;
 }
 
-/* .sec-left{
+.sec-left{
 
-} */
+}
 
 .line-center{
     top: 0;
-    margin-right: 0;
+    margin-right: 0px;
 }
 
 .sec-right{
     display: flex;
     flex-direction: column;
-    padding-left: 20px;
-    margin-right: 25rem;
+    padding: auto;
+    margin-right: 7.5rem;
+    padding-top: 50px;
+    padding-left: 6rem;
 }
 
 .update-row{
-    display: grid;
-    grid-template-columns: auto auto;
+    display: flex;
     align-items: center;
-    padding: 10px;
+    margin: 10px;
 }
 
 .input-update{
@@ -55,6 +56,18 @@
 }
 
 .label-update{
+    flex: 1;
+    grid-column: 1;
+}
 
+.btn-update{
+    height: 40px;
+    width: 130px;
+    color: #A7727D;
+    background-color: rgb(249, 245, 231);
+    border: none;
+    border-radius: 15px;
+    font-size: 20px;
+    justify-content: flex-end;
 }
 

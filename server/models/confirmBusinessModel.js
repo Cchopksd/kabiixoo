@@ -38,11 +38,7 @@ const confirmBusinessSchema = mongoose.Schema({
         type: String,
         default : ""
     },
-    conf_slug : {
-        type: String,
-        lowercase: true,
-        unique: true
-    }
+
 }, {timestamps: true})
 
 module.exports = mongoose.model("ConfirmBusiness",confirmBusinessSchema)
