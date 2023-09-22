@@ -46,8 +46,36 @@ exports.singleAccount = async (req, res) => {
 
 exports.updateAccount = async (req, res) => {
     const { mem_slug } = req.params
+
+    let {state, email, username} = req.body
+
+    let list = state;
+
+    // เช็คว่าถ้า user กับ email ซ้ำไหม
+    const userExists = await Members.findOne({ mem_username : list.mem_username})
+    const emailExists = await Members.findOne({ mem_email : list.mem_email})
+
+    // เช็ครูปแบบ email
+    const emailRegEx = /[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,8}(.[a-z{2,8}])?/g;
+    if (!emailRegEx.test(list.mem_email) && list.mem_email !== "") {
+        return res.status(400).json({error: "รูปแบบของอีเมลไม่ถูกต้อง"})
+    }
+
+    // เช็ครูปแบบ phoneNumber
+    const phoneRegex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+    if (!phoneRegex.test(list.mem_phoneNumber) && list.mem_phoneNumber !== ""){
+        return res.status(400).json({error: "รูปแบบของเบอร์โทรศัพท์ไม่ถูกต้อง"})
+    }
+
+    // เช็คว่ามีผู้ใช้งานซ้ำยัง
+    if (userExists || emailExists) {
+        // เช็คว่าข้อมูลตรงกับที่แสดงผลตอนแรกไหม
+        if (userExists.mem_username !== username || emailExists.mem_email !== email) {
+            return res.status(400).json({error: "มีผู้ใช้งานนี้อยู่แล้ว"})
+        }
+    }
+
     try {
-        let list = req.body;
         // hash รหัสผ่านใหม่
         if (list.mem_password.startsWith("$2")) {
             const account = await Members.findOneAndUpdate({ mem_slug }, list, { new: true });
@@ -69,7 +97,6 @@ exports.updateAccount = async (req, res) => {
             }
         }
     } catch (err) {
-        console.error(err);
-        return res.status(500).json({ message: "Server Error" });
+        return res.status(500).json({ error: err });
     }
 }
