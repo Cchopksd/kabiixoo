@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { authenticate } from "../services/authorize";
 import Loading from '../components/Loading';
 import AnimatedPage from "../AnimatedPage";
+import { ThaiDatePicker } from "thaidatepicker-react";
 
 const SignUp = () => {
 
@@ -46,6 +47,15 @@ const SignUp = () => {
     }
 
     const [birthDay, setBirthDay] = useState("")
+
+    const [selectedDate, setSelectedDate] = useState();
+    const [selectedThaiDate, setSelectedThaiDate] = useState();
+
+    const handleDatePickerChange = (christDate, buddhistDate) => {
+        setSelectedDate(christDate);
+        setSelectedThaiDate(buddhistDate);
+        setState({...state,birthDate:buddhistDate})
+    };
 
     useEffect(() => {
         // หลังจากมีการเปลี่ยนค่า ใน image ให้ส่งข้อมูลไป server
@@ -188,7 +198,18 @@ const SignUp = () => {
                                     <div>
                                         <label className="lbRegisBirthDay">วันเกิด *</label>
                                     </div>
-                                    <input className='inputBirthDay' type="date"  ref={dateInputRef} value={birthDate} onChange={inputValue("birthDate")}/>
+                                    {/* <input className='inputBirthDay' type="date"  ref={dateInputRef} value={birthDate} onChange={inputValue("birthDate")}/> */}
+                                    <ThaiDatePicker id="inputBirthDay"
+                                        value={selectedDate}
+                                        onChange={handleDatePickerChange}
+                                        placeholder={"กรุณาเลือกวันเกิด"}
+                                        
+                                        // inputProps={{
+                                        //     // displayFormat: "D-MM-YY",
+                                        //     // className: "w-full",
+                                        // }}
+                                    />
+                                    
                                 </div>
                                 <div className='regisTel'>
                                     <div>

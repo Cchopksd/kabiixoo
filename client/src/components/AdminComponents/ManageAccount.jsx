@@ -29,14 +29,14 @@ const ManageAccount = () => {
     const deleteBlog = (slug) => {
         axios.delete(`${process.env.REACT_APP_API}/account/${slug}`)
             .then(response => {
-                Swal.fire('Deleted!', response.data.message, "ลบบัญขีสำเร็จ")
+                Swal.fire('Deleted!', response.data.message, "ลบบัญขีผู้ใช้งานสำเร็จ")
                 fetchData()
             }).catch(err => alert(err));
     }
 
     const confirmDelete = (slug) => {
         Swal.fire({
-            title: 'ยืนยันที่จะลบข้อมูล',
+            title: 'ยืนยันเพื่อลบบัญชีผู้ใช้งาน',
             icon: 'warning',
             showCancelButton: true
         }).then((result) => {
