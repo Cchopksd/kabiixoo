@@ -107,14 +107,14 @@ exports.isSuspendAccount = async (req, res) => {
         const user = await Members.findOne({ mem_slug });
         // console.log(user.mem_role);
         if (!user) {
-            return res.status(404).json({ message: 'User not found' });
+            return res.status(404).json({ message: 'ไม่พบบัญชี' });
         }
         if (user.mem_role === 'admin') {
-            return res.status(403).json({ message: 'Admins cannot be suspended' });
+            return res.status(403).json({ message: 'ไม่สามารถระงับใช้บัญชีแอดมินได้' });
         } else {
             user.isSuspended = !user.isSuspended;
             await user.save();
-            return res.json({ message: 'User suspension status updated' });
+            return res.json({ message: 'แก้ไขสถานะเรียบร้อย' });
         }
         } catch (error) {
         console.error(error);

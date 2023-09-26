@@ -87,7 +87,9 @@ const ReportingService = () => {
                                     <td className='vertical-align '>{user.provider_id?.mem_name || 'N/A'}</td>
                                     <td className='vertical-align '>{user.rep_title}</td>
                                     <td className='vertical-align '>
-                                        <Link to={`/reporting/slug/${user.rep_slug}`} className='account-button-design line-none' style={{ background: '#DBC36C'}}>ตรวจสอบ</Link>
+                                        <button className='account-button-design line-none' style={{ background: '#DBC36C'}}>
+                                            <Link to={`/reporting/slug/${user.rep_slug}`} className='account-button-design line-none' style={{ background: '#DBC36C'}}>ตรวจสอบ</Link>
+                                        </button>
                                     </td>
                                 </tr>
                             ))}

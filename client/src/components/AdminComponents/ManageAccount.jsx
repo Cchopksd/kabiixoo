@@ -49,12 +49,10 @@ const ManageAccount = () => {
     const suspendedUser = (slug) => {
         axios.put(`${process.env.REACT_APP_API}/account/${slug}`)
         .then((user) => {
-
-            const isAdmin = user.data.mem_role;
             console.log(user)
                 Swal.fire({
                     icon: 'success',
-                    title: 'Success!',
+                    title: 'แจ้งเตือน!',
                     text: 'แก้ไขสถานะเรียบร้อย',
                     }).then((result) => {
                         if (result.isConfirmed) {
@@ -142,7 +140,9 @@ const ManageAccount = () => {
                                 <td className='vertical-align '>{user.mem_email}</td>
                                 <td className='vertical-align '>{user.isSuspended ? 'ถูกระงับใช้' : 'ปกติ'}</td>
                                 <td className='vertical-align '>
-                                    <Link to={`/account/edit/${user.mem_slug}`} className='account-button-design' style={{ background: '#DBC36C' }}>แก้ไขข้อมูล</Link>
+                                    <button  className='account-button-design' style={{ background: '#DBC36C' }}>
+                                        <Link to={`/account/edit/${user.mem_slug}`} className='account-button-design' style={{ background: '#DBC36C' }}>แก้ไขข้อมูล</Link>
+                                    </button>
                                 </td>
                                 <td>
                                 <button className='account-button-design' style={{ background: '#D29965' }} onClick={() => confirmSuspended(user.mem_slug)} >{user.isSuspended ? 'ปลดล็อก' : 'ระงับใช้'}</button>

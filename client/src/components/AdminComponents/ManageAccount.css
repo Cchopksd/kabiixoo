@@ -78,6 +78,9 @@
 }
 
 .account-button-design {
+    text-decoration: none;
+    width: 80px;
+    height: 35px;
     border: none;
     border-radius: 5px;
     color: #fff;

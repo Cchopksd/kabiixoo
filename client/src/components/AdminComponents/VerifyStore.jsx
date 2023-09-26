@@ -111,7 +111,9 @@ const VerifyStore = () => {
                                     <td className='vertical-align'>{user.service_id?.svp_owner?.mem_surname || 'N/A'}</td>
                                     <td className='vertical-align'>{user.service_id?.svp_owner?.mem_email || 'N/A'}</td>
                                     <td className='vertical-align'>
-                                        <Link to={`/store/id/${user._id}`} className='account-button-design' style={{ background: '#DBC36C' }}>ตรวจสอบ</Link>
+                                        <button className='account-button-design' style={{ background: '#DBC36C' }}>
+                                            <Link to={`/store/id/${user._id}`} className='account-button-design' style={{ background: '#DBC36C' }}>ตรวจสอบ</Link>
+                                        </button>
                                     </td>
                                     <td className='vertical-align'>
                                         <button className='account-button-design' style={{ background: '#5BBC5F' }}>ยืนยัน</button>
