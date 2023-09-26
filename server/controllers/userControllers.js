@@ -63,7 +63,6 @@ exports.signup = async (req,res) => {
         return res.status(400).json({error: "กรุณากรอกข้อมูลให้ครบ"})
     }
 
-    //
     const userExists = await Member.findOne({ mem_username : username})
     const emailExists = await Member.findOne({ mem_email : email})
 
