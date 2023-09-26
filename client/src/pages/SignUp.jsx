@@ -51,6 +51,7 @@ const SignUp = () => {
     const [selectedDate, setSelectedDate] = useState();
     const [selectedThaiDate, setSelectedThaiDate] = useState();
 
+    // handel วันเกิด
     const handleDatePickerChange = (christDate, buddhistDate) => {
         setSelectedDate(christDate);
         setSelectedThaiDate(buddhistDate);
