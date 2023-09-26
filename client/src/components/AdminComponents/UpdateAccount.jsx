@@ -119,7 +119,6 @@ const UpdateAccount = () => {
         }
     }
 
-    
 
     return (
         <div className='update-main'>
@@ -129,10 +128,17 @@ const UpdateAccount = () => {
                 <form className='update-container' onSubmit={submitForm}>
                         <section className='sec-left'>
                             <div className='update-imageProfile-box'>
+<<<<<<< Updated upstream
                                 <img className="update-profileImage-admin" src={mem_profileImage}/>
                                 <input className="update-choosePhoto-input admin-account-update" type="file" onChange={(e) => {setImageFile(e.target.files[0])}}/>
                                 <div className="update-max-edit-box">
                                     <label className="update-max-edit-photosize">ขนาดไฟล์ : สูงสุด 5 MB</label><br />
+=======
+                                <img className="update-profileImage" src={mem_profileImage}/>
+                                <input className="update-choosePhoto-input" type="file" onChange={(e) => {setImageFile(e.target.files[0])}}/>
+                                <div className="update-max-edit-box">
+                                    <label className="update-max-edit-photosize">ขนาดไฟล์ : สูงสุด 5 MB</label>
+>>>>>>> Stashed changes
                                     <label className="update-max-edit-photosize">ไฟล์ที่รองรับ : .JPEG, .PNG</label>
                                 </div>
                             </div>
@@ -168,9 +174,13 @@ const UpdateAccount = () => {
                                 <input className='input-update' type="text" value={mem_phoneNumber} onChange={inputValue('mem_phoneNumber')} />
                             </div>
                             {/* Add other input fields for mem_password, mem_name, mem_surname, mem_email, mem_role */}
+<<<<<<< Updated upstream
                             <div className='div-btn-update'>
                                 <input type="submit" value='อัพเดตข้อมูล' className="btn-update" />
                             </div>
+=======
+                            <input type="submit" value='อัพเดต' className="btn btn-primary" />
+>>>>>>> Stashed changes
                         </section>
                         {/* <input type="submit" value='อัพเดต' className="btn btn-primary" /> */}
                     </form>
