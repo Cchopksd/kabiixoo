@@ -14,6 +14,26 @@ exports.sendReview = async (req,res) => {
 
     await ServicePost.findOne({svp_slug: slug}).then(async (serviceInfo) => {
         const serviceId = serviceInfo._id
+
+        // เช็ครีวิวล่าสุดจากคนที่รีวิว และ serviceนั้่น
+        const checkOldReview = await Review.findOne({service_id: serviceId, customer_id: reviewerId}).sort({ createdAt: -1 }).limit(1)
+        if (checkOldReview) {
+            // วันที่ของข้อมูลล่าสุดใน รีวิวของคนนั้นและผู้ให้บริการคนนั้น
+            const createdAtFromMongoDB = checkOldReview.createdAt
+            const createdAtDate = new Date(createdAtFromMongoDB);
+
+            // วันที่ปัจจุบัน
+            const currentDate = new Date();
+
+            // คำนวณความต่างระหว่างวันที่ปัจจุบันและ createdAt ในหน่วยวัน
+            const timeDiffInMilliseconds = currentDate - createdAtDate;
+            const timeDiffInDays = Math.floor(timeDiffInMilliseconds / (1000 * 60 * 60 * 24));
+            // console.log(timeDiffInDays)
+            if (timeDiffInDays < 30) {
+                return res.status(400).json({error: "รีวิวและให้คะแนนผู้ให้บริการรายเดิมได้เพียง 1 ครั้งต่อเดือน"})
+            }
+        }
+
         await Review.create({
             customer_id : reviewerId,
             service_id : serviceId,
