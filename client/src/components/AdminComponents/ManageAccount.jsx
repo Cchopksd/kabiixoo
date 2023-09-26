@@ -50,26 +50,18 @@ const ManageAccount = () => {
         axios.put(`${process.env.REACT_APP_API}/account/${slug}`)
         .then((user) => {
 
-            // const isAdmin = user.data.mem_role;
-            // console.log(user)
-            // if (isAdmin  == 'admin') {
-            //     Swal.fire({
-            //         icon: 'error',
-            //         title: 'No permissions',
-            //         text: 'ไม่อนุญาตให้ระงับใช้บัญชีนี้',
-            //     });
-            // } else {
-            //     Swal.fire({
-            //         icon: 'success',
-            //         title: 'Success!',
-            //         text: 'แก้ไขสถานะเรียบร้อย',
-            //         }).then((result) => {
-            //             if (result.isConfirmed) {
-            //                 fetchData();
-            //             }
-            //     });
-            // }
-        })
+            const isAdmin = user.data.mem_role;
+            console.log(user)
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Success!',
+                    text: 'แก้ไขสถานะเรียบร้อย',
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            fetchData();
+                        }
+                });
+            })
         .catch((err) => {
             Swal.fire(
                     'แจ้งเตือน',

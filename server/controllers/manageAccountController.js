@@ -102,21 +102,22 @@ exports.updateAccount = async (req, res) => {
 }
 
 exports.isSuspendAccount = async (req, res) => {
-    // try {
+    try {
         const { mem_slug } = req.params;
         const user = await Members.findOne({ mem_slug });
-        console.log(user);
+        // console.log(user.mem_role);
         if (!user) {
             return res.status(404).json({ message: 'User not found' });
-        } if (user.mem_role == 'admin') {
+        }
+        if (user.mem_role === 'admin') {
             return res.status(403).json({ message: 'Admins cannot be suspended' });
         } else {
             user.isSuspended = !user.isSuspended;
             await user.save();
-            return res.json(user);
+            return res.json({ message: 'User suspension status updated' });
         }
-        // } catch (error) {
-        //     console.error(error);
-        //     res.status(500).json({ message: 'server error' });
-        // }
+        } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'server error' });
+    }
 };
