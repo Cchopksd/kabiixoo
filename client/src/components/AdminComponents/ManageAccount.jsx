@@ -48,27 +48,35 @@ const ManageAccount = () => {
 
     const suspendedUser = (slug) => {
         axios.put(`${process.env.REACT_APP_API}/account/${slug}`)
-        .then(() => {
-            const isAdmin = slug.mem_role === 'admin';
-            if (isAdmin) {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'No permissions',
-                    text: 'ไม่อนุญาตให้ระงับใช้บัญชีนี้',
-                });
-            } else {
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Success!',
-                    text: 'แก้ไขสถานะเรียบร้อย',
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            fetchData();
-                        }
-                });
-            }
+        .then((user) => {
+
+            // const isAdmin = user.data.mem_role;
+            // console.log(user)
+            // if (isAdmin  == 'admin') {
+            //     Swal.fire({
+            //         icon: 'error',
+            //         title: 'No permissions',
+            //         text: 'ไม่อนุญาตให้ระงับใช้บัญชีนี้',
+            //     });
+            // } else {
+            //     Swal.fire({
+            //         icon: 'success',
+            //         title: 'Success!',
+            //         text: 'แก้ไขสถานะเรียบร้อย',
+            //         }).then((result) => {
+            //             if (result.isConfirmed) {
+            //                 fetchData();
+            //             }
+            //     });
+            // }
         })
-        .catch((error) => console.error(error));
+        .catch((err) => {
+            Swal.fire(
+                    'แจ้งเตือน',
+                    err.response.data.message,
+                    'error'
+                );
+        });
     };
 
 
