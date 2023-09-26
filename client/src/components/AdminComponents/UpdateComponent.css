@@ -103,10 +103,9 @@
     justify-content: center; */
 }
 .update-profileImage {
-    height: 70px;
-    width: 70px;
-    border-radius: 35px;
-    margin-left: 52px;
+    height: 80px;
+    width: 80px;
+    border-radius: 40px;
 }
 .update-max-edit-photosize {
     text-align: center;
