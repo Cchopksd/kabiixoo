@@ -164,13 +164,10 @@
 
 .table-striped tbody tr:nth-child(odd) {
     background-color: #F9F5E7;
-    /* Color for odd rows */
-    
 }
 
 .table-striped tbody tr:nth-child(even) {
     background-color: #ffffff;
-    /* Color for even rows */
 }
 
 .table {

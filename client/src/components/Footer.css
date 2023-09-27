@@ -38,6 +38,9 @@
 }
 .information-legal, .privacy-cookie {
     margin: 0 35px;
+    text-decoration: none;
+    color: #A7727D;
+
 }
 .l-text{
     font-size: 30px;

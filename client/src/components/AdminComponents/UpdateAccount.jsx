@@ -163,7 +163,6 @@ const UpdateAccount = () => {
                                 <img className="update-profileImage-admin" src={mem_profileImage}/>
                                 <input className="update-choosePhoto-input admin-account-update" type="file" onChange={(e) => {setImageFile(e.target.files[0])}}/>
                                 <div className="update-max-edit-box">
-                                    <label className="update-max-edit-photosize">ขนาดไฟล์ : สูงสุด 5 MB</label><br />
                                     <label className="update-max-edit-photosize">ไฟล์ที่รองรับ : .JPEG, .PNG</label>
                                 </div>
                             </div>

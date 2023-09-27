@@ -159,7 +159,6 @@ const EditProfile = () => {
                         <img className="edit-profileImage" src={mem_profileImage}/>
                         <input className="choosePhoto-input" type="file" onChange={(e) => {setImageFile(e.target.files[0])}}/>
                         <div className="max-edit-box">
-                            <label className="max-edit-photosize">ขนาดไฟล์ : สูงสุด 5 MB</label>
                             <label className="max-edit-photosize">ไฟล์ที่รองรับ : .JPEG, .PNG</label>
                         </div>
                     </div>

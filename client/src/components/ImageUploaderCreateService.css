@@ -83,7 +83,7 @@
 }
 
 .create-drag-text {
-    margin-left: 55px;
+    margin-left: 20px;
 }
 
 @media screen and (min-width : 850px) and (max-width : 1080px){
@@ -106,7 +106,7 @@
     }
     .create-drag-text {
         font-size: 15px;
-        margin-left: 33px;
+        margin-left: 13px;
     }
     .create-img-upl-card .create-select {
         font-size: 15px;
@@ -137,7 +137,7 @@
     }
     .create-drag-text {
         font-size: 13px;
-        margin-left: 21px;
+        margin-left: -2px;
     }
     .create-img-upl-card .create-select {
         font-size: 13px;
@@ -148,5 +148,5 @@
     }
     .create-img-upl-card .create-img-upl-container {
         max-height: 280px;
-      }
+    }
 }
