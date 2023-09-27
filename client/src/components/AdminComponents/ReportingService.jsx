@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import SideBarAdmin from './SideBarAdmin';
-import '../AdminComponents/ManageAccount.css';
+import '../AdminComponents/ManageComponent.css';
 import axios from 'axios';
 import Swal from "sweetalert2"
 import ReactPaginate from 'react-paginate';
@@ -87,9 +87,7 @@ const ReportingService = () => {
                                     <td className='vertical-align '>{user.provider_id?.mem_name || 'N/A'}</td>
                                     <td className='vertical-align '>{user.rep_title}</td>
                                     <td className='vertical-align '>
-                                        <button className='account-button-design line-none' style={{ background: '#DBC36C'}}>
-                                            <Link to={`/reporting/slug/${user.rep_slug}`} className='account-button-design line-none' style={{ background: '#DBC36C'}}>ตรวจสอบ</Link>
-                                        </button>
+                                            <Link to={`/reporting/slug/${user.rep_slug}`}><button className='account-button-design line-none' style={{ background: '#DBC36C'}}>ตรวจสอบ</button></Link>
                                     </td>
                                 </tr>
                             ))}

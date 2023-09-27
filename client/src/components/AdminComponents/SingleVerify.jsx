@@ -39,6 +39,41 @@ const SingleVerify = (props) => {
         })
     }
 
+    const verifyBusiness = (id) => {
+        axios.put(`${process.env.REACT_APP_API}/verify/${id}`)
+        .then(response => {
+            Swal.fire({
+                icon: 'success',
+                    title: 'แจ้งเตือน!',
+                    text: 'ยืนยันการมีหน้าร้านเรียบร้อย',
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            navigate('/store');
+                        }
+            })
+        })
+        .catch((err) => {
+            Swal.fire(
+                    'แจ้งเตือน',
+                    err.response.data.message,
+                    'error'
+                );
+        });
+    }
+
+    const confirmBusiness = (id) => {
+        Swal.fire({
+            title: 'ยืนยันการมีหน้าร้าน',
+            icon: 'warning',
+            showCancelButton: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+                verifyBusiness(id)
+            }
+        })
+    }
+
+
     return (
         <AnimatedPage>
             <div className='singleContainer'>
@@ -49,7 +84,7 @@ const SingleVerify = (props) => {
                         <div className='row-header'>
                             <p className='col'>เลขที่รายงาน :</p>
                             <p className='col'>อีเมล : {verified.service_id?.svp_owner?.mem_email}</p>
-                            <button className='col col-confirm'>ยืนยัน</button>
+                            <button className='col col-confirm' onClick={() => confirmBusiness(verified._id)}>ยืนยัน</button>
                         </div>
                         <div className='row-header'>
                             <p className='col'>ชื่อ : {verified.service_id?.svp_owner?.mem_name}</p>

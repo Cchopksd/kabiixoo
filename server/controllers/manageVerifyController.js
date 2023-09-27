@@ -94,3 +94,26 @@ exports.singleVerify = async (req, res) => {
         return res.status(500).json({ message: 'Server Error'})
     }
 }
+
+exports.updateVerify = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const confirm = await Confirm.findById(id)
+            .populate({
+                path: 'service_id',
+                model: 'ServicePosts',
+                select: 'svp_verified',
+            }).exec()
+
+        if (!confirm) {
+            return res.status(404).json({ message: 'Document not found' });
+        }else {
+            confirm.service_id.svp_verified = true;
+            await confirm.service_id.save();
+            await Confirm.findByIdAndRemove(id);
+            return res.json(confirm);
+        }
+        } catch (err) {
+        return res.status(500).json({ message: 'Server Error' });
+    }
+};

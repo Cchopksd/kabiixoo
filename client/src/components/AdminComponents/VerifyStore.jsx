@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import SideBarAdmin from './SideBarAdmin';
-import '../AdminComponents/ManageAccount.css';
+import '../AdminComponents/ManageComponent.css';
 import axios from 'axios';
 import Swal from "sweetalert2";
 import ReactPaginate from 'react-paginate';
@@ -50,6 +50,41 @@ const VerifyStore = () => {
             }
         })
     }
+
+    const verifyBusiness = (id) => {
+        axios.put(`${process.env.REACT_APP_API}/verify/${id}`)
+        .then(response => {
+            Swal.fire({
+                icon: 'success',
+                    title: 'แจ้งเตือน!',
+                    text: 'ยืนยันการมีหน้าร้านเรียบร้อย',
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            fetchData();
+                        }
+            })
+        })
+        .catch((err) => {
+            Swal.fire(
+                    'แจ้งเตือน',
+                    err.response.data.message,
+                    'error'
+                );
+        });
+    }
+
+    const confirmBusiness = (id) => {
+        Swal.fire({
+            title: 'ยืนยันการมีหน้าร้าน',
+            icon: 'warning',
+            showCancelButton: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+                verifyBusiness(id)
+            }
+        })
+    }
+
 
     const filteredUsers = users.filter((user) => {
         const username = user.conf_businessName || '';
@@ -111,12 +146,10 @@ const VerifyStore = () => {
                                     <td className='vertical-align'>{user.service_id?.svp_owner?.mem_surname || 'N/A'}</td>
                                     <td className='vertical-align'>{user.service_id?.svp_owner?.mem_email || 'N/A'}</td>
                                     <td className='vertical-align'>
-                                        <button className='account-button-design' style={{ background: '#DBC36C' }}>
-                                            <Link to={`/store/id/${user._id}`} className='account-button-design' style={{ background: '#DBC36C' }}>ตรวจสอบ</Link>
-                                        </button>
+                                        <Link to={`/store/id/${user._id}`}><button className='account-button-design' style={{ background: '#DBC36C' }}>ตรวจสอบ</button></Link>
                                     </td>
                                     <td className='vertical-align'>
-                                        <button className='account-button-design' style={{ background: '#5BBC5F' }}>ยืนยัน</button>
+                                        <button className='account-button-design' onClick={() => confirmBusiness(user._id)} style={{ background: '#5BBC5F' }}>ยืนยัน</button>
                                     </td>
                                     <td className='vertical-align'>
                                         <button className='account-button-design' onClick={() => confirmDelete(user._id)} style={{ background: '#B73953' }}>ปฎิเสธ</button>

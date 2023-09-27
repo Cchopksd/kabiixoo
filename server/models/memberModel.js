@@ -43,7 +43,10 @@ const memberSchema = mongoose.Schema({
         lowercase: true,
         unique: true
     },
-    isSuspended: { type: Boolean, default: false },
+    isSuspended: {
+        type: Boolean,
+        default: false
+    },
 }, {timestamps: true})
 
 // เช็ค hash กับ ฐานข้อมูล
