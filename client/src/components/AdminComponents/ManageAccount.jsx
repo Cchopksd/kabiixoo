@@ -83,11 +83,16 @@ const ManageAccount = () => {
     }
 
     const filteredUsers = users.filter((user) => {
+        const name = user.mem_name || '';
+        const surname = user.mem_surname || '';
+        const username = user.mem_username || '';
+        const email = user.mem_email || '';
+
         return (
-            user.mem_name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            user.mem_surname.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            user.mem_username.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            user.mem_email.toLowerCase().includes(searchTerm.toLowerCase())
+            name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            surname.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            username.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            email.toLowerCase().includes(searchTerm.toLowerCase())
         );
     });
 
@@ -117,7 +122,7 @@ const ManageAccount = () => {
                 <table className='table table-striped frameGroup'>
                     <thead className='fixed-height-tr'>
                         <tr className='groupFilter'>
-                            <th scope='col' className='borderColor' style={{width:'5%',paddingLeft:'10px'}}>id</th>
+                            <th scope='col' className='borderColor' style={{width:'7%',paddingLeft:'10px'}}>ลำดับที่</th>
                             <th scope='col'>รูปโปรไฟล์</th>
                             <th scope='col'>ชื่อจริง</th>
                             <th scope='col'>นามสกุล</th>

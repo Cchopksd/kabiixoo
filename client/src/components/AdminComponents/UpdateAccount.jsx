@@ -4,6 +4,7 @@ import './UpdateComponent.css'
 import Swal from 'sweetalert2';
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from "react-router-dom";
+import { IoChevronBackSharp } from "react-icons/io5";
 import axios from "axios";
 import AnimatedPage from '../../AnimatedPage';
 
@@ -14,9 +15,12 @@ const UpdateAccount = () => {
     // redirect
     const navigate = useNavigate()
 
+    
+
     // รูปของเลือก imagefile
     const [imageFile, setImageFile] = useState(null)
     const [newImage, setNewImage] = useState()
+    
 
     // state ข้อมูล
     const [state, setState] = useState({
@@ -30,6 +34,7 @@ const UpdateAccount = () => {
         mem_phoneNumber: ''
         // mem_role: ''
     })
+
 
     // state เช็ค database ส่งใน body
     const [email, setEmail] = useState("")
@@ -52,6 +57,10 @@ const UpdateAccount = () => {
     const inputValue = name => event => {
         setState({ ...state, [name]: event.target.value });
     }
+
+    const goBack = () => {
+        navigate(-1);
+    };
 
     // เมื่อแก้ไขรูปด้วย
     useEffect(() => {
@@ -146,6 +155,7 @@ const UpdateAccount = () => {
         <div className='update-main'>
             <SideBarAdmin />
             <main className='update-frame'>
+                <button onClick={goBack} className='step-back2'><IoChevronBackSharp className='icon-back' />ย้อนกลับ</button>
                 <h1 className='text-header'>แก้ไขข้อมูลผู้ใช้งาน</h1>
                 <form className='update-container' onSubmit={submitForm}>
                         <section className='sec-left'>

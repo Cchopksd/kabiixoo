@@ -54,6 +54,8 @@
     width: 100px;
     max-width: 150px;
     margin: auto;
+    color: #ffffff;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
 }
 
 .col-confirm{
@@ -65,6 +67,8 @@
     height: 45px;
     max-width: 150px;
     margin: auto;
+    color: #ffffff;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
 }
 
 .sec-body{
@@ -90,4 +94,19 @@
 
 .opacity-br{
     opacity: 0.2;
+}
+
+.step-back{
+    display: flex;
+    border: none;
+    background-color: transparent;
+    align-items: center;
+    font-size: 24px;
+    color: #A7727D;
+    position: absolute;
+
+}
+
+.icon-back{
+    font-size: 40px;
 }

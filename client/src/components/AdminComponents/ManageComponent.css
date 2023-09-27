@@ -43,9 +43,12 @@
 }
 
 .account-image {
+    display: flex;
     height: 45px;
     width: 45px;
-    border-radius: 20px;
+    border-radius: 30px;
+    align-items: center;
+
 }
 
 .fixed-height-tbody {
@@ -85,6 +88,11 @@
     border-radius: 5px;
     color: #fff;
     cursor: pointer;
+}
+
+.account-button-design:hover{
+    opacity: 0.5;
+    transition: 0.5s ease;
 }
 
 .line-none{
@@ -148,6 +156,7 @@
 .table-striped tbody tr:nth-child(odd) {
     background-color: #F9F5E7;
     /* Color for odd rows */
+    
 }
 
 .table-striped tbody tr:nth-child(even) {
@@ -157,4 +166,5 @@
 
 .table {
     border-collapse: collapse;
+    box-shadow: 0px 24px 48px 0 rgba(0, 0, 0, 0.1);
 }

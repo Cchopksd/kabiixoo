@@ -9,6 +9,7 @@
 .text-header{
     text-align: center;
     color: #A7727D;
+    margin-top: -100px;
 }
 .update-container{
     display: flex;
@@ -19,6 +20,7 @@
     box-shadow: 0px 5px 35px 10px rgba(0,0,0,0.16);
     font-size: 22px;
     color: #A7727D;
+    /* margin-top: -100px; */
 }
 
 .sec-left{
@@ -117,3 +119,13 @@
     width: 200px;
 }
 
+.step-back2{
+    display: flex;
+    border: none;
+    background-color: transparent;
+    align-items: center;
+    font-size: 24px;
+    color: #A7727D;
+    position: absolute;
+
+}

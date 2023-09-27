@@ -127,7 +127,7 @@ const VerifyStore = () => {
                     <table className='table table-striped frameGroup'>
                         <thead className='fixed-height-tr'>
                             <tr className='groupFilter'>
-                                <th scope='col' className='borderColor' style={{ width: '10%', paddingLeft: '10px' }}>ไอดี</th>
+                                <th scope='col' className='borderColor' style={{ width: '10%', paddingLeft: '10px' }}>ลำดับที่</th>
                                 <th scope='col'>ชื่อร้าน</th>
                                 <th scope='col'>ชื่อจริง</th>
                                 <th scope='col'>นามสกุล</th>

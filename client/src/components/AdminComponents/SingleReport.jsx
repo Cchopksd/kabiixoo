@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate  } from 'react-router-dom';
 import axios from 'axios';
+import { IoChevronBackSharp } from "react-icons/io5";
 import SideBarAdmin from './SideBarAdmin'
 import './SingleComponent.css'
 import Swal from 'sweetalert2';
@@ -11,6 +12,10 @@ const SingleReport = (props) => {
     const navigate = useNavigate();
     const params = useParams();
     const [report, setReport] = useState('')
+
+    const goBack = () => {
+        navigate(-1);
+    };
 
     useEffect(() => {
         axios.get(`${process.env.REACT_APP_API}/report/${(params.slug)}`)
@@ -45,7 +50,8 @@ const SingleReport = (props) => {
             <div className='singleContainer'>
                 <SideBarAdmin />
                 <main className='inContainer text-center'>
-                    <h1 className='text-center' style={{ margin: '0 auto' }}>รายละเอียดแบบฟอร์มการมีหน้าร้าน</h1>
+                <button onClick={goBack} className='step-back'><IoChevronBackSharp className='icon-back' />ย้อนกลับ</button>
+                    <h1 className='text-center' style={{ margin: '0 auto' }}>รายละเอียดการรายงาน</h1>
                     <section className='sec-header'>
                         <div className='row-header'>
                             <p className='col'>เลขที่รายงาน :</p>
