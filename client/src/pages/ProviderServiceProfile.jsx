@@ -254,6 +254,24 @@ const ProviderServiceProfile = () => {
         ]
     };
 
+    // จัดการรีวิว
+    const handleReview = async () => {
+        if (loginId === serviceOwnerId) {
+            Swal.fire("แจ้งเตือน", "ไม่สามารถรีวิวและให้คะแนนด้วยตัวเองได้", 'error')
+            return
+        }
+        navigate(`/review/${params.slug}`)
+    }
+
+    // จัดการรีพอร์ท
+    const handleReport = async () => {
+        if (loginId === serviceOwnerId) {
+            Swal.fire("แจ้งเตือน", "ไม่สามารถรายงานตัวเองได้", 'error')
+            return
+        }
+        navigate(`/report-provider/${params.slug}`)
+    }
+
     return (
         <AnimatedPage>
             { loading && <Loading/>}
@@ -379,12 +397,12 @@ const ProviderServiceProfile = () => {
                                     <img src={require("../images/providerServiceProfilePage/chatIcon.png")}/>
                                     <label>แชทกับผู้ให้บริการ</label>
                                 </div>
-                                <Link className="ps-profile-link" to={`/report-provider/${params.slug}`}>
+                                <div className="ps-profile-link" onClick={handleReport}>
                                     <div className="ps-profile-provider-report-btn" role="button">
                                         <img src={require("../images/providerServiceProfilePage/fileIcon.png")}/>
                                         <label>รายงานผู้ให้บริการ</label>
                                     </div>
-                                </Link>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -394,12 +412,12 @@ const ProviderServiceProfile = () => {
                                 <label className="ps-profile-title">{reviewArray.length}</label>
                                 <label className="ps-profile-title">&emsp;การรีวิวและให้คะแนน</label>
                             </div>
-                            <Link className="ps-profile-link" to={`/review/${params.slug}`}>
+                            <div className="ps-profile-link" role="button" onClick={handleReview}>
                                 <div className="ps-profile-provider-review-btn" role="button">
                                     <img src={require("../images/providerServiceProfilePage/starIcon.png")}/>
                                     <label>เขียนรีวิว</label>
                                 </div>
-                            </Link>
+                            </div>
                         </div>
                         <div className="ps-profile-review-content">
                             {reviewArray.slice(0, showMoreCount).map((item) => (

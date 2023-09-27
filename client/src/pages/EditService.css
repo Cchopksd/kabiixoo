@@ -636,11 +636,13 @@
         font-size: 20px;
         width: 300px;
         height: 70px;
+        margin-bottom: 50px;
     }
     .deleteService-btn {
         font-size: 20px;
         width: 300px;
         height: 70px;
+        margin-bottom: 50px;
     }
 }
 @media screen and (min-width : 0px) and (max-width : 850px) {
@@ -904,5 +906,6 @@
         font-size: 17px;
         width: 250px;
         height: 60px;
+        margin-bottom: 50px;
     }
 }
