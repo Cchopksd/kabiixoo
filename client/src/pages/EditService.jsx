@@ -536,27 +536,33 @@ const EditService = () => {
                         <div className="createService-pet-box">
                             <label className="createService-title-1">ประเภทสัตว์เลี้ยงที่รับฝาก</label>
                             <div className="createService-pet-checkbox-item">
-                                <div className={!haveDog ? "createService-pet-checkbox-box-1" : "createService-pet-checkbox-box-1-checked"}>
+                                <div className={!haveDog ? "createService-pet-checkbox-box-1" : "createService-pet-checkbox-box-1-checked"}
+                                onClick={()=> setHaveDog(!haveDog)}>
                                     <input className="createService-checkbox-style" type="checkbox" checked={haveDog} onChange={()=> setHaveDog(!haveDog)}/>&emsp;สุนัข
                                     <img className="createService-pet-type-icon-1" src={require("../images/createServicePage/dogIcon.png")}/>
                                 </div>
-                                <div className={!haveCat ? "createService-pet-checkbox-box-2" : "createService-pet-checkbox-box-2-checked"}>
+                                <div className={!haveCat ? "createService-pet-checkbox-box-2" : "createService-pet-checkbox-box-2-checked"}
+                                onClick={()=> setHaveCat(!haveCat)}>
                                     <input className="createService-checkbox-style" type="checkbox" checked={haveCat} onChange={()=> setHaveCat(!haveCat)}/>&emsp;แมว
                                     <img className="createService-pet-type-icon-2" src={require("../images/createServicePage/catIcon.png")}/>
                                 </div>
-                                <div className={!haveRabbit ? "createService-pet-checkbox-box-1" : "createService-pet-checkbox-box-1-checked"}>
+                                <div className={!haveRabbit ? "createService-pet-checkbox-box-1" : "createService-pet-checkbox-box-1-checked"}
+                                onClick={()=> setHaveRabbit(!haveRabbit)}>
                                     <input className="createService-checkbox-style" type="checkbox" checked={haveRabbit} onChange={()=> setHaveRabbit(!haveRabbit)}/>&emsp;กระต่าย
                                     <img className="createService-pet-type-icon-3" src={require("../images/createServicePage/rabbitIcon.png")}/>
                                 </div>
-                                <div className={!haveBird ? "createService-pet-checkbox-box-2" : "createService-pet-checkbox-box-2-checked"}>
+                                <div className={!haveBird ? "createService-pet-checkbox-box-2" : "createService-pet-checkbox-box-2-checked"}
+                                onClick={()=> setHaveBird(!haveBird)}>
                                     <input className="createService-checkbox-style" type="checkbox" checked={haveBird} onChange={()=> setHaveBird(!haveBird)}/>&emsp;นก
                                     <img className="createService-pet-type-icon-4" src={require("../images/createServicePage/birdIcon.png")}/>
                                 </div>
-                                <div className={!haveRoden ? "createService-pet-checkbox-box-1" : "createService-pet-checkbox-box-1-checked"}>
+                                <div className={!haveRoden ? "createService-pet-checkbox-box-1" : "createService-pet-checkbox-box-1-checked"}
+                                onClick={()=> setHaveRoden(!haveRoden)}>
                                     <input className="createService-checkbox-style" type="checkbox" checked={haveRoden} onChange={()=> setHaveRoden(!haveRoden)}/>&emsp;สัตว์ฟันแทะ
                                     <img className="createService-pet-type-icon-5" src={require("../images/createServicePage/rodenIcon.png")}/>
                                 </div>
-                                <div className={!haveReptile ? "createService-pet-checkbox-box-2 createService-checkbox-endline" : "createService-pet-checkbox-box-2-checked createService-checkbox-endline"}>
+                                <div className={!haveReptile ? "createService-pet-checkbox-box-2 createService-checkbox-endline" : "createService-pet-checkbox-box-2-checked createService-checkbox-endline"}
+                                onClick={()=> setHaveReptile(!haveReptile)}>
                                     <input className="createService-checkbox-style" type="checkbox" checked={haveReptile} onChange={()=> setHaveReptile(!haveReptile)}/>&emsp;สัตว์เลื้อยคลาน
                                     <img className="createService-pet-type-icon-6" src={require("../images/createServicePage/reptileIcon.png")}/>
                                 </div>
@@ -567,19 +573,24 @@ const EditService = () => {
                         <div className="createService-moreService-box">
                             <label className="createService-title-1">บริการเพิ่มเติม</label>
                             <div className="createService-pet-checkbox-item">
-                                <div className={!haveGrooming ? "createService-pet-checkbox-box-1 createService-checkbox-small-fontSize" : "createService-pet-checkbox-box-1-checked createService-checkbox-small-fontSize"}>
+                                <div className={!haveGrooming ? "createService-pet-checkbox-box-1 createService-checkbox-small-fontSize" : "createService-pet-checkbox-box-1-checked createService-checkbox-small-fontSize"}
+                                onClick={()=> setHaveGrooming(!haveGrooming)}>
                                     <input className="createService-checkbox-style" type="checkbox" checked={haveGrooming} onChange={()=> setHaveGrooming(!haveGrooming)}/>&emsp;บริการกรูมมิ่ง(อาบน้ำตัดขน)
                                 </div>
-                                <div className={!havePetWalk ? "createService-pet-checkbox-box-2 createService-checkbox-small-fontSize" : "createService-pet-checkbox-box-2-checked createService-checkbox-small-fontSize"}>
+                                <div className={!havePetWalk ? "createService-pet-checkbox-box-2 createService-checkbox-small-fontSize" : "createService-pet-checkbox-box-2-checked createService-checkbox-small-fontSize"}
+                                onClick={()=> setHavePetWalk(!havePetWalk)}>
                                     <input className="createService-checkbox-style" type="checkbox" checked={havePetWalk} onChange={()=> setHavePetWalk(!havePetWalk)}/>&emsp;พาสัตว์เลี้ยงเดินเล่น
                                 </div>
-                                <div className={!havePool ? "createService-pet-checkbox-box-1 createService-checkbox-small-fontSize" : "createService-pet-checkbox-box-1-checked createService-checkbox-small-fontSize"}>
+                                <div className={!havePool ? "createService-pet-checkbox-box-1 createService-checkbox-small-fontSize" : "createService-pet-checkbox-box-1-checked createService-checkbox-small-fontSize"}
+                                onClick={()=> setHavePool(!havePool)}>
                                     <input className="createService-checkbox-style" type="checkbox" checked={havePool} onChange={()=> setHavePool(!havePool)}/>&emsp;สระว่ายน้ำสัตว์เลี้ยง
                                 </div>
-                                <div className={!havePetCar ? "createService-pet-checkbox-box-2 createService-checkbox-small-fontSize" : "createService-pet-checkbox-box-2-checked createService-checkbox-small-fontSize"}>
+                                <div className={!havePetCar ? "createService-pet-checkbox-box-2 createService-checkbox-small-fontSize" : "createService-pet-checkbox-box-2-checked createService-checkbox-small-fontSize"}
+                                onClick={()=> setHavePetCar(!havePetCar)}>
                                     <input className="createService-checkbox-style" type="checkbox" checked={havePetCar} onChange={()=> setHavePetCar(!havePetCar)}/>&emsp;รถรับส่งสัตว์เลี้ยง
                                 </div>
-                                <div className={!havePetStuff ? "createService-pet-checkbox-box-1 createService-checkbox-small-fontSize createService-checkbox-endline" : "createService-pet-checkbox-box-1-checked createService-checkbox-small-fontSize createService-checkbox-endline"}>
+                                <div className={!havePetStuff ? "createService-pet-checkbox-box-1 createService-checkbox-small-fontSize createService-checkbox-endline" : "createService-pet-checkbox-box-1-checked createService-checkbox-small-fontSize createService-checkbox-endline"}
+                                onClick={()=> setHavePetStuff(!havePetStuff)}>
                                     <input className="createService-checkbox-style" type="checkbox" checked={havePetStuff} onChange={()=> setHavePetStuff(!havePetStuff)}/>&emsp;อาหารและของใช้เกี่ยวกับสัตว์
                                 </div>
                             </div>
