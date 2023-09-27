@@ -21,24 +21,48 @@ exports.signin = async (req,res) => {
     // ดึงข้อมูลผู้ใช้งานคนนั้น
     const user = await Member.findOne({mem_username: username});
 
-    if(user 
-        && (await user.matchPassword(password))
-        )
-        {
-        return(res.json({
-            _id: user._id,
-            mem_username: user.mem_username,
-            mem_password: user.mem_password,
-            mem_name: user.mem_name,
-            mem_surname: user.mem_surname,
-            mem_email: user.mem_email,
-            mem_birthDate: user.mem_birthDate,
-            mem_phoneNumber: user.mem_phoneNumber,
-            mem_profileImage: user.mem_profileImage,
-            mem_role: user.mem_role,
-            isSuspended: user.isSuspended,
-            token: generateToken(user._id)
-        }))
+    const userMail = await Member.findOne({mem_email: username})
+
+    if (user){
+        if(user 
+            && (await user.matchPassword(password))
+            )
+            {
+            return(res.json({
+                _id: user._id,
+                mem_username: user.mem_username,
+                mem_password: user.mem_password,
+                mem_name: user.mem_name,
+                mem_surname: user.mem_surname,
+                mem_email: user.mem_email,
+                mem_birthDate: user.mem_birthDate,
+                mem_phoneNumber: user.mem_phoneNumber,
+                mem_profileImage: user.mem_profileImage,
+                mem_role: user.mem_role,
+                isSuspended: user.isSuspended,
+                token: generateToken(user._id)
+            }))
+        }
+    } else if (userMail) {
+        if(userMail 
+            && (await userMail.matchPassword(password))
+            )
+            {
+            return(res.json({
+                _id: userMail._id,
+                mem_username: userMail.mem_username,
+                mem_password: userMail.mem_password,
+                mem_name: userMail.mem_name,
+                mem_surname: userMail.mem_surname,
+                mem_email: userMail.mem_email,
+                mem_birthDate: userMail.mem_birthDate,
+                mem_phoneNumber: userMail.mem_phoneNumber,
+                mem_profileImage: userMail.mem_profileImage,
+                mem_role: userMail.mem_role,
+                isSuspended: userMail.isSuspended,
+                token: generateToken(userMail._id)
+            }))
+        }
     }else {
         return res.status(400).json({error: "ชื่อผู้ใช้งานหรือรหัสผ่านไม่ถูกต้อง"})
     }
