@@ -34,7 +34,7 @@ const SingleVerify = (props) => {
 
     const confirmDelete = (slug) => {
         Swal.fire({
-            title: 'Are you sure you want to delete',
+            title: 'ยืนยันที่จะลบแบบฟอร์มนี้',
             icon: 'warning',
             showCancelButton: true
         }).then((result) => {
@@ -114,7 +114,7 @@ const SingleVerify = (props) => {
                                     <div><img className='size-img-report' src={verified.conf_licenseImage2} alt="" /></div>
                                     <div><img className='size-img-report' src={verified.conf_licenseImage3} alt="" /></div>
                                 </div>
-                            <p>{verified.conf_description}</p>
+                            <p className='color-text-admin-p'>{verified.conf_description}</p>
                         </article>
                     </section>
                 </main>

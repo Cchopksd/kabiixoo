@@ -202,7 +202,6 @@ const UpdateAccount = () => {
                                 <input type="submit" value='อัพเดตข้อมูล' className="btn-update" />
                             </div>
                         </section>
-                        {/* <input type="submit" value='อัพเดต' className="btn btn-primary" /> */}
                     </form>
             </main>
         </div>

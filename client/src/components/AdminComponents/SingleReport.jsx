@@ -35,7 +35,7 @@ const SingleReport = (props) => {
 
     const confirmDelete = (slug) => {
         Swal.fire({
-            title: 'Are you sure you want to delete',
+            title: 'ยืนยันที่จะลบการรายงานนี้',
             icon: 'warning',
             showCancelButton: true
         }).then((result) => {
@@ -72,7 +72,7 @@ const SingleReport = (props) => {
                                 <div><img className='size-img-report' src={report.rep_image2} alt="" /></div>
                                 <div><img className='size-img-report' src={report.rep_image3} alt="" /></div>
                             </div>
-                            <p>{report.rep_description}</p>
+                            <p className='color-text-admin-p'>{report.rep_description}</p>
                         </div>
                     </section>
                 </main>

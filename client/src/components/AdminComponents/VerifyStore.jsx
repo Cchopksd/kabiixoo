@@ -41,7 +41,7 @@ const VerifyStore = () => {
 
     const confirmDelete = (slug) => {
         Swal.fire({
-            title: 'Are you sure you want to delete',
+            title: 'ยืนยันที่จะลบแบบฟอร์มนี้',
             icon: 'warning',
             showCancelButton: true
         }).then((result) => {
