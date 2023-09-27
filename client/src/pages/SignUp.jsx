@@ -46,18 +46,6 @@ const SignUp = () => {
         setState({...state,[name]:event.target.value});
     }
 
-    // const [birthDay, setBirthDay] = useState("")
-
-    // const [selectedDate, setSelectedDate] = useState();
-    // const [selectedThaiDate, setSelectedThaiDate] = useState();
-
-    // handel วันเกิด
-    // const handleDatePickerChange = (christDate, buddhistDate) => {
-    //     setSelectedDate(christDate);
-    //     setSelectedThaiDate(buddhistDate);
-    //     setState({...state,birthDate:buddhistDate})
-    // };
-
     useEffect(() => {
         // หลังจากมีการเปลี่ยนค่า ใน image ให้ส่งข้อมูลไป server
         if (image){
@@ -200,16 +188,6 @@ const SignUp = () => {
                                         <label className="lbRegisBirthDay">วันเกิด *</label>
                                     </div>
                                     <input className='inputBirthDay' type="date"  ref={dateInputRef} value={birthDate} onChange={inputValue("birthDate")}/>
-                                    {/* <ThaiDatePicker id="inputBirthDay"
-                                        value={selectedDate}
-                                        onChange={handleDatePickerChange}
-                                        placeholder={"กรุณาเลือกวันเกิด"}
-                                        
-                                        // inputProps={{
-                                        //     // displayFormat: "D-MM-YY",
-                                        //     // className: "w-full",
-                                        // }}
-                                    /> */}
                                     
                                 </div>
                                 <div className='regisTel'>
