@@ -22,7 +22,6 @@ exports.signin = async (req,res) => {
     const user = await Member.findOne({mem_username: username});
 
     if(user 
-        // && (user.mem_password === password)
         && (await user.matchPassword(password))
         )
         {
@@ -37,6 +36,7 @@ exports.signin = async (req,res) => {
             mem_phoneNumber: user.mem_phoneNumber,
             mem_profileImage: user.mem_profileImage,
             mem_role: user.mem_role,
+            isSuspended: user.isSuspended,
             token: generateToken(user._id)
         }))
     }else {
