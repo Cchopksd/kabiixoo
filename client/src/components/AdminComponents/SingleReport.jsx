@@ -54,12 +54,11 @@ const SingleReport = (props) => {
                     <h1 className='text-center' style={{ margin: '0 auto' }}>รายละเอียดการรายงาน</h1>
                     <section className='sec-header'>
                         <div className='row-header'>
-                            <p className='col'>เลขที่รายงาน :</p>
-                            <p className='col'>ผู้ร้องเรียน : {report.reporter_id?.mem_username}</p>
-                            <p className='col'>อีเมลล์ผู้ร้องเรียน : {report.reporter_id?.mem_email}</p>
+                            <p className='col'>ผู้ร้องเรียน : {report.reporter_id?.mem_name} {report.reporter_id?.mem_surname}</p>
+                            <p className='col fixed-col2'>ผู้ถูกร้องเรียน : {report.provider_id?.mem_name} {report.provider_id?.mem_surname}</p>
                         </div>
                         <div className='row-header'>
-                            <p className='col'>ผู้ถูกร้องเรียน : {report.provider_id?.mem_username}</p>
+                            <p className='col'>อีเมลล์ผู้ถูกร้องเรียน : {report.provider_id?.mem_email}</p>
                             <p className='col fixed-col'>หัวข้อการถูกรายงาน : {report.rep_title}</p>
                             <button className='col col-delete' onClick={() => confirmDelete(report.rep_slug)}>ลบการร้องเรียน</button>
                         </div>
@@ -68,15 +67,15 @@ const SingleReport = (props) => {
                         <h2 >เนื้อหาการถูกรายงาน </h2>
                         <hr className='opacity-br'/>
                         <div className='body-description'>
-                            <div><img className='size-img-report' src={report.rep_image1} alt="" /></div>
-                            <div><img className='size-img-report' src={report.rep_image2} alt="" /></div>
-                            <div><img className='size-img-report' src={report.rep_image3} alt="" /></div>
+                            <div className='img-row-single'>
+                                <div><img className='size-img-report' src={report.rep_image1} alt="" /></div>
+                                <div><img className='size-img-report' src={report.rep_image2} alt="" /></div>
+                                <div><img className='size-img-report' src={report.rep_image3} alt="" /></div>
+                            </div>
                             <p>{report.rep_description}</p>
                         </div>
                     </section>
                 </main>
-
-                {/* {JSON.stringify(report)} */}
             </div>
         </AnimatedPage>
     );

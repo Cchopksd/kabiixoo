@@ -41,7 +41,11 @@
 }
 
 .fixed-col{
-    flex: 1.6;
+    flex: 1.1;
+}
+
+.fixed-col2{
+    flex: 1.5;
 }
 
 .col-delete{
@@ -90,6 +94,12 @@
 
 .body-description{
     margin: 50px;
+}
+
+.img-row-single{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
 }
 
 .opacity-br{

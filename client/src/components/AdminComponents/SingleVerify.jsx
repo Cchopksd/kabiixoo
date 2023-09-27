@@ -89,7 +89,7 @@ const SingleVerify = (props) => {
                     <h1 className='text-center' style={{ margin: '0 auto' }}>รายละเอียดแบบฟอร์มการมีหน้าร้าน</h1>
                     <section className='sec-header'>
                         <div className='row-header'>
-                            <p className='col'>เลขที่รายงาน :</p>
+                            <p className='col'>ชื่อร้าน : {verified.conf_businessName}</p>
                             <p className='col'>อีเมล : {verified.service_id?.svp_owner?.mem_email}</p>
                             <button className='col col-confirm' onClick={() => confirmBusiness(verified._id)}>ยืนยัน</button>
                         </div>
@@ -102,16 +102,20 @@ const SingleVerify = (props) => {
                     <section className='sec-body' >
                         <h2>เนื้อหาการยืนยันการมีหน้าร้าน</h2>
                         <hr className='opacity-br'/>
-                        <div className='body-description'>
-                            <div><img className='size-img-report' src={verified.conf_businessImage1} alt="" /></div>
-                            <div><img className='size-img-report' src={verified.conf_businessImage2} alt="" /></div>
-                            <div><img className='size-img-report' src={verified.conf_businessImage3} alt="" /></div>
-                            <h3 style={{textAlign:'center'}}>รูปถ่ายหน้าร้านหรือสถานที่ประกอบกิจการ</h3>
-                            <div><img className='size-img-report' src={verified.conf_licenseImage1} alt="" /></div>
-                            <div><img className='size-img-report' src={verified.conf_licenseImage2} alt="" /></div>
-                            <div><img className='size-img-report' src={verified.conf_licenseImage3} alt="" /></div>
+                        <article className='body-description'>
+                                <div className='img-row-single'>
+                                    <div><img className='size-img-report' src={verified.conf_businessImage1} alt="" /></div>
+                                    <div><img className='size-img-report' src={verified.conf_businessImage2} alt="" /></div>
+                                    <div><img className='size-img-report' src={verified.conf_businessImage3} alt="" /></div>
+                                </div>
+                                <h3 style={{textAlign:'center'}}>รูปถ่ายหน้าร้านหรือสถานที่ประกอบกิจการ</h3>
+                                <div className='img-row-single'>
+                                    <div><img className='size-img-report' src={verified.conf_licenseImage1} alt="" /></div>
+                                    <div><img className='size-img-report' src={verified.conf_licenseImage2} alt="" /></div>
+                                    <div><img className='size-img-report' src={verified.conf_licenseImage3} alt="" /></div>
+                                </div>
                             <p>{verified.conf_description}</p>
-                        </div>
+                        </article>
                     </section>
                 </main>
             </div>
