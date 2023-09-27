@@ -82,7 +82,7 @@ export default function SignIn()  {
                                 <input className="inputTextUsername"
                                 name="username"
                                 type="text"
-                                placeholder="กรอกชื่อผู้ใช้งาน"
+                                placeholder="กรอกชื่อผู้ใช้งาน หรือ อีเมล"
                                 value={username}
                                 onChange={inputValue("username")}
                                 />
