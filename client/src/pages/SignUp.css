@@ -66,7 +66,6 @@
 .inputRegisUsername,
 .inputRegisPassword,
 .inputRegisConfirmPassword::placeholder{
-    padding-left: 20px;
     padding-right: 20px;
 }
 .inputRegisImage {

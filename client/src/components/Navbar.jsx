@@ -1,6 +1,6 @@
 import React, { useState, useLayoutEffect, useEffect, useContext } from "react";
 import './Navbar.css'
-import { Outlet, Link, useNavigate } from 'react-router-dom';
+import { Outlet, Link, useNavigate, useLocation } from 'react-router-dom';
 import { FiMenu, FiX } from "react-icons/fi";
 import {RiArrowDropDownLine} from "react-icons/ri"
 import UserContext from "../contexts/UserProvider";
@@ -32,6 +32,14 @@ const Navbar = () => {
 
     // state ของ สมาชิกที่มีบริการ
     const [userId, setUserId] = useState()
+
+    // const location = useLocation();
+    // const [reloadKey, setReloadKey] = useState(0);
+
+    // useEffect(() => {
+    //     // เมื่อ location เปลี่ยน (คำสั่ง Link ถูกคลิก), เรียกใช้ setReloadKey เพื่อรีโหลด Navbar
+    //     setReloadKey((prevKey) => prevKey + 1);
+    // }, [location]);
 
 
     // ขนาดของหน้าจอ

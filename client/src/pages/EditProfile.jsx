@@ -177,7 +177,7 @@ const EditProfile = () => {
                             <input className="input-edit-info" type="text" value={mem_phoneNumber} onChange={inputValue("mem_phoneNumber")}/>
                         </div>
                         <div className="edit-birthDate-box">
-                            <label className="info-title">วัน/เดือน/ปี เกิด</label>
+                            <label className="info-title">วันเกิด</label>
                             {/* <input className="input-edit-info" type="text" value={mem_birthDate} onChange={inputValue("mem_birthDate")}/> */}
                             <input className='input-edit-info' type="date"  ref={dateInputRef} value={mem_birthDate} onChange={inputValue("mem_birthDate")}/>
                         </div>

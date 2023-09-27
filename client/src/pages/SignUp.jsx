@@ -3,7 +3,7 @@ import '../pages/SignUp.css'
 import { useRef, useState, useEffect } from 'react';
 import Swal from "sweetalert2"
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { authenticate } from "../services/authorize";
 import Loading from '../components/Loading';
 import AnimatedPage from "../AnimatedPage";
@@ -216,7 +216,7 @@ const SignUp = () => {
                                 </div>
                                 <div className='regisApprove'>
                                     <input className="vehicleApprove" type='checkbox' value={confirmRead} onChange={()=> setConfirmRead(!confirmRead)}/>
-                                    <label className="lbRegisApprove">ฉันยืนยันว่าได้อ่านและยอมรับ ข้อกำหนดในการให้บริการของ <a href=''>KabiiXoo</a><br /> และ <a href=''>นโยบายความเป็นส่วนตัว</a></label>
+                                    <label className="lbRegisApprove">ฉันยืนยันว่าได้อ่านและยอมรับ ข้อกำหนดในการให้บริการของ <Link to={`/term-of-service`}>KabiiXoo</Link><br /> และ <Link to={`/term-of-service`}>นโยบายความเป็นส่วนตัว</Link></label>
                                 </div>
                                 <div className='regisSubmit'>
                                     <button className="inputRegisSubmit" onClick={submitSignUp}>สมัครสมาชิก</button>
