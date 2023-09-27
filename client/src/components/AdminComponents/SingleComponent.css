@@ -41,7 +41,7 @@
 }
 
 .fixed-col{
-    flex: 1.4;
+    flex: 1.6;
 }
 
 .col-delete{
@@ -50,8 +50,10 @@
     background-color: #B73953;
     font-size: 18px;
     font-weight: bold;
-    max-width: 200px;
-    left: 0;
+    height: 45px;
+    width: 100px;
+    max-width: 150px;
+    margin: auto;
 }
 
 .col-confirm{
@@ -60,8 +62,9 @@
     background-color: rgb(91, 188, 95);
     font-size: 18px;
     font-weight: bold;
-    max-width: 200px;
-    left: 0;
+    height: 45px;
+    max-width: 150px;
+    margin: auto;
 }
 
 .sec-body{

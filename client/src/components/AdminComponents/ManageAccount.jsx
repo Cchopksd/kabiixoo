@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ReactPaginate from 'react-paginate';
-import '../AdminComponents/ManageAccount.css';
+import '../AdminComponents/ManageComponent.css';
 import SideBarAdmin from './SideBarAdmin';
 import Swal from "sweetalert2";
 import { Link } from 'react-router-dom';
@@ -58,7 +58,7 @@ const ManageAccount = () => {
                         if (result.isConfirmed) {
                             fetchData();
                         }
-                });
+                    });
             })
         .catch((err) => {
             Swal.fire(
@@ -140,9 +140,7 @@ const ManageAccount = () => {
                                 <td className='vertical-align '>{user.mem_email}</td>
                                 <td className='vertical-align '>{user.isSuspended ? 'ถูกระงับใช้' : 'ปกติ'}</td>
                                 <td className='vertical-align '>
-                                    <button  className='account-button-design' style={{ background: '#DBC36C' }}>
-                                        <Link to={`/account/edit/${user.mem_slug}`} className='account-button-design' style={{ background: '#DBC36C' }}>แก้ไขข้อมูล</Link>
-                                    </button>
+                                    <Link to={`/account/edit/${user.mem_slug}`}><button className='account-button-design' style={{ background: '#DBC36C' }}>แก้ไขข้อมูล</button></Link>
                                 </td>
                                 <td>
                                 <button className='account-button-design' style={{ background: '#D29965' }} onClick={() => confirmSuspended(user.mem_slug)} >{user.isSuspended ? 'ปลดล็อก' : 'ระงับใช้'}</button>
