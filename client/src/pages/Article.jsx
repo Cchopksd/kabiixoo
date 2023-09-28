@@ -1,19 +1,23 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import "../pages/Article.css";
 import Footer from "../components/Footer";
 import { Link } from "react-router-dom";
 import Loading from "../components/Loading"
 import AnimatedPage from "../AnimatedPage";
+import UserContext from '../contexts/UserProvider';
 
 const Article = () => {
 
     // โหลดหน้า
     const [loading, setLoading] = useState(false)
 
+    // state ของ contextAPI
+    const {dropdownClicked, setDropdownClicked} = useContext(UserContext);
+
     // เมื่อเข้าสู้หน้า
-    // useEffect(() => {
-    //     loadPage()
-    // },[])
+    useEffect(() => {
+        setDropdownClicked(false)
+    },[])
 
     return(
         <AnimatedPage>

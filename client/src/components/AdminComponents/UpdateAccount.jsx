@@ -15,8 +15,6 @@ const UpdateAccount = () => {
     // redirect
     const navigate = useNavigate()
 
-    
-
     // รูปของเลือก imagefile
     const [imageFile, setImageFile] = useState(null)
     const [newImage, setNewImage] = useState()
@@ -41,6 +39,9 @@ const UpdateAccount = () => {
     const [username, setUsername] = useState("")
 
     const { mem_username, mem_password, mem_name, mem_surname, mem_email, mem_profileImage, mem_birthDate, mem_phoneNumber } = state
+
+    // ชื่อของไฟล์ที่เลือก
+    const [selectedFileName, setSelectedFileName] = useState("ไม่ได้เลือกไฟล์")
 
     useEffect(() => {
         axios.get(`${process.env.REACT_APP_API}/account/${params.mem_slug}`)
@@ -161,7 +162,20 @@ const UpdateAccount = () => {
                         <section className='sec-left'>
                             <div className='update-imageProfile-box'>
                                 <img className="update-profileImage-admin" src={mem_profileImage}/>
-                                <input className="update-choosePhoto-input admin-account-update" type="file" onChange={(e) => {setImageFile(e.target.files[0])}}/>
+                                <input id='fileInput' className="update-choosePhoto-input admin-account-update" type="file" style={{ display: 'none' }} onChange={(e) => {
+                                    setImageFile(e.target.files[0])
+                                    const file = e.target.files[0]
+                                    if (e.target.files[0] == null) {
+                                        setSelectedFileName("ไม่ได้เลือกไฟล์")
+                                    } else {
+                                        setSelectedFileName(file.name)}
+                                    }}/>
+                                <div className="update-file-box">
+                                    <label className="updatePhoto-label" htmlFor="fileInput">
+                                        เลือกไฟล์ภาพ
+                                    </label>
+                                    <label className="updatePhoto-text">{selectedFileName.length > 8 && selectedFileName != "ไม่ได้เลือกไฟล์"? selectedFileName.substring(0, 8) + '...' : selectedFileName}</label>
+                                </div>
                                 <div className="update-max-edit-box">
                                     <label className="update-max-edit-photosize">ไฟล์ที่รองรับ : .JPEG, .PNG</label>
                                 </div>

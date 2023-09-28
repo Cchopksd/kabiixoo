@@ -48,9 +48,9 @@ function App() {
           {/* <Router> */}
           <Routes>
             {/* MemberRoute คือ component ที่ใช้ตรวจสอบและ redirect หน้า เมื่อไม่ได้เข้าสู่ระบบ */}
-            <Route index element={<Home />} />
+            <Route index element={<Home />}/>
             {/* บทความ */}
-            <Route path="/article" element={<Article />} />
+            <Route path="/article" element={<Article />}/>
             <Route path="/article-1" element={<ArticleOne />} />
             <Route path="/article-2" element={<ArticleTwo />} />
             <Route path="/article-3" element={<ArticleThree />} />

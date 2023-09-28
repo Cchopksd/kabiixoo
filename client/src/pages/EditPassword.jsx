@@ -1,14 +1,17 @@
 import './EditPassword.css'
 import AnimatedPage from '../AnimatedPage'
 import Editbar from '../components/Editbar'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import { useParams } from "react-router-dom";
 import axios from 'axios';
 import { getToken } from '../services/authorize';
 import Footer from '../components/Footer';
 import Swal from 'sweetalert2';
+import UserContext from '../contexts/UserProvider';
 
 const EditPassword = () => {
+    // state ของ contextAPI
+    const {dropdownClicked, setDropdownClicked} = useContext(UserContext);
 
     // ใช้งาน params จาก slug
     const params = useParams();
@@ -35,6 +38,7 @@ const EditPassword = () => {
 
     // เมื่อเข้าสู่หน้า
     useEffect(() => {
+        setDropdownClicked(false)
         axios.get(`${process.env.REACT_APP_API}/edit-profile/${params.slug}`,
         {
             headers: {

@@ -1,6 +1,6 @@
 import React from 'react';
 import '../pages/SignUp.css'
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect, useContext } from 'react';
 import Swal from "sweetalert2"
 import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
@@ -8,8 +8,12 @@ import { authenticate } from "../services/authorize";
 import Loading from '../components/Loading';
 import AnimatedPage from "../AnimatedPage";
 import { ThaiDatePicker } from "thaidatepicker-react";
+import UserContext from '../contexts/UserProvider';
 
 const SignUp = () => {
+
+    // state ของ contextAPI
+    const {dropdownClicked, setDropdownClicked} = useContext(UserContext);
 
     // redirect page
     const navigate = useNavigate()
@@ -33,6 +37,9 @@ const SignUp = () => {
     // destructuring
     const { name,surname,email,phone,birthDate,username,password,confirmPassword } = state
 
+    // ชื่อของไฟล์ที่เลือก
+    const [selectedFileName, setSelectedFileName] = useState("ไม่ได้เลือกไฟล์")
+
     const dateInputRef = useRef(null);
 
     // state ของยืนยันการอ่าน term of service
@@ -45,6 +52,10 @@ const SignUp = () => {
     const inputValue = name => event => {
         setState({...state,[name]:event.target.value});
     }
+
+    useEffect(() => {
+        setDropdownClicked(false)
+    },[])
 
     useEffect(() => {
         // หลังจากมีการเปลี่ยนค่า ใน image ให้ส่งข้อมูลไป server
@@ -172,8 +183,20 @@ const SignUp = () => {
                                     <div>
                                         <label className="lbRegisSurName">รูปโปรไฟล์</label>
                                     </div>
-                                    <input className="inputRegisImage" id="image"  type="file" onChange={(e) => {setImageFile(e.target.files[0])
-                                    console.log(imageFile)}}/>
+                                    <input className="inputRegisImage" id="fileInput" type="file" style={{display: "none"}} onChange={(e) => {
+                                        setImageFile(e.target.files[0])
+                                        const file = e.target.files[0]
+                                        if (e.target.files[0] == null) {
+                                            setSelectedFileName("ไม่ได้เลือกไฟล์")
+                                        } else {
+                                            setSelectedFileName(file.name)}
+                                        console.log(imageFile)}}/>
+                                    <div className="inputRegisImage">
+                                        <label className="signUpFile-label" htmlFor="fileInput">
+                                            เลือกไฟล์ภาพ
+                                        </label>
+                                        <label className="signUpFile-text">{selectedFileName.length > 30 && selectedFileName != "ไม่ได้เลือกไฟล์"? selectedFileName.substring(0, 30) + '...' : selectedFileName}</label>
+                                    </div>
                                 </div>
 
                                 <div className='regisEmail'>

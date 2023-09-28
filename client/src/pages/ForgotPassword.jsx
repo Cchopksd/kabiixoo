@@ -2,19 +2,15 @@ import AnimatedPage from "../AnimatedPage"
 import './ForgotPassword.css'
 import Footer from "../components/Footer"
 import axios from 'axios'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import Swal from 'sweetalert2'
 import Loading from '../components/Loading'
+import UserContext from "../contexts/UserProvider"
 
 const ForgotPassword = () => {
-
-    // useEffect(() => {
-    //     document.body.classList.add('forgot-page');
-    //     return () => {
-    //         document.body.classList.remove('forgot-page');
-    //     };
-    // }, []);
+    // state ของ contextAPI
+    const {dropdownClicked, setDropdownClicked} = useContext(UserContext);
 
     // state ของ email ที่กรอกเปลี่ยนรหัส
     const [email, setEmail] = useState()
@@ -23,6 +19,10 @@ const ForgotPassword = () => {
 
     // redirect หน้า
     const navigate = useNavigate()
+
+    useEffect(() => {
+        setDropdownClicked(false)
+    },[])
 
     // axios.defaults.withCredentials = true
     const handleSubmit = async (event) => {

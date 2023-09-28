@@ -14,10 +14,10 @@ const Navbar = () => {
     const navigate = useNavigate();
 
     // state ของ contextAPI
-    const { username, haveService, setHaveService } = useContext(UserContext);
+    const { username, haveService, setHaveService, dropdownClicked, setDropdownClicked} = useContext(UserContext);
 
     // state ของ การ login
-    const [dropdownClicked, setDropdownClicked] = useState(false);
+    // const [dropdownClicked, setDropdownClicked] = useState(false);
     const [isLogin, setIsLogin] = useState(false);
     const [userFullName, setUserFullName] = useState("");
     const [email, setEmail] = useState("");
@@ -32,14 +32,6 @@ const Navbar = () => {
 
     // state ของ สมาชิกที่มีบริการ
     const [userId, setUserId] = useState()
-
-    // const location = useLocation();
-    // const [reloadKey, setReloadKey] = useState(0);
-
-    // useEffect(() => {
-    //     // เมื่อ location เปลี่ยน (คำสั่ง Link ถูกคลิก), เรียกใช้ setReloadKey เพื่อรีโหลด Navbar
-    //     setReloadKey((prevKey) => prevKey + 1);
-    // }, [location]);
 
 
     // ขนาดของหน้าจอ

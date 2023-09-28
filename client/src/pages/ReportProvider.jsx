@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useContext} from "react";
 import "./ReportProvider.css"
 import ImageUploaderReport from "../components/ImageUploaderReport";
 import Footer from "../components/Footer";
@@ -8,8 +8,11 @@ import Swal from "sweetalert2";
 import { getUserId, getToken } from "../services/authorize";
 import Loading from "../components/Loading";
 import AnimatedPage from "../AnimatedPage";
+import UserContext from "../contexts/UserProvider";
 
 const ReportProvider = () => {
+    // state ของ contextAPI
+    const {dropdownClicked, setDropdownClicked} = useContext(UserContext);
 
     // urrl parameter
     const params = useParams()
@@ -38,6 +41,7 @@ const ReportProvider = () => {
 
     // เมื่อเข้าสู่หน้า
     useEffect(() => {
+        setDropdownClicked(false)
         loadData()
     },[])
 

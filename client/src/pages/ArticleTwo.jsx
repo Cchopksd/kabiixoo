@@ -1,10 +1,18 @@
-import React from "react";
+import React, {useContext} from "react";
 import "./ArticleTwo.css";
 import { Link } from 'react-router-dom';
 import Footer from "../components/Footer";
 import AnimatedPage from "../AnimatedPage";
+import UserContext from '../contexts/UserProvider';
 
 const ArticleTwo = () => {
+    // state ของ contextAPI
+    const {dropdownClicked, setDropdownClicked} = useContext(UserContext);
+
+    useEffect(() => {
+        setDropdownClicked(false)
+    },[])
+
     return (
         <AnimatedPage>
             <div className="article-2-container">

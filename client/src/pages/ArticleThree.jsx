@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useContext} from "react";
 import "./ArticleThree.css";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"; 
@@ -7,6 +7,7 @@ import {IoIosArrowForward,IoIosArrowBack} from "react-icons/io"
 import {Link } from 'react-router-dom';
 import Footer from "../components/Footer";
 import AnimatedPage from "../AnimatedPage";
+import UserContext from '../contexts/UserProvider';
 
 const SampleNextArrow = ({onClick}) => {
     return (
@@ -25,6 +26,12 @@ const SamplePrevArrow = ({onClick}) => {
 }
 
 const ArticleThree = () => {
+    // state ของ contextAPI
+    const {dropdownClicked, setDropdownClicked} = useContext(UserContext);
+
+    useEffect(() => {
+        setDropdownClicked(false)
+    },[])
 
     const settings = {
         dots: true,

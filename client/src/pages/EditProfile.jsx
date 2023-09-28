@@ -1,4 +1,4 @@
-import React , {useEffect, useState, useRef}from "react";
+import React , {useEffect, useState, useRef, useContext}from "react";
 import "./EditProfile.css"
 import Editbar from "../components/Editbar";
 import Footer from "../components/Footer";
@@ -8,8 +8,12 @@ import Swal from "sweetalert2";
 import { getToken } from "../services/authorize";
 import Loading from "../components/Loading";
 import AnimatedPage from "../AnimatedPage";
+import UserContext from "../contexts/UserProvider";
 
 const EditProfile = () => {
+
+    // state ของ contextAPI
+    const {dropdownClicked, setDropdownClicked} = useContext(UserContext);
 
     // ใช้งาน params จาก slug
     const params = useParams();
@@ -40,8 +44,12 @@ const EditProfile = () => {
     // destructuring
     const {mem_username, mem_name, mem_surname, mem_phoneNumber, mem_birthDate, mem_profileImage} = userState
 
+    // ชื่อของไฟล์ที่เลือก
+    const [selectedFileName, setSelectedFileName] = useState("ไม่ได้เลือกไฟล์")
+
     // เมื่อเข้าสู่หน้า
     useEffect(() => {
+        setDropdownClicked(false)
         axios.get(`${process.env.REACT_APP_API}/edit-profile/${params.slug}`,
         {
             headers: {
@@ -156,8 +164,23 @@ const EditProfile = () => {
                 <Editbar username={mem_username} profileImage={mem_profileImage} slug={params.slug}/>
                 <div className="edit-frame">
                     <div className="change-imageProfile-box">
-                        <img className="edit-profileImage" src={mem_profileImage}/>
-                        <input className="choosePhoto-input" type="file" onChange={(e) => {setImageFile(e.target.files[0])}}/>
+                        <div style={{display: 'flex', justifyContent: 'center'}}>
+                            <img className="edit-profileImage" src={mem_profileImage}/>
+                        </div>
+                        <input id="fileInput" className="choosePhoto-input" type="file" style={{ display: 'none' }} onChange={(e) => {
+                            setImageFile(e.target.files[0]) 
+                            const file = e.target.files[0]
+                            if (e.target.files[0] == null) {
+                                setSelectedFileName("ไม่ได้เลือกไฟล์")
+                            } else {
+                                setSelectedFileName(file.name)}}
+                            }/>
+                        <div className="change-file-box">
+                            <label className="choosePhoto-label" htmlFor="fileInput">
+                                เลือกไฟล์ภาพ
+                            </label>
+                            <label className="choosePhoto-text">{selectedFileName.length > 8 && selectedFileName != "ไม่ได้เลือกไฟล์"? selectedFileName.substring(0, 8) + '...' : selectedFileName}</label>
+                        </div>
                         <div className="max-edit-box">
                             <label className="max-edit-photosize">ไฟล์ที่รองรับ : .JPEG, .PNG</label>
                         </div>
