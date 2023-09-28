@@ -1,14 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import "./ProviderHome.css"
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { getToken } from "../services/authorize";
 import AnimatedPage from "../AnimatedPage";
+import UserContext from "../contexts/UserProvider";
 
 const ProviderHome = () => {
+    // state ของ contextAPI
+    const {dropdownClicked, setDropdownClicked} = useContext(UserContext);
 
     useEffect(() => {
+        setDropdownClicked(false)
         document.body.classList.add('providerHome-page');
         return () => {
             document.body.classList.remove('providerHome-page');

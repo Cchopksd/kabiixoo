@@ -13,7 +13,7 @@ import AnimatedPage from "../AnimatedPage";
 const EditService = () => {
 
     //state ของ context api
-    const { haveService , setHaveService} = useContext(UserContext)
+    const { haveService , setHaveService, dropdownClicked, setDropdownClicked} = useContext(UserContext)
 
     // state ของ dropdown ที่อยู่
     const [provinceList, setProvinceList] = useState([])
@@ -91,6 +91,7 @@ const EditService = () => {
 
     // เมื่อเข้าสู่หน้า
     useEffect(() => {
+        setDropdownClicked(false)
         loadData()
         axios.get(`${process.env.REACT_APP_API}/edit-service/${params.slug}`,
         {

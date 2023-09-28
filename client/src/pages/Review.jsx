@@ -1,4 +1,4 @@
-import React, {useEffect, useState } from 'react';
+import React, {useEffect, useState, useContext } from 'react';
 import { FaStar } from "react-icons/fa";
 import "../pages/Review.css";
 import Footer from '../components/Footer';
@@ -8,8 +8,12 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 import Loading from '../components/Loading';
 import AnimatedPage from "../AnimatedPage";
+import UserContext from '../contexts/UserProvider';
 
 const Review = () => {
+
+    // state ของ contextAPI
+    const {dropdownClicked, setDropdownClicked} = useContext(UserContext);
 
     // redirect
     const navigate = useNavigate()
@@ -35,6 +39,7 @@ const Review = () => {
 
     // เมื่อเข้าสู่หน้า
     useEffect(() => {
+        setDropdownClicked(false)
         loadData()
     },[])
 

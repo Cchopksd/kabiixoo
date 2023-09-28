@@ -1,11 +1,15 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useContext} from 'react';
 import AnimatedPage from '../AnimatedPage';
 import './About.css'
 import Footer from '../components/Footer'
+import UserContext from '../contexts/UserProvider';
 
 const About = () => {
+    // state ของ contextAPI
+    const {dropdownClicked, setDropdownClicked} = useContext(UserContext);
 
     useEffect(() => {
+        setDropdownClicked(false)
         document.body.classList.add('about-page');
         return () => {
             document.body.classList.remove('about-page');

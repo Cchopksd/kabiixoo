@@ -1,4 +1,4 @@
-import React , {useEffect, useState, useRef}from "react";
+import React , {useEffect, useState, useRef, useContext}from "react";
 import "./EditProfile.css"
 import Editbar from "../components/Editbar";
 import Footer from "../components/Footer";
@@ -8,8 +8,12 @@ import Swal from "sweetalert2";
 import { getToken } from "../services/authorize";
 import Loading from "../components/Loading";
 import AnimatedPage from "../AnimatedPage";
+import UserContext from "../contexts/UserProvider";
 
 const EditProfile = () => {
+
+    // state ของ contextAPI
+    const {dropdownClicked, setDropdownClicked} = useContext(UserContext);
 
     // ใช้งาน params จาก slug
     const params = useParams();
@@ -45,6 +49,7 @@ const EditProfile = () => {
 
     // เมื่อเข้าสู่หน้า
     useEffect(() => {
+        setDropdownClicked(false)
         axios.get(`${process.env.REACT_APP_API}/edit-profile/${params.slug}`,
         {
             headers: {

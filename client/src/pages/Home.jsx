@@ -1,12 +1,16 @@
 import React from 'react';
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, useContext } from 'react';
 import SearchBar from '../components/SearchBar';
 import '../pages/Home.css'
 import Footer from '../components/Footer';
 import { Link } from 'react-router-dom';
 import AnimatedPage from "../AnimatedPage";
+import UserContext from '../contexts/UserProvider';
 
 const Home = () => {
+    // state ของ contextAPI
+    const {dropdownClicked, setDropdownClicked} = useContext(UserContext);
+
     // เลื่อนหน้าจอ
     const providerListBoxRef = useRef(null);
     const [autoScroll, setAutoScroll] = useState(false)
@@ -20,6 +24,7 @@ const Home = () => {
     const [showMoreCount, setShowMoreCount] = useState(3);
 
     useEffect(() => {
+        setDropdownClicked(false)
         document.body.classList.add('home-page');
         return () => {
             document.body.classList.remove('home-page');

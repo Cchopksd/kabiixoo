@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import "./ConfirmBusiness.css"
 import ImageUploaderBusiness from "../components/ImageUploaderBusiness";
 import ImageUploaderLicense from "../components/ImageUploaderLicense";
@@ -10,10 +10,15 @@ import { getToken } from "../services/authorize";
 import Loading from "../components/Loading";
 import AnimatedPage from "../AnimatedPage";
 import { getUserId } from "../services/authorize";
+import UserContext from '../contexts/UserProvider';
 
 const ConfirmBusiness = () => {
 
+    // state ของ contextAPI
+    const {dropdownClicked, setDropdownClicked} = useContext(UserContext);
+
     useEffect(() => {
+        setDropdownClicked(false)
         document.body.classList.add('confirm-page');
         return () => {
             document.body.classList.remove('confirm-page');

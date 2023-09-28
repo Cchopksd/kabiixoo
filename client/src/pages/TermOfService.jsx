@@ -2,11 +2,16 @@ import React from "react";
 import "./TermOfService.css"
 import Footer from "../components/Footer";
 import AnimatedPage from "../AnimatedPage";
-import { useEffect } from "react";
+import { useEffect, useContext } from "react";
+import UserContext from "../contexts/UserProvider";
 
 const TermOfService = () => {
 
+    // state ของ contextAPI
+    const {dropdownClicked, setDropdownClicked} = useContext(UserContext);
+
     useEffect(() => {
+        setDropdownClicked(false)
         document.body.classList.add('term-page');
         return () => {
             document.body.classList.remove('term-page');

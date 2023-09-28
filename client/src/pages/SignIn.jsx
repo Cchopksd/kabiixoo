@@ -25,7 +25,7 @@ export default function SignIn()  {
     const {username, password} = state
 
     // Context api
-    const {isAdmin, setIsAdmin} = useContext(UserContext);
+    const {isAdmin, setIsAdmin, dropdownClicked, setDropdownClicked} = useContext(UserContext);
 
     // เปลี่ยนค่าตามการพิมพ์
     const inputValue = name => event => {
@@ -59,6 +59,7 @@ export default function SignIn()  {
     }
 
     useEffect(() => {
+        setDropdownClicked(false)
         document.body.classList.add('signin-page');
         return () => {
             document.body.classList.remove('signin-page');

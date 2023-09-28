@@ -35,7 +35,7 @@ const Chat = () => {
     const [loginUser, setLoginUser] = useState(params.userId)
 
     // context api
-    const {selectedChat, setSelectedChat, chats, setChats} = useContext(UserContext)
+    const {selectedChat, setSelectedChat, chats, setChats, dropdownClicked, setDropdownClicked} = useContext(UserContext)
 
     // ข้อความทั้งหมดของแชทนั้น
     const [messages, setMessages] = useState([])
@@ -66,6 +66,7 @@ const Chat = () => {
 
     // เมื่อเข้าสู่หน้า
     useEffect(() => {
+        setDropdownClicked(false)
         setPageLoading(true)
         setLoginUser(params.userId)
         fetchChats()

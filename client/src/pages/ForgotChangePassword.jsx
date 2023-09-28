@@ -2,12 +2,15 @@ import AnimatedPage from '../AnimatedPage'
 import './ForgotChangePassword.css'
 import Footer from '../components/Footer'
 import Swal from 'sweetalert2'
-import { useState } from 'react'
+import { useState, useContext, useEffect } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios'
 import Loading from '../components/Loading'
+import UserContext from '../contexts/UserProvider'
 
 const ForgotChangePassword = () => {
+    // state ของ contextAPI
+    const {dropdownClicked, setDropdownClicked} = useContext(UserContext);
 
     const navigate = useNavigate()
 
@@ -19,6 +22,10 @@ const ForgotChangePassword = () => {
 
     // id และ token
     const { id, token } = useParams()
+
+    useEffect(() => {
+        setDropdownClicked(false)
+    },[])
 
     const handleSubmit = async (event) => {
         setLoading(true)

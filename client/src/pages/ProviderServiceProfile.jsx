@@ -32,7 +32,7 @@ const SamplePrevArrow = ({onClick}) => {
 
 const ProviderServiceProfile = () => {
     // state ของ context api
-    const { selectedChat, setSelectedChat, chats, setChats } = useContext(UserContext)
+    const { selectedChat, setSelectedChat, chats, setChats, dropdownClicked, setDropdownClicked } = useContext(UserContext)
 
     // url parameter
     const params = useParams()
@@ -90,6 +90,7 @@ const ProviderServiceProfile = () => {
 
     // เมื่อเข้าสู่หน้า
     useEffect(() => {
+        setDropdownClicked(false)
         loadData()
         axios.get(`${process.env.REACT_APP_API}/edit-service/${params.slug}`).then((res) => {
             setServiceName(res.data.svp_name)

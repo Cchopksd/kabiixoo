@@ -14,6 +14,8 @@ export const UserProvider = ({children}) => {
 
     const [isAdmin, setIsAdmin] = useState(false);
 
+    const [dropdownClicked, setDropdownClicked] = useState(false)
+
     useEffect(() => {
         const userInfo = JSON.parse(localStorage.getItem("user"))
         setUser(userInfo)
@@ -24,7 +26,8 @@ export const UserProvider = ({children}) => {
     },[navigate])
 
     return (
-        <UserContext.Provider value={{username: user, haveService, setHaveService, selectedChat, setSelectedChat, chats, setChats, isAdmin, setIsAdmin}}>
+        <UserContext.Provider value={{username: user, haveService, setHaveService, selectedChat, setSelectedChat, chats, setChats, isAdmin, setIsAdmin
+        ,dropdownClicked, setDropdownClicked}}>
             {children}
         </UserContext.Provider>
     )

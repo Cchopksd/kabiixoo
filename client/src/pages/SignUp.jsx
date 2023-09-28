@@ -1,6 +1,6 @@
 import React from 'react';
 import '../pages/SignUp.css'
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect, useContext } from 'react';
 import Swal from "sweetalert2"
 import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
@@ -8,8 +8,12 @@ import { authenticate } from "../services/authorize";
 import Loading from '../components/Loading';
 import AnimatedPage from "../AnimatedPage";
 import { ThaiDatePicker } from "thaidatepicker-react";
+import UserContext from '../contexts/UserProvider';
 
 const SignUp = () => {
+
+    // state ของ contextAPI
+    const {dropdownClicked, setDropdownClicked} = useContext(UserContext);
 
     // redirect page
     const navigate = useNavigate()
@@ -48,6 +52,10 @@ const SignUp = () => {
     const inputValue = name => event => {
         setState({...state,[name]:event.target.value});
     }
+
+    useEffect(() => {
+        setDropdownClicked(false)
+    },[])
 
     useEffect(() => {
         // หลังจากมีการเปลี่ยนค่า ใน image ให้ส่งข้อมูลไป server
