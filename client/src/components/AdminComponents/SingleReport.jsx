@@ -71,11 +71,11 @@ const SingleReport = (props) => {
                         <hr className='opacity-br'/>
                         <div className='body-description'>
                             <div className='img-row-single'>
-                                <div><img className='size-img-report' src={report.rep_image1} alt="" /></div>
-                                <div><img className='size-img-report' src={report.rep_image2} alt="" /></div>
-                                <div><img className='size-img-report' src={report.rep_image3} alt="" /></div>
+                                <div><img className='size-img-report' src={report.reportInfo?.rep_image1} alt="" /></div>
+                                <div><img className='size-img-report' src={report.reportInfo?.rep_image2} alt="" /></div>
+                                <div><img className='size-img-report' src={report.reportInfo?.rep_image3} alt="" /></div>
                             </div>
-                            <p className='color-text-admin-p'>{report.rep_description}</p>
+                            <p className='color-text-admin-p'>{report.reportInfo?.rep_description}</p>
                         </div>
                     </section>
                 </main>
