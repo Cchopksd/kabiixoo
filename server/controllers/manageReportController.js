@@ -1,4 +1,5 @@
 const Report = require('../models/reportModel');
+const ServicePost = require('../models/servicePostModel');
 const { v4: uuidv4 } = require('uuid');
 
 
@@ -17,11 +18,16 @@ exports.singleReport = async (req, res) => {
     try {
         const { rep_slug } = req.params;
         await Report.findOne({ rep_slug }).populate('provider_id').populate('reporter_id' ).then(async (reportInfo) =>{
-            if (!reportInfo) {
-                res.status(404).json({ message: 'Report not found' });
-            } else {
-                res.status(200).json(reportInfo);
-            }
+            console.log(JSON.stringify(reportInfo))
+            console.log({svp_owner:reportInfo.provider_id})
+            await ServicePost.findOne({ svp_owner:reportInfo.provider_id }).then(async (serviceInfo) =>{
+                // console.log(serviceInfo)
+                if (!reportInfo) {
+                    res.status(404).json({ message: 'Report not found' });
+                } else {
+                    res.status(200).json({reportInfo,serviceInfo});
+                }
+            });
         });
     } catch (err) {
         console.error(err);
