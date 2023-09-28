@@ -3,7 +3,6 @@ const ServicePost = require('../models/servicePostModel')
 const { v4: uuidv4 } = require('uuid');
 
 exports.sendReport = async (req,res) => {
-    
     // สร้าง slug
     let reportSlug = uuidv4()
 

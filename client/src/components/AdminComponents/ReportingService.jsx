@@ -47,6 +47,8 @@ const ReportingService = () => {
         setCurrentPage(selected);
     };
 
+
+
     const offset = currentPage * perPage;
     const currentPageData = filteredUsers.slice(offset, offset + perPage);
 
@@ -60,7 +62,7 @@ const ReportingService = () => {
                         <input
                             className='searchAccount'
                             type='search'
-                            placeholder='ค้นหาชื่อ, นามสกุล, ชื่อผู้ใช้งาน หรือ อีเมล'
+                            placeholder='กรอกข้อมูลการค้นหาตามหัวข้อตาราง'
                             value={searchTerm}
                             onChange={(e) => setSearchTerm(e.target.value)}
                             />

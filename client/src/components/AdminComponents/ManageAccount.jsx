@@ -114,7 +114,7 @@ const ManageAccount = () => {
                     <input
                         className='searchAccount'
                         type='search'
-                        placeholder='ค้นหาชื่อ, นามสกุล, ชื่อผู้ใช้งาน หรือ อีเมล'
+                        placeholder='กรอกข้อมูลการค้นหาตามหัวข้อตาราง'
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
                     />

@@ -41,11 +41,11 @@
 }
 
 .fixed-col{
-    flex: 1.1;
+    flex: 1.15;
 }
 
 .fixed-col2{
-    flex: 1.5;
+    flex: 0.5;
 }
 
 .col-delete{
