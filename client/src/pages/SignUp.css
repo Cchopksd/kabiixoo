@@ -133,6 +133,27 @@
     transition: 0.3s ease;
     opacity: 0.7;
 }
+.signUp-file-box {
+    display: flex;
+}
+.signUpFile-text {
+    margin: 2px 0 0 5px;
+    font-size: 13px;
+    height: 10px;
+}
+.signUpFile-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 85px;
+    background-color: #A7727D;
+    color: #E9E9E9;
+    border: none;
+    border-radius: 7px;
+    height: 25px;
+    box-shadow: inset 0px 0px 8px rgba(0, 0, 0, 0.2);
+    font-size: 13px;
+}
 
 @media screen and (min-width: 1080px) and (max-width: 1910px) {
     .frame-signUp{
@@ -384,5 +405,26 @@
     }
     .lbRegisName, .lbRegisSurName, .lbRegisSurName, .lbRegisEmail, .lbRegisBirthDay, .lbRegisPhone, .lbRegisUsername, .lbRegisPassword, .lbRegisConfirmPassword {
         font-size: 14px;
+    }
+    .signUp-file-box {
+        display: flex;
+    }
+    .signUpFile-text {
+        margin: 0px 0 0 5px;
+        font-size: 13px;
+        height: 10px;
+    }
+    .signUpFile-label {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 85px;
+        background-color: #A7727D;
+        color: #E9E9E9;
+        border: none;
+        border-radius: 7px;
+        height: 20px;
+        box-shadow: inset 0px 0px 8px rgba(0, 0, 0, 0.2);
+        font-size: 13px;
     }
 }
