@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useLayoutEffect, useState } from 'react'
 import { BiArrowBack } from 'react-icons/bi';
 import './Chat.css'
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import UserContext from '../contexts/UserProvider';
 import axios from 'axios';
 import Swal from 'sweetalert2';
@@ -24,6 +24,9 @@ const ENDPOINT = "https://kabiixoo-server.onrender.com"
 var socket;
 
 const Chat = () => {
+
+    // redirect หน้า
+    const navigate = useNavigate()
 
     // เอา id คน login มาจาก params
     const params = useParams()
@@ -348,14 +351,24 @@ const Chat = () => {
         }, timerLength)
     }
 
+    // ย้อนกลับหน้า
+    const handleGoBack = () => {
+        navigate(-1);
+    }
+
     return (
         <AnimatedPage>
             {pageLoading && <Loading/>}
             <div className='chat-container'>
                 <div className={size > 1079 ? 'chat-myChat-box' : selectedChat ? 'chat-myChat-box-mobile-none' : 'chat-myChat-box-mobile'}>
+                    <div className='chat-myChat-back-btn'>
+                        <button className='chat-myChat-step-back' onClick={handleGoBack}><BiArrowBack size={25} color='#A7727D' />
+                        &ensp;ย้อนกลับ
+                        </button>
+                    </div>
                     <div className='chat-myChat-header'>
-                        <img src={require('../images/chatPage/chatIcon.png')}/>
-                        <label>การสนทนาของฉัน</label>
+                            <img src={require('../images/chatPage/chatIcon.png')}/>
+                            <label>การสนทนาของฉัน</label>
                     </div>
                     <div className='chat-myChat-scroll-box'>
                         {chats.map((chat) => (

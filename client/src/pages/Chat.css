@@ -53,7 +53,24 @@
 .chat-myChat-header {
     display: flex;
     align-items: center;
-    margin: 30px auto 30px auto;
+    margin: 0px auto 30px auto;
+}
+.chat-myChat-step-back{
+    display: flex;
+    border: none;
+    background-color: transparent;
+    align-items: center;
+    font-size: 18px;
+    color: #A7727D;
+    position: absolute;
+}
+.chat-myChat-step-back:hover{
+    cursor: pointer;
+    opacity: 0.7;
+    transition: 0.3s ease;
+}
+.chat-myChat-back-btn {
+    margin: 30px 0 50px 30px;
 }
 .chat-myChat-header label{
     font-size: 27px;
@@ -250,7 +267,7 @@
     .chat-chat-input-box img {
         height: 25px;
     }
-    .chat-chat-input-box input {
+    .chat-chat-input-box textarea {
         font-size: 17px;
     }
 }
@@ -267,8 +284,8 @@
     .chat-chat-input-box img {
         height: 25px;
     }
-    .chat-chat-input-box input {
-        font-size: 17px;
+    .chat-chat-input-box textarea {
+        font-size: 16px;
     }
     .chat-chat-img-display {
         width: 120px;

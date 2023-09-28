@@ -87,7 +87,7 @@
     width: 90px;
     object-fit: cover;
     border-radius: 45px;
-    margin-left: 35px;
+    /* margin-left: 35px; */
 }
 .edit-name-box, .edit-surname-box, .edit-phoneNumber-box, .edit-birthDate-box  {
     display: grid;
@@ -101,18 +101,27 @@
     transition: 0.5s ease;
 }
 
-/* .choosePhoto-input {
-    padding: 10px 20px;
-    color: black;
+.change-file-box {
     display: flex;
-    background-color: #F8EAD8;
-    width: 400px;
+}
+.choosePhoto-text {
+    margin: 2px 0 0 5px;
+    font-size: 13px;
+    height: 10px;
+}
+.choosePhoto-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 85px;
+    background-color: #A7727D;
+    color: #E9E9E9;
+    border: none;
+    border-radius: 7px;
     height: 25px;
-    border-radius: 10px;
-    border-style: none;
     box-shadow: inset 0px 0px 8px rgba(0, 0, 0, 0.2);
-    font-size: 16px;
-} */
+    font-size: 13px;
+}
 .choosePhoto-input::file-selector-button{
     background-color: #A7727D;
     color: #E9E9E9;
@@ -120,6 +129,11 @@
     border-radius: 7px;
     height: 25px;
     box-shadow: inset 0px 0px 8px rgba(0, 0, 0, 0.2);
+}
+.choosePhoto-input::file-selector-button:hover{
+    cursor: pointer;
+    opacity: 0.7;
+    transition: 0.3s ease;
 }
 
 /* จอ desktop 1 */
@@ -244,7 +258,7 @@
         height: 70px;
         width: 70px;
         border-radius: 35px;
-        margin-left: 52px;
+        /* margin-left: 39px; */
     }
     .choosePhoto-btn {
         margin-left: 18px;
@@ -327,7 +341,7 @@
         height: 70px;
         width: 70px;
         border-radius: 35px;
-        margin-left: 52px;
+        /* margin-left: 39px; */
     }
     .choosePhoto-btn {
         margin-left: 18px;
@@ -353,6 +367,12 @@
         height: 20px;
         font-size: 12px;
         box-shadow: inset 0px 0px 8px rgba(0, 0, 0, 0.2);
+    }
+    .choosePhoto-label {
+        width: 80px;
+        border-radius: 7px;
+        height: 25px;
+        font-size: 12px;
     }
     .confirm-updateInfo-btn {
         width: 150px;
@@ -415,7 +435,7 @@
         height: 70px;
         width: 70px;
         border-radius: 35px;
-        margin-left: 52px;
+        /* margin-left: 39px; */
     }
     .choosePhoto-btn {
         margin-left: 18px;
@@ -441,6 +461,12 @@
         height: 20px;
         font-size: 12px;
         box-shadow: inset 0px 0px 8px rgba(0, 0, 0, 0.2);
+    }
+    .choosePhoto-label {
+        width: 80px;
+        border-radius: 7px;
+        height: 25px;
+        font-size: 12px;
     }
     .confirm-updateInfo-btn {
         width: 150px;
