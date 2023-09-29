@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import React, {useContext, useEffect} from "react";
 import "./ArticleThree.css";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"; 
