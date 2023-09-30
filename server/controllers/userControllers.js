@@ -42,6 +42,8 @@ exports.signin = async (req,res) => {
                 isSuspended: user.isSuspended,
                 token: generateToken(user._id)
             }))
+        }else {
+            return res.status(400).json({error: "ชื่อผู้ใช้งานหรือรหัสผ่านไม่ถูกต้อง"})
         }
     } else if (userMail) {
         if(userMail 
@@ -62,6 +64,8 @@ exports.signin = async (req,res) => {
                 isSuspended: userMail.isSuspended,
                 token: generateToken(userMail._id)
             }))
+        }else {
+            return res.status(400).json({error: "ชื่อผู้ใช้งานหรือรหัสผ่านไม่ถูกต้อง"})
         }
     }else {
         return res.status(400).json({error: "ชื่อผู้ใช้งานหรือรหัสผ่านไม่ถูกต้อง"})

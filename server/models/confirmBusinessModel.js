@@ -37,7 +37,7 @@ const confirmBusinessSchema = mongoose.Schema({
     conf_licenseImage3 : {
         type: String,
         default : ""
-    },
+    }
 
 }, {timestamps: true})
 

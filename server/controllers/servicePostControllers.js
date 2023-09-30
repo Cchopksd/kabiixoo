@@ -4,6 +4,8 @@ const { v4: uuidv4 } = require('uuid');
 const Review = require('../models/reviewModel')
 const Chat = require('../models/chatModel')
 const Message = require('../models/messageModel')
+const Report = require('../models/reportModel')
+const ConfirmBusiness = require('../models/confirmBusinessModel')
 
 // สร้างประกาศ
 exports.createService = async (req,res) => {
@@ -430,6 +432,8 @@ exports.deleteService = async (req,res) => {
     await ServicePost.findOne({svp_slug: slug}).populate('svp_owner').then(async (serviceInfo) => {
         await Chat.deleteMany({ users : serviceInfo.svp_owner._id })
         await Review.deleteMany({ service_id : serviceInfo._id })
+        await Report.deleteMany({ provider_id : serviceInfo.svp_owner._id})
+        await ConfirmBusiness.deleteMany({ service_id : serviceInfo._id })
     })
 
     await ServicePost.findOneAndRemove({svp_slug: slug}).then(()=> {
