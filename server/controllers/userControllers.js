@@ -23,6 +23,11 @@ exports.signin = async (req,res) => {
 
     const userMail = await Member.findOne({mem_email: username})
 
+    // ถ้าถูกระงับ
+    if (user.isSuspended === true) {
+        return res.status(400).json({error: "บัญชีนี้ถูกระงับไม่สามารถใช้งานได้"})
+    }
+
     if (user){
         if(user 
             && (await user.matchPassword(password))

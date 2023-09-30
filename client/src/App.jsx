@@ -80,15 +80,15 @@ function App() {
             <Route path='/edit-service/:slug' element={<MemberRoute Component={EditService} />} />
 
             {/* ผู้ดูแลระบบ */}
-            <Route exeat path="/administrator-homepage" element={<AdministratorHomepage />} />
-            <Route exeat path="/account" element={<ManageAccount />} />
-            <Route exeat path="/store" element={<VerifyStore />} />
-            <Route exeat path="/reporting" element={<ReportingService />} />
+            <Route exeat path="/administrator-homepage" element={<MemberRoute Component={AdministratorHomepage}/>} />
+            <Route exeat path="/account" element={<MemberRoute Component={ManageAccount}/>} />
+            <Route exeat path="/store" element={<MemberRoute Component={VerifyStore}/>} />
+            <Route exeat path="/reporting" element={<MemberRoute Component={ReportingService}/>} />
 
-            <Route exeat path='/reporting/slug/:slug' element={<SingleReport />} />
-            <Route exeat path='/store/id/:_id' element={<SingleVerify />} />
+            <Route exeat path='/reporting/slug/:slug' element={<MemberRoute Component={SingleReport}/>} />
+            <Route exeat path='/store/id/:_id' element={<MemberRoute Component={SingleVerify}/>} />
 
-            <Route exeat path='/account/edit/:mem_slug' element={<UpdateAccount />} />
+            <Route exeat path='/account/edit/:mem_slug' element={<MemberRoute Component={UpdateAccount}/>} />
           </Routes>
           {/* </Router> */}
         </AnimatePresence>
