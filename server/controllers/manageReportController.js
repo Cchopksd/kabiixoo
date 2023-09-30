@@ -18,8 +18,8 @@ exports.singleReport = async (req, res) => {
     try {
         const { rep_slug } = req.params;
         await Report.findOne({ rep_slug }).populate('provider_id').populate('reporter_id' ).then(async (reportInfo) =>{
-            console.log(JSON.stringify(reportInfo))
-            console.log({svp_owner:reportInfo.provider_id})
+            // console.log(JSON.stringify(reportInfo))
+            // console.log({svp_owner:reportInfo.provider_id})
             await ServicePost.findOne({ svp_owner:reportInfo.provider_id }).then(async (serviceInfo) =>{
                 // console.log(serviceInfo)
                 if (!reportInfo) {
