@@ -97,7 +97,7 @@ exports.signup = async (req,res) => {
     // เช็ครูปแบบ email
     const emailRegEx = /[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,8}(.[a-z{2,8}])?/g;
     if (!emailRegEx.test(email) && email !== "") {
-      return res.status(400).json({error: "รูปแบบของอีเมลไม่ถูกต้อง"})
+        return res.status(400).json({error: "รูปแบบของอีเมลไม่ถูกต้อง"})
     }
 
     // เช็ครูปแบบ phoneNumber
@@ -181,7 +181,7 @@ exports.updateProfile = async (req,res) => {
     const { slug } = req.params
     const { mem_name,mem_surname,mem_phoneNumber,mem_birthDate } = req.body
     const mem_profileImage = req.body.newImage
-    
+
     // เช็คกรอกข้อมูลให้ครบ
     if (mem_name === "" || mem_surname === "" || mem_phoneNumber === "" || mem_birthDate === ""){
         return res.status(400).json({error: "กรุณากรอกข้อมูลให้ครบ"})
@@ -288,14 +288,14 @@ exports.forgotPassword = async (req,res) => {
                 pass: process.env.EMAIL_FORGOT_PASS
                 }
             });
-            
+
         var mailOptions = {
             from: process.env.EMAIL_FORGOT,
             to: user.mem_email,
             subject: 'ตั้งค่ารหัสผ่านใหม่ใน KabiiXoo',
             text: `${process.env.REACT_APP}/forgot-change-password/${user._id}/${token}`
         };
-        
+
         transporter.sendMail(mailOptions, function(error, info){
             if (error) {
                 console.log(error);

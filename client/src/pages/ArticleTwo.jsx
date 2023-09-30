@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import React, {useContext, useEffect} from "react";
 import "./ArticleTwo.css";
 import { Link } from 'react-router-dom';
 import Footer from "../components/Footer";

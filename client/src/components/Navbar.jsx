@@ -89,7 +89,7 @@ const Navbar = () => {
         }catch (error) {
             console.error(error);
         }
-    } 
+    }
 
     return (
         <>

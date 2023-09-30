@@ -21,7 +21,6 @@ const SingleReport = (props) => {
         axios.get(`${process.env.REACT_APP_API}/report/${(params.slug)}`)
             .then(response => {
                 setReport(response.data);
-                console.log(response);
             }).catch(err => alert(err));
     }, [params.slug])
 
@@ -44,6 +43,9 @@ const SingleReport = (props) => {
             }
         })
     }
+ 
+
+    console.log(report.serviceInfo?.svp_name);
 
     return (
         <AnimatedPage>
@@ -54,12 +56,13 @@ const SingleReport = (props) => {
                     <h1 className='text-center' style={{ margin: '0 auto' }}>รายละเอียดการรายงาน</h1>
                     <section className='sec-header'>
                         <div className='row-header'>
-                            <p className='col'>ผู้ร้องเรียน : {report.reporter_id?.mem_name} {report.reporter_id?.mem_surname}</p>
-                            <p className='col fixed-col2'>ผู้ถูกร้องเรียน : {report.provider_id?.mem_name} {report.provider_id?.mem_surname}</p>
+                            <p className='col'>ผู้ร้องเรียน : {report.reportInfo?.reporter_id?.mem_name} {report.reporter_id?.mem_surname}</p>
+                            <p className='col'>ผู้ถูกร้องเรียน : {report.reportInfo?.provider_id?.mem_name} {report.provider_id?.mem_surname}</p>
+                            <p className='col fixed-col2'>ชื่อ : {report.serviceInfo?.svp_name}</p>
                         </div>
                         <div className='row-header'>
-                            <p className='col'>อีเมลล์ผู้ถูกร้องเรียน : {report.provider_id?.mem_email}</p>
-                            <p className='col fixed-col'>หัวข้อการถูกรายงาน : {report.rep_title}</p>
+                            <p className='col'>อีเมลล์ผู้ถูกร้องเรียน : {report.reportInfo?.provider_id?.mem_email}</p>
+                            <p className='col fixed-col'>หัวข้อการถูกรายงาน : {report.reportInfo?.rep_title}</p>
                             <button className='col col-delete' onClick={() => confirmDelete(report.rep_slug)}>ลบการร้องเรียน</button>
                         </div>
                     </section>
@@ -68,11 +71,11 @@ const SingleReport = (props) => {
                         <hr className='opacity-br'/>
                         <div className='body-description'>
                             <div className='img-row-single'>
-                                <div><img className='size-img-report' src={report.rep_image1} alt="" /></div>
-                                <div><img className='size-img-report' src={report.rep_image2} alt="" /></div>
-                                <div><img className='size-img-report' src={report.rep_image3} alt="" /></div>
+                                <div><img className='size-img-report' src={report.reportInfo?.rep_image1} alt="" /></div>
+                                <div><img className='size-img-report' src={report.reportInfo?.rep_image2} alt="" /></div>
+                                <div><img className='size-img-report' src={report.reportInfo?.rep_image3} alt="" /></div>
                             </div>
-                            <p className='color-text-admin-p'>{report.rep_description}</p>
+                            <p className='color-text-admin-p'>{report.reportInfo?.rep_description}</p>
                         </div>
                     </section>
                 </main>

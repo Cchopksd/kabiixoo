@@ -1,6 +1,5 @@
 .mainContent {
     display: flex;
-    
 }
 
 .manageContainer {
@@ -25,7 +24,7 @@
 }
 
 .searchAccount {
-    border-radius: 25px;
+    border-radius: 10px;
     background-color: #F9F5E7;
     color: #A7727D;
     border: none;
@@ -36,7 +35,7 @@
     text-align: center;
     font-size: 14px;
     font-weight: bolder;
-    margin-left: 180px;
+    margin-left: 160px;
 }
 
 .submitAccount {
