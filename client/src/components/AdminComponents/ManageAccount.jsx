@@ -28,7 +28,7 @@ const ManageAccount = () => {
     const deleteUser = (slug) => {
         axios.delete(`${process.env.REACT_APP_API}/account/${slug}`)
             .then(response => {
-                Swal.fire('แจ้งเตือน!', response.data.message, "ลบบัญขีผู้ใช้งานสำเร็จ")
+                Swal.fire('แจ้งเตือน', response.data.message, "success")
                 fetchData()
             }).catch(err => alert(err));
     }
@@ -52,8 +52,8 @@ const ManageAccount = () => {
             console.log(user)
                 Swal.fire({
                     icon: 'success',
-                    title: 'แจ้งเตือน!',
-                    text: 'แก้ไขสถานะเรียบร้อย',
+                    title: 'แจ้งเตือน',
+                    text: 'แก้ไขสถานะสำเร็จ',
                     }).then((result) => {
                         if (result.isConfirmed) {
                             fetchData();
@@ -72,7 +72,7 @@ const ManageAccount = () => {
 
     const confirmSuspended = (slug) => {
         Swal.fire({
-            title: 'แก้ไข้สถานะ',
+            title: 'ต้องการแก้ไขสถานะการระงับ',
             icon: 'warning',
             showCancelButton: true
         }).then((result) => {

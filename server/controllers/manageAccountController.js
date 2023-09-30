@@ -41,7 +41,7 @@ exports.removeAccount = async (req, res) => {
             await Chat.deleteMany({users : account._id})
             await Report.deleteMany({reporter_id : account._id})
             await Members.findOneAndRemove({mem_slug})
-            return res.status(200).json({ message: 'ลบบัญชีสำเร็จ' });
+            return res.status(200).json({ message: 'ลบบัญชีผู้ใช้งานสำเร็จ' });
         }
     })
     // try {
