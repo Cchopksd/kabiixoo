@@ -1,4 +1,9 @@
 const Members = require('../models/memberModel');
+const Report = require('../models/reportModel')
+const ConfirmBusiness = require('../models/confirmBusinessModel')
+const Review = require('../models/reviewModel')
+const Chat = require('../models/chatModel')
+const ServicePost = require('../models/servicePostModel')
 const slugify = require('slugify');
 const { v4: uuidv4 } = require('uuid');
 const bcrypt = require('bcryptjs')
@@ -17,17 +22,39 @@ exports.getAllAccounts = async (req, res) => {
 //ลบข้อมูล user
 exports.removeAccount = async (req, res) => {
     const {mem_slug} = req.params
-    try {
-        const account = await Members.findOneAndRemove({ mem_slug });
+
+    await Members.findOne({mem_slug}).then(async (account) => {
+        // ถ้าลบคนที่เป็นผู้ให้บริการ
+        const isProvider = await ServicePost.findOne({svp_owner : account._id})
+        if (isProvider) {
+            await ConfirmBusiness.deleteMany({service_id : isProvider._id})
+            await Review.deleteMany({service_id : isProvider._id})
+            await Report.deleteMany({provider_id : account._id})
+            await ServicePost.findOneAndRemove({svp_slug : isProvider.svp_slug})
+        }
         if (!account) {
-            return res.status(404).json({ message: 'ไม่พบบัญชี' });
-        } else{
+            return res.status(404).json({ message : 'ไม่พบบัญชีผู้ใช้งาน'})
+        } 
+        // ลบข้อมูลที่เกี่ยวข้องทั้งหมด
+        else {
+            await Review.deleteMany({customer_id : account._id})
+            await Chat.deleteMany({users : account._id})
+            await Report.deleteMany({reporter_id : account._id})
+            await Members.findOneAndRemove({mem_slug})
             return res.status(200).json({ message: 'ลบบัญชีสำเร็จ' });
         }
-    } catch (error){
-        console.error(error);
-        return res.status(500).json({ message: 'Server Error' });
-    }
+    })
+    // try {
+    //     const account = await Members.findOneAndRemove({ mem_slug });
+    //     if (!account) {
+    //         return res.status(404).json({ message: 'ไม่พบบัญชี' });
+    //     } else{
+    //         return res.status(200).json({ message: 'ลบบัญชีสำเร็จ' });
+    //     }
+    // } catch (error){
+    //     console.error(error);
+    //     return res.status(500).json({ message: 'Server Error' });
+    // }
 };
 
 exports.singleAccount = async (req, res) => {

@@ -13,7 +13,7 @@ import AnimatedPage from "../AnimatedPage";
 const CreateService = () => {
 
     // state ของ contextAPI
-    const { haveService, setHaveService, dropdownClicked, setDropDownCLicked } = useContext(UserContext);
+    const { haveService, setHaveService, dropdownClicked, setDropdownClicked } = useContext(UserContext);
 
     // redirect หน้า
     const navigate = useNavigate()
@@ -31,7 +31,7 @@ const CreateService = () => {
 
     // เรียกให้ load ข้อมูล dropdown
     useEffect(() => {
-        setDropDownCLicked(false)
+        setDropdownClicked(false)
         loadData()
     },[])
 

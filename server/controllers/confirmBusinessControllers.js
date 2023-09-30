@@ -40,24 +40,4 @@ exports.createRequest = async (req,res) => {
         console.error(err);
         res.status(500).json({error: "ไม่พบบริการ"})
     })
-
-    // if(service){
-    //     await ConfirmBusiness.create({
-    //         svp_id: service._id,
-    //         conf_businessName: businessName,
-    //         conf_description: businessDesc,
-    //         conf_businessImage1: imageBusiness1,
-    //         conf_businessImage2: imageBusiness2,
-    //         conf_businessImage3: imageBusiness3,
-    //         conf_licenseImage1: imageLicense1,
-    //         conf_licenseImage2: imageLicense2,
-    //         conf_licenseImage3: imageLicense3,
-    //     }).then(() => {
-    //         res.status(200).json({message: "ส่งคำร้องการยืนยันสำเร็จ"})
-    //     }).catch(() => {
-    //         res.status(400).json({message: "ส่งคำร้องการยืนยันไม่สำเร็จ"})
-    //     })
-    // }else {
-    //     return res.status(400).json({error: "ไม่พบบริการ"})
-    // }
 }
