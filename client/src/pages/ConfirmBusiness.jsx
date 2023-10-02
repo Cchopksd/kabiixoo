@@ -188,7 +188,7 @@ const ConfirmBusiness = () => {
                 <div className="comfirm-form-box">
                     <img className="comfirm-logo" src={require("../images/logo3.png")} alt="" />
                     <div className="businessName-box">
-                        <label className="confirm-info-title">ชื่อกิจการ *</label>
+                        <label className="confirm-info-title">ชื่อกิจการหรือชื่อผู้ให้บริการ *</label>
                         <input className="input-businessName" type="text" value={businessName} onChange={(event)=>setBusinessName(event.target.value)}
                         placeholder="กรอกชื่อกิจการ"/>
                     </div>
