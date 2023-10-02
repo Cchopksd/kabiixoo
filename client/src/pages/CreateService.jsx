@@ -345,9 +345,9 @@ const CreateService = () => {
                     </div>
                     <div className="create-info-1-box">
                         <div className="createService-name-box">
-                            <label className="createService-title-1">ชื่อผู้ให้บริการ *</label>
+                            <label className="createService-title-1">ชื่อผู้ให้บริการหรือกิจการ *</label>
                             <input className="input-createService-name" type="text" value={serviceName} onChange={(event) => setServiceName(event.target.value)}
-                            placeholder="กรอก ชื่อผู้ให้บริการ"/>
+                            placeholder="กรอก ชื่อผู้ให้บริการหรือกิจการ"/>
                         </div>
                         <div className="createService-address">
                             <label className="createService-title-1">ที่อยู่ของผู้ให้บริการหรือกิจการ *</label>
