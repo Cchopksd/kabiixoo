@@ -200,11 +200,17 @@ exports.updateProfile = async (req,res) => {
         return res.status(400).json({error: "กรุณากรอกข้อมูลให้ครบ"})
     }
 
+    // เช็คเบอร์
     const phoneRegex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
     if (!phoneRegex.test(mem_phoneNumber) && mem_phoneNumber !== ""){
         return res.status(400).json({error: "รูปแบบของเบอร์โทรศัพท์ไม่ถูกต้อง"})
     }
 
+    // เช็ควันเกิด
+    const dateRegex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+    if (!dateRegex.test(mem_birthDate) && mem_birthDate !== ""){
+        return res.status(400).json({error: "กรุณาเลือกวันเกิด"})
+    }
 
     await Member.findOneAndUpdate({mem_slug: slug}, { mem_name,mem_surname,mem_phoneNumber,mem_birthDate,mem_profileImage }, {new:true})
     .then((userInfo) => {
