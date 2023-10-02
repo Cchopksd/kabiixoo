@@ -21,7 +21,7 @@ const Home = () => {
     const [searchText, setSearchText] = useState(false)
 
     // แสดงผู้ให้บริการเพิ่มเติมเมื่อ 9 คนขึ้นไป
-    const [showMoreCount, setShowMoreCount] = useState(3);
+    const [showMoreCount, setShowMoreCount] = useState(6);
 
     useEffect(() => {
         setDropdownClicked(false)
