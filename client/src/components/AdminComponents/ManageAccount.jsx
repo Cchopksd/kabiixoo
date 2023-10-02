@@ -47,7 +47,7 @@ const ManageAccount = () => {
 
 
     const suspendedUser = (slug) => {
-        axios.put(`${process.env.REACT_APP_API}/account/${slug}`)
+        axios.patch(`${process.env.REACT_APP_API}/accounts/${slug}`)
         .then((user) => {
             console.log(user)
                 Swal.fire({

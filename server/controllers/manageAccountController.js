@@ -75,7 +75,6 @@ exports.updateAccount = async (req, res) => {
     const { mem_slug } = req.params
 
     let {state, email, username} = req.body
-
     let list = state;
 
     // เช็คว่าถ้า user กับ email ซ้ำไหม
@@ -140,11 +139,11 @@ exports.isSuspendAccount = async (req, res) => {
             return res.status(403).json({ message: 'ไม่สามารถระงับใช้บัญชีแอดมินได้' });
         } else {
             user.isSuspended = !user.isSuspended;
-            await user.save();
+            await user.updateOne({ $set: { isSuspended: user.isSuspended } })
             return res.json({ message: 'แก้ไขสถานะเรียบร้อย' });
         }
         } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: 'server error' });
+            console.error(error);
+            res.status(500).json({ message: 'server error' });
     }
 };

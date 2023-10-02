@@ -7,7 +7,7 @@ router.get('/accounts', getAllAccounts);
 router.get('/account/:mem_slug', singleAccount);
 router.delete('/account/:mem_slug', removeAccount);
 router.patch('/account/:mem_slug',updateAccount);
-router.put('/account/:mem_slug', isSuspendAccount);
+router.patch('/accounts/:mem_slug', isSuspendAccount);
 
 
 
