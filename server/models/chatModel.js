@@ -13,6 +13,10 @@ const chatSchema = mongoose.Schema({
     latestMessage: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Messages",
+    },
+    canReview: {
+        type: Boolean,
+        default: false
     }
 },{timestamps: true})
 

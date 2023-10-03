@@ -1,5 +1,6 @@
 const Review = require('../models/reviewModel')
 const ServicePost = require('../models/servicePostModel')
+const Chat = require('../models/chatModel')
 
 exports.sendReview = async (req,res) => {
     // slug ของบริการ
@@ -12,8 +13,16 @@ exports.sendReview = async (req,res) => {
         return res.status(400).json({error: "กรุณาให้คะแนนผู้ให้บริการ"})
     }
 
-    await ServicePost.findOne({svp_slug: slug}).then(async (serviceInfo) => {
+    await ServicePost.findOne({svp_slug: slug}).populate('svp_owner').then(async (serviceInfo) => {
         const serviceId = serviceInfo._id
+
+        // เช็คว่าอนุฐาติรีวิวไหม
+        const usersArray = [serviceInfo.svp_owner._id.toString(), reviewerId]
+
+        const reviewInfo = await Chat.findOne({users: { $all:usersArray}})
+        if(reviewInfo.canReview === false) {
+            return res.status(400).json({error : "ต้องใช้บริการกับผู้บริการก่อนถึงจะรีวิวได้"})
+        }
 
         // เช็ครีวิวล่าสุดจากคนที่รีวิว และ serviceนั้่น
         const checkOldReview = await Review.findOne({service_id: serviceId, customer_id: reviewerId}).sort({ createdAt: -1 }).limit(1)
@@ -29,8 +38,8 @@ exports.sendReview = async (req,res) => {
             const timeDiffInMilliseconds = currentDate - createdAtDate;
             const timeDiffInDays = Math.floor(timeDiffInMilliseconds / (1000 * 60 * 60 * 24));
             // console.log(timeDiffInDays)
-            if (timeDiffInDays < 30) {
-                return res.status(400).json({error: "รีวิวและให้คะแนนผู้ให้บริการรายเดิมได้เพียง 1 ครั้งต่อเดือน"})
+            if (timeDiffInDays < 3) {
+                return res.status(400).json({error: "รีวิวและให้คะแนนผู้ให้บริการรายเดิมได้ 3 วันต่อ 1 ครั้ง"})
             }
         }
 
@@ -40,6 +49,9 @@ exports.sendReview = async (req,res) => {
             rev_description : reviewDesc,
             rev_point : rating
         })
+
+        // อัพเดทไม่ให้รีวิวได้จนกว่าผู้ให้บริกการจะอนุญาติอีกครั้ง
+        await Chat.findOneAndUpdate({users: { $all:usersArray}}, {canReview: false}, {new: true})
 
         // เอาการรีวิวทั้งหมด
         await Review.find({service_id: serviceId}).then(async (data) => {

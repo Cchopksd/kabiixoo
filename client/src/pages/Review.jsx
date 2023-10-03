@@ -36,7 +36,6 @@ const Review = () => {
     // state เช็คว่า fetch api
     const [loading, setLoading] = useState(false)
 
-
     // เมื่อเข้าสู่หน้า
     useEffect(() => {
         setDropdownClicked(false)
