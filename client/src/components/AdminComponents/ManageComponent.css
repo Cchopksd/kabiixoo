@@ -119,6 +119,7 @@
 .custom-label {
     color: #A7727D;
     list-style: none;
+    cursor: pointer;
 }
 
 .pagination {

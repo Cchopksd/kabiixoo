@@ -71,6 +71,51 @@
     color: #A7727D;
 }
 
+.form-contact{
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    margin: 40px auto 40px  auto;
+    gap: 1.5rem;
+}
+
+.contact-column{
+    display: flex;
+    flex-direction: column;
+}
+
+.input-contact{
+    background-color: #F9F5E7;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
+    height: 30px;
+    padding: 5px;
+    font-size: 16px;
+}
+
+.textArea{
+    height: 100px;
+    resize: none;
+}
+
+.submit-contact{
+    margin: auto;
+    color: #fff;
+    background-color: #A7727D;
+    border-radius: 20px;
+    border: none;
+    /* box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.25); */
+    width: 200px;
+    height: 50px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.label-contact{
+    color: #A7727D;
+}
+
 @media screen and (min-width : 850px) and (max-width : 1080px){
     .about-page{
         background-size: 1080px;
