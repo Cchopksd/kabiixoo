@@ -28,7 +28,7 @@ const About = () => {
     const sendEmail = (e) => {
         e.preventDefault();
 
-        emailjs.sendForm('service_3o0bfsq', 'template_gubz1xy', form.current, 'B8xFvKx2Y1ta4yhOt')
+        emailjs.sendForm('service_d5jffbg', 'template_gubz1xy', form.current, 'B8xFvKx2Y1ta4yhOt')
         .then((result) => {
             Swal.fire({
                 title: 'แบบฟอร์มถูกส่งเรียบร้อยแล้ว',
