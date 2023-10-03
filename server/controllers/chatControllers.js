@@ -63,3 +63,32 @@ exports.fetchChats = async (req,res) => {
         res.status(400).json({error : "เกิดข้อผิดพลาด"})
     }
 }
+
+exports.enableReview = async (req,res) => {
+    // id ของแชท
+    const { chatId } = req.params
+    // id ของผู้ให้บริการ
+    const { loginUser } = req.body
+    // id ของผู้ใช้บริการ
+    let customerId = ''
+
+    await Chat.findOne({_id : chatId}).then(async (chatInfo) => {
+        // console.log(chatInfo.users[0])
+        // if(chatInfo.users[0].toString() !== loginUser){
+        //     customerId = chatInfo.users[0].toString()
+        // }
+        // else if (chatInfo.users[1].toString() !== loginUser) {
+        //     customerId = chatInfo.users[1].toString()
+        // }
+        // console.log(loginUser)
+        // console.log(customerId)
+        if (chatInfo.canReview === true) {
+            return res.status(400).json({err : "อนุญาติให้รีวิวแล้ว"})
+        }
+        await Chat.findOneAndUpdate({_id : chatId},{canReview : true}, {new : true}).then(() => {
+            res.json({message : "อนุญาติให้รีวิวสำเร็จ"})
+        })
+    }).catch((err) => {
+        res.status(400).json({err : "เกิดข้อผิดพลาด"})
+    })
+}

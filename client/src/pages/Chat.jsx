@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useLayoutEffect, useState } from 'react'
 import { BiArrowBack } from 'react-icons/bi';
+import { MdOutlineRateReview } from "react-icons/md"
 import './Chat.css'
 import { useParams, useNavigate } from 'react-router-dom';
 import UserContext from '../contexts/UserProvider';
@@ -35,7 +36,7 @@ const Chat = () => {
     const [loginUser, setLoginUser] = useState(params.userId)
 
     // context api
-    const {selectedChat, setSelectedChat, chats, setChats, dropdownClicked, setDropdownClicked} = useContext(UserContext)
+    const {selectedChat, setSelectedChat, chats, setChats, dropdownClicked, setDropdownClicked, haveService} = useContext(UserContext)
 
     // ข้อความทั้งหมดของแชทนั้น
     const [messages, setMessages] = useState([])
@@ -357,6 +358,29 @@ const Chat = () => {
         navigate(-1);
     }
 
+    // อนุญาติรีวิว
+    const handleReview = async () => {
+        await Swal.fire({
+            title: 'อนุญาติให้ผู้ใช้บริการรีวิวได้',
+            icon: 'warning',
+            showCancelButton: true
+        }).then(async() => {
+            await axios.post(`${process.env.REACT_APP_API}/enable-review/${selectedChat._id}`,{loginUser}).then((response) => {
+                Swal.fire(
+                    'แจ้งเตือน',
+                    response.data.message,
+                    'success'
+                )
+            }).catch((error) => {
+                Swal.fire(
+                    "แจ้งเตือน",
+                    error.response.data.err,
+                    'error'
+                )
+            })
+        })
+    }
+
     return (
         <AnimatedPage>
             {pageLoading && <Loading/>}
@@ -405,6 +429,13 @@ const Chat = () => {
                                     <img src={getSenderImage(loginUser, selectedChat.users)}/>
                                     <label>{getSender(loginUser, selectedChat.users)}</label>
                                 </div>
+                                {
+                                    haveService &&
+                                    <div className='chat-chat-review' role='button' onClick={handleReview}>
+                                        <MdOutlineRateReview size={30} color='#A7727D'/>
+                                        {/* รีวิว */}
+                                    </div>
+                                }
                             </div>
                             <div className='chat-chat-display-box'>
                                 <div className='chat-chat-display'>

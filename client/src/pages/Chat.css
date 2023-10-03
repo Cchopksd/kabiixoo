@@ -137,6 +137,7 @@
 .chat-chat-header {
     display: flex;
     align-items: center;
+    /* justify-content: space-around; */
 }
 .chat-chat-not-selected {
     margin: auto;
@@ -146,6 +147,16 @@
 }
 .chat-chat-back {
     margin: 20px 0 0 30px;
+}
+.chat-chat-review {
+    display: flex;
+    /* flex-direction: column; */
+    margin: 20px 30px 0 0px;
+}
+.chat-chat-review:hover{
+    transition: 0.3s ease;
+    opacity: 0.7;
+    cursor: pointer;
 }
 .chat-chat-name-display {
     display: flex;
