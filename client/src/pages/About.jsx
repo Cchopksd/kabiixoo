@@ -52,7 +52,7 @@ const About = () => {
     // Add these
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const serviceId = "service_3o0bfsq";
+        const serviceId = "service_ccvd6uy";
         const templateId = "template_gubz1xy";
         try {
             setLoading(true);
