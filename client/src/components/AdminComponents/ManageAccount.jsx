@@ -148,7 +148,7 @@ const ManageAccount = () => {
                                     <Link to={`/account/edit/${user.mem_slug}`}><button className='account-button-design' style={{ background: '#DBC36C' }}>แก้ไขข้อมูล</button></Link>
                                 </td>
                                 <td>
-                                <button className='account-button-design' style={{ background: '#D29965' }} onClick={() => confirmSuspended(user.mem_slug)} >{user.isSuspended ? 'ปลดล็อก' : 'ระงับใช้'}</button>
+                                    <button className='account-button-design' style={{ background: '#D29965' }} onClick={() => confirmSuspended(user.mem_slug)} >{user.isSuspended ? 'ปลดล็อก' : 'ระงับใช้'}</button>
                                 </td>
                                 <td>
                                     <button className='account-button-design' onClick={() => confirmDelete(user.mem_slug)} style={{ background: '#B73953' }}>ลบบัญชี</button>
