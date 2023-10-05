@@ -19,6 +19,7 @@ const Home = () => {
     const [servicesArr, setServicesArr] = useState([])
 
     const [searchText, setSearchText] = useState(false)
+    const [scroll, setScroll] = useState(false)
 
     // แสดงผู้ให้บริการเพิ่มเติมเมื่อ 9 คนขึ้นไป
     const [showMoreCount, setShowMoreCount] = useState(6);
@@ -35,6 +36,7 @@ const Home = () => {
     // รับข้อมูลจาก child
     const handleDataFromChild = (data) => {
         setServicesArr(data)
+        setScroll(true)
     }
 
     // รับค่าแสดงผลคำหลังค้นหา
@@ -44,17 +46,20 @@ const Home = () => {
 
     // เมื่อ searchText เป็น true
     useEffect(() => {
-        const handleScrollToProviderListBox = () => {
-            if (providerListBoxRef.current) {
-                providerListBoxRef.current.scrollIntoView({ behavior: 'smooth' });
+        if (scroll === true){
+            const handleScrollToProviderListBox = () => {
+                if (providerListBoxRef.current) {
+                    providerListBoxRef.current.scrollIntoView({ behavior: 'smooth' });
+                    setScroll(false)
+                }
+            };
+        
+            // เมื่อ searchText เป็น true ให้ทำการเลื่อนหน้าจอมาที่ div ที่มี className เป็น "home-provider-list-box"
+            if (scroll) {
+                handleScrollToProviderListBox();
             }
-        };
-    
-        // เมื่อ searchText เป็น true ให้ทำการเลื่อนหน้าจอมาที่ div ที่มี className เป็น "home-provider-list-box"
-        if (searchText) {
-            handleScrollToProviderListBox();
         }
-    }, [searchText]);
+    }, [scroll]);
 
     return (
         <AnimatedPage>
