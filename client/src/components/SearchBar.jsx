@@ -205,8 +205,8 @@ const SearchBar = ({ onDataSend, onSearch }) => {
                             <button className='bt-filter' onClick={handleToggle}><IoIosOptions className='bt-filter-size'/></button>
                         </div>
                         <div className='fbt-search'>
-                            <button className="bt-search" type="submit"> <FaSearch className='bt-search-size' size={45} color="#fff"
-                            onClick={handleSearch}/></button>
+                            <button className="bt-search" type="submit" onClick={handleSearch}> <FaSearch className='bt-search-size' size={45} color="#fff"
+                            /></button>
                         </div>
                     </div>
                 </div>
