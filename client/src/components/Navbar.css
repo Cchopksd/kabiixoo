@@ -140,6 +140,10 @@
     color: #ffffff;
     font-size: 17px;
 }
+.login-dropdown-bottom label:hover {
+    cursor: pointer;
+    transition: 0.5s ease;
+}
 .login-dropdown-none {
     display: none;
 }
