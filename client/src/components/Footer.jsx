@@ -31,9 +31,9 @@ const Footer = () => {
                     <label className="copyright-label">Copyright © 2023 KabiiXoo</label>
                 </div>
                 <div className="term-of-service">
-                    <Link to='/term-of-service' className="information-legal">Information Legal</Link>
+                    <Link to={'/term-of-service'} className="information-legal">Information Legal</Link>
                     <label className="l-text">|</label>
-                    <Link to='/term-of-service' className="privacy-cookie">Privacy & Cookie Policy</Link>
+                    <Link to={'/term-of-service'} className="privacy-cookie">Privacy & Cookie Policy</Link>
                 </div>
             </div>
     );
