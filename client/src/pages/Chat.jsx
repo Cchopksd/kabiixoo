@@ -364,20 +364,22 @@ const Chat = () => {
             title: 'อนุญาติให้ผู้ใช้บริการรีวิวได้',
             icon: 'warning',
             showCancelButton: true
-        }).then(async() => {
-            await axios.post(`${process.env.REACT_APP_API}/enable-review/${selectedChat._id}`,{loginUser}).then((response) => {
-                Swal.fire(
-                    'แจ้งเตือน',
-                    response.data.message,
-                    'success'
-                )
-            }).catch((error) => {
-                Swal.fire(
-                    "แจ้งเตือน",
-                    error.response.data.err,
-                    'error'
-                )
-            })
+        }).then(async(result) => {
+            if (result.isConfirmed) {
+                await axios.post(`${process.env.REACT_APP_API}/enable-review/${selectedChat._id}`,{loginUser}).then((response) => {
+                    Swal.fire(
+                        'แจ้งเตือน',
+                        response.data.message,
+                        'success'
+                    )
+                }).catch((error) => {
+                    Swal.fire(
+                        "แจ้งเตือน",
+                        error.response.data.err,
+                        'error'
+                    )
+                })
+            }
         })
     }
 
