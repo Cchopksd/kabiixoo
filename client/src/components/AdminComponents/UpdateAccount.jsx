@@ -19,6 +19,7 @@ const UpdateAccount = () => {
     const [imageFile, setImageFile] = useState(null)
     const [newImage, setNewImage] = useState()
     
+    
 
     // state ข้อมูล
     const [state, setState] = useState({
@@ -91,7 +92,7 @@ const UpdateAccount = () => {
     const submitForm = async (e) => {
         e.preventDefault();
         // เช็คค่าว่าง
-        if (!mem_username || !mem_password || !mem_name || !mem_surname || !mem_email || !mem_profileImage || !mem_birthDate || !mem_phoneNumber) {
+        if (!mem_name || !mem_surname || !mem_email || !mem_profileImage || !mem_birthDate || !mem_phoneNumber) {
             Swal.fire(
                 "แจ้งเตือน",
                 "กรุณากรอกข้อมูลให้ครบ",
@@ -185,11 +186,20 @@ const UpdateAccount = () => {
                         <section className='sec-right'>
                             <div className='update-row'>
                                 <label className='label-update' htmlFor="">ชื่อผู้ใช้งาน :</label>
-                                <input className='input-update' type="text" value={mem_username} onChange={inputValue('mem_username')} />
+                                <label className='input-update'>{mem_username}</label>
+                                {/* <input className='input-update' type="text" value={mem_username} onChange={inputValue('mem_username')} /> */}
                             </div>
                             <div className='update-row'>
                                 <label className='label-update' htmlFor="">รหัสผ่าน :</label>
-                                <input className='input-update' type="text" value={mem_password} onChange={inputValue('mem_password')} />
+                                <label className='input-update'
+                                style={{ display:'inline-block',
+                                        whiteSpace: 'nowrap',
+                                        overflow: 'hidden',
+                                        textOverflow: 'ellipsis',
+                                        maxWidth:'20ch'}}
+                                        >
+                                        {mem_password}</label>
+                                {/* <input className='input-update' type="text" value={mem_password} onChange={inputValue('mem_password')} /> */}
                             </div>
                             <div className='update-row'>
                                 <label className='label-update' htmlFor="">ชื่อ :</label>

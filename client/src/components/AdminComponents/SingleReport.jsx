@@ -12,6 +12,17 @@ const SingleReport = (props) => {
     const navigate = useNavigate();
     const params = useParams();
     const [report, setReport] = useState('')
+    const [imageLoaded, setImageLoaded] = useState(false);
+
+    useEffect(() => {
+        const imgElement = document.querySelector('img'); // Assuming there's only one image on the page
+
+        if (imgElement) {
+        imgElement.addEventListener('load', () => {
+            setImageLoaded(true);
+        });
+        }
+    }, []);
 
     const goBack = () => {
         navigate(-1);
@@ -70,10 +81,16 @@ const SingleReport = (props) => {
                         <h2 >เนื้อหาการถูกรายงาน </h2>
                         <hr className='opacity-br'/>
                         <div className='body-description'>
-                            <div className='img-row-single'>
-                                <div><img className='size-img-report' src={report.reportInfo?.rep_image1} alt="" /></div>
-                                <div><img className='size-img-report' src={report.reportInfo?.rep_image2} alt="" /></div>
-                                <div><img className='size-img-report' src={report.reportInfo?.rep_image3} alt="" /></div>
+                        <div className='img-row-single'>
+                            {imageLoaded ? (
+                                <>
+                                <img className='size-img-report' src={report.reportInfo?.rep_image1} alt="" />
+                                <img className='size-img-report' src={report.reportInfo?.rep_image2} alt="" />
+                                <img className='size-img-report' src={report.reportInfo?.rep_image3} alt="" />
+                                </>
+                            ) : (
+                                <p></p>
+                            )}
                             </div>
                             <p className='color-text-admin-p'>{report.reportInfo?.rep_description}</p>
                         </div>

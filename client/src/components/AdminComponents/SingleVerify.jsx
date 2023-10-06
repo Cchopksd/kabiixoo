@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate  } from 'react-router-dom';
+import React, { useState, useEffect, useRef } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { IoChevronBackSharp } from "react-icons/io5";
 import SideBarAdmin from './SideBarAdmin'
@@ -12,6 +12,30 @@ const SingleVerify = (props) => {
     const navigate = useNavigate();
     const params = useParams();
     const [verified, setVerified] = useState('')
+    const [imageLoaded, setImageLoaded] = useState(false);
+    const imgBusiness1Ref = useRef(null);
+    const imgBusiness2Ref = useRef(null);
+    const imgBusiness3Ref = useRef(null);
+
+    const imgLicense1Ref = useRef(null);
+    const imgLicense2Ref = useRef(null);
+    const imgLicense3Ref = useRef(null);
+
+    useEffect(() => {
+        const imagesBusiness = [imgBusiness1Ref.current, imgBusiness2Ref.current, imgBusiness3Ref.current];
+        const imagesLicense = [imgLicense1Ref.current, imgLicense2Ref.current, imgLicense3Ref.current];
+
+        const allImages = [...imagesBusiness, ...imagesLicense];
+
+        allImages.forEach((img) => {
+            if (img) {
+                img.addEventListener('load', () => {
+                    setImageLoaded(true);
+                });
+            }
+        });
+    }, []);
+
 
     const goBack = () => {
         navigate(-1);
@@ -46,24 +70,24 @@ const SingleVerify = (props) => {
 
     const verifyBusiness = (id) => {
         axios.put(`${process.env.REACT_APP_API}/verify/${id}`)
-        .then(response => {
-            Swal.fire({
-                icon: 'success',
+            .then(response => {
+                Swal.fire({
+                    icon: 'success',
                     title: 'แจ้งเตือน!',
                     text: 'ยืนยันการมีหน้าร้านเรียบร้อย',
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            navigate('/store');
-                        }
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        navigate('/store');
+                    }
+                })
             })
-        })
-        .catch((err) => {
-            Swal.fire(
+            .catch((err) => {
+                Swal.fire(
                     'แจ้งเตือน',
                     err.response.data.message,
                     'error'
                 );
-        });
+            });
     }
 
     const confirmBusiness = (id) => {
@@ -77,7 +101,7 @@ const SingleVerify = (props) => {
             }
         })
     }
-    
+
 
 
     return (
@@ -101,25 +125,27 @@ const SingleVerify = (props) => {
                     </section>
                     <section className='sec-body' >
                         <h2>เนื้อหาการยืนยันการมีหน้าร้าน</h2>
-                        <hr className='opacity-br'/>
+                        <hr className='opacity-br' />
                         <article className='body-description'>
-                                <div className='img-row-single'>
-                                    <div><img className='size-img-report' src={verified.conf_businessImage1} alt="" /></div>
-                                    <div><img className='size-img-report' src={verified.conf_businessImage2} alt="" /></div>
-                                    <div><img className='size-img-report' src={verified.conf_businessImage3} alt="" /></div>
-                                </div>
-                                <h3 style={{textAlign:'center'}}>รูปถ่ายหน้าร้านหรือสถานที่ประกอบกิจการ</h3>
-                                <div className='img-row-single'>
-                                    <div><img className='size-img-report' src={verified.conf_licenseImage1} alt="" /></div>
-                                    <div><img className='size-img-report' src={verified.conf_licenseImage2} alt="" /></div>
-                                    <div><img className='size-img-report' src={verified.conf_licenseImage3} alt="" /></div>
-                                </div>
+                            <div className='img-row-single'>
+                                <div><img ref={imgBusiness1Ref} className='size-img-report' src={verified.conf_businessImage1} alt="" /></div>
+                                <div><img ref={imgBusiness2Ref} className='size-img-report' src={verified.conf_businessImage2} alt="" /></div>
+                                <div><img ref={imgBusiness3Ref} className='size-img-report' src={verified.conf_businessImage3} alt="" /></div>
+                            </div>
+                            {imageLoaded ? (
+                                <h3 style={{ textAlign: 'center' }}>รูปถ่ายหน้าร้านหรือสถานที่ประกอบกิจการ</h3>
+                            ) : null}
+                            <div className='img-row-single'>
+                                <div><img ref={imgLicense1Ref} className='size-img-report' src={verified.conf_licenseImage1} alt="" /></div>
+                                <div><img ref={imgLicense2Ref} className='size-img-report' src={verified.conf_licenseImage2} alt="" /></div>
+                                <div><img ref={imgLicense3Ref} className='size-img-report' src={verified.conf_licenseImage3} alt="" /></div>
+                            </div>
                             <p className='color-text-admin-p'>{verified.conf_description}</p>
-                        </article>
-                    </section>
-                </main>
-            </div>
-        </AnimatedPage>
+                    </article>
+                </section>
+            </main>
+        </div>
+        </AnimatedPage >
     );
 }
 
