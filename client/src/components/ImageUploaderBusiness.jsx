@@ -82,7 +82,7 @@ const ImageUploaderBusiness = ({ onDataSendBusiness }) => {
                                 เลือกรูป
                             </span>
                             <div className="confirm-file-desc">
-                                ขนาดไฟล์ : สูงสุด 5 MB ไม่เกิน 3 ไฟล์ / ไฟล์ที่รองรับ : .JPEG, .PNG
+                                ไฟล์ที่รองรับ : .JPEG, .PNG
                             </div>
                         </div>
                     </>
