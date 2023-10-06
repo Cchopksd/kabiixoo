@@ -130,6 +130,7 @@
     transition: 0.5s ease;
 }
 .login-dropdown-bottom:hover {
+    cursor: pointer;
     background-color: #cacaca;
     transition: 0.5s ease;
     border-radius: 0 0 15px 15px;
@@ -237,7 +238,7 @@
         background-color: #A7727D;
         box-shadow:0px 5px 15px 0 rgba(0,0,0,0.16);
     }
-    .nav-link.active li.aboutMe:not(:last-child) {
+    .aboutMe:not(:last-child) {
         border-bottom: 1px solid #dddddd;
         padding: 20px 120px;
     }
@@ -247,6 +248,7 @@
         justify-content: center;
         height: 7vw;
         padding: 10px 0;
+        width: 100%;
     }
     .mobile-spacing-login {
         margin-top: 10px;

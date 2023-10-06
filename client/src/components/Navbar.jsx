@@ -99,17 +99,17 @@ const Navbar = () => {
                     </Link>
                     <div className="menu">
                         <ul className={click ? "nav-link active" : "nav-link"}>
-                            <li className="mobile-spacing" onClick={closeMobileMenu}>
-                                <Link to="/">ค้นหาการให้บริการ</Link>
-                            </li>
-                            <li className="mobile-spacing" onClick={closeMobileMenu}>
-                                <Link to="/article">บทความ</Link>
-                            </li>
-                            <li className="mobile-spacing aboutMe" onClick={closeMobileMenu}>
-                                <Link to="/about">เกี่ยวกับเรา</Link>
-                            </li>
+                            <Link to="/" className="mobile-spacing" onClick={closeMobileMenu}>
+                                <Link>ค้นหาการให้บริการ</Link>
+                            </Link>
+                            <Link to="/article" className="mobile-spacing" onClick={closeMobileMenu}>
+                                <Link>บทความ</Link>
+                            </Link>
+                            <Link to="/about" className="mobile-spacing aboutMe" onClick={closeMobileMenu}>
+                                <Link>เกี่ยวกับเรา</Link>
+                            </Link>
                             {isLogin ?
-                                <div>
+                                <>
                                     <li className={size <= 850 ? "mobile-spacing-login" : 'mobile-spacing'} onClick={closeMobileMenu}>
                                         <div className={size <= 850 ? "login-dropdown-desktop-none" : 'login-dropdown-display'} role="button" onClick={() => setDropdownClicked(!dropdownClicked)}>
                                             <img src={userImage}/>
@@ -120,15 +120,15 @@ const Navbar = () => {
                                             <div className="login-dropdown-menu-border login-dropdown-top">
                                                 <label>{email}</label>
                                             </div>
-                                            <div className="login-dropdown-middle">
-                                                <Link to={`/edit-profile/${slug}`} onClick={() => setDropdownClicked(!dropdownClicked)}>แก้ไขข้อมูลส่วนตัว</Link>
-                                            </div>
-                                            <div className="login-dropdown-middle">
-                                                <Link to={haveService ? `/provider-home/${userId}`:'/create-service'} onClick={() => setDropdownClicked(!dropdownClicked)}>ให้บริการรับฝากสัตว์เลี้ยง</Link>
-                                            </div>
-                                            <div className="login-dropdown-menu-border login-dropdown-middle">
-                                                <Link to={`/chats/${userId}`} onClick={() => setDropdownClicked(!dropdownClicked)}>การสนทนา</Link>
-                                            </div>
+                                            <Link className="login-dropdown-middle" to={`/edit-profile/${slug}`} onClick={() => setDropdownClicked(!dropdownClicked)}>
+                                                <Link>แก้ไขข้อมูลส่วนตัว</Link>
+                                            </Link>
+                                            <Link className="login-dropdown-middle" to={haveService ? `/provider-home/${userId}`:'/create-service'} onClick={() => setDropdownClicked(!dropdownClicked)}>
+                                                <Link >ให้บริการรับฝากสัตว์เลี้ยง</Link>
+                                            </Link>
+                                            <Link className="login-dropdown-menu-border login-dropdown-middle" to={`/chats/${userId}`} onClick={() => setDropdownClicked(!dropdownClicked)}>
+                                                <Link>การสนทนา</Link>
+                                            </Link>
                                             <div className="login-dropdown-bottom" role="button" onClick={() => logout(() => {
                                                 navigate("/")
                                                 setDropdownClicked(!dropdownClicked)
@@ -140,28 +140,39 @@ const Navbar = () => {
                                             </div>
                                         </div>
                                     </li>
-                                    <li className={click ? size <= 850 ? "mobile-spacing" :"mobile-dropdown-display-none" : size <= 850 ? "mobile-spacing" :"mobile-dropdown-display-none"} onClick={closeMobileMenu}>
-                                        <Link to={`/edit-profile/${slug}`}>แก้ไขข้อมูลส่วนตัว</Link>
-                                    </li>
-                                    <li className={click ? size <= 850 ? "mobile-spacing" :"mobile-dropdown-display-none" : size <= 850 ? "mobile-spacing" :"mobile-dropdown-display-none"} onClick={closeMobileMenu}>
-                                        <Link to={haveService ? `/provider-home/${userId}`:'/create-service'}>ให้บริการรับฝากสัตว์เลี้ยง</Link>
-                                    </li >
-                                    <li className={click ? size <= 850 ? "mobile-spacing" :"mobile-dropdown-display-none" : size <= 850 ? "mobile-spacing" :"mobile-dropdown-display-none"} onClick={closeMobileMenu}>
-                                        <Link to={`/chats/${userId}`} >การสนทนา</Link>
-                                    </li>
-                                    <li className={click ? size <= 850 ? "mobile-spacing" :"mobile-dropdown-display-none" : size <= 850 ? "mobile-spacing" :"mobile-dropdown-display-none"} onClick={closeMobileMenu}>
-                                        <Link onClick={() => logout(() => {
+                                    <Link to={`/edit-profile/${slug}`} className={click ? size <= 850 ? "mobile-spacing" :"mobile-dropdown-display-none" : size <= 850 ? "mobile-spacing" :"mobile-dropdown-display-none"} onClick={closeMobileMenu}>
+                                        <Link>แก้ไขข้อมูลส่วนตัว</Link>
+                                    </Link>
+                                    <Link to={haveService ? `/provider-home/${userId}`:'/create-service'} className={click ? size <= 850 ? "mobile-spacing" :"mobile-dropdown-display-none" : size <= 850 ? "mobile-spacing" :"mobile-dropdown-display-none"} onClick={closeMobileMenu}>
+                                        <Link>ให้บริการรับฝากสัตว์เลี้ยง</Link>
+                                    </Link >
+                                    <Link to={`/chats/${userId}`} className={click ? size <= 850 ? "mobile-spacing" :"mobile-dropdown-display-none" : size <= 850 ? "mobile-spacing" :"mobile-dropdown-display-none"} onClick={closeMobileMenu}>
+                                        <Link>การสนทนา</Link>
+                                    </Link>
+                                    <Link className={click ? size <= 850 ? "mobile-spacing" :"mobile-dropdown-display-none" : size <= 850 ? "mobile-spacing" :"mobile-dropdown-display-none"} onClick={() => {
+                                        closeMobileMenu()
+                                        logout(() => {
                                             navigate("/")
                                             setHaveService(false)
                                             // reload หน้าเว็บ
                                             window.location.reload(true)
-                                        })}>ออกจากระบบ</Link>
-                                    </li>
-                                </div> :
-                                <li className="mobile-spacing" onClick={closeMobileMenu}>
-                                    <a href='/signin'><button className="btn-login" >เข้าสู่ระบบ</button></a>
+                                        })
+                                        }}>
+                                        <Link 
+                                        // onClick={() => logout(() => {
+                                        //     navigate("/")
+                                        //     setHaveService(false)
+                                        //     // reload หน้าเว็บ
+                                        //     window.location.reload(true)
+                                        // })}
+                                        >
+                                            ออกจากระบบ</Link>
+                                    </Link>
+                                </> :
+                                <Link className="mobile-spacing" onClick={closeMobileMenu} to={`/signin`}>
+                                    <button className="btn-login" >เข้าสู่ระบบ</button>
                                     {/* <button className="btn-login" ></button> */}
-                                </li>}
+                                </Link>}
                         </ul>
                     </div>
                 <div className="mobile-menu" onClick={handleClick}>
