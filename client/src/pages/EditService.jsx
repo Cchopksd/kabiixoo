@@ -640,7 +640,7 @@ const EditService = () => {
                             <div className="createService-startPrice-display-box">
                                 <img className="thai-baht-icon" src={require("../images/createServicePage/thaiBahtIcon.png")}/>
                                 <div className="createService-start-price-label-box">
-                                    <label className="createService-start-price-label">{startPrice}</label>
+                                    <input className="createService-start-price-label" type="number" value={startPrice} onChange={(event) => setStartPrice(event.target.value)} min={0} max={2000}/>
                                 </div>
                                 <label className="createService-start-price-label">บาท</label>
                             </div>
