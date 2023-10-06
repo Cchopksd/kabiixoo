@@ -195,6 +195,8 @@ exports.updateProfile = async (req,res) => {
     const { mem_name,mem_surname,mem_phoneNumber,mem_birthDate } = req.body
     const mem_profileImage = req.body.newImage
 
+    console.log(mem_birthDate)
+
     // เช็คกรอกข้อมูลให้ครบ
     if (mem_name === "" || mem_surname === "" || mem_phoneNumber === "" || mem_birthDate === ""){
         return res.status(400).json({error: "กรุณากรอกข้อมูลให้ครบ"})
@@ -204,12 +206,6 @@ exports.updateProfile = async (req,res) => {
     const phoneRegex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
     if (!phoneRegex.test(mem_phoneNumber) && mem_phoneNumber !== ""){
         return res.status(400).json({error: "รูปแบบของเบอร์โทรศัพท์ไม่ถูกต้อง"})
-    }
-
-    // เช็ควันเกิด
-    const dateRegex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
-    if (!dateRegex.test(mem_birthDate) && mem_birthDate !== ""){
-        return res.status(400).json({error: "กรุณาเลือกวันเกิด"})
     }
 
     await Member.findOneAndUpdate({mem_slug: slug}, { mem_name,mem_surname,mem_phoneNumber,mem_birthDate,mem_profileImage }, {new:true})
@@ -247,6 +243,8 @@ exports.googleAuth = async (req,res) => {
             mem_name : givenName,
             mem_surname : familyName,
             mem_email : email,
+            mem_birthDate : "",
+            mem_phoneNumber: "",
             mem_profileImage : imageUrl,
             mem_slug : uuidv4()
         }).then((user) => {
@@ -272,7 +270,6 @@ exports.googleAuth = async (req,res) => {
             mem_birthDate: userExist.mem_birthDate,
             mem_phoneNumber: userExist.mem_phoneNumber,
             mem_profileImage: userExist.mem_profileImage,
-            mem_verified: userExist.mem_verified,
             mem_role: userExist.mem_role,
             token: generateToken(userExist._id)
         }))

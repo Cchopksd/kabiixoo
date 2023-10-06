@@ -100,7 +100,7 @@ const ImageUploaderEditService = ({
                                 เลือกรูป
                             </span>
                             <div className="create-file-desc">
-                                ขนาดไฟล์ : สูงสุด 5 MB ไม่เกิน 3 ไฟล์ / ไฟล์ที่รองรับ : .JPEG, .PNG
+                                ไฟล์ที่รองรับ : .JPEG, .PNG
                             </div>
                         </div>
                     </>

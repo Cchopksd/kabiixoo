@@ -83,7 +83,7 @@ const ImageUploaderCreateService = ({ onDataSend }) => {
                                 เลือกรูป
                             </span>
                             <div className="create-file-desc">
-                                ไฟล์สูงสุดไม่เกิน 3 ไฟล์ / ไฟล์ที่รองรับ : .JPEG, .PNG
+                                ไฟล์ที่รองรับ : .JPEG, .PNG
                             </div>
                         </div>
                     </>
