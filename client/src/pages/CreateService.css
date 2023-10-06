@@ -376,6 +376,9 @@
     margin-left: 60px;
 }
 .createService-start-price-label {
+    width: 90px;
+    border: none;
+    background-color: #F9F5E7;
     font-size: 30px;
     color: #A7727D ;
     font-weight: bold;
