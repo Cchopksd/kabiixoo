@@ -12,17 +12,6 @@ const SingleReport = (props) => {
     const navigate = useNavigate();
     const params = useParams();
     const [report, setReport] = useState('')
-    const [imageLoaded, setImageLoaded] = useState(false);
-
-    useEffect(() => {
-        const imgElement = document.querySelector('img'); // Assuming there's only one image on the page
-
-        if (imgElement) {
-        imgElement.addEventListener('load', () => {
-            setImageLoaded(true);
-        });
-        }
-    }, []);
 
     const goBack = () => {
         navigate(-1);
@@ -69,7 +58,7 @@ const SingleReport = (props) => {
                         <div className='row-header'>
                             <p className='col'>ผู้ร้องเรียน : {report.reportInfo?.reporter_id?.mem_name} {report.reporter_id?.mem_surname}</p>
                             <p className='col'>ผู้ถูกร้องเรียน : {report.reportInfo?.provider_id?.mem_name} {report.provider_id?.mem_surname}</p>
-                            <p className='col fixed-col2'>ชื่อ : {report.serviceInfo?.svp_name}</p>
+                            <p className='col fixed-col2'>ชื่อร้าน : {report.serviceInfo?.svp_name}</p>
                         </div>
                         <div className='row-header'>
                             <p className='col'>อีเมลล์ผู้ถูกร้องเรียน : {report.reportInfo?.provider_id?.mem_email}</p>
@@ -82,15 +71,9 @@ const SingleReport = (props) => {
                         <hr className='opacity-br'/>
                         <div className='body-description'>
                         <div className='img-row-single'>
-                            {imageLoaded ? (
-                                <>
                                 <img className='size-img-report' src={report.reportInfo?.rep_image1} alt="" />
                                 <img className='size-img-report' src={report.reportInfo?.rep_image2} alt="" />
                                 <img className='size-img-report' src={report.reportInfo?.rep_image3} alt="" />
-                                </>
-                            ) : (
-                                <p></p>
-                            )}
                             </div>
                             <p className='color-text-admin-p'>{report.reportInfo?.rep_description}</p>
                         </div>

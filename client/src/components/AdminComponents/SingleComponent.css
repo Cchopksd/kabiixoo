@@ -5,6 +5,7 @@
     margin: auto;
     top: 0;
     bottom: 0;
+    font-weight:bold;
 }
 
 .inContainer {
@@ -61,6 +62,7 @@
     color: #ffffff;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
     cursor: pointer;
+    font-weight:bold;
 }
 
 .col-delete:hover{
@@ -80,6 +82,7 @@
     color: #ffffff;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
     cursor: pointer;
+    font-weight:bold;
 }
 
 .col-confirm:hover{

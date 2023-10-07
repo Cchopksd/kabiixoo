@@ -127,7 +127,7 @@ const VerifyStore = () => {
                     <table className='table table-striped frameGroup'>
                         <thead className='fixed-height-tr'>
                             <tr className='groupFilter'>
-                                <th scope='col' className='borderColor' style={{ width: '10%', paddingLeft: '10px' }}>ลำดับที่</th>
+                                <th scope='col' className='borderColor' style={{ width: '7%', paddingLeft: '10px' }}>ลำดับที่</th>
                                 <th scope='col'>ชื่อร้าน</th>
                                 <th scope='col'>ชื่อจริง</th>
                                 <th scope='col'>นามสกุล</th>
@@ -146,13 +146,13 @@ const VerifyStore = () => {
                                     <td className='vertical-align'>{user.service_id?.svp_owner?.mem_surname || 'N/A'}</td>
                                     <td className='vertical-align'>{user.service_id?.svp_owner?.mem_email || 'N/A'}</td>
                                     <td className='vertical-align'>
-                                        <Link to={`/store/id/${user._id}`}><button className='account-button-design' style={{ background: '#DBC36C' }}>ตรวจสอบ</button></Link>
+                                        <Link to={`/store/id/${user._id}`}><button className='account-button-design' style={{ background: '#DBC36C', fontWeight:'bold' }}>ตรวจสอบ</button></Link>
                                     </td>
                                     <td className='vertical-align'>
-                                        <button className='account-button-design' onClick={() => confirmBusiness(user._id)} style={{ background: '#5BBC5F' }}>ยืนยัน</button>
+                                        <button className='account-button-design' onClick={() => confirmBusiness(user._id)} style={{ background: '#5BBC5F', fontWeight:'bold' }}>ยืนยัน</button>
                                     </td>
                                     <td className='vertical-align'>
-                                        <button className='account-button-design' onClick={() => confirmDelete(user._id)} style={{ background: '#B73953' }}>ปฎิเสธ</button>
+                                        <button className='account-button-design' onClick={() => confirmDelete(user._id)} style={{ background: '#B73953', fontWeight:'bold' }}>ปฎิเสธ</button>
                                     </td>
                                 </tr>
                             ))}
