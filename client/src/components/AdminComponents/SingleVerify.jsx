@@ -12,7 +12,8 @@ const SingleVerify = (props) => {
     const navigate = useNavigate();
     const params = useParams();
     const [verified, setVerified] = useState('')
-    const [imageLoaded, setImageLoaded] = useState(false);
+    const [BUImageLoaded, setBUImageLoaded] = useState(false);
+    const [LIImageLoaded, setLIImageLoaded] = useState(false);
     const imgBusiness1Ref = useRef(null);
     const imgBusiness2Ref = useRef(null);
     const imgBusiness3Ref = useRef(null);
@@ -25,12 +26,21 @@ const SingleVerify = (props) => {
         const imagesBusiness = [imgBusiness1Ref.current, imgBusiness2Ref.current, imgBusiness3Ref.current];
         const imagesLicense = [imgLicense1Ref.current, imgLicense2Ref.current, imgLicense3Ref.current];
 
-        const allImages = [...imagesBusiness, ...imagesLicense];
+        const BUImages = [...imagesBusiness];
+        const LIImages = [...imagesLicense];
 
-        allImages.forEach((img) => {
+        BUImages.forEach((img) => {
             if (img) {
                 img.addEventListener('load', () => {
-                    setImageLoaded(true);
+                    setBUImageLoaded(true);
+                });
+            }
+        });
+
+        LIImages.forEach((img) => {
+            if (img) {
+                img.addEventListener('load', () => {
+                    setLIImageLoaded(true);
                 });
             }
         });
@@ -132,7 +142,7 @@ const SingleVerify = (props) => {
                                 <div><img ref={imgBusiness2Ref} className='size-img-report' src={verified.conf_businessImage2} alt="" /></div>
                                 <div><img ref={imgBusiness3Ref} className='size-img-report' src={verified.conf_businessImage3} alt="" /></div>
                             </div>
-                            {imageLoaded ? (
+                            {BUImageLoaded ? (
                                 <h3 style={{ textAlign: 'center' }}>รูปถ่ายหน้าร้านหรือสถานที่ประกอบกิจการ</h3>
                             ) : null}
                             <div className='img-row-single'>
@@ -140,6 +150,9 @@ const SingleVerify = (props) => {
                                 <div><img ref={imgLicense2Ref} className='size-img-report' src={verified.conf_licenseImage2} alt="" /></div>
                                 <div><img ref={imgLicense3Ref} className='size-img-report' src={verified.conf_licenseImage3} alt="" /></div>
                             </div>
+                            {LIImageLoaded ? (
+                                <h3 style={{ textAlign: 'center' }}>รูปใบอนุญาติการค้าหรือใบอนุญาติกิจการเกี่ยวกับสัตว์</h3>
+                            ) : null}
                             <p className='color-text-admin-p'>{verified.conf_description}</p>
                     </article>
                 </section>
