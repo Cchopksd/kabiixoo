@@ -105,6 +105,9 @@ const Chat = () => {
             console.log(data)
             setChats(data)
             setPageLoading(false)
+            if (!haveService) {
+                await Swal.fire("แจ้งเตือน",'สามารถรายงานผู้ให้บริการได้ <br> ถ้าผู้ให้บริการไม่อนญาติให้รีวิวหลังบริการ','warning')
+            }
         } catch(error) {
             setPageLoading(false)
             Swal.fire('แจ้งเตือน', error.response.data.err, "error")
