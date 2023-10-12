@@ -33,7 +33,7 @@ const Footer = () => {
                 <div className="term-of-service">
                     <Link to={'/term-of-service'} className="information-legal">Information Legal</Link>
                     <label className="l-text">|</label>
-                    <Link to={'/term-of-service'} className="privacy-cookie">Privacy & Cookie Policy</Link>
+                    <a href='/term-of-service' className="privacy-cookie">Privacy & Cookie Policy</a>
                 </div>
             </div>
     );

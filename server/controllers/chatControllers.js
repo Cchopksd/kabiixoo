@@ -83,7 +83,7 @@ exports.enableReview = async (req,res) => {
         // console.log(loginUser)
         // console.log(customerId)
         if (chatInfo.canReview === true) {
-            return res.status(400).json({err : "อนุญาติให้รีวิวแล้ว"})
+            return res.status(400).json({err : "คุณได้ให้สิทธิการรีวิวกับผู้ใช้งานนี้แล้ว"})
         }
         await Chat.findOneAndUpdate({_id : chatId},{canReview : true}, {new : true}).then(() => {
             res.json({message : "อนุญาติให้รีวิวสำเร็จ"})
