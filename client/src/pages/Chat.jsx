@@ -106,7 +106,7 @@ const Chat = () => {
             setChats(data)
             setPageLoading(false)
             if (!haveService) {
-                await Swal.fire("แจ้งเตือน",'สามารถรายงานผู้ให้บริการได้ <br> ถ้าผู้ให้บริการไม่อนญาติให้รีวิวหลังบริการ','warning')
+                await Swal.fire("แจ้งเตือน",'สามารถรายงานผู้ให้บริการได้ <br> ถ้าผู้ให้บริการไม่อนุญาติให้รีวิวหลังบริการ','warning')
             }
         } catch(error) {
             setPageLoading(false)

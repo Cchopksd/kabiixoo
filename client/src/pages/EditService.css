@@ -337,7 +337,15 @@
 }
 .createService-start-price-label-box {
     width: 130px;
-    margin-left: 60px;
+    margin-left: 50px;
+}
+.createService-start-price-label {
+    width: 90px;
+    border: none;
+    background-color: #F9F5E7;
+    font-size: 30px;
+    color: #A7727D ;
+    font-weight: bold;
 }
 .createService-start-price-label {
     width: 90px;
@@ -612,6 +620,12 @@
         width: 100px;
         margin-left: 50px;
     }
+    .createService-start-price {
+        width: 75px;
+        font-size: 25px;
+        border-radius: 20px;
+        padding-left: 15px;
+    }
     .createService-start-price-label {
         font-size: 25px;
         color: #A7727D ;
@@ -868,6 +882,12 @@
     .createService-start-price-label-box {
         width: 100px;
         margin-left: 50px;
+    }
+    .createService-start-price {
+        width: 75px;
+        font-size: 25px;
+        border-radius: 20px;
+        padding-left: 15px;
     }
     .createService-start-price-label {
         font-size: 25px;

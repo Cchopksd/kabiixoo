@@ -485,28 +485,28 @@ const CreateService = () => {
                             <div className="createService-pet-checkbox-item">
                                 <div className={!havePhone ? "createService-contact-checkbox-box-1" : "createService-contact-checkbox-box-1-checked"}>
                                     <input type="checkbox" checked={havePhone} onChange={()=> {setHavePhone(!havePhone)
-                                    setPhone("")}}/>เบอร์โทรศัพท์
+                                    setPhone("")}} className="createService-contact-checked"/>เบอร์โทรศัพท์
                                     <img className="createService-contact-type-icon" src={require("../images/createServicePage/phoneIcon.png")}/>
                                     <input disabled={!havePhone} className="createService-contact-input" type="text" value={phone} onChange={(event) => setPhone(event.target.value)}
                                     placeholder="กรอก เบอร์โทรศัพท์"/>
                                 </div>
                                 <div className={!haveFacebook ? "createService-contact-checkbox-box-2" : "createService-contact-checkbox-box-2-checked"}>
                                     <input type="checkbox" checked={haveFacebook} onChange={()=> {setHaveFacebook(!haveFacebook)
-                                    setFacebook("")}}/>Facebook
+                                    setFacebook("")}} className="createService-contact-checked"/>Facebook
                                     <img className="createService-contact-type-icon" src={require("../images/createServicePage/facebookIcon.png")}/>
                                     <input disabled={!haveFacebook} className="createService-contact-input" type="text" value={facebook} onChange={(event) => setFacebook(event.target.value)}
                                     placeholder="กรอกชื่อ Facebook"/>
                                 </div>
                                 <div className={!haveInstagram ? "createService-contact-checkbox-box-1 createService-contact-endline" : "createService-contact-checkbox-box-1-checked createService-contact-endline"}>
                                     <input type="checkbox" checked={haveInstagram} onChange={()=> {setHaveInstagram(!haveInstagram)
-                                    setInstagram("")}}/>Instagram
+                                    setInstagram("")}} className="createService-contact-checked"/>Instagram
                                     <img className="createService-contact-type-icon" src={require("../images/createServicePage/instagramIcon.png")}/>
                                     <input disabled={!haveInstagram} className="createService-contact-input" type="text" value={instagram} onChange={(event) => setInstagram(event.target.value)}
                                     placeholder="กรอกชื่อ Instagram"/>
                                 </div>
                                 <div className={!haveLine ? "createService-contact-checkbox-box-2 createService-contact-endline" : "createService-contact-checkbox-box-2-checked createService-contact-endline"}>
                                     <input type="checkbox" checked={haveLine} onChange={()=> {setHaveLine(!haveLine)
-                                    setLine("")}}/>Line
+                                    setLine("")}} className="createService-contact-checked"/>Line
                                     <img className="createService-contact-type-icon" src={require("../images/createServicePage/lineIcon.png")}/>
                                     <input disabled={!haveLine} className="createService-contact-input" type="text" value={line} onChange={(event) => setLine(event.target.value)}
                                     placeholder="กรอกไอดี Line"/>
@@ -520,7 +520,7 @@ const CreateService = () => {
                             <div className="createService-startPrice-display-box">
                                 <img className="thai-baht-icon" src={require("../images/createServicePage/thaiBahtIcon.png")}/>
                                 <div className="createService-start-price-label-box">
-                                    <input className="createService-start-price-label" type="number" value={startPrice} onChange={(event) => setStartPrice(event.target.value)} min={0} max={2000}/>
+                                    <input className="createService-start-price" type="number" value={startPrice} onChange={(event) => setStartPrice(event.target.value)} min={0} max={2000}/>
                                 </div>
                                 <label className="createService-start-price-label">บาท</label>
                             </div>
