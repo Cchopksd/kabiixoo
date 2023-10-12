@@ -152,7 +152,7 @@ export default function SignIn()  {
                                         <button className='bt_lwg' type="button"><FcGoogle className="iconGoogle"/>เข้าสู่ระบบผ่าน google</button>
                                 </LoginSocialGoogle>
                             </div>
-                        <p className='plc_pvr'>การดำเนินการต่อแสดงว่าคุณยอมรับข้อกำหนดในการให้บริการของ <Link to="/term-of-service" >Kabixoo</Link> และ <Link to="/term-of-service">นโยบายความเป็นส่วนตัว</Link></p>
+                        <p className='plc_pvr'>การดำเนินการต่อแสดงว่าคุณยอมรับข้อกำหนดในการให้บริการของ <Link to="/term-of-service" >Kabiixoo</Link> และ <Link to="/term-of-service">นโยบายความเป็นส่วนตัว</Link></p>
                         </div>
                     </form>
                 </div>
