@@ -114,7 +114,11 @@ export default function SignIn()  {
                                 <hr className='line'></hr>
                             </div>
                             <div className='lg_google'>
-                                <LoginSocialGoogle client_id='487675977490-hbu4phrdsshvjedtsp1j94urp0ec8fj8.apps.googleusercontent.com'
+                                <LoginSocialGoogle
+                                // render
+                                // client_id='487675977490-hbu4phrdsshvjedtsp1j94urp0ec8fj8.apps.googleusercontent.com'
+                                // vercel
+                                client_id='487675977490-j8orkt7qj9cis7htae05btgbca0kjg2d.apps.googleusercontent.com'
                                     scope='openid profile email'
                                     discoveryDocs='claims_supported'
                                     access_type='online'
