@@ -73,6 +73,7 @@ const Chat = () => {
         setPageLoading(true)
         setLoginUser(params.userId)
         fetchChats()
+        warningPop()
     },[])
 
     // ต่อ realtime
@@ -95,6 +96,12 @@ const Chat = () => {
         })
     })
 
+    const warningPop = async () => {
+        if (!haveService) {
+            await Swal.fire("แจ้งเตือน",'สามารถรายงานผู้ให้บริการได้ <br> ถ้าผู้ให้บริการไม่อนุญาติให้รีวิวหลังบริการ','warning')
+        }
+    }
+
     const fetchChats = async () => {
         try {
             const { data } = await axios.post(`${process.env.REACT_APP_API}/fetch-chats`,{loginUser},
@@ -107,9 +114,9 @@ const Chat = () => {
             console.log(data)
             setChats(data)
             setPageLoading(false)
-            if (!haveService) {
-                await Swal.fire("แจ้งเตือน",'สามารถรายงานผู้ให้บริการได้ <br> ถ้าผู้ให้บริการไม่อนุญาติให้รีวิวหลังบริการ','warning')
-            }
+            // if (!haveService) {
+            //     await Swal.fire("แจ้งเตือน",'สามารถรายงานผู้ให้บริการได้ <br> ถ้าผู้ให้บริการไม่อนุญาติให้รีวิวหลังบริการ','warning')
+            // }
         } catch(error) {
             setPageLoading(false)
             Swal.fire('แจ้งเตือน', error.response.data.err, "error")
