@@ -22,7 +22,7 @@ import AnimatedPage from "../AnimatedPage";
 // endpoint ตอน deploy
 // const ENDPOINT = "https://kabiixoo-server.onrender.com"
 // endpoint ตอน deploy vercel
-const ENDPOINT = "https://kabiixoo.vercel.app"
+const ENDPOINT = "https://kabiixoo-server.vercel.app"
 
 var socket;
 
