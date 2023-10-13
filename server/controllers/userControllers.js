@@ -235,6 +235,13 @@ exports.googleAuth = async (req,res) => {
 
     let userExist = await Member.findOne({mem_email : email})
 
+    if (userExist) {
+        // ถ้าถูกระงับ
+        if (userExist.isSuspended === true) {
+            return res.status(400).json({error: "บัญชีนี้ถูกระงับไม่สามารถใช้งานได้"})
+        }
+    }
+
     // ยังไม่มีบัญชี google นี้
     if (userExist === null) {
         await Member.create({
@@ -274,7 +281,7 @@ exports.googleAuth = async (req,res) => {
             token: generateToken(userExist._id)
         }))
     }else {
-        return res.status(400).json({error: "ชื่อผู้ใช้งานหรือรหัสผ่านไม่ถูกต้อง"})
+        return res.status(400).json({error: "เกิดข้อผิดพลาด"})
     }
 }
 

@@ -141,7 +141,7 @@ export default function SignIn()  {
                                         }).catch((err) => {
                                             Swal.fire(
                                                 'แจ้งเตือน',
-                                                "เกิดข้อผิดพลาด",
+                                                err.response.data.error,
                                                 'error'
                                             )
                                         })
@@ -149,7 +149,7 @@ export default function SignIn()  {
                                     onReject={(err) => {
                                         Swal.fire(
                                             'แจ้งเตือน',
-                                            "เกิดข้อผิดพลาด",
+                                            err.response.data.error,
                                             'error'
                                         )
                                     }}>

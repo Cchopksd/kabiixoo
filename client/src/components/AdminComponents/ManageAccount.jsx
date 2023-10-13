@@ -145,14 +145,14 @@ const ManageAccount = () => {
                                 <td className='vertical-align '>{user.mem_email}</td>
                                 <td className='vertical-align '>
                                     <span className={user.isSuspended ? 'suspended' : 'normal'}>
-                                        {user.isSuspended ? 'ถูกระงับใช้' : 'ปกติ'}
+                                        {user.isSuspended ? 'ถูกระงับ' : 'ปกติ'}
                                     </span>
                                 </td>
                                 <td className='vertical-align '>
                                     <Link to={`/account/edit/${user.mem_slug}`}><button className='account-button-design' style={{ background: '#DBC36C' ,fontWeight:'bold'}}>แก้ไขข้อมูล</button></Link>
                                 </td>
                                 <td>
-                                    <button className='account-button-design' style={{ background: '#D29965' ,fontWeight:'bold'}} onClick={() => confirmSuspended(user.mem_slug)} >{user.isSuspended ? 'ปลดล็อก' : 'ระงับใช้'}</button>
+                                    <button className='account-button-design' style={{ background: '#D29965' ,fontWeight:'bold'}} onClick={() => confirmSuspended(user.mem_slug)} >{user.isSuspended ? 'ปลดล็อก' : 'ระงับบัญชี'}</button>
                                 </td>
                                 <td>
                                     <button className='account-button-design' onClick={() => confirmDelete(user.mem_slug)} style={{ background: '#B73953' ,fontWeight:'bold'}}>ลบบัญชี</button>
