@@ -99,8 +99,8 @@ const Navbar = () => {
                     </Link>
                     <div className="menu">
                         <ul className={click ? "nav-link active" : "nav-link"}>
-                            <Link to="/" className="mobile-spacing" onClick={closeMobileMenu}>
-                                <Link to="/">ค้นหาการให้บริการ</Link>
+                            <Link to="/home" className="mobile-spacing" onClick={closeMobileMenu}>
+                                <Link to="/home">ค้นหาการให้บริการ</Link>
                             </Link>
                             <Link to="/article" className="mobile-spacing" onClick={closeMobileMenu}>
                                 <Link to="/article">บทความ</Link>

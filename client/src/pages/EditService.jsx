@@ -329,7 +329,7 @@ const EditService = () => {
                         setImage2("")
                         setImage3("")
                         setImage4("")
-                        navigate('/')
+                        navigate('/home')
                     }).catch((err) => {
                         setLoading(false)
                         Swal.fire(
@@ -410,7 +410,7 @@ const EditService = () => {
                         setImage2("")
                         setImage3("")
                         setImage4("")
-                        navigate('/')
+                        navigate('/home')
                     }).catch((err) => {
                         setLoading(false)
                         Swal.fire(
@@ -448,7 +448,7 @@ const EditService = () => {
                         'success'
                     )
                     setHaveService(false)
-                    navigate('/')
+                    navigate('/home')
                 })
             }
           })

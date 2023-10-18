@@ -71,7 +71,7 @@ const SignUp = () => {
                 setState({...state,name: "",surname: "",email: "",phone: "",birthDate: "",username: "",password: "",confirmPassword: ""})
                 setImage("")
                 setImageFile("")
-                authenticate(res,()=>navigate('/'))
+                authenticate(res,()=>navigate('/home'))
             }).catch((err) => {
                 setLoading(false)
                 Swal.fire(
@@ -140,7 +140,7 @@ const SignUp = () => {
                 setState({...state,name: "",surname: "",email: "",phone: "",birthDate: "",username: "",password: "",confirmPassword: ""})
                 setImage("")
                 setImageFile("")
-                authenticate(res,()=>navigate('/'))
+                authenticate(res,()=>navigate('/home'))
             }).catch((err) => {
                 setLoading(false)
                 Swal.fire(

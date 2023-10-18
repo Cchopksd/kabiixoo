@@ -8,10 +8,11 @@ import IconWebSearch from '../images/iconWebSearch.png';
 import IconCustomerService from '../images/iconCustomerService.png';
 import PersonWithPet from '../images/personWithPet.png';
 import Footer from '../components/Footer';
+import AnimatedPage from '../AnimatedPage';
 
 const WelcomePage = () => {
     return (
-        <div>
+        <AnimatedPage>
             <main className='wel-container'>
                 <section className='wel-sec-1'>
                     <div className='wel-p1'>
@@ -57,7 +58,7 @@ const WelcomePage = () => {
                 </section>
             </main>
             <Footer />
-        </div>
+        </AnimatedPage>
     );
 }
 
