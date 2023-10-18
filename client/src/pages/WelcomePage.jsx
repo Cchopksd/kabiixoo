@@ -12,14 +12,14 @@ import Footer from '../components/Footer';
 const WelcomePage = () => {
     return (
         <div>
-            <main>
+            <main className='wel-container'>
                 <section className='wel-sec-1'>
                     <div className='wel-p1'>
                         <img className='wel-Logo' src={Logo} alt="" />
-                        <h3>เว็บไซต์ศูนย์กลางในการหาผู้ให้บริการที่พร้อม <br /> ดูแลสัตว์เลี้ยงที่คุณรัก</h3>
-                        <div className='wel-link-home'>
-                            <Link className='wel-link-home' to={'/home'}>ค้นหาผู้ให้บริการ</Link>
-                        </div>
+                        <label>เว็บไซต์ศูนย์กลางในการหาผู้ให้บริการที่พร้อม <br /> ดูแลสัตว์เลี้ยงที่คุณรัก</label>
+                        <Link className='wel-link-home' to={'/home'}>
+                            ค้นหาผู้ให้บริการ
+                        </Link>
                     </div>
                     <div>
                         <img src={Pic} className='pic-sec1' alt="" />
@@ -47,10 +47,10 @@ const WelcomePage = () => {
                     <div className='sec-3-article'>
                         <article className='sec-3-content'>
                             <h2 className='header-sec-3'>เคยไหมกับปัญหา ?</h2>
-                            <p className='sec-3-text'>ในช่วงวันหยุดเทศกาล หรือ ช่วงวันที่ไม่อยู่บ้าน และไม่สามารถ <br />
-                                ดูแลน้องสัตว์เลี้ยงที่เรารักได้ จะหาผู้ที่รับฝากก็ไม่สะดวกและ<br />
-                                ยุ่งยาก KabiiXoo พร้อมให้บริการ ผู้ให้บริการที่หลากหลาย และ<br />
-                                ตรงตามความต้องการของคุณ ที่รวมอยู่ในเว็บไซต์ สามารถ<br />
+                            <p className='sec-3-text'>ในช่วงวันหยุดเทศกาล หรือ ช่วงวันที่ไม่อยู่บ้าน และไม่สามารถ <br className='wel-br-none'/>
+                                ดูแลน้องสัตว์เลี้ยงที่เรารักได้ จะหาผู้ที่รับฝากก็ไม่สะดวกและ<br className='wel-br-none'/>
+                                ยุ่งยาก KabiiXoo พร้อมให้บริการ ผู้ให้บริการที่หลากหลาย และ<br className='wel-br-none'/>
+                                ตรงตามความต้องการของคุณ ที่รวมอยู่ในเว็บไซต์ สามารถ<br className='wel-br-none'/>
                                 ใช้บริการฝากสัตว์เลี้ยงได้ทันที ผ่าน KabiiXoo </p>
                         </article>
                     </div>

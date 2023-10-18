@@ -1,26 +1,28 @@
 /* section 1 */
 .wel-sec-1{
-    margin: 100px;
+    margin: 170px 0 200px 0;
     display: flex;
     justify-content: center;
 }
-
 .wel-p1{
     display: flex;
     flex-direction: column;
     margin: 80px 80px 80px 0;
     gap: 1.7em;
 }
-
+.wel-p1 label {
+    font-size: 30px;
+    margin: 20px 0 0 0;
+    color: #616161;
+}
 .pic-sec1{
     height: 530px;
 }
-
 .wel-Logo{
-    height: 150px;
+    height: 170px;
 }
-
 .wel-link-home{
+    margin: 20px 0 0 0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -28,21 +30,18 @@
     color: #FFF;
     width: 250px;
     height: 50px;
-    font-size: 24px;
+    font-size: 20px;
     text-decoration: none;
     border-radius: 20px;
     cursor: pointer;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
     transition: ease-in-out 0.5s;
 }
-
 .wel-link-home:hover{
     opacity: 70%;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
 }
-
 /* section 2 */
-
 .wel-sec-2{
     display: flex;
     flex-direction: column;
@@ -51,7 +50,6 @@
     background-color: #FBF2E8;
     height: 580px;
 }
-
 .header-sec-2{
     color: #A7727D;
     text-align: center;
@@ -61,12 +59,10 @@
     font-weight: bold;
     margin-top: -10px;
 }
-
 .wel-sec-2-article{
     display: flex;
     gap: 5rem;
 }
-
 .box-sec-2{
     display: flex;
     flex-direction: column;
@@ -78,12 +74,10 @@
     align-items: center;
     gap: 1em;
 }
-
 .icon-sec-2{
-    height: 200px;
-    width: 200px;
+    height: 150px;
+    width: 150px;
 }
-
 .sec-2-text{
     display: flex;
     color: #A7727D;
@@ -92,16 +86,16 @@
     text-align: center;
     font-weight: bold;
 }
-
 /* section 3 */
-
 .wel-sec-3{
     margin: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-
+.wel-sec-3 img{
+    height: 500px;
+}
 .sec-3-article{
     width: 550px;
     height: 300px;
@@ -110,25 +104,243 @@
     box-shadow: 0px 4px 40px 0px rgba(0, 0, 0, 0.25);
     padding: auto;
 }
-
 .sec-3-content{
     display: flex;
     flex-direction: column;
     margin: auto;
 }
-
 .header-sec-3{
     color: #A7727D;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     font-size: 38px;
     margin-left: 50px;
 }
-
 .sec-3-text{
     color: #616161;
     font-family: IBM Plex Sans Thai;
     font-size: 18px;
-    font-weight: 600;
+    /* font-weight: 600; */
     margin: auto;
     margin-top: -15px;
+}
+
+
+@media screen and (min-width: 1080px) and (max-width: 1440px) {
+    .wel-container {
+        margin: auto;
+        /* width: 900px; */
+    }
+    .wel-sec-1 {
+        align-items: center;
+        margin: 170px 0 100px 0;
+        flex-direction: column;
+    }
+    .pic-sec1{
+        margin: 70px 0 0 0;
+        height: 530px;
+    }
+    .wel-p1{
+        width: 700px;
+        display: flex;
+        flex-direction: column;
+        margin: 0px 0px 0px 0;
+        gap: 1.7em;
+    }
+    .wel-Logo{
+        height: 170px;
+    }
+    .wel-sec-2{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: #FBF2E8;
+        height: 1000px;
+    }
+    .wel-sec-2-article{
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        width: 900px;
+        gap: 5rem;
+    }
+    .wel-sec-3 img{
+        height: 300px;
+    }
+    .wel-sec-3{
+        margin: 70px 0 70px 0;
+    }
+}
+
+@media screen and (min-width: 850px) and (max-width: 1080px) {
+    .wel-container {
+        margin: auto;
+        /* width: 900px; */
+    }
+    .wel-sec-1 {
+        align-items: center;
+        margin: 170px 0 100px 0;
+        flex-direction: column;
+    }
+    .pic-sec1{
+        margin: 70px 0 0 0;
+        height: 500px;
+    }
+    .wel-p1{
+        width: 700px;
+        display: flex;
+        flex-direction: column;
+        margin: 0px 0px 0px 0;
+        gap: 1.7em;
+    }
+    .wel-Logo{
+        width: 600px;
+        height: 150px;
+    }
+    .wel-sec-2{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: #FBF2E8;
+        height: 1000px;
+    }
+    .box-sec-2{
+        width: 330px;
+        height: 330px;
+    }
+    .icon-sec-2{
+        height: 120px;
+        width: 120px;
+    }
+    .wel-sec-2-article{
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        width: 850px;
+        gap: 5rem;
+    }
+    .wel-sec-3{
+        margin: 50px;
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: center;
+        align-items: center;
+    }
+    .wel-sec-3 img{
+        margin: 50px 0 0 0;
+        height: 300px;
+    }
+    .wel-sec-3{
+        margin: 70px 0 70px 0;
+    }
+}
+@media screen and (min-width: 0px) and (max-width: 850px) {
+    .wel-container {
+        margin: auto;
+        /* width: 900px; */
+    }
+    .wel-p1 label {
+        font-size: 20px;
+        margin: 20px 0 0 0;
+    }
+    .wel-sec-1 {
+        align-items: center;
+        margin: 100px 0 100px 0;
+        flex-direction: column;
+    }
+    .wel-link-home{
+        margin: 20px 0 0 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #A7727D;
+        color: #FFF;
+        width: 170px;
+        height: 50px;
+        font-size: 15px;
+        text-decoration: none;
+        border-radius: 20px;
+        cursor: pointer;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+        transition: ease-in-out 0.5s;
+    }
+    .pic-sec1{
+        margin: 70px 0 0 0;
+        height: 300px;
+    }
+    .wel-p1{
+        width: 375px;
+        display: flex;
+        flex-direction: column;
+        margin: 0px 0px 0px 0;
+        gap: 1.7em;
+    }
+    .wel-Logo{
+        width: 300px;
+        height: 80px;
+    }
+    .wel-sec-2{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: #FBF2E8;
+        height: 1300px;
+    }
+    .header-sec-2{
+        font-family: IBM Plex Sans Thai;
+        font-size: 30px;
+        font-weight: bold;
+        margin-top: -10px;
+        margin-bottom: 40px;
+    }
+    .box-sec-2{
+        width: 330px;
+        height: 330px;
+    }
+    .icon-sec-2{
+        height: 120px;
+        width: 120px;
+    }
+    .wel-sec-2-article{
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        width: 375px;
+        gap: 3rem;
+    }
+    .wel-sec-3{
+        margin: 50px;
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: center;
+        align-items: center;
+    }
+    .wel-sec-3 img{
+        margin: 50px 0 0 0;
+        height: 270px;
+    }
+    .wel-sec-3{
+        margin: 70px 0 70px 0;
+    }
+    .sec-3-article{
+        width: 315px;
+        height: 310px;
+        padding: 30px;
+    }
+    .sec-3-text{
+        font-size: 18px;
+        margin: auto;
+        margin-top: -15px;
+    }
+    .wel-br-none {
+        display: none;
+    }
+    .header-sec-3{
+        color: #A7727D;
+        text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        font-size: 30px;
+        margin-left: 0px;
+    }
 }
