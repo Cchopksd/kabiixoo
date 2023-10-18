@@ -46,7 +46,7 @@ export default function SignIn()  {
                 setIsAdmin(true)
                 authenticate(res,()=>navigate('/administrator-homepage'))
             }else {
-                authenticate(res,()=>navigate('/'))
+                authenticate(res,()=>navigate('/home'))
             }
             //   location.reload();
         }).catch((err) => {
@@ -137,7 +137,7 @@ export default function SignIn()  {
                                                 'success'
                                             )
                                             setState({...state,username:"",password:""})
-                                            authenticate(res,()=>navigate('/'))
+                                            authenticate(res,()=>navigate('/home'))
                                         }).catch((err) => {
                                             Swal.fire(
                                                 'แจ้งเตือน',

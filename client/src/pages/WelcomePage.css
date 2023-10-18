@@ -1,0 +1,134 @@
+/* section 1 */
+.wel-sec-1{
+    margin: 100px;
+    display: flex;
+    justify-content: center;
+}
+
+.wel-p1{
+    display: flex;
+    flex-direction: column;
+    margin: 80px 80px 80px 0;
+    gap: 1.7em;
+}
+
+.pic-sec1{
+    height: 530px;
+}
+
+.wel-Logo{
+    height: 150px;
+}
+
+.wel-link-home{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #A7727D;
+    color: #FFF;
+    width: 250px;
+    height: 50px;
+    font-size: 24px;
+    text-decoration: none;
+    border-radius: 20px;
+    cursor: pointer;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+    transition: ease-in-out 0.5s;
+}
+
+.wel-link-home:hover{
+    opacity: 70%;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* section 2 */
+
+.wel-sec-2{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #FBF2E8;
+    height: 580px;
+}
+
+.header-sec-2{
+    color: #A7727D;
+    text-align: center;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-family: IBM Plex Sans Thai;
+    font-size: 40px;
+    font-weight: bold;
+    margin-top: -10px;
+}
+
+.wel-sec-2-article{
+    display: flex;
+    gap: 5rem;
+}
+
+.box-sec-2{
+    display: flex;
+    flex-direction: column;
+    width: 360px;
+    height: 360px;
+    border-radius: 30px;
+    background: #FFF;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+}
+
+.icon-sec-2{
+    height: 200px;
+    width: 200px;
+}
+
+.sec-2-text{
+    display: flex;
+    color: #A7727D;
+    font-size: 20px;
+    /* margin: 20px; */
+    text-align: center;
+    font-weight: bold;
+}
+
+/* section 3 */
+
+.wel-sec-3{
+    margin: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sec-3-article{
+    width: 550px;
+    height: 300px;
+    border-radius: 70px 70px 70px 0px;
+    background: rgba(248, 234, 216, 0.60);
+    box-shadow: 0px 4px 40px 0px rgba(0, 0, 0, 0.25);
+    padding: auto;
+}
+
+.sec-3-content{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+
+.header-sec-3{
+    color: #A7727D;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-size: 38px;
+    margin-left: 50px;
+}
+
+.sec-3-text{
+    color: #616161;
+    font-family: IBM Plex Sans Thai;
+    font-size: 18px;
+    font-weight: 600;
+    margin: auto;
+    margin-top: -15px;
+}
