@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useContext } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { IoChevronBackSharp } from "react-icons/io5";
@@ -6,6 +6,7 @@ import SideBarAdmin from './SideBarAdmin'
 import './SingleComponent.css'
 import Swal from 'sweetalert2';
 import AnimatedPage from '../../AnimatedPage';
+import UserContext from '../../contexts/UserProvider';
 
 const SingleVerify = (props) => {
 
@@ -21,6 +22,10 @@ const SingleVerify = (props) => {
     const imgLicense1Ref = useRef(null);
     const imgLicense2Ref = useRef(null);
     const imgLicense3Ref = useRef(null);
+
+    // Context api
+    const {isAdmin, setIsAdmin} = useContext(UserContext);
+    setIsAdmin(true)
 
     useEffect(() => {
         const imagesBusiness = [imgBusiness1Ref.current, imgBusiness2Ref.current, imgBusiness3Ref.current];

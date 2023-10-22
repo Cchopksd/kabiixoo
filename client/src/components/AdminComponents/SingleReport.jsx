@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useParams, useNavigate  } from 'react-router-dom';
 import axios from 'axios';
 import { IoChevronBackSharp } from "react-icons/io5";
@@ -6,12 +6,17 @@ import SideBarAdmin from './SideBarAdmin'
 import './SingleComponent.css'
 import Swal from 'sweetalert2';
 import AnimatedPage from '../../AnimatedPage';
+import UserContext from '../../contexts/UserProvider';
 
 const SingleReport = (props) => {
 
     const navigate = useNavigate();
     const params = useParams();
     const [report, setReport] = useState('')
+
+    // Context api
+    const {isAdmin, setIsAdmin} = useContext(UserContext);
+    setIsAdmin(true)
 
     const goBack = () => {
         navigate(-1);

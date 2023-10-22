@@ -451,6 +451,9 @@ const EditService = () => {
                     navigate('/home')
                 })
             }
+            else {
+                setLoading(false)
+            }
           })
     }
 

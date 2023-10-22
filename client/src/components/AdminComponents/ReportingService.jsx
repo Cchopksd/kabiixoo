@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import SideBarAdmin from './SideBarAdmin';
 import '../AdminComponents/ManageComponent.css';
 import axios from 'axios';
@@ -6,12 +6,17 @@ import Swal from "sweetalert2"
 import ReactPaginate from 'react-paginate';
 import { Link } from 'react-router-dom';
 import AnimatedPage from '../../AnimatedPage';
+import UserContext from '../../contexts/UserProvider';
 
 const ReportingService = () => {
     const [users, setUsers] = useState([]);
     const [currentPage, setCurrentPage] = useState(0);
     const [perPage] = useState(10); // Number of items per page
     const [searchTerm, setSearchTerm] = useState('');
+
+    // Context api
+    const {isAdmin, setIsAdmin} = useContext(UserContext);
+    setIsAdmin(true)
 
     const fetchData = () => {
         axios

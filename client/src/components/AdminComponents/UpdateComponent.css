@@ -81,9 +81,11 @@
     color: #E9E9E9;
     border-radius: 10px;
 }
-
-
-
+.btn-update:hover{
+    transition: 0.3s ease;
+    opacity: 0.7;
+    cursor: pointer;
+}
 .update-profileImage-admin{
     height: 80px;
     width: 80px;

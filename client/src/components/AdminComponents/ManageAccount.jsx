@@ -1,16 +1,21 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import ReactPaginate from 'react-paginate';
 import '../AdminComponents/ManageComponent.css';
 import SideBarAdmin from './SideBarAdmin';
 import Swal from "sweetalert2";
 import { Link } from 'react-router-dom';
+import UserContext from '../../contexts/UserProvider';
 
 const ManageAccount = () => {
     const [users, setUsers] = useState([]);
     const [currentPage, setCurrentPage] = useState(0);
     const [perPage] = useState(10); // Number of items per page
     const [searchTerm, setSearchTerm] = useState('');
+
+    // Context api
+    const {isAdmin, setIsAdmin} = useContext(UserContext);
+    setIsAdmin(true)
 
     const fetchData = () => {
         axios

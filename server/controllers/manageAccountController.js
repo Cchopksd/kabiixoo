@@ -96,8 +96,15 @@ exports.updateAccount = async (req, res) => {
     // เช็คว่ามีผู้ใช้งานซ้ำยัง
     if (userExists || emailExists) {
         // เช็คว่าข้อมูลตรงกับที่แสดงผลตอนแรกไหม
-        if (userExists.mem_username !== username || emailExists.mem_email !== email) {
-            return res.status(400).json({error: "มีผู้ใช้งานนี้อยู่แล้ว"})
+        if (userExists) {
+            if (userExists.mem_username !== username) {
+                return res.status(400).json({error: "มีผู้ใช้งานนี้อยู่แล้ว"})
+            }
+        }
+        if (emailExists) {
+            if (emailExists.mem_email !== email) {
+                return res.status(400).json({error: "มีผู้ใช้งานนี้อยู่แล้ว"})
+            }
         }
     }
 

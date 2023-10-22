@@ -2,11 +2,12 @@ import React from 'react';
 import SideBarAdmin from './SideBarAdmin';
 import './UpdateComponent.css'
 import Swal from 'sweetalert2';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { useNavigate, useParams } from "react-router-dom";
 import { IoChevronBackSharp } from "react-icons/io5";
 import axios from "axios";
 import AnimatedPage from '../../AnimatedPage';
+import UserContext from '../../contexts/UserProvider';
 
 const UpdateAccount = () => {
     // url parameter
@@ -18,9 +19,11 @@ const UpdateAccount = () => {
     // รูปของเลือก imagefile
     const [imageFile, setImageFile] = useState(null)
     const [newImage, setNewImage] = useState()
-    
-    
 
+    // Context api
+    const {isAdmin, setIsAdmin} = useContext(UserContext);
+    setIsAdmin(true)
+    
     // state ข้อมูล
     const [state, setState] = useState({
         mem_username: '',
