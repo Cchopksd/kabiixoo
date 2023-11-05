@@ -655,7 +655,10 @@ const EditService = () => {
                 </div>
                 <div className="create-part-5">
                     <div className="create-info-8-box">
-                        <label className="createService-title-1">รูปภาพผู้ให้บริการและกิจการ</label>
+                        <div style={{flexWrap : 'wrap', display : 'flex', alignItems : 'center'}}>
+                            <label className="createService-title-1">รูปภาพผู้ให้บริการและกิจการ</label>
+                            <label style={{fontSize: '14px', margin : '0 0 0 10px', color : '#9ba0a8'}}>(เลือกรูปได้ครั้งละหนึ่งรูป)</label>
+                        </div>
                         <ImageUploaderEditService 
                         onDataSend={handleDataFromChild} 
                         sendImage={imagesArr}/>
