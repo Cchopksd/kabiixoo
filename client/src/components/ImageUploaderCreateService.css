@@ -57,6 +57,7 @@
     width: 100%;
     height: 100%;
     border-radius: 5px;
+    object-fit: cover;
 }
 .create-img-upl-card .create-img-upl-container .create-upl-image span {
     position: absolute;
@@ -72,7 +73,7 @@
 }
 .create-upl-delete{
     z-index: 999;
-    color: #A7727D;
+    color: black;
 }
 .create-drag-area-disable {
     display: none;

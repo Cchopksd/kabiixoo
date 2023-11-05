@@ -56,6 +56,7 @@
     width: 100%;
     height: 100%;
     border-radius: 5px;
+    object-fit: cover;
 }
 .confirm-img-upl-card .confirm-img-upl-container .confirm-upl-image span {
     position: absolute;
@@ -71,7 +72,7 @@
 }
 .confirm-upl-delete{
     z-index: 999;
-    color: #A7727D;
+    color: black;
 }
 .confirm-drag-area-disable {
     display: none;
