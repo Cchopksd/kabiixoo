@@ -80,7 +80,7 @@ const Home = () => {
                                         </div>
                                         <div className='home-provider-info-box'>
                                             <div className='home-business-name-box'>
-                                                <label className='home-business-name'>{item.svp_name}</label>
+                                                <label className='home-business-name'>{item.svp_name.length > 35 ? item.svp_name.slice(0, 35) + "..." : item.svp_name}</label>
                                                 <div className={item.svp_verified ? 'home-confirm-business-sign' : 'home-confirm-business-sign-none'}>
                                                     <img src={require("../images/providerHomePage/confirmIcon.png")}/>
                                                     <label>มีหน้าร้าน</label>
