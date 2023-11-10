@@ -135,6 +135,19 @@ const CreateService = () => {
     const submitCreate = async (event) => {
         event.preventDefault();
         setLoading(true)
+
+        // เช็คกรอกข้อมูลครบไหม
+        if (!serviceName || !addressNumber || !alleyName || !roadName || !provinceName || !stateName ||
+            !districtName || !postalCode || !introduceDesc || !serviceDesc) {
+                setLoading(false)
+                Swal.fire(
+                    'แจ้งเตือน',
+                    'กรุณากรอกข้อมูลให้ครบ',
+                    'error'
+                )
+                return
+        }
+        
         // เช็คแนบรูป
         if (images.length > 0){
             for (let i = 0; i < images.length; i++) {
@@ -162,17 +175,6 @@ const CreateService = () => {
             }
             setUploadImg(true)
         } else {
-            // เช็คกรอกข้อมูลครบไหม
-            if (!serviceName || !addressNumber || !alleyName || !roadName || !provinceName || !stateName ||
-                !districtName || !postalCode || !introduceDesc || !serviceDesc) {
-                    setLoading(false)
-                    Swal.fire(
-                        'แจ้งเตือน',
-                        'กรุณากรอกข้อมูลให้ครบ',
-                        'error'
-                    )
-                    return
-            }
 
             // สร้าง Address แบบเต็ม
             const serviceAddress = `${addressNumber} ${alleyName} ${roadName} ${districtName} ${stateName} ${provinceName} ${postalCode}`
@@ -244,17 +246,6 @@ const CreateService = () => {
     // ทำงานเมื่อกด submit และมีรูปแนบด้วย
     useEffect(() => {
         if(uploadImg) {
-            // เช็คกรอกข้อมูลครบไหม
-            if (!serviceName || !addressNumber || !alleyName || !roadName || !provinceName || !stateName ||
-                !districtName || !postalCode || !introduceDesc || !serviceDesc) {
-                    setLoading(false)
-                    Swal.fire(
-                        'แจ้งเตือน',
-                        'กรุณากรอกข้อมูลให้ครบ',
-                        'error'
-                    )
-                    return
-            }
             // สร้าง Address แบบเต็ม
             const serviceAddress = `${addressNumber} ${alleyName} ${roadName} ${districtName} ${stateName} ${provinceName} ${postalCode}`
             if (serviceAddress) {

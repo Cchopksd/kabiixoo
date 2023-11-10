@@ -226,6 +226,19 @@ const EditService = () => {
     const submitUpdate = async (event) => {
         event.preventDefault();
         setLoading(true)
+
+        // เช็คกรอกข้อมูลครบไหม
+        if (!serviceName || !addressNumber || !alleyName || !roadName || !provinceName || !stateName ||
+            !districtName || !postalCode || !introduceDesc || !serviceDesc) {
+                setLoading(false)
+                Swal.fire(
+                    'แจ้งเตือน',
+                    'กรุณากรอกข้อมูลให้ครบ',
+                    'error'
+                )
+                setUploadImg(false)
+                return
+        }
         if (images.length > 0){
             for (let i = 0; i < images.length; i++) {
                 const img = images[i];
@@ -265,17 +278,6 @@ const EditService = () => {
             setUploadImg(true)
         }
         else {
-            // เช็คกรอกข้อมูลครบไหม
-            if (!serviceName || !addressNumber || !alleyName || !roadName || !provinceName || !stateName ||
-                !districtName || !postalCode || !introduceDesc || !serviceDesc) {
-                    setLoading(false)
-                    Swal.fire(
-                        'แจ้งเตือน',
-                        'กรุณากรอกข้อมูลให้ครบ',
-                        'error'
-                    )
-                    return
-            }
             // สร้าง Address แบบเต็ม
             const serviceAddress = `${addressNumber} ${alleyName} ${roadName} ${districtName} ${stateName} ${provinceName} ${postalCode}`
             if (serviceAddress) {
@@ -345,18 +347,6 @@ const EditService = () => {
     // เมื่ออัพโหลดรูปภาพ
     useEffect(() => {
         if(uploadImg) {
-            // เช็คกรอกข้อมูลครบไหม
-            if (!serviceName || !addressNumber || !alleyName || !roadName || !provinceName || !stateName ||
-                !districtName || !postalCode || !introduceDesc || !serviceDesc) {
-                    setLoading(false)
-                    Swal.fire(
-                        'แจ้งเตือน',
-                        'กรุณากรอกข้อมูลให้ครบ',
-                        'error'
-                    )
-                    setUploadImg(false)
-                    return
-            }
             // สร้าง Address แบบเต็ม
             const serviceAddress = `${addressNumber} ${alleyName} ${roadName} ${districtName} ${stateName} ${provinceName} ${postalCode}`
             if (serviceAddress) {
