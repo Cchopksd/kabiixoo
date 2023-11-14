@@ -80,7 +80,7 @@ const ImageUploaderEditService = ({
                     {
                         name: files[i].name,
                         url: URL.createObjectURL(files[i]),
-                        file: event.target.files[0]
+                        file: files[0]
                     },
                 ])
             }

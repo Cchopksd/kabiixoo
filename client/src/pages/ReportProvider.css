@@ -29,6 +29,7 @@
     border-radius: 55px;
     margin: auto;
     margin-bottom: 30px;
+    object-fit: cover;
 }
 .report-topic-box{
     display: flex;

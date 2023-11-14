@@ -106,6 +106,7 @@
     height: 50px;
     margin: auto 20px auto 20px;
     border-radius: 30px;
+    object-fit: cover;
 }
 .chat-myChat-profile-selected img{
     width: 50px;
@@ -167,6 +168,7 @@
     height: 80px;
     border-radius: 40px;
     margin: 0 20px 0 0;
+    object-fit: cover;
 }
 .chat-chat-name-display label {
     font-size: 30px;

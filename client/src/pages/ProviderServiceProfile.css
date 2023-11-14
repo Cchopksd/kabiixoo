@@ -218,6 +218,7 @@
     height: 110px;
     border-radius: 55px;
     margin-right: 30px;
+    object-fit: cover;
 }
 .ps-profile-provider-display label {
     font-size: 24px;
