@@ -1,7 +1,7 @@
 .review-container {
     display: flex;
     flex-direction: column;
-    width: 1000px;
+    width: 600px;
     margin: 70px auto 290px auto;
     
 }
@@ -15,6 +15,9 @@
     display: flex;
     justify-content: center;
     margin-bottom: 15px;
+}
+.review-head-text {
+    margin: 0 0 30px 0;
 }
 .review-provider-image {
     width: 110px;
@@ -33,6 +36,7 @@
 .review-business-name {
     margin-left: 30px;
     text-decoration: underline;
+    text-align: center;
 }
 .review-comment-box {
     width: 460px;
@@ -70,7 +74,7 @@
 /* จอ tablet */
 @media screen and (min-width: 850px) and (max-width: 1080px){
     .review-container {
-        width: 800px;
+        width: 600px;
         margin: 50px auto 260px auto;
     }
     .review-title {
@@ -165,7 +169,7 @@
         margin-right: 300px;
     }
     .review-business-name {
-        margin-left: 0px;
+        margin-left: 20px;
         text-decoration: underline;
     }
     .review-comment-box {

@@ -16,12 +16,14 @@
     color: #A7727D;
     font-weight: bold;
     margin-right: 20px;
+    margin-bottom: 20px;
 }
 .business-name-report {
     font-size: 35px;
     color: #A7727D;
     font-weight: bold;
     text-decoration: underline;
+    text-align: center;
 }
 .report-img-display{
     width:110px;

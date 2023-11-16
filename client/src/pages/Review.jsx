@@ -83,7 +83,7 @@ const Review = () => {
             { loading && <Loading/>}
             <div className='review-container'>
                 <div className='review-title'>
-                    <label>ส่งรีวิวหรือคำแนะนำให้กับ</label>
+                    <label className='review-head-text'>ส่งรีวิวหรือคำแนะนำให้กับ</label>
                     <label className='review-business-name'>{businessName}</label>
                 </div>
                 <div className='review-img-center'>
