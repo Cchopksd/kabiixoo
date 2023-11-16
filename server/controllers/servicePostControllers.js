@@ -490,12 +490,6 @@ exports.getAllServicesByFilter =  async (req,res) => {
     let additionalServicesFilters = [];
     
     // เพิ่ม filter pet
-    // if (dog) filters.svp_haveDog = true;
-    // if (cat) filters.svp_haveCat = true;
-    // if (bird) filters.svp_haveBird = true;
-    // if (rodent) filters.svp_haveRodent = true;
-    // if (reptile) filters.svp_haveReptile = true;
-    // if (rabbit) filters.svp_haveRabbit = true;
     if (dog) petFilters.push({ svp_haveDog: true });
     if (cat) petFilters.push({ svp_haveCat: true });
     if (bird) petFilters.push({ svp_haveBird: true });
@@ -509,11 +503,6 @@ exports.getAllServicesByFilter =  async (req,res) => {
     }
 
     // เพิ่ม filter บริการเพิ่มเติม
-    // if (grooming) filters.svp_Grooming = true;
-    // if (swimming) filters.svp_pool = true;
-    // if (consume) filters.svp_petStuff = true;
-    // if (walk) filters.svp_petWalk = true;
-    // if (transport) filters.svp_carService = true;
     if (grooming) additionalServicesFilters.push({ svp_grooming: true });
     if (swimming) additionalServicesFilters.push({ svp_pool: true });
     if (consume) additionalServicesFilters.push({ svp_petStuff: true });
@@ -560,7 +549,7 @@ exports.getAllServicesByFilter =  async (req,res) => {
             filters = { ...filters, ...keyword };
             console.log(filters)
         }
-        const filtersService = await ServicePost.find(filters)
+        const filtersService = await ServicePost.find(filters).sort({ createdAt: -1 })
         // sort คะแนน
         if (point === "topPoint") {
             // มากไปน้อย

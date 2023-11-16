@@ -122,7 +122,7 @@ const SearchBar = ({ onDataSend, onSearch }) => {
                 setIsVisible(false)
                 setLoading(false);
                 setIsSearch(true)
-            }, 2000);
+            }, 1000);
         }).catch(err => {
             setTimeout(() => {
                 setSearchKeyword("")
@@ -151,7 +151,7 @@ const SearchBar = ({ onDataSend, onSearch }) => {
                 setIsVisible(false)
                 setLoading(false);
                 Swal.fire('แจ้งเตือน', err, 'error')
-            }, 2000);
+            }, 1000);
         })
     }
 

@@ -76,7 +76,7 @@ const Home = () => {
                                 <Link to={`/provider-profile/${item.svp_slug}`} className='home-link'>
                                     <div className='home-provider-item' role='button' key={item._id}>
                                         <div className='home-provider-img-box'>
-                                            <img src={item.svp_img1 ? item.svp_img1 : "https://i.cbc.ca/1.5077459.1553886010!/fileImage/httpImage/pets.jpg"}/>
+                                            <img src={item.svp_img1 ? item.svp_img1 : "https://img.freepik.com/free-vector/pet-sitter-hotel-composition-with-city-street-view-building-entrance-with-queue-pets-masters_1284-59020.jpg?w=1380&t=st=1700116361~exp=1700116961~hmac=e70ba22c10a74b437bcbf3c9bed83c9d74d7a26e255a2ade06c22637623b7128"}/>
                                         </div>
                                         <div className='home-provider-info-box'>
                                             <div className='home-business-name-box'>
