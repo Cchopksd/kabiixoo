@@ -476,7 +476,8 @@ exports.getAllServicesByFilter =  async (req,res) => {
         $or: [
             { svp_name: { $regex: searchKeyword, $options: "i" } },
             { svp_district: { $regex: searchKeyword, $options: "i" } },
-            { svp_state: { $regex: searchKeyword, $options: "i" } }
+            { svp_state: { $regex: searchKeyword, $options: "i" } },
+            { svp_province: { $regex: searchKeyword, $options: "i" } }
         ],
     } : {}
     

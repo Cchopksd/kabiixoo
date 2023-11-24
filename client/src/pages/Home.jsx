@@ -94,7 +94,7 @@ const Home = () => {
                                                 </div>
                                                 <div className="home-province-box">
                                                     <img src={require("../images/providerServiceProfilePage/locationIcon.png")}/>
-                                                    <label>{item.svp_province}</label>
+                                                    <label>{item.svp_state}</label>
                                                 </div>
                                             </div>
                                             <p>
