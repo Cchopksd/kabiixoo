@@ -75,7 +75,7 @@ const ReportingService = () => {
                     <table className='table table-striped frameGroup'>
                         <thead className='fixed-height-tr'>
                             <tr className='groupFilter'>
-                                <th scope='col' className='borderColor' style={{ width: '10%', paddingLeft: '10px' }}>เลขที่รายงาน</th>
+                                <th scope='col' className='borderColor' style={{ width: '10%', paddingLeft: '10px' }}>ลำดับที่</th>
                                 <th scope='col'>ผู้ร้องเรียน</th>
                                 <th scope='col'>อีเมลล์ผู้ร้องเรียน</th>
                                 <th scope='col'>ผู้ถูกร้องเรียน</th>
