@@ -113,6 +113,7 @@
     height: 50px;
     margin: auto 20px auto 20px;
     border-radius: 30px;
+    object-fit: cover;
 }
 .chat-myChat-profile-text-box {
     margin: auto 0 auto 0;
@@ -232,6 +233,7 @@
     height: 35px;
     border-radius: 20px;
     margin-right: 5px;
+    object-fit: cover;
 }
 .scrollable-feed::-webkit-scrollbar {
     width: 0; 
