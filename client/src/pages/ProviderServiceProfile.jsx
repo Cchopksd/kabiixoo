@@ -48,6 +48,7 @@ const ProviderServiceProfile = () => {
     const [serviceDesc, setServiceDesc] = useState("")
     const [serviceAddress, setServiceAddress] = useState("");
     const [serviceProvince, setServiceProvince] = useState("");
+    const [serviceState, setServiceState] = useState("");
 
     const [confirmBusiness, setConfirmBusiness] = useState(true);
 
@@ -98,6 +99,7 @@ const ProviderServiceProfile = () => {
             setServiceDesc(res.data.svp_description)
             setServiceAddress(res.data.svp_address)
             setServiceProvince(res.data.svp_province)
+            setServiceState(res.data.svp_state)
             setConfirmBusiness(res.data.svp_verified)
             setServiceGrooming(res.data.svp_grooming)
             setServicePetWalk(res.data.svp_petWalk)
@@ -295,7 +297,7 @@ const ProviderServiceProfile = () => {
                         </div>
                         <div className="ps-profile-province-box">
                             <img src={require("../images/providerServiceProfilePage/locationIcon.png")}/>
-                            <label>{serviceProvince}</label>
+                            <label>{serviceState}</label>
                         </div>
                     </div>
                     <div className="ps-profile-part-1">
