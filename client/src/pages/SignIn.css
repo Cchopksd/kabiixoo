@@ -96,6 +96,7 @@
     color: #fff;
     font-family: 'IBM Plex Sans Thai', sans-serif;
     font-size: 16px;
+    font-weight: bold;
 }
 .btSignIn:hover{
     transition: 0.3s ease;
@@ -136,6 +137,7 @@
     color: #A7727D;
     border-radius: 25px;
     border-style: none;
+    font-weight: bold;
 }
 .bt_lwg:hover{
     transition: 0.3s ease;

@@ -198,7 +198,7 @@ const SearchBar = ({ onDataSend, onSearch }) => {
                 <div className={`box-search ${isVisible ? 'visible' : ''}`}>
                     <div className='frameEntry'>
                         <div className='frameEt_fill'>
-                            <input className="entry-fill" type='search' placeholder="ค้นหาชื่อร้าน , แขวง หรือ เขต" value={searchKeyword} 
+                            <input className="entry-fill" type='search' placeholder="ค้นหาชื่อร้าน แขวง หรือ เขต" value={searchKeyword} 
                             onChange={(event) => setSearchKeyword(event.target.value)}/>
                         </div>
                         <div className='fbt-filter'>

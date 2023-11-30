@@ -39,6 +39,7 @@
     transition: all 0.3s ease;
     height: 40px;
     width: 125px;
+    font-weight: bold;
 }
 .btn-login{
     color: #A7727D;
