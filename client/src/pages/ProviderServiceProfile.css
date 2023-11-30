@@ -327,6 +327,8 @@
 }
 .ps-profile-customer-image {
     width: 80px;
+    height: 80px;
+    object-fit: cover;
 }
 .ps-profile-review-content-display p {
     margin-bottom: 0px;
