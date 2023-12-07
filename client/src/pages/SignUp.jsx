@@ -201,7 +201,7 @@ const SignUp = () => {
 
                                 <div className='regisEmail'>
                                     <div>
-                                        <label className="lbRegisEmail">อีเมลล์ *</label>
+                                        <label className="lbRegisEmail">อีเมล *</label>
                                     </div>
                                     <input className="inputRegisEmail" id="email" type="email" placeholder="กรอกอีเมล" value={email} onChange={inputValue("email")}/>
                                 </div>
