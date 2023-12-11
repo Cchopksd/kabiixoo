@@ -26,6 +26,7 @@ const SingleReport = (props) => {
         axios.get(`${process.env.REACT_APP_API}/report/${(params.slug)}`)
             .then(response => {
                 setReport(response.data);
+                console.log(response.data)
             }).catch(err => alert(err));
     }, [params.slug])
 
@@ -48,9 +49,7 @@ const SingleReport = (props) => {
             }
         })
     }
- 
 
-    console.log(report.serviceInfo?.svp_name);
 
     return (
         <AnimatedPage>
@@ -68,7 +67,7 @@ const SingleReport = (props) => {
                         <div className='row-header'>
                             <p className='col'>อีเมลล์ผู้ถูกร้องเรียน : {report.reportInfo?.provider_id?.mem_email}</p>
                             <p className='col fixed-col'>หัวข้อการถูกรายงาน : {report.reportInfo?.rep_title}</p>
-                            <button className='col col-delete' onClick={() => confirmDelete(report.rep_slug)}>ลบการร้องเรียน</button>
+                            <button className='col col-delete' onClick={() => confirmDelete(report.reportInfo?.rep_slug)}>ลบการร้องเรียน</button>
                         </div>
                     </section>
                     <section className='sec-body' >
